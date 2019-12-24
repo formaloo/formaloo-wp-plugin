@@ -1,0 +1,16 @@
+.success-message{
+  color: #46b450;
+}
+.p-10{
+  padding: 10px !important;
+}
+#formaloo-admin-form{
+  margin-top: 20px !important;
+}
+#formaloo-admin-save {
+  background: #f95c30;
+  border-color: #f95c30;
+}
+.formaloo-download-btn, .formaloo-table-title {
+  color: #f95c30;
+}
