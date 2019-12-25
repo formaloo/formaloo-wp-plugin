@@ -4,6 +4,9 @@
 .p-10{
   padding: 10px !important;
 }
+.my-10 {
+  margin: 10px 0 !important;
+}
 #formaloo-admin-form{
   margin-top: 20px !important;
 }

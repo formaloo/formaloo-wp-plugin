@@ -17,7 +17,7 @@ jQuery( document ).ready( function () {
           type: 'post',
           data: jQuery(this).serialize(),
           success: function (response) { 
-              alert(response);
+              console.log(response);
           }
       } );
 
@@ -39,9 +39,6 @@ jQuery( document ).ready( function () {
         data: jQuery(this).serialize(),
         success: function (response) { 
             window.open("?page=formaloo&formaloo-get-shortcode=go","_self");
-            let params = new URLSearchParams(location.search)
-            params.delete("formaloo-get-shortcode")
-            history.replaceState(null, "", "?" + params + location.hash)
         }
     } );
 

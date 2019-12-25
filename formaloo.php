@@ -73,7 +73,7 @@ class Formaloo {
             'slug'              => 'slug',
             'address'           => 'address',
             'type'              => 'link',
-            'show_title'        => true,
+            'show_title'        => false,
             'link_title'        => 'Show Form'
         ), $atts));
         
@@ -82,10 +82,10 @@ class Formaloo {
         }
 
         switch ($atts['type']) {
-            case 'title':
+            case 'link':
                 return '<a href="' . FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/'. $atts['address'] .'" target="_blank"> '. $atts['link_title'] .' </a>';
             case 'iframe':
-                return '<iframe src="' . FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/'. $atts['address'] .'"></iframe>';
+                return '<iframe src="' . FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/'. $atts['address'] .'" class="custom-formaloo-iframe-style" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe><style>.custom-formaloo-iframe-style {display:block; width:100%; height:100vh;}</style>';
             case 'script':
                 return '
                     <div id="formz-wrapper" data-formz-slug="'. $atts['slug'] .'"></div>
@@ -112,6 +112,7 @@ class Formaloo {
         <?php 
             if ( isset($_GET['download_excel']) ) {
                 $this->downloadExcel( $_GET['download_excel'] );
+                remove_query_arg( 'download_excel' );
             }
         ?>
         <?php
@@ -194,7 +195,9 @@ class Formaloo {
 
         update_option($this->option_name, $data);
 
-        echo __('Saved!', 'formaloo');
+        // wp_redirect('http://www.domain.nl/email-acties/');
+
+        // echo __('Saved!', 'formaloo');
 		die();
 
 	}
@@ -205,7 +208,7 @@ class Formaloo {
 	public function addAdminScripts() {
 
         wp_enqueue_style('thickbox');
-        wp_enqueue_script('thickbox'); 
+        wp_enqueue_script('thickbox');
 
 	    wp_enqueue_style('formaloo-admin', FORMALOO_URL. 'assets/css/admin.css', false, 1.0);
 		wp_enqueue_script('formaloo-admin', FORMALOO_URL. 'assets/js/admin.js', array(), 1.0);
@@ -299,11 +302,33 @@ class Formaloo {
 
 			<?php if ($is_requesting_shortcode): ?>
 				<?php // $this->addFooterCode(true); ?>
-                <p class="notice notice-warning p-10">
-					<?php // _e( 'The demo engager is enabled. You will see the widget, exactly as it will be displayed on your site.<br> The only difference is that until the preview is turned off it will always come back compared to the live version.', 'formaloo' ); ?>
-                    [formaloo type="<?php echo (isset($data['widget_show_type'])) ? $data['widget_show_type'] : 'link'; ?>" <?php if (isset($data['widget_link_title']) && !empty($data['widget_link_title'])): ?>
-                 link_title="<?php echo $data['widget_link_title']; ?>"<?php endif; ?> show_title="<?php echo (isset($data['widget_show_title'])) ? $data['widget_show_title'] : true; ?>"]
+                <p class="notice notice-success p-10 is-dismissible">
+                    <?php // print_r($data); ?>
+					<strong><?php _e( 'Here is your Shortocde:', 'formaloo' ); ?></strong>
+                    [formaloo 
+                    address="<?php echo (isset($data['widget_form_address'])) ? $data['widget_form_address'] : 'try again'; ?>" 
+                    slug="<?php echo (isset($data['widget_form_slug'])) ? $data['widget_form_slug'] : 'try again'; ?>" 
+                    type="<?php echo (isset($data['widget_show_type'])) ? $data['widget_show_type'] : 'link'; ?>" 
+                    <?php 
+                    switch ($data['widget_show_type']) {
+                    case 'link':
+                        if (isset($data['widget_link_title']) && !empty($data['widget_link_title'])):
+                            echo 'link_title="'. $data['widget_link_title']. '"';
+                        endif;
+                    break;
+                    case 'iframe': break;
+                    case 'script':
+                        echo 'show_title="'. (isset($data['widget_show_title'])) ? $data['widget_show_title'] : false .'"';
+                    break;
+                    }
+                    ?>
+                    ]
                 </p>
+                <script>
+                    let params = new URLSearchParams(location.search)
+                    params.delete("formaloo-get-shortcode")
+                    history.replaceState(null, "", "?" + params + location.hash)
+                </script>
 			<?php endif; ?>
 
             <div id="form-show-options" style="display:none;">
@@ -332,7 +357,7 @@ class Formaloo {
                                 </select>
                             </td>
                         </tr>
-                        <tr>
+                        <tr id="link_title_row">
                             <td scope="row">
                                 <label>
                                     <?php _e( 'Link title', 'formaloo' ); ?>
@@ -348,7 +373,7 @@ class Formaloo {
                                         value="<?php echo (isset($data['widget_link_title'])) ? esc_attr__($data['widget_link_title']) : ''; ?>"/>
                             </td>
                         </tr>
-                        <tr>
+                        <tr id="show_title_row">
                             <td scope="row">
                                 <label>
                                     <?php _e( 'Show title', 'formaloo' ); ?>
@@ -360,17 +385,39 @@ class Formaloo {
                                 <input name="formaloo_widget_show_title"
                                         id="formaloo_widget_show_title"
                                         type="checkbox"
-                                    <?php echo (isset($data['widget_show_title']) && $data['widget_show_title']) ? 'checked' : ''; ?>/>
+                                        <?php echo (isset($data['widget_show_title']) && $data['widget_show_title']) ? 'checked' : ''; ?>/>
                             </td>
                         </tr>
                     </tbody>
                 </table>
                 <?php if (!$not_ready): ?> 
-                    <button class="button button-primary" id="formaloo-admin-save" type="submit">
+                    <button class="button button-primary my-10" id="formaloo-admin-save" type="submit">
                         <?php _e( 'Get shortcode', 'formaloo' ); ?>
                     </button>
                 <?php endif; ?>
                 </form>
+                <script>
+
+                    function getRowInfo($slug, $address) {
+                        console.log($slug);
+                        console.log($address);
+                        jQuery(".form-table").append('<input name="formaloo_widget_form_slug" id="formaloo_widget_form_slug" type="hidden" value="' + $slug + '" />');
+                        jQuery(".form-table").append('<input name="formaloo_widget_form_address" id="formaloo_widget_form_address" type="hidden" value="' + $address + '" />');
+                    }
+                    jQuery("#formaloo_widget_show_type").change(function() {
+                        if (jQuery(this).val() == "link") {
+                            jQuery('#link_title_row').show();
+                            jQuery('#show_title_row').hide();
+                        } else if (jQuery(this).val() == "script") {
+                            jQuery('#show_title_row').show();
+                            jQuery('#link_title_row').hide();
+                        } else {
+                            jQuery('#show_title_row').hide();
+                            jQuery('#link_title_row').hide();
+                        }
+                    });
+                    jQuery("#formaloo_widget_show_type").trigger("change");
+                </script>
             </div>
 
             <form id="formaloo-admin-form" class="postbox">
@@ -652,12 +699,12 @@ class Forms_List_Table extends WP_List_Table {
         foreach($data['data']['forms'] as $form) {
             $tableData[] = array(
                 'ID'           => $index,
-                'title'        => '<a href="#TB_inline?&width=600&height=300&inlineId=form-show-options" class="thickbox"><strong class="formaloo-table-title">'. $form['title'] .'</strong></a>',
+                'title'        => '<a href="#TB_inline?&width=600&height=250&inlineId=form-show-options" class="thickbox" onclick = "getRowInfo(\''. $form['slug'] .'\',\''. $form['address'] .'\')"><strong class="formaloo-table-title">'. $form['title'] .'</strong></a>',
                 'active'       => ($form['active']) ? '<span class="dashicons dashicons-yes success-message"></span>' : '<span class="dashicons dashicons-no-alt error-message"></span>',
                 'submitCount'  => $form['submit_count'],
                 'slug'         => $form['slug'],
                 'address'      => $form['address'],
-                'excel'        => '<a href="?page=formaloo&download_excel='. $form['slug'] .'" class="formaloo-download-btn"><span class="dashicons dashicons-download"></span> Download</a>'
+                'excel'        => '<a href="'. add_query_arg('download_excel',$form['slug']) .'" class="formaloo-download-btn"><span class="dashicons dashicons-download"></span> Download</a>'
             );
             $index++;
         }
@@ -693,8 +740,10 @@ class Forms_List_Table extends WP_List_Table {
      *
      * @return Mixed
      */
-    private function sort_data( $a, $b )
-    {
+    private function sort_data( $a, $b ) {
+
+        esc_url( remove_query_arg( 'download_excel' ) );
+
         // Set defaults
         $orderby = 'title';
         $order = 'asc';
@@ -731,11 +780,7 @@ class Forms_List_Table extends WP_List_Table {
         return sprintf('%1$s %2$s', $item['title'], $this->row_actions($actions) );
     }
 
-    function column_cb($item) {
-        return sprintf(
-            '<input type="checkbox" name="form[]" value="%s" />', $item['ID']
-        );    
-    }
+    
 }
 
 /*
