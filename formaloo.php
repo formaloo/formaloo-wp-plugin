@@ -58,9 +58,11 @@ class Formaloo {
 	 */
 	public function __construct() {
         // Admin page calls
+        // add_action('wp_footer',                 array($this,'addFooterCode'));
 
-		add_action('admin_menu',                array($this,'addAdminMenu'));
-		add_action('wp_ajax_store_admin_data',  array($this,'storeAdminData'));
+        add_action('admin_menu',                array($this,'addAdminMenu'));
+        add_action('wp_ajax_store_admin_data',  array($this,'storeAdminData'));
+        add_action('wp_ajax_get_formaloo_shortcode',  array($this,'getFormalooShortcode'));
         add_action('admin_enqueue_scripts',     array($this,'addAdminScripts'));
 
         add_shortcode('formaloo', array($this, 'formaloo_show_form_shortcode'));
@@ -73,13 +75,11 @@ class Formaloo {
             'slug'              => 'slug',
             'address'           => 'address',
             'type'              => 'link',
-            'show_title'        => false,
-            'link_title'        => 'Show Form'
+            'link_title'        => 'Show Form',
+            'show_title'        => 'yes',
+            'show_descr'        => 'yes',
+            'show_logo'         => 'yes'
         ), $atts));
-        
-        if ($atts['show_title']) {
-            $this->addFooterCode(true);
-        }
 
         switch ($atts['type']) {
             case 'link':
@@ -87,7 +87,17 @@ class Formaloo {
             case 'iframe':
                 return '<iframe src="' . FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/'. $atts['address'] .'" class="custom-formaloo-iframe-style" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe><style>.custom-formaloo-iframe-style {display:block; width:100%; height:100vh;}</style>';
             case 'script':
+                if ($atts['show_title'] == 'no') {
+                    $show_title =  '#main-form .formz-form-title { display: none; }';
+                } 
+                if ($atts['show_descr'] == 'no') {
+                    $show_desc =  '#main-form .formz-form-desc { display: none; }';
+                }
+                if ($atts['show_logo'] == 'no') {
+                    $show_logo =  '#main-form .formz-main-logo { display: none; }';
+                }
                 return '
+                    <style>'. $show_title . $show_desc . $show_logo .'</style>
                     <div id="formz-wrapper" data-formz-slug="'. $atts['slug'] .'"></div>
                     <script src="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT . '/istatic/js/main.js" type="text/javascript" async></script>
                 ';
@@ -167,6 +177,61 @@ class Formaloo {
 	/**
 	 * Callback for the Ajax request
 	 *
+	 * Print the shortcode
+     *
+     * @return void
+	 */
+    public function getFormalooShortcode() {
+
+		if (wp_verify_nonce($_POST['security'], $this->_nonce ) === false)
+			die('Invalid Request! Reload your page please.');
+
+        $fields = [];
+
+		foreach ($_POST as $field=>$value) {
+
+		    if (substr($field, 0, 9) !== "formaloo_")
+				continue;
+
+		    // We remove the formaloo_ prefix to clean things up
+            $field = substr($field, 9);
+            $fields[$field] = esc_attr__($value);
+        }
+        
+        $form_add = (isset($fields['form_address'])) ? $fields['form_address'] : 'try again';
+        $form_slug = (isset($fields['form_slug'])) ? $fields['form_slug'] : 'try again';
+        $form_type = (isset($fields['show_type'])) ? $fields['show_type'] : 'link';
+        
+        $output = '[formaloo address="'. $form_add . '" slug="'. $form_slug . '" type="'. $form_type .'"';
+
+        switch ($fields['show_type']) {
+        case 'link':
+            if (isset($fields['link_title']) && !empty($fields['link_title'])):
+                $output = $output . ' link_title="'. $fields['link_title']. '"';
+            endif;
+        break;
+        case 'iframe': break;
+        case 'script':
+            $show_title = (isset($fields['show_title']) && !empty($fields['show_title'])) ? $fields['show_title'] : 'no';
+            $output = $output . ' show_title="'. $show_title .'"';
+
+            $show_desc = (isset($fields['show_descr']) && !empty($fields['show_descr'])) ? $fields['show_descr'] : 'no';
+            $output = $output . ' show_descr="'. $show_desc .'"';
+
+            $show_logo = (isset($fields['show_logo']) && !empty($fields['show_logo'])) ? $fields['show_logo'] : 'no';
+            $output = $output . ' show_logo="'. $show_logo .'"';
+        break;
+        }
+        
+        $output = $output . ']';
+
+        wp_send_json_success(['output'=>$output]);
+
+	}
+
+	/**
+	 * Callback for the Ajax request
+	 *
 	 * Updates the options data
      *
      * @return void
@@ -195,9 +260,6 @@ class Formaloo {
 
         update_option($this->option_name, $data);
 
-        // wp_redirect('http://www.domain.nl/email-acties/');
-
-        // echo __('Saved!', 'formaloo');
 		die();
 
 	}
@@ -211,7 +273,7 @@ class Formaloo {
         wp_enqueue_script('thickbox');
 
 	    wp_enqueue_style('formaloo-admin', FORMALOO_URL. 'assets/css/admin.css', false, 1.0);
-		wp_enqueue_script('formaloo-admin', FORMALOO_URL. 'assets/js/admin.js', array(), 1.0);
+        wp_enqueue_script('formaloo-admin', FORMALOO_URL. 'assets/js/admin.js', array(), 1.0);
 
 		$admin_options = array(
 			'ajax_url' => admin_url( 'admin-ajax.php' ),
@@ -288,9 +350,7 @@ class Formaloo {
         $data = $this->getData();
 
 	    $api_response = $this->getForms($data['private_key']);
-
 	    $not_ready = (empty($data['private_key']) || empty($api_response) || isset($api_response['error']));
-	    $is_requesting_shortcode = (isset($_GET['formaloo-get-shortcode']) && $_GET['formaloo-get-shortcode'] === 'go');
         
         $FORMALOO_WEBSITE = "formaloo.com";
 
@@ -299,42 +359,8 @@ class Formaloo {
 		<div class="wrap">
 
             <h1><?php _e('Formaloo Settings', 'formaloo'); ?></h1>
-
-			<?php if ($is_requesting_shortcode): ?>
-				<?php // $this->addFooterCode(true); ?>
-                <p class="notice notice-success p-10 is-dismissible">
-                    <?php // print_r($data); ?>
-					<strong><?php _e( 'Here is your Shortocde:', 'formaloo' ); ?></strong>
-                    [formaloo 
-                    address="<?php echo (isset($data['widget_form_address'])) ? $data['widget_form_address'] : 'try again'; ?>" 
-                    slug="<?php echo (isset($data['widget_form_slug'])) ? $data['widget_form_slug'] : 'try again'; ?>" 
-                    type="<?php echo (isset($data['widget_show_type'])) ? $data['widget_show_type'] : 'link'; ?>" 
-                    <?php 
-                    switch ($data['widget_show_type']) {
-                    case 'link':
-                        if (isset($data['widget_link_title']) && !empty($data['widget_link_title'])):
-                            echo 'link_title="'. $data['widget_link_title']. '"';
-                        endif;
-                    break;
-                    case 'iframe': break;
-                    case 'script':
-                        echo 'show_title="'. (isset($data['widget_show_title'])) ? $data['widget_show_title'] : false .'"';
-                    break;
-                    }
-                    ?>
-                    ]
-                </p>
-                <script>
-                    let params = new URLSearchParams(location.search)
-                    params.delete("formaloo-get-shortcode")
-                    history.replaceState(null, "", "?" + params + location.hash)
-                </script>
-			<?php endif; ?>
-
+            
             <div id="form-show-options" style="display:none;">
-                <h3>
-                    <?php _e('Set-up Form Settings', 'formaloo'); ?>
-                </h3>
                 <form id="formaloo-customize-form">
                 <table class="form-table">
                     <tbody>
@@ -343,15 +369,15 @@ class Formaloo {
                                 <label><?php _e( 'How to show', 'formaloo' ); ?></label>
                             </td>
                             <td>
-                                <select name="formaloo_widget_show_type"
-                                        id="formaloo_widget_show_type">
-                                    <option value="link" <?php echo (!isset($data['widget_show_type']) || (isset($data['widget_show_type']) && $data['widget_show_type'] === 'link')) ? 'selected' : ''; ?>>
+                                <select name="formaloo_show_type"
+                                        id="formaloo_show_type">
+                                    <option value="link" <?php echo (!isset($data['show_type']) || (isset($data['show_type']) && $data['show_type'] === 'link')) ? 'selected' : ''; ?>>
                                         <?php _e( 'Link', 'formaloo' ); ?>
                                     </option>
-                                    <option value="iframe" <?php echo (isset($data['widget_show_type']) && $data['widget_show_type'] === 'iframe') ? 'selected' : ''; ?>>
+                                    <option value="iframe" <?php echo (isset($data['show_type']) && $data['show_type'] === 'iframe') ? 'selected' : ''; ?>>
                                         <?php _e( 'iFrame', 'formaloo' ); ?>
                                     </option>
-                                    <option value="script" <?php echo (isset($data['widget_show_type']) && $data['widget_show_type'] === 'script') ? 'selected' : ''; ?>>
+                                    <option value="script" <?php echo (isset($data['show_type']) && $data['show_type'] === 'script') ? 'selected' : ''; ?>>
                                         <?php _e( 'Script', 'formaloo' ); ?>
                                     </option>
                                 </select>
@@ -366,11 +392,24 @@ class Formaloo {
                                 </label>
                             </td>
                             <td>
-                                <input name="formaloo_widget_link_title"
-                                        id="formaloo_widget_link_title"
+                                <input name="formaloo_link_title"
+                                        id="formaloo_link_title"
                                         type="text"
                                         class="regular-text"
-                                        value="<?php echo (isset($data['widget_link_title'])) ? esc_attr__($data['widget_link_title']) : ''; ?>"/>
+                                        value="<?php echo (isset($data['link_title'])) ? esc_attr__($data['link_title']) : ''; ?>"/>
+                            </td>
+                        </tr>
+                        <tr id="show_logo_row">
+                            <td scope="row">
+                                <label>
+                                    <?php _e( 'Show logo', 'formaloo' ); ?>
+                                    <br>
+                                    <small><?php _e( '(Show the logo in the embedded form?)', 'formaloo' ); ?></small>
+                                </label>
+                            </td>
+                            <td>
+                            <input type="radio" name="formaloo_show_logo" id="formaloo_show_logo" value="yes" /> <label for = "formaloo_show_logo">Yes</label> <br>
+                            <input type="radio" name="formaloo_show_logo" id="formaloo_show_logo" value="no" /> <label for = "formaloo_show_logo">No</label> 
                             </td>
                         </tr>
                         <tr id="show_title_row">
@@ -382,41 +421,66 @@ class Formaloo {
                                 </label>
                             </td>
                             <td>
-                                <input name="formaloo_widget_show_title"
-                                        id="formaloo_widget_show_title"
-                                        type="checkbox"
-                                        <?php echo (isset($data['widget_show_title']) && $data['widget_show_title']) ? 'checked' : ''; ?>/>
+                            <input type="radio" name="formaloo_show_title" id="formaloo_show_title" value="yes" /> <label for = "formaloo_show_title">Yes</label> <br>
+                            <input type="radio" name="formaloo_show_title" id="formaloo_show_title" value="no" <?php // checked( 'no' == $data['show_title'] ); ?> /> <label for = "formaloo_show_title">No</label> 
+                            </td>
+                        </tr>
+                        <tr id="show_descr_row">
+                            <td scope="row">
+                                <label>
+                                    <?php _e( 'Show description', 'formaloo' ); ?>
+                                    <br>
+                                    <small><?php _e( '(Show the description in the embedded form?)', 'formaloo' ); ?></small>
+                                </label>
+                            </td>
+                            <td>
+                            <input type="radio" name="formaloo_show_descr" id="formaloo_show_descr" value="yes" /> <label for = "formaloo_show_descr">Yes</label> <br>
+                            <input type="radio" name="formaloo_show_descr" id="formaloo_show_descr" value="no" /> <label for = "formaloo_show_descr">No</label> 
                             </td>
                         </tr>
                     </tbody>
                 </table>
+                <div class="formaloo_clipboard_wrapper hidden">
+                    <pre id="formaloo_shortcode_pre"></pre>
+                    <button class="button button-primary formaloo_clipboard_btn" data-clipboard-target="#formaloo_shortcode_pre">
+                        <img src="<?php echo FORMALOO_URL ?>/assets/images/clippy.svg" width="13" alt="Copy to clipboard">
+                    </button>  
+                </div>
                 <?php if (!$not_ready): ?> 
-                    <button class="button button-primary my-10" id="formaloo-admin-save" type="submit">
+                    <button class="button button-primary formaloo-admin-save my-10" type="submit">
                         <?php _e( 'Get shortcode', 'formaloo' ); ?>
                     </button>
                 <?php endif; ?>
                 </form>
+                <script src="<?php echo FORMALOO_URL ?>/assets/js/clipboard.min.js"></script>
                 <script>
+                
+                    new ClipboardJS('.formaloo_clipboard_btn');
 
                     function getRowInfo($slug, $address) {
-                        console.log($slug);
-                        console.log($address);
-                        jQuery(".form-table").append('<input name="formaloo_widget_form_slug" id="formaloo_widget_form_slug" type="hidden" value="' + $slug + '" />');
-                        jQuery(".form-table").append('<input name="formaloo_widget_form_address" id="formaloo_widget_form_address" type="hidden" value="' + $address + '" />');
+                        jQuery('.formaloo_clipboard_wrapper').addClass('hidden');
+                        jQuery(".form-table").append('<input name="formaloo_form_slug" id="formaloo_form_slug" type="hidden" value="' + $slug + '" />');
+                        jQuery(".form-table").append('<input name="formaloo_form_address" id="formaloo_form_address" type="hidden" value="' + $address + '" />');
                     }
-                    jQuery("#formaloo_widget_show_type").change(function() {
+
+                    jQuery("#formaloo_show_type").change(function() {
                         if (jQuery(this).val() == "link") {
-                            jQuery('#link_title_row').show();
-                            jQuery('#show_title_row').hide();
+                            toggleRows(link = true);
                         } else if (jQuery(this).val() == "script") {
-                            jQuery('#show_title_row').show();
-                            jQuery('#link_title_row').hide();
+                            toggleRows(title = true, logo = true, descr = true);
                         } else {
-                            jQuery('#show_title_row').hide();
-                            jQuery('#link_title_row').hide();
+                            toggleRows();
                         }
                     });
-                    jQuery("#formaloo_widget_show_type").trigger("change");
+
+                    function toggleRows(link = false, title = false, logo = false, descr = false) {
+                        link ? jQuery('#link_title_row').show() : jQuery('#link_title_row').hide();
+                        title ? jQuery('#show_title_row').show() : jQuery('#show_title_row').hide();
+                        logo ? jQuery('#show_logo_row').show() : jQuery('#show_logo_row').hide();
+                        descr ? jQuery('#show_descr_row').show() : jQuery('#show_descr_row').hide();
+                    }
+
+                    jQuery("#formaloo_show_type").trigger("change");
                 </script>
             </div>
 
@@ -515,7 +579,7 @@ class Formaloo {
                 <?php endif; ?>
 
                 <div class="inside">
-                    <button class="button button-primary" id="formaloo-admin-save" type="submit">
+                    <button class="button button-primary formaloo-admin-save" type="submit">
                         <?php _e( 'Save', 'formaloo' ); ?>
                     </button>
                 </div>
@@ -538,250 +602,22 @@ class Formaloo {
      *
      * @return void
      */
-	public function addFooterCode($force = false) {
+	public function addFooterCode($force = false, $targetClass) {
 
-        ?>
-
-        <style>
-            #main-form .formz-form-title {
-                display: none;
-            }
-        </style>
-
-        <?php
-
+        echo '<style> #main-form .'. $targetClass .' { display: none; } </style>';
+        
     }
 
 }
 
-/* Register activation hook. */
-register_activation_hook( __FILE__, 'formaloo_admin_notice_activation_hook' );
-
-/**
- * Runs only when the plugin is activated.
- * @since 0.1.0
- */
-function formaloo_admin_notice_activation_hook() {
-
-    /* Create transient data */
-    set_transient( 'formaloo-admin-notice-activation', true, 5 );
-}
-
-/* Add admin notice */
-add_action( 'admin_notices', 'formaloo_admin_notice_activation_notice' );
-
-/**
- * Admin Notice on Activation.
- * @since 0.1.0
- */
-function formaloo_admin_notice_activation_notice(){
-
-    /* Check transient, if available display notice */
-    if( get_transient( 'formaloo-admin-notice-activation' ) ){
-        ?>
-        <div class="updated notice is-dismissible">
-            <p>Thank you for using this plugin! <strong>Please Activate your plugin</strong>.</p>
-        </div>
-        <?php
-        /* Delete transient, only display this notice once. */
-        delete_transient( 'formaloo-admin-notice-activation' );
-    }
-}
-
+require('showActivationNotice.php');
 
 // WP_List_Table is not loaded automatically so we need to load it in our application
 if( ! class_exists( 'WP_List_Table' ) ) {
     require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
 }
 
-/**
- * Create a new table class that will extend the WP_List_Table
- */
-class Forms_List_Table extends WP_List_Table {
-
-    private $formData = array();
-
-    public function setFormData($formData) { 
-        $this->formData = $formData; 
-    }
-    public function getFormData() { 
-        return $this->formData; 
-    }
-
-    private $privateKey = '';
-
-    public function setPrivateKey($privateKey) { 
-        $this->privateKey = $privateKey; 
-    }
-    public function getPrivateKey() { 
-        return $this->privateKey; 
-    }
-
-    /**
-     * Prepare the items for the table to process
-     *
-     * @return Void
-     */
-    public function prepare_items()
-    {
-        $columns = $this->get_columns();
-        $hidden = $this->get_hidden_columns();
-        $sortable = $this->get_sortable_columns();
-
-        $data = $this->table_data();
-        usort( $data, array( &$this, 'sort_data' ) );
-
-        $formData = $this->getFormData();
-
-        $perPage = $formData['data']['page_size'];
-        $currentPage = $this->get_pagenum();
-        $totalItems = count($data);
-
-        $this->set_pagination_args( array(
-            'total_items' => $totalItems,
-            'per_page'    => $perPage
-        ) );
-
-        $data = array_slice($data,(($currentPage-1)*$perPage),$perPage);
-
-        $this->_column_headers = array($columns, $hidden, $sortable);
-        $this->items = $data;
-    }
-
-    /**
-     * Override the parent columns method. Defines the columns to use in your listing table
-     *
-     * @return Array
-     */
-    public function get_columns()
-    {
-        $columns = array(
-            // 'cb'            => '<input type="checkbox" />',
-            'title'         => __('Title', 'formaloo'),
-            'active'        => __('Active', 'formaloo'),
-            'submitCount'   => __('Submit Count', 'formaloo'),
-            'excel'         => __('Download Results', 'formaloo')
-        );
-
-        return $columns;
-    }
-
-    /**
-     * Define which columns are hidden
-     *
-     * @return Array
-     */
-    public function get_hidden_columns()
-    {
-        return array();
-    }
-
-    /**
-     * Define the sortable columns
-     *
-     * @return Array
-     */
-    public function get_sortable_columns()
-    {
-        return array('title' => array('title', false), 'submitCount' => array('submitCount', false));
-    }
-
-    /**
-     * Get the table data
-     *
-     * @return Array
-     */
-    private function table_data() {
-        $tableData = array();
-        $data = $this->getFormData();
-        $index = 0;
-
-        foreach($data['data']['forms'] as $form) {
-            $tableData[] = array(
-                'ID'           => $index,
-                'title'        => '<a href="#TB_inline?&width=600&height=250&inlineId=form-show-options" class="thickbox" onclick = "getRowInfo(\''. $form['slug'] .'\',\''. $form['address'] .'\')"><strong class="formaloo-table-title">'. $form['title'] .'</strong></a>',
-                'active'       => ($form['active']) ? '<span class="dashicons dashicons-yes success-message"></span>' : '<span class="dashicons dashicons-no-alt error-message"></span>',
-                'submitCount'  => $form['submit_count'],
-                'slug'         => $form['slug'],
-                'address'      => $form['address'],
-                'excel'        => '<a href="'. add_query_arg('download_excel',$form['slug']) .'" class="formaloo-download-btn"><span class="dashicons dashicons-download"></span> Download</a>'
-            );
-            $index++;
-        }
-
-        return $tableData;
-    }
-
-    /**
-     * Define what data to show on each column of the table
-     *
-     * @param  Array $item        Data
-     * @param  String $column_name - Current column name
-     *
-     * @return Mixed
-     */
-    public function column_default( $item, $column_name )
-    {
-        switch( $column_name ) {
-            // case 'cb':
-            case 'title':
-            case 'active':
-            case 'submitCount':
-            case 'excel':
-                return $item[ $column_name ];
-
-            default:
-                return print_r( $item, true ) ;
-        }
-    }
-
-    /**
-     * Allows you to sort the data by the variables set in the $_GET
-     *
-     * @return Mixed
-     */
-    private function sort_data( $a, $b ) {
-
-        esc_url( remove_query_arg( 'download_excel' ) );
-
-        // Set defaults
-        $orderby = 'title';
-        $order = 'asc';
-
-        // If orderby is set, use this as the sort column
-        if(!empty($_GET['orderby']))
-        {
-            $orderby = $_GET['orderby'];
-        }
-
-        // If order is set use this as the order
-        if(!empty($_GET['order']))
-        {
-            $order = $_GET['order'];
-        }
-
-        $result = strnatcmp( $a[$orderby], $b[$orderby] );
-
-        if($order === 'asc')
-        {
-            return $result;
-        }
-
-        return -$result;
-    }
-
-    function column_title($item) {
-        $actions = array(
-                  'view'      => sprintf('<a href="%s://%s/%s" target="_blank">View Form</a>',FORMALOO_PROTOCOL,FORMALOO_ENDPOINT,$item['address']),
-                  'edit'      => sprintf('<a href="%s://%s/dashboard/my-forms/%s/edit" target="_blank">Edit Form</a>',FORMALOO_PROTOCOL,FORMALOO_ENDPOINT,$item['slug']),
-                  // 'delete'    => sprintf('<a href="?page=%s&action=%s&book=%s">Delete</a>',$_REQUEST['page'],'delete',$item['ID']),
-              );
-      
-        return sprintf('%1$s %2$s', $item['title'], $this->row_actions($actions) );
-    }
-
-    
-}
+require('listTable.php');
 
 /*
  * Starts our plugin class, easy!
