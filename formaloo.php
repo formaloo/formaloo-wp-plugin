@@ -212,13 +212,13 @@ class Formaloo {
         break;
         case 'iframe': break;
         case 'script':
-            $show_title = (isset($fields['show_title']) && !empty($fields['show_title'])) ? $fields['show_title'] : 'no';
+            $show_title = (isset($fields['show_title']) && !empty($fields['show_title'])) ? $fields['show_title'] : 'yes';
             $output = $output . ' show_title="'. $show_title .'"';
 
-            $show_desc = (isset($fields['show_descr']) && !empty($fields['show_descr'])) ? $fields['show_descr'] : 'no';
+            $show_desc = (isset($fields['show_descr']) && !empty($fields['show_descr'])) ? $fields['show_descr'] : 'yes';
             $output = $output . ' show_descr="'. $show_desc .'"';
 
-            $show_logo = (isset($fields['show_logo']) && !empty($fields['show_logo'])) ? $fields['show_logo'] : 'no';
+            $show_logo = (isset($fields['show_logo']) && !empty($fields['show_logo'])) ? $fields['show_logo'] : 'yes';
             $output = $output . ' show_logo="'. $show_logo .'"';
         break;
         }
