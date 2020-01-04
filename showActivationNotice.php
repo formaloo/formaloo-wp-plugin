@@ -1,7 +1,5 @@
 <?php
 
-/* Register activation hook. */
-register_activation_hook( __FILE__, 'formaloo_admin_notice_activation_hook' );
 
 /**
  * Runs only when the plugin is activated.
@@ -26,7 +24,7 @@ function formaloo_admin_notice_activation_notice(){
     if( get_transient( 'formaloo-admin-notice-activation' ) ){
         ?>
         <div class="updated notice is-dismissible">
-            <p>Thank you for using this plugin! <strong>Please Activate your plugin</strong>.</p>
+            <p>Thank you for using this plugin! <a href="<?php echo admin_url( "admin.php?page=formaloo" ) ?>"><strong>Please Activate your plugin</strong></a>.</p>
         </div>
         <?php
         /* Delete transient, only display this notice once. */

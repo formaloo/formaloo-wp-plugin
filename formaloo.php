@@ -731,14 +731,16 @@ class Formaloo {
 
 }
 
-require('showActivationNotice.php');
-
 // WP_List_Table is not loaded automatically so we need to load it in our application
 if( ! class_exists( 'WP_List_Table' ) ) {
     require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
 }
 
 require('listTable.php');
+
+/* Register activation hook. */
+register_activation_hook( __FILE__, 'formaloo_admin_notice_activation_hook' );
+require('showActivationNotice.php');
 
 /*
  * Starts our plugin class, easy!
