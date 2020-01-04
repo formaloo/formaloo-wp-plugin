@@ -179,7 +179,8 @@ class Forms_List_Table extends WP_List_Table {
     function column_title($item) {
         $actions = array(
                   'view'      => sprintf('<a href="%s://%s/%s" target="_blank">View Form</a>',FORMALOO_PROTOCOL,FORMALOO_ENDPOINT,$item['address']),
-                  'edit'      => sprintf('<a href="%s://%s/dashboard/my-forms/%s/edit" target="_blank">Edit Form</a>',FORMALOO_PROTOCOL,FORMALOO_ENDPOINT,$item['slug']),
+                  'edit'      => '<a href="#TB_inline?&width=100vh&height=100vw&inlineId=form-show-edit" class="thickbox" title="Edit Form" onclick = "showEditFormWith(\''. FORMALOO_PROTOCOL .'\', \''. FORMALOO_ENDPOINT .'\', \''. $item['slug'] .'\')">Edit Form</a>'
+                  //  sprintf('<a href="%s://%s/dashboard/my-forms/%s/edit" target="_blank">Edit Form</a>',FORMALOO_PROTOCOL,FORMALOO_ENDPOINT,$item['slug']),
                   // 'delete'    => sprintf('<a href="?page=%s&action=%s&book=%s">Delete</a>',$_REQUEST['page'],'delete',$item['ID']),
               );
       

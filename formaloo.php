@@ -67,15 +67,110 @@ class Formaloo {
 
         add_shortcode('formaloo', array($this, 'formaloo_show_form_shortcode'));
 
+        add_action( 'enqueue_block_assets', 'formaloo_gutenberg_scripts' );
+
+
+        if ( function_exists( 'register_block_type' ) ) {
+        // Hook server side rendering into render callback
+        register_block_type(
+            'formaloo-gutenberg/url-to-show-form', [
+                'render_callback' => 'formaloo_gutenberg_block_callback',
+                'attributes'	  => array(
+                    'url' => array(
+                        'type' => 'string',
+                    ),
+                    'type' => array (
+                        'type' => 'string',
+                        'default' => 'link',
+                    ),
+                    'link_title' => array( 
+                        'type' => 'string',
+                        'default' => __( 'Show Form' ),
+                    ),
+                    'show_title' => array (
+                        'type' => 'string',
+                        'default' => 'yes',
+                    ),
+                    'show_descr' => array(
+                        'type' => 'string',
+                        'default' => 'yes',
+                    ),
+                    'show_logo' => array(
+                        'type' => 'string',
+                        'default' => 'yes',
+                    ),
+                ),
+            ]
+        );
+        }
+
     }
 
+    /**
+     * Enqueue front end and editor JavaScript and CSS
+     */
+    function formaloo_gutenberg_scripts() {
+        $blockPath = '/assets/js/block.js';
+        $stylePath = '/assets/css/block.css';
+
+        // Enqueue the bundled block JS file
+        wp_enqueue_script(
+            'formaloo-gutenberg-block-js',
+            plugins_url( $blockPath, __FILE__ ),
+            [ 'wp-i18n', 'wp-blocks', 'wp-editor', 'wp-components' ],
+            filemtime( FORMALOO_PATH . $blockPath )
+        );
+
+        // Enqueue frontend and editor block styles
+        wp_enqueue_style(
+            'formaloo-gutenberg-block-css',
+            plugins_url( $stylePath, __FILE__ ),
+            '',
+            filemtime( FORMALOO_PATH . $stylePath )
+        );
+
+    }
+
+    function formaloo_gutenberg_block_callback( $attr ) {
+        extract( $attr );
+        if ( isset( $url ) ) {
+
+
+
+            $output = '[formaloo address="'. $url . '" slug="'. $url . '" type="'. $type .'"';
+    
+            switch ($type) {
+            case 'link':
+                if (!empty($link_title)):
+                    $output = $output . ' link_title="'. $link_title . '"';
+                endif;
+            break;
+            case 'iframe': break;
+            case 'script':
+                // $show_title = (isset($fields['show_title']) && !empty($fields['show_title'])) ? $fields['show_title'] : 'yes';
+                $output = $output . ' show_title="'. $show_title .'"';
+    
+                // $show_desc = (isset($fields['show_descr']) && !empty($fields['show_descr'])) ? $fields['show_descr'] : 'yes';
+                $output = $output . ' show_descr="'. $show_descr .'"';
+    
+                // $show_logo = (isset($fields['show_logo']) && !empty($fields['show_logo'])) ? $fields['show_logo'] : 'yes';
+                $output = $output . ' show_logo="'. $show_logo .'"';
+            break;
+            }
+            
+            $output = $output . ']';
+
+            return $output;
+        }
+    }
+    
     public function formaloo_show_form_shortcode($atts) {
         // extract the attributes into variables
         extract(shortcode_atts(array(
             'slug'              => 'slug',
             'address'           => 'address',
             'type'              => 'link',
-            'link_title'        => 'Show Form',
+            'link_title'        => __('Show Form'),
             'show_title'        => 'yes',
             'show_descr'        => 'yes',
             'show_logo'         => 'yes'
@@ -287,17 +382,30 @@ class Formaloo {
 	/**
 	 * Adds the Formaloo label to the WordPress Admin Sidebar Menu
 	 */
-	public function addAdminMenu()
-    {
+	public function addAdminMenu() {
+        global $submenu;
+
 		add_menu_page(
 			__( 'Formaloo', 'formaloo' ),
 			__( 'Formaloo', 'formaloo' ),
 			'manage_options',
 			'formaloo',
-			array($this, 'adminLayout'),
+			array($this, 'formsListPage'),
 			'dashicons-feedback'
-		);
-	}
+        );
+        
+        add_submenu_page(
+            'formaloo',
+            'Settings',
+            'Settings',
+            'manage_options',
+            'formaloo-settings-page',
+            array($this, 'adminLayout')
+        );
+
+        $submenu['formaloo'][0][0] = __( 'My Forms', 'formaloo' );
+
+    }
 
 	/**
 	 * Make an API call to the Formaloo API and returns the response
@@ -340,25 +448,27 @@ class Formaloo {
 
     }
 
-	/**
+    	/**
 	 * Outputs the Admin Dashboard layout containing the form with all its options
      *
      * @return void
 	 */
-	public function adminLayout() {
+	public function formsListPage() {
 
         $data = $this->getData();
 
 	    $api_response = $this->getForms($data['private_key']);
 	    $not_ready = (empty($data['private_key']) || empty($api_response) || isset($api_response['error']));
-        
-        $FORMALOO_WEBSITE = "formaloo.com";
 
 	    ?>
 
 		<div class="wrap">
 
-            <h1><?php _e('Formaloo Settings', 'formaloo'); ?></h1>
+            <!-- <h1><?php // _e('Formaloo', 'formaloo'); ?></h1> -->
+
+            <div id="form-show-edit" style="display:none;">
+
+            </div>
             
             <div id="form-show-options" style="display:none;">
                 <form id="formaloo-customize-form">
@@ -408,8 +518,8 @@ class Formaloo {
                                 </label>
                             </td>
                             <td>
-                            <input type="radio" name="formaloo_show_logo" id="formaloo_show_logo" value="yes" /> <label for = "formaloo_show_logo">Yes</label> <br>
-                            <input type="radio" name="formaloo_show_logo" id="formaloo_show_logo" value="no" /> <label for = "formaloo_show_logo">No</label> 
+                            <input type="radio" name="formaloo_show_logo" id="formaloo_show_logo_yes" value="yes" /> <label for = "formaloo_show_logo">Yes</label> <br>
+                            <input type="radio" name="formaloo_show_logo" id="formaloo_show_logo_no" value="no" /> <label for = "formaloo_show_logo">No</label> 
                             </td>
                         </tr>
                         <tr id="show_title_row">
@@ -421,8 +531,8 @@ class Formaloo {
                                 </label>
                             </td>
                             <td>
-                            <input type="radio" name="formaloo_show_title" id="formaloo_show_title" value="yes" /> <label for = "formaloo_show_title">Yes</label> <br>
-                            <input type="radio" name="formaloo_show_title" id="formaloo_show_title" value="no" <?php // checked( 'no' == $data['show_title'] ); ?> /> <label for = "formaloo_show_title">No</label> 
+                            <input type="radio" name="formaloo_show_title" id="formaloo_show_title_yes" value="yes" /> <label for = "formaloo_show_title">Yes</label> <br>
+                            <input type="radio" name="formaloo_show_title" id="formaloo_show_title_no" value="no" <?php // checked( 'no' == $data['show_title'] ); ?> /> <label for = "formaloo_show_title">No</label> 
                             </td>
                         </tr>
                         <tr id="show_descr_row">
@@ -434,8 +544,8 @@ class Formaloo {
                                 </label>
                             </td>
                             <td>
-                            <input type="radio" name="formaloo_show_descr" id="formaloo_show_descr" value="yes" /> <label for = "formaloo_show_descr">Yes</label> <br>
-                            <input type="radio" name="formaloo_show_descr" id="formaloo_show_descr" value="no" /> <label for = "formaloo_show_descr">No</label> 
+                            <input type="radio" name="formaloo_show_descr" id="formaloo_show_descr_yes" value="yes" /> <label for = "formaloo_show_descr">Yes</label> <br>
+                            <input type="radio" name="formaloo_show_descr" id="formaloo_show_descr_no" value="no" /> <label for = "formaloo_show_descr">No</label> 
                             </td>
                         </tr>
                     </tbody>
@@ -463,11 +573,26 @@ class Formaloo {
                         jQuery(".form-table").append('<input name="formaloo_form_address" id="formaloo_form_address" type="hidden" value="' + $address + '" />');
                     }
 
+                    function showEditFormWith($protocol, $url, $slug) {
+                        jQuery("#form-show-edit").append('<iframe width="100%" height="100%" src="'+ $protocol +'://'+ $url +'/dashboard/my-forms/'+ $slug +'/edit" frameborder="0" onload="resizeIframe();">');
+                    }
+
+                    function resizeIframe() {
+                        var TB_WIDTH = jQuery(document).width(),
+                            TB_HEIGHT = jQuery(document).height(); // set the new width and height dimensions here..
+                        jQuery("#TB_window").animate({
+                            marginLeft: '-' + parseInt((TB_WIDTH / 2), 10) + 'px',
+                            width: TB_WIDTH + 'px',
+                            height: TB_HEIGHT + 'px',
+                            marginTop: '-' + parseInt((TB_HEIGHT / 2), 10) + 'px'
+                        });
+                    }
+
                     jQuery("#formaloo_show_type").change(function() {
                         if (jQuery(this).val() == "link") {
                             toggleRows(link = true);
                         } else if (jQuery(this).val() == "script") {
-                            toggleRows(title = true, logo = true, descr = true);
+                            toggleRows(link = false, title = true, logo = true, descr = true);
                         } else {
                             toggleRows();
                         }
@@ -487,55 +612,22 @@ class Formaloo {
             <form id="formaloo-admin-form" class="postbox">
 
                 <div class="form-group inside">
-
-	                <?php
-	                /*
-					 * --------------------------
-					 * API Settings
-					 * --------------------------
-					 */
-	                ?>
-
                     <h3>
-		                <?php echo $this->getStatusIcon(!$not_ready); ?>
-		                <?php _e('Formaloo API Settings', 'formaloo'); ?>
+                        <?php echo $this->getStatusIcon(!$not_ready); ?>
+                        <?php _e('My Forms', 'formaloo'); ?>
                     </h3>
 
-	                <?php if ($not_ready): ?>
+                    <?php if ($not_ready): ?>
                         <p>
                             <?php _e('Make sure you have a Formaloo account first, it\'s free! 👍', 'formaloo'); ?>
-                            <?php _e('You can <a href="https://' . $FORMALOO_WEBSITE . '/" target="_blank">create an account here</a>.', 'formaloo'); ?>
+                            <?php _e('You can <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/" target="_blank">create an account here</a>.', 'formaloo'); ?>
                             <br>
-                            <?php _e('If so you can find your api keys from your <a href="https://' . $FORMALOO_WEBSITE . '/dashboard/profile/" target="_blank">profile page</a>.', 'formaloo'); ?>
-                            <br>
-                            <br>
-	                        <?php _e('Once the keys set and saved, if you do not see any option, please reload the page. Thank you, you rock 🤘', 'formaloo'); ?>
+                            <?php _e('If so you can find your API key from your <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/profile/" target="_blank">profile page</a>, and enter it on the <a href="?page=formaloo-settings-page">settings page</a>.', 'formaloo'); ?>
                         </p>
                     <?php else: ?>
-		                <?php _e('Access your <a href="https://' . $FORMALOO_WEBSITE . '/dashboard/" target="_blank">Formaloo dashboard here</a>.', 'formaloo'); ?>
+                        <?php _e('Access your <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/" target="_blank">Formaloo dashboard here</a>.', 'formaloo'); ?>
                     <?php endif; ?>
-
-                    <table class="form-table">
-                        <tbody>
-                            <tr>
-                                <td scope="row">
-                                    <label><?php _e( 'Private key', 'formaloo' ); ?></label>
-                                </td>
-                                <td>
-                                    <p>
-                                    </p>
-                                    <input name="formaloo_private_key"
-                                           id="formaloo_private_key"
-                                           class="regular-text"
-                                           type="text"
-                                           value="<?php echo (isset($data['private_key'])) ? $data['private_key'] : ''; ?>"/>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-
                 </div>
-
 
 	            <?php if (!empty($data['private_key']) /*&& !empty($data['public_key'])*/): ?>
 
@@ -572,11 +664,83 @@ class Formaloo {
                             </h3>
                             <?php $this->list_table_page($api_response); ?>
                         </div>
-                        <hr>
 
                     <?php endif; ?>
 
                 <?php endif; ?>
+
+            </form>
+		</div>
+
+		<?php
+
+    }
+
+	/**
+	 * Outputs the Admin Dashboard layout containing the form with all its options
+     *
+     * @return void
+	 */
+	public function adminLayout() {
+
+        $data = $this->getData();
+
+	    $api_response = $this->getForms($data['private_key']);
+	    $not_ready = (empty($data['private_key']) || empty($api_response) || isset($api_response['error']));
+
+	    ?>
+
+		<div class="wrap">
+
+            <!-- <h1><?php // _e('Formaloo', 'formaloo'); ?></h1> -->
+
+            <form id="formaloo-admin-form" class="postbox">
+
+                <div class="form-group inside">
+
+	                <?php
+	                /*
+					 * --------------------------
+					 * API Settings
+					 * --------------------------
+					 */
+	                ?>
+
+                    <h3>
+		                <?php echo $this->getStatusIcon(!$not_ready); ?>
+		                <?php _e('API Settings', 'formaloo'); ?>
+                    </h3>
+
+	                <?php if ($not_ready): ?>
+                        <p>
+                            <?php _e('You can find your API key from your <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/profile/" target="_blank">profile page</a>.', 'formaloo'); ?>
+                            <br>
+                            <?php _e('Once the key set and saved, if you do not see any option, please reload the page. Thank you, you rock 🤘', 'formaloo'); ?>
+                        </p>
+                    <?php else: ?>
+                        <?php _e('Access your <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/" target="_blank">Formaloo dashboard here</a>.', 'formaloo'); ?>
+                    <?php endif; ?>
+
+                    <table class="form-table">
+                        <tbody>
+                            <tr>
+                                <td scope="row">
+                                    <label><?php _e( 'Private key', 'formaloo' ); ?></label>
+                                </td>
+                                <td>
+                                    <p>
+                                    </p>
+                                    <input name="formaloo_private_key"
+                                           id="formaloo_private_key"
+                                           class="regular-text"
+                                           type="text"
+                                           value="<?php echo (isset($data['private_key'])) ? $data['private_key'] : ''; ?>"/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
 
                 <div class="inside">
                     <button class="button button-primary formaloo-admin-save" type="submit">

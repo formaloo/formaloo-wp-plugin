@@ -17,7 +17,7 @@ jQuery( document ).ready( function () {
           type: 'post',
           data: jQuery(this).serialize(),
           success: function (response) { 
-              //location.reload();
+              location.reload();
           }
       } );
 
