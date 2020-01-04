@@ -110,7 +110,7 @@ class Forms_List_Table extends WP_List_Table {
                 'submitCount'  => $form['submit_count'],
                 'slug'         => $form['slug'],
                 'address'      => $form['address'],
-                'excel'        => '<button class="button formaloo-get-excel-link" data-form-slug="'. $form['slug'] .'"> <span class="dashicons dashicons-download"></span> Download </button></form>'
+                'excel'        => '<button class="button formaloo-get-excel-link" data-form-slug="'. $form['slug'] .'"> <span class="dashicons dashicons-download"></span> Download </button>'
             );
             $index++;
         }

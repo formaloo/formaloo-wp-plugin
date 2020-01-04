@@ -539,13 +539,9 @@ class Formaloo {
                     }
 
                     function resizeIframe() {
-                        var TB_WIDTH = jQuery(document).width(),
-                            TB_HEIGHT = jQuery(document).height(); // set the new width and height dimensions here..
+                        var TB_WIDTH = jQuery(document).width();
                         jQuery("#TB_window").animate({
-                            // marginLeft: '-' + parseInt((TB_WIDTH / 2), 10) + 'px',
                             width: TB_WIDTH + 'px',
-                            // height: TB_HEIGHT + 'px',
-                            // marginTop: '-' + parseInt((TB_HEIGHT / 2), 10) + 'px'
                         });
                     }
 

@@ -51,7 +51,7 @@ jQuery(document).ready(function() {
 
         // We inject some extra fields required for the security
         jQuery(this).append('<input type="hidden" name="security" value="' + formaloo_exchanger._nonce + '" />');
-        console.log();
+        jQuery(this).parent().append('<span class="spinner is-active"></span>')
 
         jQuery.ajax({
             url: formaloo_exchanger.protocol + '://api.'+ formaloo_exchanger.endpoint_url +'/v1/forms/form/' + jQuery(this).data('form-slug') + '/excel/',
@@ -62,9 +62,11 @@ jQuery(document).ready(function() {
             },
             success: function(data) {
                 window.open(data['data']['form']['excel'], "_self");
+                jQuery('.spinner').removeClass('is-active'); 
             },
             error: function(error) {
                 console.log(error);
+                jQuery('.spinner').removeClass('is-active');
             }
         });
 
