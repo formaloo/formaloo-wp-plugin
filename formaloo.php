@@ -135,8 +135,6 @@ class Formaloo {
         extract( $attr );
         if ( isset( $url ) ) {
 
-
-
             $output = '[formaloo address="'. $url . '" slug="'. $url . '" type="'. $type .'"';
     
             switch ($type) {
@@ -214,50 +212,7 @@ class Formaloo {
         // $formListTable->search_box('search', 'search_id');
         ?>
         <?php $formListTable->display(); ?>
-        <?php 
-            if ( isset($_GET['download_excel']) ) {
-                $this->downloadExcel( $_GET['download_excel'] );
-                remove_query_arg( 'download_excel' );
-            }
-        ?>
         <?php
-    }
-
-    /**
-     * Download the results excel file
-     *
-     */
-    private function downloadExcel($slug){
-        $data = $this->getData();
-        echo '<script>
-            window.open("'. $this->getExcelLink($slug ,$data['private_key']) .'","_self");
-            let params = new URLSearchParams(location.search)
-            params.delete("download_excel")
-            history.replaceState(null, "", "?" + params + location.hash)
-        </script>';
-    }
-
-    /**
-     * Get the results excel file URL
-     *
-     * @return String
-     */
-    private function getExcelLink($slug, $private_key) {
-        
-        $data = '';
-        $api_url = FORMALOO_PROTOCOL. '://api.'. FORMALOO_ENDPOINT .'/v1/forms/form/' . $slug . '/excel/';
-
-        $response = wp_remote_get( $api_url ,
-        array( 'timeout' => 10,
-       'headers' => array( 'x-api-key' => FORMALOO_X_API_KEY,
-                          'Authorization'=> 'Token ' . $private_key ) 
-        ));
-
-	    if (is_array($response) && !is_wp_error($response)) {
-		    $data = json_decode($response['body'], true);
-        }
-
-	    return $data['data']['form']['excel'];
     }
 
 	/**
@@ -370,9 +325,15 @@ class Formaloo {
 	    wp_enqueue_style('formaloo-admin', FORMALOO_URL. 'assets/css/admin.css', false, 1.0);
         wp_enqueue_script('formaloo-admin', FORMALOO_URL. 'assets/js/admin.js', array(), 1.0);
 
+        $data = $this->getData();
+
 		$admin_options = array(
 			'ajax_url' => admin_url( 'admin-ajax.php' ),
-			'_nonce'   => wp_create_nonce( $this->_nonce ),
+            '_nonce'   => wp_create_nonce( $this->_nonce ),
+            'private_key' => $data['private_key'],
+            'x_api_key' => FORMALOO_X_API_KEY,
+            'protocol' => FORMALOO_PROTOCOL,
+            'endpoint_url' => FORMALOO_ENDPOINT
 		);
 
 		wp_localize_script('formaloo-admin', 'formaloo_exchanger', $admin_options);

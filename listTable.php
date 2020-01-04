@@ -110,7 +110,7 @@ class Forms_List_Table extends WP_List_Table {
                 'submitCount'  => $form['submit_count'],
                 'slug'         => $form['slug'],
                 'address'      => $form['address'],
-                'excel'        => '<a href="'. add_query_arg('download_excel',$form['slug']) .'" class="formaloo-download-btn"><span class="dashicons dashicons-download"></span> Download</a>'
+                'excel'        => '<button class="button formaloo-get-excel-link" data-form-slug="'. $form['slug'] .'"> <span class="dashicons dashicons-download"></span> Download </button></form>'
             );
             $index++;
         }
@@ -147,8 +147,6 @@ class Forms_List_Table extends WP_List_Table {
      * @return Mixed
      */
     private function sort_data( $a, $b ) {
-
-        esc_url( remove_query_arg( 'download_excel' ) );
 
         // Set defaults
         $orderby = 'title';

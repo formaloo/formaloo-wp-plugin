@@ -14,9 +14,6 @@
   background: #f95c30!important;
   border-color: #f95c30!important;
 }
-.formaloo-download-btn, .formaloo-table-title {
-  /* color: #f95c30; */
-}
 .formaloo_clipboard_wrapper {
   display: flex;
 }
@@ -24,11 +21,11 @@
   margin: auto 0;
   background: #f9f9f9;
   padding: 5px;
-  white-space: pre-wrap;       /* Since CSS 2.1 */
-  white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
-  white-space: -pre-wrap;      /* Opera 4-6 */
-  white-space: -o-pre-wrap;    /* Opera 7 */
-  word-wrap: break-word;       /* Internet Explorer 5.5+ */
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
 }
 .hidden {
   display: none;
@@ -51,4 +48,10 @@
 #edit-form-iframe {
   height: 100vh;
   /* width: 100vw; */
+}
+.formaloo-get-excel-link {
+  display: flex!important;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
