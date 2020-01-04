@@ -574,17 +574,17 @@ class Formaloo {
                     }
 
                     function showEditFormWith($protocol, $url, $slug) {
-                        jQuery("#form-show-edit").append('<iframe width="100%" height="100%" src="'+ $protocol +'://'+ $url +'/dashboard/my-forms/'+ $slug +'/edit" frameborder="0" onload="resizeIframe();">');
+                        jQuery("#form-show-edit").append('<iframe id="edit-form-iframe" width="100%" height="100%" src="'+ $protocol +'://'+ $url +'/dashboard/my-forms/'+ $slug +'/edit" frameborder="0" onload="resizeIframe();">');
                     }
 
                     function resizeIframe() {
                         var TB_WIDTH = jQuery(document).width(),
                             TB_HEIGHT = jQuery(document).height(); // set the new width and height dimensions here..
                         jQuery("#TB_window").animate({
-                            marginLeft: '-' + parseInt((TB_WIDTH / 2), 10) + 'px',
+                            // marginLeft: '-' + parseInt((TB_WIDTH / 2), 10) + 'px',
                             width: TB_WIDTH + 'px',
-                            height: TB_HEIGHT + 'px',
-                            marginTop: '-' + parseInt((TB_HEIGHT / 2), 10) + 'px'
+                            // height: TB_HEIGHT + 'px',
+                            // marginTop: '-' + parseInt((TB_HEIGHT / 2), 10) + 'px'
                         });
                     }
 
