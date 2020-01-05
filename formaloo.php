@@ -110,8 +110,8 @@ class Formaloo {
      * Enqueue front end and editor JavaScript and CSS
      */
     function formaloo_gutenberg_scripts() {
-        $blockPath = '/assets/js/block.js';
-        $stylePath = '/assets/css/block.css';
+        $blockPath = '/dist/block.js';
+	    $stylePath = '/dist/block.css';
 
         // Enqueue the bundled block JS file
         wp_enqueue_script(
