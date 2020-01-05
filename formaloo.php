@@ -27,6 +27,8 @@ if(!defined('FORMALOO_PROTOCOL'))
 if(!defined('FORMALOO_X_API_KEY'))
     define('FORMALOO_X_API_KEY', 'f0a5ce1ecc1fea87a57f06a52a8e12c48cb16d34');
 
+require_once plugin_dir_path( __FILE__ ) . '/blocks/formaloo-block.php';
+
 /*
  * Main class
  */
@@ -66,69 +68,6 @@ class Formaloo {
         add_action('admin_enqueue_scripts',     array($this,'addAdminScripts'));
 
         add_shortcode('formaloo', array($this, 'formaloo_show_form_shortcode'));
-
-        add_action( 'enqueue_block_assets', 'formaloo_gutenberg_scripts' );
-
-
-        if ( function_exists( 'register_block_type' ) ) {
-        // Hook server side rendering into render callback
-        register_block_type(
-            'formaloo-gutenberg/url-to-show-form', [
-                'render_callback' => 'formaloo_gutenberg_block_callback',
-                'attributes'	  => array(
-                    'url' => array(
-                        'type' => 'string',
-                    ),
-                    'type' => array (
-                        'type' => 'string',
-                        'default' => 'link',
-                    ),
-                    'link_title' => array( 
-                        'type' => 'string',
-                        'default' => __( 'Show Form' ),
-                    ),
-                    'show_title' => array (
-                        'type' => 'string',
-                        'default' => 'yes',
-                    ),
-                    'show_descr' => array(
-                        'type' => 'string',
-                        'default' => 'yes',
-                    ),
-                    'show_logo' => array(
-                        'type' => 'string',
-                        'default' => 'yes',
-                    ),
-                ),
-            ]
-        );
-        }
-
-    }
-
-    /**
-     * Enqueue front end and editor JavaScript and CSS
-     */
-    function formaloo_gutenberg_scripts() {
-        $blockPath = '/dist/block.js';
-	    $stylePath = '/dist/block.css';
-
-        // Enqueue the bundled block JS file
-        wp_enqueue_script(
-            'formaloo-gutenberg-block-js',
-            plugins_url( $blockPath, __FILE__ ),
-            [ 'wp-i18n', 'wp-blocks', 'wp-editor', 'wp-components' ],
-            filemtime( FORMALOO_PATH . $blockPath )
-        );
-
-        // Enqueue frontend and editor block styles
-        wp_enqueue_style(
-            'formaloo-gutenberg-block-css',
-            plugins_url( $stylePath, __FILE__ ),
-            '',
-            filemtime( FORMALOO_PATH . $stylePath )
-        );
-
     }
 
     function formaloo_gutenberg_block_callback( $attr ) {
@@ -736,11 +675,11 @@ if( ! class_exists( 'WP_List_Table' ) ) {
     require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
 }
 
-require('listTable.php');
+require_once('listTable.php');
 
 /* Register activation hook. */
 register_activation_hook( __FILE__, 'formaloo_admin_notice_activation_hook' );
-require('showActivationNotice.php');
+require_once('showActivationNotice.php');
 
 /*
  * Starts our plugin class, easy!

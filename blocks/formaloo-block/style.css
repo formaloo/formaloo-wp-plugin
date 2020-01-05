@@ -1,0 +1,28 @@
+/**
+ * The following styles get applied both on the front of your site and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+ .formaloo-guten-div {
+	margin: 0 0 10px 0!important;
+	padding: 0!important;
+	position: relative!important;
+	word-wrap: break-word!important;
+	color: #dddddd!important;
+	font-size: 24px!important;
+	line-height: 140%!important;
+	box-shadow: none!important;
+	letter-spacing: 0.05em!important;
+	font-weight: 100!important;
+	text-decoration: none!important;
+	text-transform: none!important;
+	background: #f95c30!important;
+  padding: 25px !important;
+}
+.formaloo-guten-div a {
+	margin-top: 20px!important;
+	color: white!important;
+  background: black!important;
+  border-color: black!important;
+}
