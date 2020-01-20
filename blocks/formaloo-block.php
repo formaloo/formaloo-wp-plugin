@@ -67,16 +67,16 @@ function formaloo_block_block_init() {
 						'default' => 'Show Form',
 				),
 				'show_title' => array (
-						'type' => 'string',
-						'default' => 'yes',
+						'type' => 'boolean',
+						'default' => true,
 				),
 				'show_descr' => array(
-						'type' => 'string',
-						'default' => 'yes',
+						'type' => 'boolean',
+						'default' => true,
 				),
 				'show_logo' => array(
-						'type' => 'string',
-						'default' => 'yes',
+						'type' => 'boolean',
+						'default' => true,
 				),
 		),
 	) );

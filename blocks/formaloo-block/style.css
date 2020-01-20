@@ -26,3 +26,27 @@
   background: black!important;
   border-color: black!important;
 }
+
+.formaloo-guten-div p {
+	font-size: small!important;
+	color: white;
+	margin: 0!important;
+}
+
+.formaloo-guten-div .formaloo-back-err {
+	border: 1px dotted crimson;
+    padding: 0 20px;
+    width: fit-content;
+}
+
+.formaloo-guten-div .formaloo-back-success {
+	border: 1px dotted green;
+    padding: 0 20px;
+    width: fit-content;
+}
+
+.formaloo-guten-div .formaloo-back-info {
+	border: 1px dotted white;
+    padding: 0 20px;
+    width: fit-content;
+}
