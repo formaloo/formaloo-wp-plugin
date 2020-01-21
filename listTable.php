@@ -110,7 +110,7 @@ class Forms_List_Table extends WP_List_Table {
                 'submitCount'  => $form['submit_count'],
                 'slug'         => $form['slug'],
                 'address'      => $form['address'],
-                'excel'        => '<button class="button formaloo-get-excel-link" data-form-slug="'. $form['slug'] .'"> <span class="dashicons dashicons-download"></span> Download </button>'
+                'excel'        => '<button class="button formaloo-get-excel-link" data-form-slug="'. $form['slug'] .'"> <span class="dashicons dashicons-download"></span> '. __('Download', 'formaloo') .' </button>'
             );
             $index++;
         }
@@ -176,8 +176,9 @@ class Forms_List_Table extends WP_List_Table {
 
     function column_title($item) {
         $actions = array(
-                  'view'      => sprintf('<a href="%s://%s/%s" target="_blank">View Form</a>',FORMALOO_PROTOCOL,FORMALOO_ENDPOINT,$item['address']),
-                  'edit'      => '<a href="#TB_inline?&width=100vh&height=100vw&inlineId=form-show-edit" class="thickbox" title="Edit Form" onclick = "showEditFormWith(\''. FORMALOO_PROTOCOL .'\', \''. FORMALOO_ENDPOINT .'\', \''. $item['slug'] .'\')">Edit Form</a>'
+                  'view'      => sprintf('<a href="%s://%s/%s" target="_blank">View</a>',FORMALOO_PROTOCOL,FORMALOO_ENDPOINT,$item['address']),
+                  'edit'      => '<a href="#TB_inline?&width=100vh&height=100vw&inlineId=form-show-edit" class="thickbox" title="Edit Form" onclick = "showEditFormWith(\''. FORMALOO_PROTOCOL .'\', \''. FORMALOO_ENDPOINT .'\', \''. $item['slug'] .'\')">Edit</a>',
+                  'results'      => '<a href="?page=formaloo-results-page&results_slug='. $item['slug'] .'">Show Results</a>'
                   //  sprintf('<a href="%s://%s/dashboard/my-forms/%s/edit" target="_blank">Edit Form</a>',FORMALOO_PROTOCOL,FORMALOO_ENDPOINT,$item['slug']),
                   // 'delete'    => sprintf('<a href="?page=%s&action=%s&book=%s">Delete</a>',$_REQUEST['page'],'delete',$item['ID']),
               );

@@ -45,7 +45,7 @@
   max-width: 100%;
   box-sizing: border-box;
 }
-#edit-form-iframe {
+#edit-form-iframe, #show-result-iframe {
   height: 100vh;
   /* width: 100vw; */
 }
@@ -62,4 +62,7 @@
 }
 .column-excel .spinner {
   margin: 4px 10px!important;
+}
+.formaloo-show-result-button .dashicons-visibility {
+  vertical-align: middle;
 }

@@ -171,6 +171,32 @@ class Formaloo {
         <?php
     }
 
+    public function results_table_page($slug) {
+        $results = array();
+        $data = $this->getData();
+        $private_key = $data['private_key'];
+        $resultListTable = new Results_List_Table();
+  
+        $api_url = FORMALOO_PROTOCOL. '://api.'. FORMALOO_ENDPOINT .'/v1/forms/form/'. $slug .'/submits/';
+  
+        $response = wp_remote_get( $api_url ,
+        array( 'timeout' => 10,
+       'headers' => array( 'x-api-key' => FORMALOO_X_API_KEY,
+                          'Authorization'=> 'Token ' . $private_key ) 
+        ));
+  
+        if (is_array($response) && !is_wp_error($response)) {
+          $results = json_decode($response['body'], true);
+        }
+
+        $resultListTable->setFormData($results);
+        $resultListTable->setPrivateKey($private_key);
+        $resultListTable->prepare_items();
+        ?>
+        <?php $resultListTable->display(); ?>
+        <?php
+    }
+
 	/**
 	 * Returns the saved options data as an array
      *
@@ -320,6 +346,15 @@ class Formaloo {
             array($this, 'adminLayout')
         );
 
+        add_submenu_page(
+            null,
+            'Results',
+            'Results',
+            'manage_options',
+            'formaloo-results-page',
+            array($this, 'formResultsPage')
+        );
+
         $submenu['formaloo'][0][0] = __( 'My Forms', 'formaloo' );
 
     }
@@ -365,7 +400,7 @@ class Formaloo {
 
     }
 
-    	/**
+    /**
 	 * Outputs the Admin Dashboard layout containing the form with all its options
      *
      * @return void
@@ -589,6 +624,76 @@ class Formaloo {
 
     }
 
+    public function formResultsPage() {
+        // $data = $this->getData();
+	    $not_ready = (empty($data['private_key']));
+
+	    ?>
+
+		<div class="wrap">
+
+            <div id="form-show-specific-result" style="display:none;">
+
+            </div>
+
+            <script>
+                function showFormResultWith($protocol, $url, $formSlug, $resultSlug) {
+                    jQuery("#form-show-specific-result").append('<iframe id="show-result-iframe" width="100%" height="100%" src="'+ $protocol +'://'+ $url +'/dashboard/my-forms/'+ $formSlug +'/submit-details/'+ $resultSlug +'" frameborder="0" onload="resizeIframe();">');
+                }
+                function resizeIframe() {
+                    var TB_WIDTH = jQuery(document).width();
+                    jQuery("#TB_window").animate({
+                        width: TB_WIDTH + 'px',
+                    });
+                }
+            </script>
+
+            <form id="formaloo-admin-form" class="postbox">
+
+                <div class="form-group inside">
+                    <h3>
+                        <?php // _e('Form Results', 'formaloo'); ?>
+                    </h3>
+
+                    <?php if ($not_ready): ?>
+                        <p>
+                            <?php // _e('See all your form results here', 'formaloo'); ?>
+                        </p>
+                    <?php endif; ?>
+                </div>
+
+	            <?php if (!empty($data['private_key']) && !empty($data['slug_for_results'])): ?>
+                    <p class="notice notice-error">
+                            <?php _e( 'An error happened on the WordPress side.', 'formaloo' ); ?>
+                    </p>
+
+                <?php
+                // If the results were returned
+                else: ?>
+
+                    <?php
+                    /*
+                        * --------------------------
+                        * Show List of Results
+                        * --------------------------
+                        */
+                    ?>
+                    <div class="form-group inside results-table">
+                        <h3>
+                            <span class="dashicons dashicons-text-page"></span>
+                            <?php _e('Your Form Results', 'formaloo'); ?>
+                        </h3>
+                        <?php $this->results_table_page($_GET['results_slug']); ?>
+                    </div>
+
+                <?php endif; ?>
+
+            </form>
+		</div>
+
+		<?php
+    }
+
 	/**
 	 * Outputs the Admin Dashboard layout containing the form with all its options
      *
@@ -693,6 +798,7 @@ if( ! class_exists( 'WP_List_Table' ) ) {
 }
 
 require_once('listTable.php');
+require_once('resultsTable.php');
 
 /* Register activation hook. */
 register_activation_hook( __FILE__, 'formaloo_admin_notice_activation_hook' );
