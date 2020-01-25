@@ -116,6 +116,8 @@ class Formaloo {
         add_action('admin_enqueue_scripts',     array($this,'addAdminScripts'));
 
         add_shortcode('formaloo', array($this, 'formaloo_show_form_shortcode'));
+
+        add_filter( 'submenu_file', array($this, 'formaloo_wp_admin_submenu_filter'));
     }
 
     public function formaloo_show_form_shortcode($atts) {
@@ -345,17 +347,17 @@ class Formaloo {
         
         add_submenu_page(
             'formaloo',
-            'Settings',
-            'Settings',
+            __( 'Settings', 'textdomain' ),
+            __( 'Settings', 'textdomain' ),
             'manage_options',
             'formaloo-settings-page',
             array($this, 'adminLayout')
         );
 
         add_submenu_page(
-            null,
-            'Results',
-            'Results',
+            'formaloo',
+            __( 'Results', 'textdomain' ),
+            '',
             'manage_options',
             'formaloo-results-page',
             array($this, 'formResultsPage')
@@ -363,6 +365,27 @@ class Formaloo {
 
         $submenu['formaloo'][0][0] = __( 'My Forms', 'formaloo' );
 
+    }
+
+    function formaloo_wp_admin_submenu_filter( $submenu_file ) {
+
+        global $plugin_page;
+    
+        $hidden_submenus = array(
+            'formaloo-results-page' => true,
+        );
+    
+        // Select another submenu item to highlight (optional).
+        if ( $plugin_page && isset( $hidden_submenus[ $plugin_page ] ) ) {
+            $submenu_file = 'formaloo-results-page';
+        }
+    
+        // Hide the submenu.
+        foreach ( $hidden_submenus as $submenu => $unused ) {
+            remove_submenu_page( 'formaloo', $submenu );
+        }
+    
+        return $submenu_file;
     }
 
 	/**
