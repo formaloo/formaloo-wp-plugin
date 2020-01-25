@@ -39,7 +39,7 @@ class Results_List_Table extends WP_List_Table {
         $formData = $this->getFormData();
 
         $perPage = $formData['data']['page_size'];
-        $currentPage = $this->get_pagenum();
+        // $currentPage = $this->get_pagenum();
         $totalItems = $formData['data']['count']; //count($data);
 
         $this->set_pagination_args( array(
@@ -47,7 +47,7 @@ class Results_List_Table extends WP_List_Table {
             'per_page'    => $perPage
         ) );
 
-        $data = array_slice($data,(($currentPage-1)*$perPage),$perPage);
+        // $data = array_slice($data,(($currentPage-1)*$perPage),$perPage);
 
         $this->_column_headers = array($columns, $hidden, $sortable);
         $this->items = $data;

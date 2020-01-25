@@ -167,16 +167,15 @@ class Formaloo {
      *
      * @return Void
      */
-    public function list_table_page($formData) {
+    public function list_table_page() {
         $data = $this->getData();
         $formListTable = new Forms_List_Table();
+        $formData = $this->getForms($data['private_key'], $formListTable->get_pagenum());
         $formListTable->setFormData($formData);
         $formListTable->setPrivateKey($data['private_key']);
         $formListTable->prepare_items();
+        $formListTable->display();
         // $formListTable->search_box('search', 'search_id');
-        ?>
-        <?php $formListTable->display(); ?>
-        <?php
     }
 
     public function results_table_page($slug) {
@@ -184,8 +183,8 @@ class Formaloo {
         $data = $this->getData();
         $private_key = $data['private_key'];
         $resultListTable = new Results_List_Table();
-  
-        $api_url = FORMALOO_PROTOCOL. '://api.'. FORMALOO_ENDPOINT .'/v1/forms/form/'. $slug .'/submits/';
+        
+        $api_url = FORMALOO_PROTOCOL. '://api.'. FORMALOO_ENDPOINT .'/v1/forms/form/'. $slug .'/submits/?page='. $resultListTable->get_pagenum();
   
         $response = wp_remote_get( $api_url ,
         array( 'timeout' => 10,
@@ -396,11 +395,11 @@ class Formaloo {
      *
      * @return array
 	 */
-	private function getForms($private_key) {
+	private function getForms($private_key, $pageNum = 1) {
         
         $data = array();
         
-        $api_url = FORMALOO_PROTOCOL. '://api.'. FORMALOO_ENDPOINT .'/v1/forms/list/';
+        $api_url = FORMALOO_PROTOCOL. '://api.'. FORMALOO_ENDPOINT .'/v1/forms/list/?page='. $pageNum;
 
         $response = wp_remote_get( $api_url ,
         array( 'timeout' => 10,
@@ -437,7 +436,6 @@ class Formaloo {
 	public function formsListPage() {
 
         $data = $this->getData();
-
 	    $api_response = $this->getForms($data['private_key']);
 	    $not_ready = (empty($data['private_key']) || empty($api_response) || isset($api_response['error']));
 
@@ -640,7 +638,7 @@ class Formaloo {
                                 <span class="dashicons dashicons-forms"></span>
                                 <?php _e('Your forms', 'formaloo'); ?>
                             </h3>
-                            <?php $this->list_table_page($api_response); ?>
+                            <?php $this->list_table_page(); ?>
                         </div>
 
                     <?php endif; ?>
@@ -741,8 +739,7 @@ class Formaloo {
 
         $data = $this->getData();
 
-	    $api_response = $this->getForms($data['private_key']);
-	    $not_ready = (empty($data['private_key']) || empty($api_response) || isset($api_response['error']));
+	    $not_ready = (empty($data['private_key']));
 
 	    ?>
 

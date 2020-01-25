@@ -119,16 +119,14 @@
 				});
 			};
 			
+			// https://regexr.com/3um70
 			function is_url(str) {
-				regexp =  /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
-							if (regexp.test(str))
-							{
-								return true;
-							}
-							else
-							{
-								return false;
-							}
+				regexp = /^(https?|chrome):\/\/[^\s$.?#].[^\s]*$/g;
+				if (regexp.test(str)) {
+					return true;
+				} else {
+					return false;
+				}
 			}
 
 			return (
@@ -217,9 +215,9 @@
 								label: __('Form URL'),
 								placeholder: __('Enter the Form URL'),
 								onChange: onChangeURL,
-								value: props.attributes.url
+								value: props.attributes.url || ''
 							}),
-							(props.attributes.url.length == 0) && wp.element.createElement(
+							(!props.attributes.url) && wp.element.createElement(
 								'p',
 								{
 									className: 'formaloo-back-info'
@@ -233,7 +231,7 @@
 								},
 								__('* You can change form view options on the inspector control')
 							),
-							!is_url(props.attributes.url) && (props.attributes.url.length != 0) && wp.element.createElement(
+							!is_url(props.attributes.url) && (props.attributes.url) && wp.element.createElement(
 								'p',
 								{
 									className: 'formaloo-back-err'
