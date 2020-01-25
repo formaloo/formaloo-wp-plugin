@@ -138,12 +138,18 @@ class Formaloo {
             case 'script':
                 if ($atts['show_title'] == 'no') {
                     $show_title =  '#main-form .formz-form-title { display: none; }';
-                } 
+                } else {
+                    $show_title = '';
+                }
                 if ($atts['show_descr'] == 'no') {
                     $show_desc =  '#main-form .formz-form-desc { display: none; }';
+                } else {
+                    $show_desc = '';
                 }
                 if ($atts['show_logo'] == 'no') {
                     $show_logo =  '#main-form .formz-main-logo { display: none; }';
+                } else {
+                    $show_logo = '';
                 }
                 return '
                     <style>'. $show_title . $show_desc . $show_logo .'</style>
@@ -470,7 +476,7 @@ class Formaloo {
                                 </label>
                             </td>
                             <td>
-                            <input type="radio" name="formaloo_show_logo" id="formaloo_show_logo_yes" value="yes" /> <label for = "formaloo_show_logo">Yes</label> <br>
+                            <input type="radio" name="formaloo_show_logo" id="formaloo_show_logo_yes" value="yes" checked /> <label for = "formaloo_show_logo">Yes</label> <br>
                             <input type="radio" name="formaloo_show_logo" id="formaloo_show_logo_no" value="no" /> <label for = "formaloo_show_logo">No</label> 
                             </td>
                         </tr>
@@ -483,7 +489,7 @@ class Formaloo {
                                 </label>
                             </td>
                             <td>
-                            <input type="radio" name="formaloo_show_title" id="formaloo_show_title_yes" value="yes" /> <label for = "formaloo_show_title">Yes</label> <br>
+                            <input type="radio" name="formaloo_show_title" id="formaloo_show_title_yes" value="yes" checked /> <label for = "formaloo_show_title">Yes</label> <br>
                             <input type="radio" name="formaloo_show_title" id="formaloo_show_title_no" value="no" <?php // checked( 'no' == $data['show_title'] ); ?> /> <label for = "formaloo_show_title">No</label> 
                             </td>
                         </tr>
@@ -496,7 +502,7 @@ class Formaloo {
                                 </label>
                             </td>
                             <td>
-                            <input type="radio" name="formaloo_show_descr" id="formaloo_show_descr_yes" value="yes" /> <label for = "formaloo_show_descr">Yes</label> <br>
+                            <input type="radio" name="formaloo_show_descr" id="formaloo_show_descr_yes" value="yes" checked /> <label for = "formaloo_show_descr">Yes</label> <br>
                             <input type="radio" name="formaloo_show_descr" id="formaloo_show_descr_no" value="no" /> <label for = "formaloo_show_descr">No</label> 
                             </td>
                         </tr>
@@ -537,6 +543,7 @@ class Formaloo {
                     }
 
                     jQuery("#formaloo_show_type").change(function() {
+                        jQuery('.formaloo_clipboard_wrapper').addClass('hidden');
                         if (jQuery(this).val() == "link") {
                             toggleRows(link = true);
                         } else if (jQuery(this).val() == "script") {
@@ -633,13 +640,21 @@ class Formaloo {
 		<div class="wrap">
 
             <div id="form-show-specific-result" style="display:none;">
-
             </div>
 
             <script>
                 function showFormResultWith($protocol, $url, $formSlug, $resultSlug) {
-                    jQuery("#form-show-specific-result").append('<iframe id="show-result-iframe" width="100%" height="100%" src="'+ $protocol +'://'+ $url +'/dashboard/my-forms/'+ $formSlug +'/submit-details/'+ $resultSlug +'" frameborder="0" onload="resizeIframe();">');
+                    var urlBase = $protocol +'://'+ $url +'/dashboard/my-forms/'+ $formSlug +'/submit-details/'+ $resultSlug;
+                    jQuery("#form-show-specific-result").append('<iframe id="show-result-iframe" width="100%" height="100%" src="'+ urlBase +'" frameborder="0" onload="resizeIframe();">');
+                    var cacheParamValue = (new Date()).getTime();
+                    var url = urlBase + "?cache=" + cacheParamValue;
+                    reloadFrame(document.getElementById('show-result-iframe'), url);
                 }
+
+                function reloadFrame(iframe, src) {
+                    iframe.src = src;
+                }
+
                 function resizeIframe() {
                     var TB_WIDTH = jQuery(document).width();
                     jQuery("#TB_window").animate({

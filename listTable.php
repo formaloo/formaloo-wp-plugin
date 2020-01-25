@@ -38,9 +38,11 @@ class Forms_List_Table extends WP_List_Table {
 
         $formData = $this->getFormData();
 
+        print_r($formData['data']['page_size']);
+
         $perPage = $formData['data']['page_size'];
         $currentPage = $this->get_pagenum();
-        $totalItems = count($data);
+        $totalItems = $formData['data']['count']; //count($data);
 
         $this->set_pagination_args( array(
             'total_items' => $totalItems,

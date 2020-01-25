@@ -23,27 +23,33 @@ jQuery(document).ready(function() {
 
     });
 
+    jQuery('#formaloo-customize-form :input').change(function() {
+        handleShortcodeFormChange(jQuery(this).parents('#formaloo-customize-form'));
+     });
 
     jQuery(document).on('submit', '#formaloo-customize-form', function(e) {
 
         e.preventDefault();
 
+        handleShortcodeFormChange(this);
+    });
+
+    function handleShortcodeFormChange(toForm) {
         // We inject some extra fields required for the security
-        jQuery(this).append('<input type="hidden" name="action" value="get_formaloo_shortcode" />');
-        jQuery(this).append('<input type="hidden" name="security" value="' + formaloo_exchanger._nonce + '" />');
+        jQuery(toForm).append('<input type="hidden" name="action" value="get_formaloo_shortcode" />');
+        jQuery(toForm).append('<input type="hidden" name="security" value="' + formaloo_exchanger._nonce + '" />');
 
         // We make our call
         jQuery.ajax({
             url: formaloo_exchanger.ajax_url,
             type: 'post',
-            data: jQuery(this).serialize(),
+            data: jQuery(toForm).serialize(),
             success: function(response) {
                 jQuery('.formaloo_clipboard_wrapper').removeClass('hidden');
                 jQuery('#formaloo_shortcode_pre').html(response.data.output);
             }
         });
-
-    });
+    }
 
     jQuery('.formaloo-get-excel-link').click(function(e) {
 

@@ -40,7 +40,7 @@ class Results_List_Table extends WP_List_Table {
 
         $perPage = $formData['data']['page_size'];
         $currentPage = $this->get_pagenum();
-        $totalItems = count($data);
+        $totalItems = $formData['data']['count']; //count($data);
 
         $this->set_pagination_args( array(
             'total_items' => $totalItems,
@@ -63,9 +63,10 @@ class Results_List_Table extends WP_List_Table {
       $columns = array();
       $data = $this->getFormData();
       $top_fields = $data['data']['top_fields'];
+      $noOfTopFields = (count($top_fields) > 3) ? 3 : count($top_fields);
 
-      for ($i=0; $i< count($top_fields); $i++ ) {
-        if(($i+1)<=3) { 
+      for ($i=0; $i < count($top_fields); $i++ ) {
+        if(($i+1) <= $noOfTopFields) { 
             $columns[$top_fields[$i]['slug']] = $top_fields[$i]['title'];
         }
       }
@@ -104,12 +105,14 @@ class Results_List_Table extends WP_List_Table {
     private function table_data() {
         $tableData = array();
         $data = $this->getFormData();
+        $top_fields = $data['data']['top_fields'];
+        $noOfTopFields = (count($top_fields) > 3) ? 3 : count($top_fields);
 
         foreach($data['data']['rows'] as $key=>$row) {
           $date = date_create($row['created_at']);
           $rendered_data = $row['rendered_data'];
           $i = 0;
-
+          
           $tableData[$key] = array(
               'ID'           => $key,
               'date_created' => date_format($date,"Y/m/d H:i:s"),
@@ -117,7 +120,7 @@ class Results_List_Table extends WP_List_Table {
           );
 
           foreach ($rendered_data as $k => $v) {
-            if(($i+1)<=3) { 
+            if(($i+1) <= $noOfTopFields) { 
               $tableData[$key][$rendered_data[$k]['slug']] = $rendered_data[$k]['value'];
             }
             $i++;
@@ -152,29 +155,26 @@ class Results_List_Table extends WP_List_Table {
      *
      * @return Mixed
      */
-    public function column_default( $item, $column_name )
-    {
-      
+    public function column_default( $item, $column_name) {
+
         $columns = array();
         $data = $this->getFormData();
         $top_fields = $data['data']['top_fields'];
+        $noOfTopFields = (count($top_fields) > 3) ? 3 : count($top_fields);
 
-        for ($i=0; $i< count($top_fields); $i++ ) {
-          if(($i+1)<=3) { 
+        for ($i=0; $i < count($top_fields); $i++ ) {
+          if(($i+1) <= $noOfTopFields) { 
               $columns[] = $top_fields[$i]['slug'];
           }
         }
 
-        switch( $column_name ) {
-            case $columns[0]:
-            case $columns[1]:
-            case $columns[2]:
-            case 'date_created':
-            case 'full_results':
-                return empty($item[ $column_name ]) ? '-' : $item[ $column_name ] ;
+        $columns[] = 'date_created';
+        $columns[] = 'full_results';
 
-            default:
-                return print_r( $item, true ) ;
+        foreach ($columns as $keys => $values) {
+            if ($values == $column_name) {
+                return empty($item[ $column_name ]) ? '-' : $item[ $column_name ];
+            }
         }
     }
     
