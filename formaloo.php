@@ -334,6 +334,7 @@ class Formaloo {
 	 */
 	public function addAdminMenu() {
         global $submenu;
+        $formalooIconBase64 = 'PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDIzLjEuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHZpZXdCb3g9IjAgMCA4OTYgMTAyNCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgODk2IDEwMjQ7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPHBhdGggZD0iTTEyOCw3NjhoMjU2djY0SDEyOFY3Njh6IE00NDgsMzg0SDEyOHY2NGgzMjBWMzg0eiBNNTc2LDU3NlY0NDhMMzg0LDY0MGwxOTIsMTkyVjcwNGgzMjBWNTc2SDU3NnogTTI4OCw1MTJIMTI4djY0aDE2MFY1MTIKCXogTTEyOCw3MDRoMTYwdi02NEgxMjhWNzA0eiBNNzA0LDc2OGg2NHYxMjhjLTEsMTgtNywzMy0xOSw0NXMtMjcsMTgtNDUsMTlINjRjLTM1LDAtNjQtMjktNjQtNjRWMTkyYzAtMzUsMjktNjQsNjQtNjRoMTkyCglDMjU2LDU3LDMxMywwLDM4NCwwczEyOCw1NywxMjgsMTI4aDE5MmMzNSwwLDY0LDI5LDY0LDY0djMyMGgtNjRWMzIwSDY0djU3Nmg2NDBWNzY4eiBNMTI4LDI1Nmg1MTJjMC0zNS0yOS02NC02NC02NGgtNjQKCWMtMzUsMC02NC0yOS02NC02NHMtMjktNjQtNjQtNjRzLTY0LDI5LTY0LDY0cy0yOSw2NC02NCw2NGgtNjRDMTU3LDE5MiwxMjgsMjIxLDEyOCwyNTZ6Ii8+Cjwvc3ZnPgo=';
 
 		add_menu_page(
 			__( 'Formaloo', 'formaloo' ),
@@ -341,7 +342,8 @@ class Formaloo {
 			'manage_options',
 			'formaloo',
 			array($this, 'formsListPage'),
-			'dashicons-feedback'
+            //'data:image/svg+xml;base64,' . $formalooIconBase64
+            'dashicons-forms'
         );
         
         add_submenu_page(
@@ -635,7 +637,7 @@ class Formaloo {
                         ?>
                         <div class="form-group inside">
                             <h3>
-                                <span class="dashicons dashicons-forms"></span>
+                                <span class="dashicons dashicons-feedback"></span>
                                 <?php _e('Your forms', 'formaloo'); ?>
                             </h3>
                             <?php $this->list_table_page(); ?>
