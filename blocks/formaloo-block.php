@@ -18,6 +18,7 @@ function formaloo_block_block_init() {
 		return;
 	}
 	$dir = dirname( __FILE__ );
+	global $formalooClss;
 
 	$index_js = 'formaloo-block/index.js';
 	wp_register_script(
@@ -53,7 +54,7 @@ function formaloo_block_block_init() {
 		'editor_script' => 'formaloo-block-block-editor',
 		'editor_style'  => 'formaloo-block-block-editor',
 		'style'         => 'formaloo-block-block',
-		'render_callback' => 'formaloo_gutenberg_block_callback',
+		'render_callback' => [$formalooClss, 'formaloo_gutenberg_block_callback'],
 		'attributes'	  => array(
 				'url' => array(
 						'type' => 'string',
