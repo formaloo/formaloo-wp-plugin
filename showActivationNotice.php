@@ -24,9 +24,6 @@ function formaloo_admin_notice_activation_notice(){
     if( get_transient( 'formaloo-admin-notice-activation' ) ){
         ?>
         <div class="updated notice is-dismissible">
-        <!-- when click on save automatic redirect to my forms -->
-
-        <!-- add charts to the results page -->
         <p><?php echo __('Thank you for using this plugin!', 'formaloo') ?> <a href="<?php echo admin_url( "admin.php?page=formaloo-settings-page" ) ?>"><strong><?php echo __('Get Started by visiting the Settings Page', 'formaloo') ?></strong></a>.</p>
         </div>
         <?php

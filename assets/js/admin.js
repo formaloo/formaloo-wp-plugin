@@ -17,7 +17,9 @@ jQuery(document).ready(function() {
             type: 'post',
             data: jQuery(this).serialize(),
             success: function(response) {
-                location.reload();
+                setTimeout(function() {
+                    window.location.href = "?page=formaloo";
+                    }, 1000);
             }
         });
 
