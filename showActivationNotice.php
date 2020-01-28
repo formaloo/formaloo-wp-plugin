@@ -24,7 +24,13 @@ function formaloo_admin_notice_activation_notice(){
     if( get_transient( 'formaloo-admin-notice-activation' ) ){
         ?>
         <div class="updated notice is-dismissible">
-            <p><?php echo __('Thank you for using this plugin!', 'formaloo') ?> <a href="<?php echo admin_url( "admin.php?page=formaloo-settings-page" ) ?>"><strong><?php echo __('Please Activate Formaloo plugin', 'formaloo') ?></strong></a>.</p>
+        <!-- when click on save automatic redirect to my forms -->
+        <!-- Access your Formaloo dashboard here. -> Hello Farokh, You can edit or view your forms right here or you can acces your full dashbord here. -->
+        <!-- Add a 'create new form ' button under Your Forms (popup) -->
+        <!-- don't have a formaloo account? + BUTTON under api key matn + dokme sign up -->
+        
+        <!-- add charts to the results page -->
+        <p><?php echo __('Thank you for using this plugin!', 'formaloo') ?> <a href="<?php echo admin_url( "admin.php?page=formaloo-settings-page" ) ?>"><strong><?php echo __('Get Started by visiting the Settings Page', 'formaloo') ?></strong></a>.</p>
         </div>
         <?php
         /* Delete transient, only display this notice once. */

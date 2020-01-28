@@ -65,7 +65,8 @@ class Forms_List_Table extends WP_List_Table {
             'title'         => __('Title', 'formaloo'),
             'active'        => __('Active', 'formaloo'),
             'submitCount'   => __('Submit Count', 'formaloo'),
-            'excel'         => __('Download Results', 'formaloo')
+            'excel'         => __('Download Results', 'formaloo'),
+            'more'          => __('More Options', 'formaloo')
         );
 
         return $columns;
@@ -100,17 +101,17 @@ class Forms_List_Table extends WP_List_Table {
         $tableData = array();
         $data = $this->getFormData();
         $index = 0;
-        $modalTitle = __('Set-up Form Settings', 'formaloo');
 
         foreach($data['data']['forms'] as $form) {
             $tableData[] = array(
                 'ID'           => $index,
-                'title'        => '<a href="#TB_inline?&width=100vh&height=100vw&inlineId=form-show-options" class="thickbox" title="'. $modalTitle .'" onclick = "getRowInfo(\''. $form['slug'] .'\',\''. $form['address'] .'\')"><strong class="formaloo-table-title">'. $form['title'] .'</strong></a>',
+                'title'        => '<a href="?page=formaloo-results-page&results_slug='. $form['slug'] .'"><strong class="formaloo-table-title">'. $form['title'] .'</strong></a>',
                 'active'       => ($form['active']) ? '<span class="dashicons dashicons-yes success-message"></span>' : '<span class="dashicons dashicons-no-alt error-message"></span>',
                 'submitCount'  => $form['submit_count'],
                 'slug'         => $form['slug'],
                 'address'      => $form['address'],
-                'excel'        => '<button class="button formaloo-get-excel-link" data-form-slug="'. $form['slug'] .'"> <span class="dashicons dashicons-download"></span> '. __('Download', 'formaloo') .' </button>'
+                'excel'        => '<button class="button formaloo-get-excel-link" data-form-slug="'. $form['slug'] .'"> <span class="dashicons dashicons-download"></span> '. __('Download', 'formaloo') .' </button>',
+                'more'         => '<div class="formaloo-column-more-wrapper"><a href="'. FORMALOO_PROTOCOL .'://'. FORMALOO_ENDPOINT .'/dashboard/my-forms/'. $form['slug'] .'/edit" target="_blank" class="button formaloo-edit-link"><span class="dashicons dashicons-edit"></span></a> <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT . '/dashboard/my-forms/' . $form['slug'] . '/share" target="_blank" class="button formaloo-edit-link"><span class="dashicons dashicons-share"></span></a></div>',
             );
             $index++;
         }
@@ -134,6 +135,7 @@ class Forms_List_Table extends WP_List_Table {
             case 'active':
             case 'submitCount':
             case 'excel':
+            case 'more':
                 return $item[ $column_name ];
 
             default:
@@ -175,10 +177,12 @@ class Forms_List_Table extends WP_List_Table {
     }
 
     function column_title($item) {
+        $modalTitle = __('Set-up Form Settings', 'formaloo');
+        
         $actions = array(
                   'view'      => sprintf('<a href="%s://%s/%s" target="_blank">View</a>',FORMALOO_PROTOCOL,FORMALOO_ENDPOINT,$item['address']),
-                  'edit'      => '<a href="#TB_inline?&width=100vh&height=100vw&inlineId=form-show-edit" class="thickbox" title="Edit Form" onclick = "showEditFormWith(\''. FORMALOO_PROTOCOL .'\', \''. FORMALOO_ENDPOINT .'\', \''. $item['slug'] .'\')">Edit</a>',
-                  'results'      => '<a href="?page=formaloo-results-page&results_slug='. $item['slug'] .'">Show Results</a>'
+                  'edit'      => '<a href="#TB_inline?&width=100vh&height=100vw&inlineId=form-show-edit" title="Edit Form" class="thickbox" onclick = "showEditFormWith(\''. FORMALOO_PROTOCOL .'\', \''. FORMALOO_ENDPOINT .'\', \''. $item['slug'] .'\')">'. __('Edit', 'formaloo') .'</a>',
+                  'results'      => '<a href="#TB_inline?&width=100vh&height=100vw&inlineId=form-show-options" class="thickbox" title="'. $modalTitle .'" onclick = "getRowInfo(\''. $item['slug'] .'\',\''. $item['address'] .'\')">'. __('Get Shortcode', 'formaloo') .'</a>'
                   //  sprintf('<a href="%s://%s/dashboard/my-forms/%s/edit" target="_blank">Edit Form</a>',FORMALOO_PROTOCOL,FORMALOO_ENDPOINT,$item['slug']),
                   // 'delete'    => sprintf('<a href="?page=%s&action=%s&book=%s">Delete</a>',$_REQUEST['page'],'delete',$item['ID']),
               );

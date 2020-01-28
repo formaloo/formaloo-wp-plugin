@@ -61,7 +61,7 @@ function formaloo_block_block_init() {
 				),
 				'show_type' => array (
 						'type' => 'string',
-						'default' => 'link',
+						'default' => 'script',
 				),
 				'link_title' => array( 
 						'type' => 'string',

@@ -66,7 +66,7 @@
 			},
 			show_type: {
 				type: 'string',
-				default: "link"
+				default: "script"
 			},
 			link_title: {
 				type: 'string',
@@ -234,7 +234,7 @@
 								{
 									className: 'formaloo-back-info'
 								},
-								__('Please enter the form URL in the text field above')
+								__('Please enter the form URL in the text field above e.g. https://formaloo.net/feedback')
 							),
 							is_url(props.attributes.url) && wp.element.createElement(
 								'p',

@@ -1,10 +1,10 @@
 <?php
 /**
- * Plugin Name:       Foramloo
+ * Plugin Name:       Formaloo Form Builder
  * Description:       Easily embed Formaloo forms into your blog or WP pages.
  * Version:           1.0.0
- * Author:            Idearun team
- * Author URI:        https://idearun.co/
+ * Author:            Formaloo team
+ * Author URI:        https://formaloo.net/
  * Text Domain:       formaloo
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
@@ -128,7 +128,7 @@ class Formaloo {
             'slug'              => 'slug',
             'address'           => 'address',
             'type'              => 'link',
-            'link_title'        => __('Show Form'),
+            'link_title'        => __('Show Form', 'formaloo'),
             'show_title'        => 'yes',
             'show_descr'        => 'yes',
             'show_logo'         => 'yes'
@@ -464,13 +464,13 @@ class Formaloo {
                             <td>
                                 <select name="formaloo_show_type"
                                         id="formaloo_show_type">
-                                    <option value="link" <?php echo (!isset($data['show_type']) || (isset($data['show_type']) && $data['show_type'] === 'link')) ? 'selected' : ''; ?>>
+                                    <option value="link" <?php echo (isset($data['show_type']) && $data['show_type'] === 'link') ? 'selected' : ''; ?>>
                                         <?php _e( 'Link', 'formaloo' ); ?>
                                     </option>
                                     <option value="iframe" <?php echo (isset($data['show_type']) && $data['show_type'] === 'iframe') ? 'selected' : ''; ?>>
                                         <?php _e( 'iFrame', 'formaloo' ); ?>
                                     </option>
-                                    <option value="script" <?php echo (isset($data['show_type']) && $data['show_type'] === 'script') ? 'selected' : ''; ?>>
+                                    <option value="script" <?php echo (!isset($data['show_type']) || (isset($data['show_type']) && $data['show_type'] === 'script')) ? 'selected' : ''; ?>>
                                         <?php _e( 'Script', 'formaloo' ); ?>
                                     </option>
                                 </select>
@@ -539,10 +539,16 @@ class Formaloo {
                         <img src="<?php echo FORMALOO_URL ?>/assets/images/clippy.svg" width="13" alt="Copy to clipboard">
                     </button>  
                 </div>
-                <?php if (!$not_ready): ?> 
-                    <button class="button button-primary formaloo-admin-save my-10" type="submit">
-                        <?php _e( 'Get shortcode', 'formaloo' ); ?>
-                    </button>
+                <p>
+                <?php _e('Copy the shortcode above then go to your post/page editor. If it is Gutenberg Editor, add a Shortcode block and paste the shortcode. If it is Classic Editor, choose the Text tab (instead of Visual tab) tab and paste the shortcode wherever you desire.' ,'formaloo') ?>
+                <a href="https://en.support.wordpress.com/shortcodes/" target="_blank"> <?php _e( 'More Info', 'formaloo' ); ?> </a>
+                </p>
+                <?php if (!$not_ready): ?>
+                    <div class="formaloo-shortcode-post-row">
+                        <button class="button button-primary formaloo-admin-save my-10" type="submit">
+                            <?php _e( 'Get shortcode', 'formaloo' ); ?>
+                        </button>
+                    </div>
                 <?php endif; ?>
                 </form>
                 <script src="<?php echo FORMALOO_URL ?>/assets/js/clipboard.min.js"></script>
@@ -554,6 +560,7 @@ class Formaloo {
                         jQuery('.formaloo_clipboard_wrapper').addClass('hidden');
                         jQuery(".form-table").append('<input name="formaloo_form_slug" id="formaloo_form_slug" type="hidden" value="' + $slug + '" />');
                         jQuery(".form-table").append('<input name="formaloo_form_address" id="formaloo_form_address" type="hidden" value="' + $address + '" />');
+                        jQuery(".formaloo-shortcode-post-row").append('<a href="<?php echo FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT ?>/dashboard/my-forms/' + $slug + '/share" target="_blank"><?php _e( 'Additional Settings', 'formaloo' ); ?></a>');
                     }
 
                     function showEditFormWith($protocol, $url, $slug) {
@@ -605,7 +612,11 @@ class Formaloo {
                             <?php _e('If so you can find your API key from your <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/profile/" target="_blank">profile page</a>, and enter it on the <a href="?page=formaloo-settings-page">settings page</a>.', 'formaloo'); ?>
                         </p>
                     <?php else: ?>
-                        <?php _e('Access your <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/" target="_blank">Formaloo dashboard here</a>.', 'formaloo'); ?>
+                    <?php 
+                        $formaloo_first_name = $api_response['data']['forms'][0]['owner']['first_name'];
+                        $formaloo_user_name = empty($formaloo_first_name) ? 'User' : $formaloo_first_name;
+                        _e('Hello Dear '. $formaloo_user_name .'! You can edit or view your forms right here or you can access <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/" target="_blank">your full dashbord here</a>.', 'formaloo'); 
+                    ?>
                     <?php endif; ?>
                 </div>
 

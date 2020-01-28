@@ -94,8 +94,42 @@ class Results_List_Table extends WP_List_Table {
      */
     public function get_sortable_columns()
     {
-        return array();
+        return array('date_created' => array('date_created', false));
     }
+
+        /**
+     * Allows you to sort the data by the variables set in the $_GET
+     *
+     * @return Mixed
+     */
+    private function sort_data( $a, $b ) {
+
+        // Set defaults
+        $orderby = 'date_created';
+        $order = 'asc';
+
+        // If orderby is set, use this as the sort column
+        if(!empty($_GET['orderby']))
+        {
+            $orderby = $_GET['orderby'];
+        }
+
+        // If order is set use this as the order
+        if(!empty($_GET['order']))
+        {
+            $order = $_GET['order'];
+        }
+
+        $result = strnatcmp( $a[$orderby], $b[$orderby] );
+
+        if($order === 'asc')
+        {
+            return $result;
+        }
+
+        return -$result;
+    }
+
 
     /**
      * Get the table data
