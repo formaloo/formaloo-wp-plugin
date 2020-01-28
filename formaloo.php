@@ -433,6 +433,19 @@ class Formaloo {
     }
 
     /**
+     * Show/hide a div for a given status
+     *
+	 * @param $valid boolean
+     *
+     * @return string
+	 */
+    private function getStatusDiv($valid) {
+
+        return ($valid) ? '' : '<div class="inside formaloo-sign-up-wrapper"> <p><strong>'. __('Don\'t have a Formaloo account?', 'formaloo') .'</strong></p> <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/account/signUp/" target="_blank" class="button">'. __('Sign Up', 'formaloo') .'</a> </div>';
+
+    }
+
+    /**
 	 * Outputs the Admin Dashboard layout containing the form with all its options
      *
      * @return void
@@ -450,6 +463,9 @@ class Formaloo {
             <!-- <h1><?php // _e('Formaloo', 'formaloo'); ?></h1> -->
 
             <div id="form-show-edit" style="display:none;">
+            </div>
+
+            <div id="form-show-create-form" style="display:none;">
 
             </div>
             
@@ -567,6 +583,10 @@ class Formaloo {
                         jQuery("#form-show-edit").append('<iframe id="edit-form-iframe" width="100%" height="100%" src="'+ $protocol +'://'+ $url +'/dashboard/my-forms/'+ $slug +'/edit" frameborder="0" onload="resizeIframe();">');
                     }
 
+                    function showCreateForm($protocol, $url, $slug) {
+                        jQuery("#form-show-create-form").append('<iframe id="edit-form-iframe" width="100%" height="100%" src="<?php echo FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT ?>/formMaker/newForm/" frameborder="0" onload="resizeIframe();">');
+                    }
+
                     function resizeIframe() {
                         var TB_WIDTH = jQuery(document).width();
                         jQuery("#TB_window").animate({
@@ -615,7 +635,7 @@ class Formaloo {
                     <?php 
                         $formaloo_first_name = $api_response['data']['forms'][0]['owner']['first_name'];
                         $formaloo_user_name = empty($formaloo_first_name) ? 'User' : $formaloo_first_name;
-                        _e('Hello Dear '. $formaloo_user_name .'! You can edit or view your forms right here or you can access <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/" target="_blank">your full dashbord here</a>.', 'formaloo'); 
+                        _e('Hello Dear '. $formaloo_user_name .'! You can edit or view your forms right here or you can access <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/" target="_blank">your full dashboard here</a>.', 'formaloo'); 
                     ?>
                     <?php endif; ?>
                 </div>
@@ -653,6 +673,9 @@ class Formaloo {
                                 <span class="dashicons dashicons-feedback"></span>
                                 <?php _e('Your forms', 'formaloo'); ?>
                             </h3>
+                            <div class="formaloo-create-new-form">
+                                <a href="#TB_inline?&width=100vh&height=100vw&inlineId=form-show-create-form" title="Create a Form" target="_blank" class="button formaloo-create-new-form-link thickbox" onclick = "showCreateForm()"><span class="dashicons dashicons-plus"></span> <?php _e('Create a new form', 'formaloo') ?></a>
+                            </div>
                             <?php $this->list_table_page(); ?>
                         </div>
 
@@ -786,7 +809,7 @@ class Formaloo {
                             <?php _e('Once the key set and saved, if you do not see any option, please reload the page. Thank you, you rock 🤘', 'formaloo'); ?>
                         </p>
                     <?php else: ?>
-                        <?php _e('Access your <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/" target="_blank">Formaloo dashboard here</a>.', 'formaloo'); ?>
+                        <?php _e('You can access your <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/" target="_blank">Formaloo dashboard here</a>.', 'formaloo'); ?>
                     <?php endif; ?>
 
                     <table class="form-table">
@@ -807,9 +830,10 @@ class Formaloo {
                             </tr>
                         </tbody>
                     </table>
-
                 </div>
 
+                <?php echo $this->getStatusDiv(!$not_ready); ?>
+                
                 <div class="inside">
                     <button class="button button-primary formaloo-admin-save" type="submit">
                         <?php _e( 'Save', 'formaloo' ); ?>

@@ -49,7 +49,7 @@
   height: 100vh;
   /* width: 100vw; */
 }
-.formaloo-get-excel-link, .formaloo-edit-link {
+.formaloo-get-excel-link, .formaloo-edit-link, .formaloo-create-new-form-link {
   display: flex!important;
   flex-direction: row;
   justify-content: center;
@@ -76,4 +76,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+.formaloo-sign-up-wrapper {
+  display: flex;
+  align-items: center;
+}
+.formaloo-sign-up-wrapper p {
+  margin: 0 10px 0 0;
 }
