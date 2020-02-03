@@ -1,6 +1,5 @@
 <?php
 
-
 /**
  * Runs only when the plugin is activated.
  * @since 0.1.0

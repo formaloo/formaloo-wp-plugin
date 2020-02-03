@@ -77,7 +77,7 @@ class Formaloo {
         $formAddress = substr(parse_url($attr['url'])['path'],1);
         $apiUrl = FORMALOO_PROTOCOL . '://api.' . FORMALOO_ENDPOINT .'/v1/forms/form/'. $formAddress . '/show/';
         $formSlug = '';
-        $data = $this->getData();
+        $data = get_option('formaloo_data', array());
         $private_key = $data['private_key'];
      
         $request = wp_remote_get( $apiUrl ,
@@ -441,7 +441,7 @@ class Formaloo {
 	 */
     private function getStatusDiv($valid) {
 
-        return ($valid) ? '' : '<div class="inside formaloo-sign-up-wrapper"> <p><strong>'. __('Don\'t have a Formaloo account?', 'formaloo') .'</strong></p> <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/account/signUp/" target="_blank" class="button">'. __('Sign Up', 'formaloo') .'</a> </div>';
+        return ($valid) ? '' : '<div class="inside formaloo-sign-up-wrapper"> <p><strong>'. __('Don\'t have a Formaloo account?', 'formaloo') .'</strong></p> <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/account/signUp/" target="_blank">'. __('Try one for Free!', 'formaloo') .'</a> </div>';
 
     }
 
@@ -797,47 +797,52 @@ class Formaloo {
 					 */
 	                ?>
 
+                    <div class="formaloo-api-settings-top-wrapper">
+                        <img src="<?php echo FORMALOO_URL ?>assets/images/Formaloo_Logo.png" alt="formaloo-logo">
+                        <h1>
+                            <?php _e('Setup Formaloo', 'formaloo'); ?>
+                        </h1>
+                    </div>
+
                     <h3>
 		                <?php echo $this->getStatusIcon(!$not_ready); ?>
-		                <?php _e('API Settings', 'formaloo'); ?>
+		                <?php _e('Log In', 'formaloo'); ?>
                     </h3>
 
 	                <?php if ($not_ready): ?>
                         <p>
-                            <?php _e('You can find your API key from your <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/profile/" target="_blank">profile page</a>.', 'formaloo'); ?>
-                            <br>
-                            <?php _e('Once the key set and saved, if you do not see any option, please reload the page. Thank you, you rock 🤘', 'formaloo'); ?>
+                            <?php _e('To get started, we\'ll need to access your Formaloo acount with an  <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/profile/" target="_blank">API Key</a>. Paste your Formaloo API Key, and click <strong>Connect</strong> to continue.', 'formaloo'); ?>
+                            <!-- <br> -->
+                            <?php //_e('Once the key set and saved, if you do not see any option, please reload the page. Thank you, you rock 🤘', 'formaloo'); ?>
                         </p>
                     <?php else: ?>
-                        <?php _e('You can access your <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/" target="_blank">Formaloo dashboard here</a>.', 'formaloo'); ?>
+                        <?php _e('You can access your <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/" target="_blank">Formaloo dashboard here</a>.', 'formaloo'); ?>  
+                        <br>
+                        <br>
                     <?php endif; ?>
+                    <?php echo $this->getStatusDiv(!$not_ready); ?>
 
-                    <table class="form-table">
+                    <table class="form-table formaloo-api-settings-table">
                         <tbody>
                             <tr>
                                 <td scope="row">
                                     <label><?php _e( 'Private key', 'formaloo' ); ?></label>
                                 </td>
                                 <td>
-                                    <p>
-                                    </p>
                                     <input name="formaloo_private_key"
                                            id="formaloo_private_key"
                                            class="regular-text"
                                            type="text"
                                            value="<?php echo (isset($data['private_key'])) ? $data['private_key'] : ''; ?>"/>
                                 </td>
+                                <td>
+                                    <button class="button button-primary formaloo-admin-save formaloo-button-black" type="submit">
+                                        <?php ($not_ready) ? _e( 'Connect', 'formaloo' ) : _e( 'Save', 'formaloo' ) ?>
+                                    </button>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
-                </div>
-
-                <?php echo $this->getStatusDiv(!$not_ready); ?>
-                
-                <div class="inside">
-                    <button class="button button-primary formaloo-admin-save" type="submit">
-                        <?php _e( 'Save', 'formaloo' ); ?>
-                    </button>
                 </div>
 
             </form>
@@ -881,6 +886,12 @@ require_once('showActivationNotice.php');
 /*
  * Starts our plugin class, easy!
  */
-global $formalooClss;
 $formalooClss = new Formaloo();
 
+function formaloo_settings_link($links) { 
+    $settings_link = '<a href="admin.php?page=formaloo-settings-page">Settings</a>'; 
+    array_unshift($links, $settings_link); 
+    return $links; 
+}
+$plugin = plugin_basename(__FILE__); 
+add_filter('plugin_action_links_'. $plugin, 'formaloo_settings_link' );

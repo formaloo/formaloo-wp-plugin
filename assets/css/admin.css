@@ -11,7 +11,7 @@
   margin-top: 20px !important;
 }
 .formaloo_clipboard_btn {
-  background: #f95c30!important;
+  background: #8f8886!important;
   border-color: #f95c30!important;
 }
 .formaloo_clipboard_wrapper {
@@ -80,7 +80,32 @@
 .formaloo-sign-up-wrapper {
   display: flex;
   align-items: center;
+  padding-left: 0!important;
 }
 .formaloo-sign-up-wrapper p {
   margin: 0 10px 0 0;
+}
+.formaloo-api-settings-table {
+  background: #FFE7E1;
+  border-radius: 8px;
+  display: flex;
+}
+.formaloo-api-settings-top-wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  align-items: center;
+  background: #1f2c33;
+  border-radius: 8px;
+}
+.formaloo-api-settings-top-wrapper h1 {
+  color: white!important;
+}
+.formaloo-api-settings-top-wrapper img {
+  width: 170px;
+  height: auto;
+}
+.formaloo-button-black {
+  background: black!important;
+  border-color: black!important;
 }
