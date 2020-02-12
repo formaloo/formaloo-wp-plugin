@@ -21,11 +21,11 @@ if(!defined('FORMALOO_URL'))
 if(!defined('FORMALOO_PATH'))
 	define('FORMALOO_PATH', plugin_dir_path( __FILE__ ));
 if(!defined('FORMALOO_ENDPOINT'))
-	define('FORMALOO_ENDPOINT', 'staging.formaloo.com');
+	define('FORMALOO_ENDPOINT', 'formaloo.net');
 if(!defined('FORMALOO_PROTOCOL'))
     define('FORMALOO_PROTOCOL', 'https');
 if(!defined('FORMALOO_X_API_KEY'))
-    define('FORMALOO_X_API_KEY', 'f0a5ce1ecc1fea87a57f06a52a8e12c48cb16d34');
+    define('FORMALOO_X_API_KEY', '7a377c51b8aa0e87e93c1b6bb951166784c98351');
 
 require_once plugin_dir_path( __FILE__ ) . '/blocks/formaloo-block.php';
 
