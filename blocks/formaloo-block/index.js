@@ -182,7 +182,6 @@
 							wp.components.TextControl,
 							{
 								label: __('Link Title'),
-								//help: 'If you choose ',
 								value: props.attributes.link_title,
 								onChange: onChangeLinkTitle
 							}

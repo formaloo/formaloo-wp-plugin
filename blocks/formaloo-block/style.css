@@ -1,10 +1,4 @@
-/**
- * The following styles get applied both on the front of your site and in the editor.
- *
- * Replace them with your own styles or remove the file completely.
- */
-
- .formaloo-guten-div {
+.formaloo-guten-div {
 	margin: 0 0 10px 0!important;
 	padding: 0!important;
 	position: relative!important;
@@ -26,25 +20,21 @@
   background: #191e23!important;
   border-color: #191e23!important;
 }
-
 .formaloo-guten-div p {
 	font-size: small!important;
 	color: #191e23;
 	margin: 0!important;
 }
-
 .formaloo-guten-div .formaloo-back-err {
 	border: 1px dotted crimson;
     padding: 0 20px;
     width: fit-content;
 }
-
 .formaloo-guten-div .formaloo-back-success {
 	border: 1px dotted green;
     padding: 0 20px;
     width: fit-content;
 }
-
 .formaloo-guten-div .formaloo-back-info {
 	border: 1px dotted #191e23;
     padding: 0 20px;

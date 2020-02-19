@@ -178,7 +178,6 @@ class Formaloo {
         $formListTable->setPrivateKey($data['private_key']);
         $formListTable->prepare_items();
         $formListTable->display();
-        // $formListTable->search_box('search', 'search_id');
     }
 
     public function results_table_page($slug) {
@@ -506,7 +505,7 @@ class Formaloo {
                                         id="formaloo_link_title"
                                         type="text"
                                         class="regular-text"
-                                        value="<?php echo (isset($data['link_title'])) ? esc_attr__($data['link_title']) : ''; ?>"/>
+                                        value="<?php echo (isset($data['link_title'])) ? esc_attr__($data['link_title']) : __('Show Form','formaloo'); ?>"/>
                             </td>
                         </tr>
                         <tr id="show_logo_row">

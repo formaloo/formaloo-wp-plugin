@@ -47,8 +47,6 @@ class Results_List_Table extends WP_List_Table {
             'per_page'    => $perPage
         ) );
 
-        // $data = array_slice($data,(($currentPage-1)*$perPage),$perPage);
-
         $this->_column_headers = array($columns, $hidden, $sortable);
         $this->items = $data;
     }
@@ -161,22 +159,6 @@ class Results_List_Table extends WP_List_Table {
           }
           
         }
-
-        // foreach($data['data']['rows'] as $row) {
-        //   $rendered_data = $row['rendered_data'];
-        //   $i = 0;
-        //   foreach ($rendered_data as $k => $v) {
-        //     if(($i+1)<=3) { 
-        //       array_push($tableRowData, $rendered_data[$k]['value']);
-        //     }
-        //     $i++;
-        //   }
-        //   $date = date_create($row['created_at']);
-        //   $tableRowData[] = date_format($date,"Y/m/d H:i:s");
-        //   $tableRowData[] = '<button class="button formaloo-get-excel-link"> <span class="dashicons dashicons-visibility"></span>' . __(' Full Result', 'formaloo') . '</button>';
-        //   array_push($tableData, $tableRowData);
-        //   $index++;
-        // }
 
         return $tableData;
     }

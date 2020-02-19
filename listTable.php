@@ -101,7 +101,7 @@ class Forms_List_Table extends WP_List_Table {
         $tableData = array();
         $data = $this->getFormData();
         $index = 0;
-
+        
         foreach($data['data']['forms'] as $form) {
             $tableData[] = array(
                 'ID'           => $index,
@@ -183,8 +183,6 @@ class Forms_List_Table extends WP_List_Table {
                   'view'      => sprintf('<a href="%s://%s/%s" target="_blank">View</a>',FORMALOO_PROTOCOL,FORMALOO_ENDPOINT,$item['address']),
                   'edit'      => '<a href="#TB_inline?&width=100vh&height=100vw&inlineId=form-show-edit" title="Edit Form" class="thickbox" onclick = "showEditFormWith(\''. FORMALOO_PROTOCOL .'\', \''. FORMALOO_ENDPOINT .'\', \''. $item['slug'] .'\')">'. __('Edit', 'formaloo') .'</a>',
                   'results'      => '<a href="#TB_inline?&width=100vh&height=100vw&inlineId=form-show-options" class="thickbox" title="'. $modalTitle .'" onclick = "getRowInfo(\''. $item['slug'] .'\',\''. $item['address'] .'\')">'. __('Get Shortcode', 'formaloo') .'</a>'
-                  //  sprintf('<a href="%s://%s/dashboard/my-forms/%s/edit" target="_blank">Edit Form</a>',FORMALOO_PROTOCOL,FORMALOO_ENDPOINT,$item['slug']),
-                  // 'delete'    => sprintf('<a href="?page=%s&action=%s&book=%s">Delete</a>',$_REQUEST['page'],'delete',$item['ID']),
               );
       
         return sprintf('%1$s %2$s', $item['title'], $this->row_actions($actions) );
