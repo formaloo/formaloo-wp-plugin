@@ -550,7 +550,7 @@ class Formaloo {
                     </tbody>
                 </table>
                 <div class="formaloo_clipboard_wrapper hidden">
-                    <pre id="formaloo_shortcode_pre"></pre>
+                    <input id="formaloo_shortcode_pre" type="text" class="regular-text" placeholder="<?php _e('Shortcode will appear here','formaloo'); ?>">
                     <button class="button button-primary formaloo_clipboard_btn" data-clipboard-target="#formaloo_shortcode_pre">
                         <img src="<?php echo FORMALOO_URL ?>/assets/images/clippy.svg" width="13" alt="Copy to clipboard">
                     </button>  
@@ -619,24 +619,35 @@ class Formaloo {
             <form id="formaloo-admin-form" class="postbox">
 
                 <div class="form-group inside">
-                    <h3>
-                        <?php echo $this->getStatusIcon(!$not_ready); ?>
-                        <?php _e('My Forms', 'formaloo'); ?>
-                    </h3>
+                    <!-- <h3>
+                        <?php //echo $this->getStatusIcon(!$not_ready); ?>
+                        <?php //_e('My Forms', 'formaloo'); ?>
+                    </h3> -->
 
+                    <div class="formaloo-api-settings-top-wrapper">
+                        <img src="<?php echo FORMALOO_URL ?>assets/images/Formaloo_Logo.png" alt="formaloo-logo">
+                        <h1>
+                            <?php _e('My Forms', 'formaloo'); ?>
+                        </h1>
+                    </div>
+                </div>
+
+                <div class="form-group inside">
+                    
                     <?php if ($not_ready): ?>
                         <p>
-                            <?php _e('Make sure you have a Formaloo account first, it\'s free! 👍', 'formaloo'); ?>
+                            <?php _e($this->getStatusIcon(!$not_ready) . 'Make sure you have a Formaloo account first, it\'s free! 👍', 'formaloo'); ?>
                             <?php _e('You can <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/" target="_blank">create an account here</a>.', 'formaloo'); ?>
                             <br>
                             <?php _e('If so you can find your API key from your <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/profile/" target="_blank">profile page</a>, and enter it on the <a href="?page=formaloo-settings-page">settings page</a>.', 'formaloo'); ?>
                         </p>
                     <?php else: ?>
-                    <?php 
-                        $formaloo_first_name = $api_response['data']['forms'][0]['owner']['first_name'];
-                        $formaloo_user_name = empty($formaloo_first_name) ? 'User' : $formaloo_first_name;
-                        _e('Hello Dear '. $formaloo_user_name .'! You can edit or view your forms right here or you can access <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/" target="_blank">your full dashboard here</a>.', 'formaloo'); 
-                    ?>
+                        <?php echo $this->getStatusIcon(!$not_ready); ?>
+                        <?php 
+                            $formaloo_first_name = $api_response['data']['forms'][0]['owner']['first_name'];
+                            $formaloo_user_name = empty($formaloo_first_name) ? 'User' : $formaloo_first_name;
+                            _e('Hello Dear '. $formaloo_user_name .'! You can edit or view your forms right here or you can access <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/" target="_blank">your full dashboard here</a>.', 'formaloo'); 
+                        ?>
                     <?php endif; ?>
                 </div>
 

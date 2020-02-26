@@ -48,7 +48,7 @@ jQuery(document).ready(function() {
             data: jQuery(toForm).serialize(),
             success: function(response) {
                 jQuery('.formaloo_clipboard_wrapper').removeClass('hidden');
-                jQuery('#formaloo_shortcode_pre').html(response.data.output);
+                jQuery('input#formaloo_shortcode_pre').val(response.data.output);
             }
         });
     }
