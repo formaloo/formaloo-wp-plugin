@@ -411,8 +411,10 @@ class Formaloo {
                           'Authorization'=> 'Token ' . $private_key ) 
         ));
 
+        
+
 	    if (is_array($response) && !is_wp_error($response)) {
-		    $data = json_decode($response['body'], true);
+            $data = json_decode($response['body'], true);
         }
         
 	    return $data;
@@ -817,7 +819,7 @@ class Formaloo {
 
                     <h3>
 		                <?php echo $this->getStatusIcon(!$not_ready); ?>
-		                <?php _e('Log In', 'formaloo'); ?>
+		                <?php _e('Welcome to Formaloo!', 'formaloo'); ?>
                     </h3>
 
 	                <?php if ($not_ready): ?>
@@ -837,7 +839,7 @@ class Formaloo {
                         <tbody>
                             <tr>
                                 <td scope="row">
-                                    <label><?php _e( 'Private key', 'formaloo' ); ?></label>
+                                    <label><?php _e( 'API Private Key', 'formaloo' ); ?></label>
                                 </td>
                                 <td>
                                     <input name="formaloo_private_key"
