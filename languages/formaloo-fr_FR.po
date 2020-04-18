@@ -1,0 +1,347 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Formaloo Form Builder\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-04-18 07:11+0000\n"
+"PO-Revision-Date: 2020-04-18 07:13+0000\n"
+"Last-Translator: \n"
+"Language-Team: French (France)\n"
+"Language: fr_FR\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.3.3; wp-5.4"
+
+#: showActivationNotice.php:26
+msgid "Thank you for using this plugin!"
+msgstr "Merci d'utiliser le plugin de Formaloo!"
+
+#: showActivationNotice.php:26
+msgid "Get Started by visiting the Settings Page"
+msgstr "Commencez par visiter la page Paramètres"
+
+#: formaloo.php:146 formaloo.php:530
+msgid "Show Form"
+msgstr ""
+"Afficher le formulaire\n"
+
+#: formaloo.php:360 formaloo.php:361
+msgid "Formaloo"
+msgstr "Formaloo"
+
+#: formaloo.php:371 formaloo.php:372
+msgid "Settings"
+msgstr "Réglages"
+
+#: formaloo.php:380
+msgid "Results"
+msgstr "Résultats"
+
+#: formaloo.php:387 formaloo.php:647
+msgid "My Forms"
+msgstr "Mes formulaires"
+
+#: formaloo.php:466
+msgid "Don't have a Formaloo account?"
+msgstr "Vous n'avez pas de compte Formaloo?"
+
+#: formaloo.php:466
+msgid "Try one for Free!"
+msgstr "Essayez-en un gratuitement!"
+
+#: formaloo.php:500
+msgid "How to show"
+msgstr "Comment montrer"
+
+#: formaloo.php:506
+msgid "Link"
+msgstr "Lien"
+
+#: formaloo.php:509
+msgid "iFrame"
+msgstr "iFrame"
+
+#: formaloo.php:512
+msgid "Script"
+msgstr "Script"
+
+#: formaloo.php:520
+msgid "Link title"
+msgstr "Titre du lien"
+
+#: formaloo.php:522
+msgid "(Choose a title for the form link)"
+msgstr "(Choisissez un titre pour le lien du formulaire)"
+
+#: formaloo.php:536
+msgid "Show logo"
+msgstr "Afficher le logo"
+
+#: formaloo.php:538
+msgid "(Show the logo in the embedded form?)"
+msgstr "(Afficher le logo dans le formulaire intégré?)"
+
+#: formaloo.php:542 formaloo.php:555 formaloo.php:568
+msgid "Yes"
+msgstr "Oui"
+
+#: formaloo.php:543 formaloo.php:556 formaloo.php:569
+msgid "No"
+msgstr "Non"
+
+#: formaloo.php:549
+msgid "Show title"
+msgstr "Montrer le titre"
+
+#: formaloo.php:551
+msgid "(Show the title in the embedded form?)"
+msgstr "(Afficher le titre dans le formulaire intégré?)"
+
+#: formaloo.php:562
+msgid "Show description"
+msgstr "Montrer la description"
+
+#: formaloo.php:564
+msgid "(Show the description in the embedded form?)"
+msgstr "(Afficher la description dans le formulaire intégré?)"
+
+#: formaloo.php:575
+msgid "Shortcode will appear here"
+msgstr "Le shortcode apparaîtra ici"
+
+#: formaloo.php:581
+msgid ""
+"Copy the shortcode above then go to your post/page editor. If it is "
+"Gutenberg Editor, add a Shortcode block and paste the shortcode. If it is "
+"Classic Editor, choose the Text tab (instead of Visual tab) tab and paste "
+"the shortcode wherever you desire."
+msgstr ""
+"Copiez le shortcode ci-dessus puis allez dans votre éditeur de publication / "
+"page. S'il s'agit de Gutenberg Editor, ajoutez un bloc Shortcode et collez "
+"le shortcode. S'il s'agit d'un éditeur classique, choisissez l'onglet Texte "
+"(au lieu de l'onglet Visuel) et collez le shortcode où vous le souhaitez."
+
+#: formaloo.php:582
+msgid "More Info"
+msgstr "Plus d'informations"
+
+#: formaloo.php:587
+msgid "Get shortcode"
+msgstr "Obtenez un shortcode"
+
+#: formaloo.php:601
+msgid "Additional Settings"
+msgstr "Paramètres additionnels"
+
+#: formaloo.php:656
+msgid "Make sure you have a Formaloo account first, it's free! 👍"
+msgstr "Assurez-vous d'abord d'avoir un compte Formaloo, c'est gratuit! 👍"
+
+#: formaloo.php:657
+msgid "You can"
+msgstr "Vous"
+
+#: formaloo.php:657
+msgid "create an account here"
+msgstr "pouvez créer un compte ici"
+
+#: formaloo.php:659
+msgid "If so you can find your API key from your"
+msgstr "Si c'est le cas, vous pouvez trouver votre clé API à partir de votre"
+
+#: formaloo.php:659
+msgid "profile page,"
+msgstr "page de profil"
+
+#: formaloo.php:659
+msgid "and enter it on the"
+msgstr "et la saisir sur"
+
+#: formaloo.php:659
+msgid "settings page"
+msgstr "la page des paramètres"
+
+#: formaloo.php:665
+msgid "User"
+msgstr "Utilisateur"
+
+#: formaloo.php:666
+msgid "Hello Dear"
+msgstr "Bonjour chère"
+
+#: formaloo.php:666
+msgid "You can edit or view your forms right here or you can access"
+msgstr ""
+"Vous pouvez modifier ou afficher vos formulaires ici ou vous pouvez accéder "
+"à "
+
+#: formaloo.php:666
+msgid "your full dashboard here"
+msgstr "votre tableau de bord complet ici"
+
+#: formaloo.php:677
+msgid ""
+"An error happened on the WordPress side. Make sure your server allows remote "
+"calls."
+msgstr ""
+"Une erreur s'est produite du côté de WordPress. Assurez-vous que votre "
+"serveur autorise les appels à distance."
+
+#: formaloo.php:702
+msgid "Your forms"
+msgstr "Vos formulaires"
+
+#: formaloo.php:705
+msgid "Create a form"
+msgstr "Créer un formulaire"
+
+#: formaloo.php:705
+msgid "Create a new form"
+msgstr "Créer un nouveau formulaire"
+
+#: formaloo.php:757
+msgid "An error happened on the WordPress side."
+msgstr "Une erreur s'est produite du côté de WordPress."
+
+#: formaloo.php:774
+msgid "Your Form Results"
+msgstr "Vos résultats de formulaire"
+
+#: formaloo.php:819
+msgid "Setup Formaloo"
+msgstr "Configurer Formaloo"
+
+#: formaloo.php:825
+msgid "Welcome to Formaloo!"
+msgstr "Bienvenue à Formaloo!"
+
+#: formaloo.php:830
+msgid "To get started, we'll need to access your Formaloo account with an"
+msgstr "Pour commencer, nous devons accéder à votre compte Formaloo avec une"
+
+#: formaloo.php:830
+msgid "API Key"
+msgstr "clé API"
+
+#: formaloo.php:830
+msgid "Paste your Formaloo API Key, and click"
+msgstr "Collez votre clé API Formaloo et cliquez"
+
+#: formaloo.php:830 formaloo.php:856
+msgid "Connect"
+msgstr "Relier"
+
+#: formaloo.php:830
+msgid "to continue"
+msgstr "sur Se connecter pour continuer"
+
+#: formaloo.php:835
+msgid "You can access your"
+msgstr "Vous pouvez accéder à votre tableau"
+
+#: formaloo.php:835
+msgid "Formaloo dashboard here"
+msgstr "de bord Formaloo ici"
+
+#: formaloo.php:845
+msgid "API Private Key"
+msgstr "Clé privée de l'API"
+
+#: formaloo.php:856
+msgid "Save"
+msgstr "Enregistrer"
+
+#: formaloo.php:867
+msgid "Change the Plugin Language"
+msgstr "Changer la langue du plugin"
+
+#: formaloo.php:873
+msgid "English"
+msgstr "Anglais"
+
+#: formaloo.php:876
+msgid "Farsi"
+msgstr "Persan"
+
+#: formaloo.php:882
+msgid "Change"
+msgstr "Changer"
+
+#: listTable.php:65
+msgid "Title"
+msgstr "Titre"
+
+#: listTable.php:66
+msgid "Active"
+msgstr "Actif"
+
+#: listTable.php:67
+msgid "Submit Count"
+msgstr "Soumettre le décompte"
+
+#: listTable.php:68
+msgid "Download Results"
+msgstr "Télécharger les résultats"
+
+#: listTable.php:69
+msgid "More Options"
+msgstr "Plus d'options"
+
+#: listTable.php:113
+msgid "Download"
+msgstr "Télécharger"
+
+#: listTable.php:180
+msgid "Set-up Form Settings"
+msgstr "Configurer les paramètres du formulaire"
+
+#: listTable.php:183
+msgid "View"
+msgstr "Vue"
+
+#: listTable.php:184
+msgid "Edit Form"
+msgstr "Modifier le formulaire"
+
+#: listTable.php:184
+msgid "Edit"
+msgstr "Éditer"
+
+#: listTable.php:185
+msgid "Get Shortcode"
+msgstr "Obtenez un shortcode"
+
+#: resultsTable.php:72
+msgid "Date Created"
+msgstr "date créée"
+
+#: resultsTable.php:73
+msgid "Show Full Results"
+msgstr "Afficher les résultats complets"
+
+#: resultsTable.php:151
+msgid "Show Result"
+msgstr "Afficher le résultat"
+
+#: resultsTable.php:151
+msgid "Full Result"
+msgstr "Résultats complets"
+
+#. Name of the plugin
+msgid "Formaloo Form Builder"
+msgstr "Formaloo Form Builder"
+
+#. Description of the plugin
+msgid "Easily embed Formaloo forms into your blog or WP pages."
+msgstr ""
+"Intégrez facilement des formulaires Formaloo dans votre blog ou vos pages WP."
+
+#. Author of the plugin
+msgid "Formaloo team"
+msgstr "Équipe de Formaloo"
+
+#. Author URI of the plugin
+msgid "https://formaloo.net/"
+msgstr "https://formaloo.net/"

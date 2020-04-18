@@ -180,8 +180,8 @@ class Forms_List_Table extends WP_List_Table {
         $modalTitle = __('Set-up Form Settings', 'formaloo');
         
         $actions = array(
-                  'view'      => sprintf('<a href="%s://%s/%s" target="_blank">View</a>',FORMALOO_PROTOCOL,FORMALOO_ENDPOINT,$item['address']),
-                  'edit'      => '<a href="#TB_inline?&width=100vh&height=100vw&inlineId=form-show-edit" title="Edit Form" class="thickbox" onclick = "showEditFormWith(\''. FORMALOO_PROTOCOL .'\', \''. FORMALOO_ENDPOINT .'\', \''. $item['slug'] .'\')">'. __('Edit', 'formaloo') .'</a>',
+                  'view'      => sprintf('<a href="%s://%s/%s" target="_blank">'. __('View','formaloo') .'</a>',FORMALOO_PROTOCOL,FORMALOO_ENDPOINT,$item['address']),
+                  'edit'      => '<a href="#TB_inline?&width=100vh&height=100vw&inlineId=form-show-edit" title="'. __('Edit Form','formaloo') .'" class="thickbox" onclick = "showEditFormWith(\''. FORMALOO_PROTOCOL .'\', \''. FORMALOO_ENDPOINT .'\', \''. $item['slug'] .'\')">'. __('Edit', 'formaloo') .'</a>',
                   'results'      => '<a href="#TB_inline?&width=100vh&height=100vw&inlineId=form-show-options" class="thickbox" title="'. $modalTitle .'" onclick = "getRowInfo(\''. $item['slug'] .'\',\''. $item['address'] .'\')">'. __('Get Shortcode', 'formaloo') .'</a>'
               );
       

@@ -1,0 +1,38 @@
+@font-face {
+  font-family: Shabnam;
+  src: url('fonts/Shabnam.eot');
+  src: url('fonts/Shabnam.eot?#iefix') format('embedded-opentype'),
+       url('fonts/Shabnam.woff2') format('woff2'),
+       url('fonts/Shabnam.woff') format('woff'),
+       url('fonts/Shabnam.ttf') format('truetype');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: Shabnam;
+  src: url('fonts/Shabnam-Bold.eot');
+  src: url('fonts/Shabnam-Bold.eot?#iefix') format('embedded-opentype'),
+       url('fonts/Shabnam-Bold.woff2') format('woff2'),
+       url('fonts/Shabnam-Bold.woff') format('woff'),
+       url('fonts/Shabnam-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+.formaloo-api-settings-top-wrapper h1,
+.formaloo-heading,
+.form-group.inside {
+	font-family: Shabnam !important;
+}
+.formaloo-column-more-wrapper a:first-child {
+  margin-right: 0px !important;
+  margin-left: 8px !important;
+}
+.formaloo-sign-up-wrapper {
+  padding-right: 0!important;
+}
+.formaloo-sign-up-wrapper p {
+  margin: 0 0 0 10px !important;
+}
+#formaloo-customize-form tr, #formaloo-customize-form p {
+  text-align: right;
+}

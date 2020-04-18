@@ -6,6 +6,7 @@
  * Author:            Formaloo team
  * Author URI:        https://formaloo.net/
  * Text Domain:       formaloo
+ * Domain Path: /languages
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  */
@@ -20,12 +21,23 @@ if(!defined('FORMALOO_URL'))
 	define('FORMALOO_URL', plugin_dir_url( __FILE__ ));
 if(!defined('FORMALOO_PATH'))
 	define('FORMALOO_PATH', plugin_dir_path( __FILE__ ));
-if(!defined('FORMALOO_ENDPOINT'))
-	define('FORMALOO_ENDPOINT', 'formaloo.net');
+if(!defined('FORMALOO_ENDPOINT')) {
+    if (get_locale() == 'fa_IR') {
+        define('FORMALOO_ENDPOINT', 'formaloo.com');
+    } else {
+        define('FORMALOO_ENDPOINT', 'formaloo.net');
+    }
+}
+	
 if(!defined('FORMALOO_PROTOCOL'))
     define('FORMALOO_PROTOCOL', 'https');
-if(!defined('FORMALOO_X_API_KEY'))
-    define('FORMALOO_X_API_KEY', '7a377c51b8aa0e87e93c1b6bb951166784c98351');
+if(!defined('FORMALOO_X_API_KEY')) {
+    if (get_locale() == 'fa_IR') {
+        define('FORMALOO_X_API_KEY', 'd90bf3d862962b9123f1cbc8b2e72f19adacf46d');
+    } else {
+        define('FORMALOO_X_API_KEY', '7a377c51b8aa0e87e93c1b6bb951166784c98351');
+    }
+}
 
 require_once plugin_dir_path( __FILE__ ) . '/blocks/formaloo-block.php';
 
@@ -112,6 +124,8 @@ class Formaloo {
 	public function __construct() {
         // Admin page calls
         // add_action('wp_footer',                 array($this,'addFooterCode'));
+
+        load_plugin_textdomain( 'formaloo', false, 'formaloo/languages/' );
 
         add_action('admin_menu',                array($this,'addAdminMenu'));
         add_action('wp_ajax_store_admin_data',  array($this,'storeAdminData'));
@@ -316,6 +330,10 @@ class Formaloo {
 	    wp_enqueue_style('formaloo-admin', FORMALOO_URL. 'assets/css/admin.css', false, 1.0);
         wp_enqueue_script('formaloo-admin', FORMALOO_URL. 'assets/js/admin.js', array(), 1.0);
 
+        if (get_locale() == 'fa_IR') {
+            wp_enqueue_style('formaloo-admin-rtl', FORMALOO_URL. 'assets/css/rtl.css', false, 1.0);
+        }
+
         $data = $this->getData();
 
 		$admin_options = array(
@@ -350,8 +368,8 @@ class Formaloo {
         
         add_submenu_page(
             'formaloo',
-            __( 'Settings', 'textdomain' ),
-            __( 'Settings', 'textdomain' ),
+            __( 'Settings', 'formaloo' ),
+            __( 'Settings', 'formaloo' ),
             'manage_options',
             'formaloo-settings-page',
             array($this, 'adminLayout')
@@ -359,7 +377,7 @@ class Formaloo {
 
         add_submenu_page(
             'formaloo',
-            __( 'Results', 'textdomain' ),
+            __( 'Results', 'formaloo' ),
             '',
             'manage_options',
             'formaloo-results-page',
@@ -411,7 +429,9 @@ class Formaloo {
                           'Authorization'=> 'Token ' . $private_key ) 
         ));
 
-        
+        // print('Token ' . $private_key);
+        // print("\n");
+        // print_r($response);
 
 	    if (is_array($response) && !is_wp_error($response)) {
             $data = json_decode($response['body'], true);
@@ -519,8 +539,8 @@ class Formaloo {
                                 </label>
                             </td>
                             <td>
-                            <input type="radio" name="formaloo_show_logo" id="formaloo_show_logo_yes" value="yes" checked /> <label for = "formaloo_show_logo">Yes</label> <br>
-                            <input type="radio" name="formaloo_show_logo" id="formaloo_show_logo_no" value="no" /> <label for = "formaloo_show_logo">No</label> 
+                            <input type="radio" name="formaloo_show_logo" id="formaloo_show_logo_yes" value="yes" checked /> <label for = "formaloo_show_logo"><?php _e('Yes','formaloo'); ?></label> <br>
+                            <input type="radio" name="formaloo_show_logo" id="formaloo_show_logo_no" value="no" /> <label for = "formaloo_show_logo"><?php _e('No','formaloo'); ?></label> 
                             </td>
                         </tr>
                         <tr id="show_title_row">
@@ -532,8 +552,8 @@ class Formaloo {
                                 </label>
                             </td>
                             <td>
-                            <input type="radio" name="formaloo_show_title" id="formaloo_show_title_yes" value="yes" checked /> <label for = "formaloo_show_title">Yes</label> <br>
-                            <input type="radio" name="formaloo_show_title" id="formaloo_show_title_no" value="no" <?php // checked( 'no' == $data['show_title'] ); ?> /> <label for = "formaloo_show_title">No</label> 
+                            <input type="radio" name="formaloo_show_title" id="formaloo_show_title_yes" value="yes" checked /> <label for = "formaloo_show_title"><?php _e('Yes','formaloo'); ?></label> <br>
+                            <input type="radio" name="formaloo_show_title" id="formaloo_show_title_no" value="no" <?php // checked( 'no' == $data['show_title'] ); ?> /> <label for = "formaloo_show_title"><?php _e('No','formaloo'); ?></label> 
                             </td>
                         </tr>
                         <tr id="show_descr_row">
@@ -545,8 +565,8 @@ class Formaloo {
                                 </label>
                             </td>
                             <td>
-                            <input type="radio" name="formaloo_show_descr" id="formaloo_show_descr_yes" value="yes" checked /> <label for = "formaloo_show_descr">Yes</label> <br>
-                            <input type="radio" name="formaloo_show_descr" id="formaloo_show_descr_no" value="no" /> <label for = "formaloo_show_descr">No</label> 
+                            <input type="radio" name="formaloo_show_descr" id="formaloo_show_descr_yes" value="yes" checked /> <label for = "formaloo_show_descr"><?php _e('Yes','formaloo'); ?></label> <br>
+                            <input type="radio" name="formaloo_show_descr" id="formaloo_show_descr_no" value="no" /> <label for = "formaloo_show_descr"><?php _e('No','formaloo'); ?></label> 
                             </td>
                         </tr>
                     </tbody>
@@ -621,14 +641,9 @@ class Formaloo {
             <form id="formaloo-admin-form" class="postbox">
 
                 <div class="form-group inside">
-                    <!-- <h3>
-                        <?php //echo $this->getStatusIcon(!$not_ready); ?>
-                        <?php //_e('My Forms', 'formaloo'); ?>
-                    </h3> -->
-
                     <div class="formaloo-api-settings-top-wrapper">
                         <img src="<?php echo FORMALOO_URL ?>assets/images/Formaloo_Logo.png" alt="formaloo-logo">
-                        <h1>
+                        <h1 class="formaloo-heading">
                             <?php _e('My Forms', 'formaloo'); ?>
                         </h1>
                     </div>
@@ -638,17 +653,17 @@ class Formaloo {
                     
                     <?php if ($not_ready): ?>
                         <p>
-                            <?php _e($this->getStatusIcon(!$not_ready) . 'Make sure you have a Formaloo account first, it\'s free! 👍', 'formaloo'); ?>
-                            <?php _e('You can <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/" target="_blank">create an account here</a>.', 'formaloo'); ?>
+                            <?php echo $this->getStatusIcon(!$not_ready) . __("Make sure you have a Formaloo account first, it's free! 👍","formaloo"); ?>
+                            <?php echo __('You can','formaloo') .' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/" target="_blank">'. __('create an account here','formaloo') .'</a>.'; ?>
                             <br>
-                            <?php _e('If so you can find your API key from your <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/profile/" target="_blank">profile page</a>, and enter it on the <a href="?page=formaloo-settings-page">settings page</a>.', 'formaloo'); ?>
+                            <?php echo __('If so you can find your API key from your','formaloo') .' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/profile/" target="_blank">'. __('profile page,','formaloo') .'</a> '. __('and enter it on the','formaloo') .' <a href="?page=formaloo-settings-page">'. __('settings page','formaloo') .'</a>.'; ?>
                         </p>
                     <?php else: ?>
                         <?php echo $this->getStatusIcon(!$not_ready); ?>
                         <?php 
                             $formaloo_first_name = $api_response['data']['forms'][0]['owner']['first_name'];
-                            $formaloo_user_name = empty($formaloo_first_name) ? 'User' : $formaloo_first_name;
-                            _e('Hello Dear '. $formaloo_user_name .'! You can edit or view your forms right here or you can access <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/" target="_blank">your full dashboard here</a>.', 'formaloo'); 
+                            $formaloo_user_name = empty($formaloo_first_name) ? __('User','formaloo') : $formaloo_first_name;
+                            echo __('Hello Dear','formaloo'). ' ' . $formaloo_user_name .'! '. __('You can edit or view your forms right here or you can access', 'formaloo') .' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/" target="_blank">'. __('your full dashboard here','formaloo') .'</a>.'; 
                         ?>
                     <?php endif; ?>
                 </div>
@@ -682,12 +697,12 @@ class Formaloo {
                          */
                         ?>
                         <div class="form-group inside">
-                            <h3>
+                            <h3 class="formaloo-heading">
                                 <span class="dashicons dashicons-feedback"></span>
                                 <?php _e('Your forms', 'formaloo'); ?>
                             </h3>
                             <div class="formaloo-create-new-form">
-                                <a href="#TB_inline?&width=100vh&height=100vw&inlineId=form-show-create-form" title="Create a Form" target="_blank" class="button formaloo-create-new-form-link thickbox" onclick = "showCreateForm()"><span class="dashicons dashicons-plus"></span> <?php _e('Create a new form', 'formaloo') ?></a>
+                                <a href="#TB_inline?&width=100vh&height=100vw&inlineId=form-show-create-form" title="<?php _e('Create a form', 'formaloo'); ?>" target="_blank" class="button formaloo-create-new-form-link thickbox" onclick = "showCreateForm()"><span class="dashicons dashicons-plus"></span> <?php _e('Create a new form', 'formaloo') ?></a>
                             </div>
                             <?php $this->list_table_page(); ?>
                         </div>
@@ -737,18 +752,6 @@ class Formaloo {
 
             <form id="formaloo-admin-form" class="postbox">
 
-                <div class="form-group inside">
-                    <h3>
-                        <?php // _e('Form Results', 'formaloo'); ?>
-                    </h3>
-
-                    <?php if ($not_ready): ?>
-                        <p>
-                            <?php // _e('See all your form results here', 'formaloo'); ?>
-                        </p>
-                    <?php endif; ?>
-                </div>
-
 	            <?php if (!empty($data['private_key']) && !empty($data['slug_for_results'])): ?>
                     <p class="notice notice-error">
                             <?php _e( 'An error happened on the WordPress side.', 'formaloo' ); ?>
@@ -766,7 +769,7 @@ class Formaloo {
                         */
                     ?>
                     <div class="form-group inside results-table">
-                        <h3>
+                        <h3 class="formaloo-heading">
                             <span class="dashicons dashicons-text-page"></span>
                             <?php _e('Your Form Results', 'formaloo'); ?>
                         </h3>
@@ -812,24 +815,24 @@ class Formaloo {
 
                     <div class="formaloo-api-settings-top-wrapper">
                         <img src="<?php echo FORMALOO_URL ?>assets/images/Formaloo_Logo.png" alt="formaloo-logo">
-                        <h1>
+                        <h1 class="formaloo-heading">
                             <?php _e('Setup Formaloo', 'formaloo'); ?>
                         </h1>
                     </div>
 
-                    <h3>
+                    <h3 class="formaloo-heading">
 		                <?php echo $this->getStatusIcon(!$not_ready); ?>
 		                <?php _e('Welcome to Formaloo!', 'formaloo'); ?>
                     </h3>
 
 	                <?php if ($not_ready): ?>
                         <p>
-                            <?php _e('To get started, we\'ll need to access your Formaloo acount with an  <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/profile/" target="_blank">API Key</a>. Paste your Formaloo API Key, and click <strong>Connect</strong> to continue.', 'formaloo'); ?>
+                            <?php echo __('To get started, we\'ll need to access your Formaloo account with an','formaloo') .' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/profile/" target="_blank">'. __('API Key','formaloo') .'</a>. '. __('Paste your Formaloo API Key, and click','formaloo') .' <strong>'. __('Connect','formaloo') .'</strong> '. __('to continue','formaloo') .'.'; ?>
                             <!-- <br> -->
                             <?php //_e('Once the key set and saved, if you do not see any option, please reload the page. Thank you, you rock 🤘', 'formaloo'); ?>
                         </p>
                     <?php else: ?>
-                        <?php _e('You can access your <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/" target="_blank">Formaloo dashboard here</a>.', 'formaloo'); ?>  
+                        <?php echo __('You can access your','formaloo') .' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/" target="_blank">'. __('Formaloo dashboard here','formaloo') .'</a>.'; ?>  
                         <br>
                         <br>
                     <?php endif; ?>
@@ -856,6 +859,33 @@ class Formaloo {
                             </tr>
                         </tbody>
                     </table>
+                    <!--
+                    <table class="form-table formaloo-api-settings-table">
+                        <tbody>
+                            <tr>
+                                <td scope="row">
+                                    <label><?php _e( 'Change the Plugin Language', 'formaloo' ); ?></label>
+                                </td>
+                                <td>
+                                    <select name="formaloo_language_options"
+                                            id="formaloo_language_options">
+                                        <option value="en_language" selected>
+                                            <?php _e( 'English', 'formaloo' ); ?>
+                                        </option>
+                                        <option value="fa_language">
+                                            <?php _e( 'Farsi', 'formaloo' ); ?>
+                                        </option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <button class="button button-primary formaloo-admin-save formaloo-button-black" type="submit">
+                                       <?php _e('Change','formaloo') ?>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    -->
                 </div>
 
             </form>

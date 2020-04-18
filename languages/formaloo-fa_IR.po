@@ -1,0 +1,342 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Formaloo Form Builder\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-04-18 07:11+0000\n"
+"PO-Revision-Date: 2020-04-18 07:14+0000\n"
+"Last-Translator: \n"
+"Language-Team: فارسی\n"
+"Language: fa_IR\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.3.3; wp-5.4"
+
+#: showActivationNotice.php:26
+msgid "Thank you for using this plugin!"
+msgstr "ممنون به خاطر استفاده از این پلاگین!"
+
+#: showActivationNotice.php:26
+msgid "Get Started by visiting the Settings Page"
+msgstr "با مشاهده صفحه تنظیمات شروع کنید"
+
+#: formaloo.php:146 formaloo.php:530
+msgid "Show Form"
+msgstr "نمایش فرم"
+
+#: formaloo.php:360 formaloo.php:361
+msgid "Formaloo"
+msgstr "فرمالو"
+
+#: formaloo.php:371 formaloo.php:372
+msgid "Settings"
+msgstr "تنظیمات"
+
+#: formaloo.php:380
+msgid "Results"
+msgstr "نتایج فرم"
+
+#: formaloo.php:387 formaloo.php:647
+msgid "My Forms"
+msgstr "فرم‌های من"
+
+#: formaloo.php:466
+msgid "Don't have a Formaloo account?"
+msgstr "اکانت فرمالو نداید؟"
+
+#: formaloo.php:466
+msgid "Try one for Free!"
+msgstr "آن را رایگان آزمایش کنید!"
+
+#: formaloo.php:500
+msgid "How to show"
+msgstr "چگونگی نمایش"
+
+#: formaloo.php:506
+msgid "Link"
+msgstr "پیوند"
+
+#: formaloo.php:509
+msgid "iFrame"
+msgstr "iFrame"
+
+#: formaloo.php:512
+msgid "Script"
+msgstr "اسکریپت"
+
+#: formaloo.php:520
+msgid "Link title"
+msgstr "عنوان پیوند"
+
+#: formaloo.php:522
+msgid "(Choose a title for the form link)"
+msgstr "(یک عنوان برای پیوند فرم مشخص کنید)"
+
+#: formaloo.php:536
+msgid "Show logo"
+msgstr "نمایش لوگو"
+
+#: formaloo.php:538
+msgid "(Show the logo in the embedded form?)"
+msgstr "(لوگو در فرم تعبیه شده نمایش داده شود؟)"
+
+#: formaloo.php:542 formaloo.php:555 formaloo.php:568
+msgid "Yes"
+msgstr "بله"
+
+#: formaloo.php:543 formaloo.php:556 formaloo.php:569
+msgid "No"
+msgstr "خیر"
+
+#: formaloo.php:549
+msgid "Show title"
+msgstr "نمایش عنوان"
+
+#: formaloo.php:551
+msgid "(Show the title in the embedded form?)"
+msgstr "(عنوان در فرم تعبیه شده نمایش داده شود؟)"
+
+#: formaloo.php:562
+msgid "Show description"
+msgstr "نمایش توضیحات"
+
+#: formaloo.php:564
+msgid "(Show the description in the embedded form?)"
+msgstr "(توضیحات در فرم تعبیه شده نمایش داده شود؟)"
+
+#: formaloo.php:575
+msgid "Shortcode will appear here"
+msgstr "شورت کد ها اینجا نمایش داده خواهند شد"
+
+#: formaloo.php:581
+msgid ""
+"Copy the shortcode above then go to your post/page editor. If it is "
+"Gutenberg Editor, add a Shortcode block and paste the shortcode. If it is "
+"Classic Editor, choose the Text tab (instead of Visual tab) tab and paste "
+"the shortcode wherever you desire."
+msgstr ""
+"شورت کد بالا را کپی کنید و سپس به صفحه یا پست مورد نظر خود مراجعه کنید. اگر "
+"ادیتور شما Gutenberg می‌باشد، یک بلاک شورت کد به صفحه اضافه کنید و کد خود را "
+"آن جا پیست کنید. اگر ادیتور شما Classic می‌باشد، زبانه Text (بجای زبانه "
+"Visual) را باز کنید و شورت کد خود را هر جا که مناسب شما است پیست کنید."
+
+#: formaloo.php:582
+msgid "More Info"
+msgstr "اطلاعات بیشتر"
+
+#: formaloo.php:587
+msgid "Get shortcode"
+msgstr "دریافت شورت کد"
+
+#: formaloo.php:601
+msgid "Additional Settings"
+msgstr "تنظیمات اضافه"
+
+#: formaloo.php:656
+msgid "Make sure you have a Formaloo account first, it's free! 👍"
+msgstr "ابتدا از داشتن اکانت فرمالو مطمئن شوید، ساخت اکانت رایگان است! 👍"
+
+#: formaloo.php:657
+msgid "You can"
+msgstr "شما می‌توانید"
+
+#: formaloo.php:657
+msgid "create an account here"
+msgstr "اکانت جدید را اینجا بسازید"
+
+#: formaloo.php:659
+msgid "If so you can find your API key from your"
+msgstr "بعد از ساختن اکانت، شما می‌توانید کلید API خود را در"
+
+#: formaloo.php:659
+msgid "profile page,"
+msgstr "در صفحه پروفایل دریافت کنید،"
+
+#: formaloo.php:659
+msgid "and enter it on the"
+msgstr "و آن را در"
+
+#: formaloo.php:659
+msgid "settings page"
+msgstr "صفحه تنظیمات وارد کنید"
+
+#: formaloo.php:665
+msgid "User"
+msgstr "کاربر عزیز"
+
+#: formaloo.php:666
+msgid "Hello Dear"
+msgstr "سلام"
+
+#: formaloo.php:666
+msgid "You can edit or view your forms right here or you can access"
+msgstr "شما می‌توانید فرم خود را همینجا مشاهده یا ویرایش کنید یا شما می‌توانید"
+
+#: formaloo.php:666
+msgid "your full dashboard here"
+msgstr "به داشبورد خود اینجا دسترسی داشته باشید"
+
+#: formaloo.php:677
+msgid ""
+"An error happened on the WordPress side. Make sure your server allows remote "
+"calls."
+msgstr ""
+"خطایی از سمت وردپرس رخ داده است. از امکان اتصال به اینترنت خود مطمئن شوید."
+
+#: formaloo.php:702
+msgid "Your forms"
+msgstr "فرم‌های شما"
+
+#: formaloo.php:705
+msgid "Create a form"
+msgstr "ساخت فرم جدید"
+
+#: formaloo.php:705
+msgid "Create a new form"
+msgstr "ساخت فرم جدید"
+
+#: formaloo.php:757
+msgid "An error happened on the WordPress side."
+msgstr "خطایی از سمت وردپرس رخ داده است."
+
+#: formaloo.php:774
+msgid "Your Form Results"
+msgstr "نتایج فرم شما"
+
+#: formaloo.php:819
+msgid "Setup Formaloo"
+msgstr "تنظیم پلاگین فرمالو"
+
+#: formaloo.php:825
+msgid "Welcome to Formaloo!"
+msgstr "به فرمالو خوش آمدید"
+
+#: formaloo.php:830
+msgid "To get started, we'll need to access your Formaloo account with an"
+msgstr "برای شروع، ما دسترسی به اکانت فرمالو شما به کمک یک"
+
+#: formaloo.php:830
+msgid "API Key"
+msgstr "کلید API نیاز داریم"
+
+#: formaloo.php:830
+msgid "Paste your Formaloo API Key, and click"
+msgstr "کلید API فرمالو خود را در باکس زیر وارد کنید و برای ادامه روی دکمه"
+
+#: formaloo.php:830 formaloo.php:856
+msgid "Connect"
+msgstr "اتصال"
+
+#: formaloo.php:830
+msgid "to continue"
+msgstr "کلیک کنید"
+
+#: formaloo.php:835
+msgid "You can access your"
+msgstr "شما می‌توانید به"
+
+#: formaloo.php:835
+msgid "Formaloo dashboard here"
+msgstr "داشبورد فرمالو اینجا دسترسی داشته باشید"
+
+#: formaloo.php:845
+msgid "API Private Key"
+msgstr "کلید API خصوصی"
+
+#: formaloo.php:856
+msgid "Save"
+msgstr "ذخیره"
+
+#: formaloo.php:867
+msgid "Change the Plugin Language"
+msgstr "تغییر زبان پلاگین"
+
+#: formaloo.php:873
+msgid "English"
+msgstr "انگلیسی"
+
+#: formaloo.php:876
+msgid "Farsi"
+msgstr "فارسی"
+
+#: formaloo.php:882
+msgid "Change"
+msgstr "تغییر زبان"
+
+#: listTable.php:65
+msgid "Title"
+msgstr "عنوان"
+
+#: listTable.php:66
+msgid "Active"
+msgstr "فعال"
+
+#: listTable.php:67
+msgid "Submit Count"
+msgstr "تعداد ثبت"
+
+#: listTable.php:68
+msgid "Download Results"
+msgstr "دانلود نتایج"
+
+#: listTable.php:69
+msgid "More Options"
+msgstr "تنظیمات بیشتر"
+
+#: listTable.php:113
+msgid "Download"
+msgstr "دانلود"
+
+#: listTable.php:180
+msgid "Set-up Form Settings"
+msgstr "تغییر تنظیمات فرم"
+
+#: listTable.php:183
+msgid "View"
+msgstr "مشاهده"
+
+#: listTable.php:184
+msgid "Edit Form"
+msgstr "ویرایش فرم"
+
+#: listTable.php:184
+msgid "Edit"
+msgstr "ویرایش"
+
+#: listTable.php:185
+msgid "Get Shortcode"
+msgstr "دریافت شورت کد"
+
+#: resultsTable.php:72
+msgid "Date Created"
+msgstr "تاریخ ایجاد"
+
+#: resultsTable.php:73
+msgid "Show Full Results"
+msgstr "نمایش نتایج کامل"
+
+#: resultsTable.php:151
+msgid "Show Result"
+msgstr "نمایش نتیجه"
+
+#: resultsTable.php:151
+msgid "Full Result"
+msgstr "نتیجه کامل"
+
+#. Name of the plugin
+msgid "Formaloo Form Builder"
+msgstr "فرم‌ساز فرمالو"
+
+#. Description of the plugin
+msgid "Easily embed Formaloo forms into your blog or WP pages."
+msgstr "نمایش آسان فرم‌های فرمالو در وبلاگ یا صفحات وردپرس شما"
+
+#. Author of the plugin
+msgid "Formaloo team"
+msgstr "تیم فرمالو"
+
+#. Author URI of the plugin
+msgid "https://formaloo.net/"
+msgstr "https://formaloo.net/"

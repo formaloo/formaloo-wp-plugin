@@ -38,7 +38,7 @@
 		 */
 		title: __( 'The Formaloo Block', 'formaloo' ),
 
-		description: __('Use this block to show forms from Formaloo.'),
+		description: __('Use this block to show forms from Formaloo.','formaloo'),
 
 		/**
 		 * An icon property should be specified to make it easier to identify a block.
@@ -70,7 +70,7 @@
 			},
 			link_title: {
 				type: 'string',
-				default: __("Show Form")
+				default: __('Show Form','formaloo')
 			},
 			show_title: {
 				type: 'boolean',
@@ -154,25 +154,25 @@
 						wp.element.createElement(
 							wp.components.SelectControl,
 							{
-								label: __('Show Type'),
+								label: __('Show Type','formaloo'),
 								value: props.attributes.show_type,
 								options: [
 									{
 										value: null,
-										label: __('Select a Show Type'),
+										label: __('Select a Show Type','formaloo'),
 										disabled: true
 									},
 									{
 										value: 'link',
-										label: __('Link')
+										label: __('Link','formaloo')
 									},
 									{
 										value: 'iframe',
-										label: __('iFrame')
+										label: __('iFrame','formaloo')
 									},
 									{
 										value: 'script',
-										label: __('Script')
+										label: __('Script','formaloo')
 									}
 								],
 								onChange: onChangeShowType
@@ -181,7 +181,7 @@
 						props.attributes.show_type == 'link' && wp.element.createElement(
 							wp.components.TextControl,
 							{
-								label: __('Link Title'),
+								label: __('Link Title','formaloo'),
 								value: props.attributes.link_title,
 								onChange: onChangeLinkTitle
 							}
@@ -190,7 +190,7 @@
 						wp.element.createElement(
 							wp.components.ToggleControl,
 							{
-								label: __('Show Logo'),
+								label: __('Show Logo','formaloo'),
 								checked: props.attributes.show_logo,
 								onChange: onChangeShowLogo
 							}
@@ -199,7 +199,7 @@
 						wp.element.createElement(
 							wp.components.ToggleControl,
 							{
-								label: __('Show Title'),
+								label: __('Show Title','formaloo'),
 								checked: props.attributes.show_title,
 								onChange: onChangeShowTitle
 							}
@@ -208,7 +208,7 @@
 						wp.element.createElement(
 							wp.components.ToggleControl,
 							{
-								label: __('Show Description'),
+								label: __('Show Description','formaloo'),
 								checked: props.attributes.show_descr,
 								onChange: onChangeShowDescription
 							}
@@ -223,8 +223,8 @@
 								className: 'formaloo-guten-div'
 							},
 							wp.element.createElement(wp.components.TextControl, {
-								label: __('Form URL'),
-								placeholder: __('Enter the Form URL'),
+								label: __('Form URL','formaloo'),
+								placeholder: __('Enter the Form URL','formaloo'),
 								onChange: onChangeURL,
 								value: props.attributes.url || ''
 							}),
@@ -233,21 +233,21 @@
 								{
 									className: 'formaloo-back-info'
 								},
-								__('Please enter the form URL in the text field above e.g. https://formaloo.net/feedback')
+								__('Please enter the form URL in the text field above e.g. https://formaloo.net/feedback','formaloo')
 							),
 							is_url(props.attributes.url) && wp.element.createElement(
 								'p',
 								{
 									className: 'formaloo-back-success'
 								},
-								__('* You can change form view options on the inspector control')
+								__('* You can change form view options on the inspector control','formaloo')
 							),
 							!is_url(props.attributes.url) && (props.attributes.url) && wp.element.createElement(
 								'p',
 								{
 									className: 'formaloo-back-err'
 								},
-								__('Please enter a valid url')
+								__('Please enter a valid url','formaloo')
 							),
 						),
 					)

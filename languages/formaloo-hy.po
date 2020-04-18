@@ -1,0 +1,346 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Formaloo Form Builder\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-04-18 07:11+0000\n"
+"PO-Revision-Date: 2020-04-18 07:12+0000\n"
+"Last-Translator: \n"
+"Language-Team: Armenian\n"
+"Language: hy\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.3.3; wp-5.4"
+
+#: showActivationNotice.php:26
+msgid "Thank you for using this plugin!"
+msgstr "Շնորհակալութիւն այս plugin- ից օգտւելու համար:"
+
+#: showActivationNotice.php:26
+msgid "Get Started by visiting the Settings Page"
+msgstr "Սկսէք ՝ այցելելով Կարգավորումների էջից"
+
+#: formaloo.php:146 formaloo.php:530
+msgid "Show Form"
+msgstr "ցուցադրել ֆորմը"
+
+#: formaloo.php:360 formaloo.php:361
+msgid "Formaloo"
+msgstr "Formaloo"
+
+#: formaloo.php:371 formaloo.php:372
+msgid "Settings"
+msgstr "կարգաւորումներ"
+
+#: formaloo.php:380
+msgid "Results"
+msgstr "Արդիւնքներ"
+
+#: formaloo.php:387 formaloo.php:647
+msgid "My Forms"
+msgstr "իմ ֆորմերը"
+
+#: formaloo.php:466
+msgid "Don't have a Formaloo account?"
+msgstr "Formaloo հաշիւ չունե՞ս?"
+
+#: formaloo.php:466
+msgid "Try one for Free!"
+msgstr "Փորձէք մեկը անվճար"
+
+#: formaloo.php:500
+msgid "How to show"
+msgstr "Ողջոյն"
+
+#: formaloo.php:506
+msgid "Link"
+msgstr "Հղում"
+
+#: formaloo.php:509
+msgid "iFrame"
+msgstr "iFrame"
+
+#: formaloo.php:512
+msgid "Script"
+msgstr "Script"
+
+#: formaloo.php:520
+msgid "Link title"
+msgstr "հղման վերնագիր"
+
+#: formaloo.php:522
+msgid "(Choose a title for the form link)"
+msgstr "(Վերնագիր որոշիր սոյն ֆորմի լինքի համար)"
+
+#: formaloo.php:536
+msgid "Show logo"
+msgstr "Ցուցադրել logo-ն"
+
+#: formaloo.php:538
+msgid "(Show the logo in the embedded form?)"
+msgstr "(Արդե՞օք ցուցադրել քո logo-ն ներկառուցւած ֆորմում?)"
+
+#: formaloo.php:542 formaloo.php:555 formaloo.php:568
+msgid "Yes"
+msgstr "Այո"
+
+#: formaloo.php:543 formaloo.php:556 formaloo.php:569
+msgid "No"
+msgstr "Ոչ"
+
+#: formaloo.php:549
+msgid "Show title"
+msgstr "Ցուցադրել վերնագիրը"
+
+#: formaloo.php:551
+msgid "(Show the title in the embedded form?)"
+msgstr "(Արդե՞օք ցուցադրել Վերնագիրը ներկառուցւած ֆորմում?)"
+
+#: formaloo.php:562
+msgid "Show description"
+msgstr "ցուցադրել բացատրութիւնը"
+
+#: formaloo.php:564
+msgid "(Show the description in the embedded form?)"
+msgstr "(Արդե՞օք ցուցադրել բացատրութիւնը ներկառուցւած ֆորմում?)"
+
+#: formaloo.php:575
+msgid "Shortcode will appear here"
+msgstr "Shortcode-ը կհայտնւի այստեղում"
+
+#: formaloo.php:581
+msgid ""
+"Copy the shortcode above then go to your post/page editor. If it is "
+"Gutenberg Editor, add a Shortcode block and paste the shortcode. If it is "
+"Classic Editor, choose the Text tab (instead of Visual tab) tab and paste "
+"the shortcode wherever you desire."
+msgstr ""
+"Պատճենահանիր վերը նշւած կառճ կոդը՝ ապա անցիր քո գրառման / էջի խմբագրին:\n"
+"Եթե ​​դա Gutenberg-ի  խմբագիրն է, աւելացրու shortcode block և տեղադրիր(paste)"
+" shortcode-ը:\n"
+"Եթե ​​դա classic-ի  խմբագիրն է, ընտրիր Տեքստի ներդիրը ( visual ներդիրի "
+"փոխարէն) և տեղադրիր shortcode-ը որտեղ որ կցանկանաս:"
+
+#: formaloo.php:582
+msgid "More Info"
+msgstr "Լրացուցիչ տեղեկութիւններ"
+
+#: formaloo.php:587
+msgid "Get shortcode"
+msgstr "Ստացիր shortcode-ը"
+
+#: formaloo.php:601
+msgid "Additional Settings"
+msgstr "Լրացուցիչ Կարգաւորումներ"
+
+#: formaloo.php:656
+msgid "Make sure you have a Formaloo account first, it's free! 👍"
+msgstr ""
+"նախ վստահացիր քո Formaloo հաշւի(account-ի) առկայութեան մասին,դա անւճար է."
+
+#: formaloo.php:657
+msgid "You can"
+msgstr " "
+
+#: formaloo.php:657
+msgid "create an account here"
+msgstr "Ստեղծիր քո հաշիւը այստեղ`"
+
+#: formaloo.php:659
+msgid "If so you can find your API key from your"
+msgstr "Քո profile էջից "
+
+#: formaloo.php:659
+msgid "profile page,"
+msgstr "Գտիր API բանալին"
+
+#: formaloo.php:659
+msgid "and enter it on the"
+msgstr "եւ գրանցիր դա կարգաւորման"
+
+#: formaloo.php:659
+msgid "settings page"
+msgstr "(settings-ի) էջում"
+
+#: formaloo.php:665
+msgid "User"
+msgstr "գործածող"
+
+#: formaloo.php:666
+msgid "Hello Dear"
+msgstr "Ողջոյն սիրելի"
+
+#: formaloo.php:666
+msgid "You can edit or view your forms right here or you can access"
+msgstr "խմբագրիր կամ դիտիր քո ֆորմերը այստեղ կամ մուտք գործիր քո ամբողջ"
+
+#: formaloo.php:666
+msgid "your full dashboard here"
+msgstr "վահանակին (dashboard-ին) այստեղից"
+
+#: formaloo.php:677
+msgid ""
+"An error happened on the WordPress side. Make sure your server allows remote "
+"calls."
+msgstr ""
+"Սխալ է տեղի ունեցել WordPress- ի կողմից, Համոզվեք, որ ձեր սերվերը թույլ է "
+"տալիս հեռավոր զանգերը:"
+
+#: formaloo.php:702
+msgid "Your forms"
+msgstr "քո ֆորմերը"
+
+#: formaloo.php:705
+msgid "Create a form"
+msgstr "նոր ֆորմի ստեղծում"
+
+#: formaloo.php:705
+msgid "Create a new form"
+msgstr "նոր ֆորմի ստեղծում"
+
+#: formaloo.php:757
+msgid "An error happened on the WordPress side."
+msgstr "Սխալ է տեղի ունեցել WordPress- ի կողմից"
+
+#: formaloo.php:774
+msgid "Your Form Results"
+msgstr "քո ֆորմի արդիւնքները"
+
+#: formaloo.php:819
+msgid "Setup Formaloo"
+msgstr "Կարգաւորել Formaloo-ն"
+
+#: formaloo.php:825
+msgid "Welcome to Formaloo!"
+msgstr "Բարի գալուստ Formaloo"
+
+#: formaloo.php:830
+msgid "To get started, we'll need to access your Formaloo account with an"
+msgstr "Սկսելու համար, մենք պէտք է մուտք գործենք քո Formaloo հաշիւ"
+
+#: formaloo.php:830
+msgid "API Key"
+msgstr "API բանալիով"
+
+#: formaloo.php:830
+msgid "Paste your Formaloo API Key, and click"
+msgstr "Տեղադրիր քո API բանալին եւ սեղմիր`"
+
+#: formaloo.php:830 formaloo.php:856
+msgid "Connect"
+msgstr "միանալ"
+
+#: formaloo.php:830
+msgid "to continue"
+msgstr "- միացիր շարունակելու համար-ը:"
+
+#: formaloo.php:835
+msgid "You can access your"
+msgstr "Մուտք` քո"
+
+#: formaloo.php:835
+msgid "Formaloo dashboard here"
+msgstr "Formaloo վահանակին (dashboard-ին)"
+
+#: formaloo.php:845
+msgid "API Private Key"
+msgstr "API մասնաւոր բանալին"
+
+#: formaloo.php:856
+msgid "Save"
+msgstr "պահել"
+
+#: formaloo.php:867
+msgid "Change the Plugin Language"
+msgstr "փոխիր plugin-ի լեզուն"
+
+#: formaloo.php:873
+msgid "English"
+msgstr "Անգլերէն"
+
+#: formaloo.php:876
+msgid "Farsi"
+msgstr "Պարսկերէն"
+
+#: formaloo.php:882
+msgid "Change"
+msgstr "փոփոխութիւն"
+
+#: listTable.php:65
+msgid "Title"
+msgstr "վերնագիր"
+
+#: listTable.php:66
+msgid "Active"
+msgstr "Ակտիւացում"
+
+#: listTable.php:67
+msgid "Submit Count"
+msgstr "Ներկայացնել հաշիւը"
+
+#: listTable.php:68
+msgid "Download Results"
+msgstr "Ներբեռնման արդիւնքներ"
+
+#: listTable.php:69
+msgid "More Options"
+msgstr ""
+"Լրացուցիչ ընտրանքներ\n"
+
+#: listTable.php:113
+msgid "Download"
+msgstr "ներբեռնել"
+
+#: listTable.php:180
+msgid "Set-up Form Settings"
+msgstr "Կարգաւորել ֆորմը"
+
+#: listTable.php:183
+msgid "View"
+msgstr "դիտել"
+
+#: listTable.php:184
+msgid "Edit Form"
+msgstr "ֆորմի խմբագրում"
+
+#: listTable.php:184
+msgid "Edit"
+msgstr "Խմբագրել"
+
+#: listTable.php:185
+msgid "Get Shortcode"
+msgstr "Ստացիր shortcode-ը"
+
+#: resultsTable.php:72
+msgid "Date Created"
+msgstr "Ստեղծման ամսաթիւը"
+
+#: resultsTable.php:73
+msgid "Show Full Results"
+msgstr "Ցուցադրել Ամբողջ արդիւնքները"
+
+#: resultsTable.php:151
+msgid "Show Result"
+msgstr "Ցուցադրել Արդիւնքը"
+
+#: resultsTable.php:151
+msgid "Full Result"
+msgstr "Ամբողջ արդիւնքը"
+
+#. Name of the plugin
+msgid "Formaloo Form Builder"
+msgstr "Formaloo ֆորմ ստեղծո"
+
+#. Description of the plugin
+msgid "Easily embed Formaloo forms into your blog or WP pages."
+msgstr "Հեշտութեամբ ներկառուցիր քո Formaloo ֆորմերդ քո բլոգի կամ WP էջերի մեջ:"
+
+#. Author of the plugin
+msgid "Formaloo team"
+msgstr "Formaloo խումբ"
+
+#. Author URI of the plugin
+msgid "https://formaloo.net/"
+msgstr "https://formaloo.net/"
