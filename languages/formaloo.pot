@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Formaloo Form Builder\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-18 07:11+0000\n"
+"POT-Creation-Date: 2020-04-19 05:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -23,95 +23,107 @@ msgstr ""
 msgid "Get Started by visiting the Settings Page"
 msgstr ""
 
-#: formaloo.php:146 formaloo.php:530
+#: formaloo.php:148 formaloo.php:544
 msgid "Show Form"
 msgstr ""
 
-#: formaloo.php:360 formaloo.php:361
+#: formaloo.php:362 formaloo.php:363
 msgid "Formaloo"
 msgstr ""
 
-#: formaloo.php:371 formaloo.php:372
+#: formaloo.php:373 formaloo.php:374
 msgid "Settings"
 msgstr ""
 
-#: formaloo.php:380
+#: formaloo.php:382
 msgid "Results"
 msgstr ""
 
-#: formaloo.php:387 formaloo.php:647
+#: formaloo.php:389 formaloo.php:661
 msgid "My Forms"
 msgstr ""
 
-#: formaloo.php:466
+#: formaloo.php:451
+msgid "Invalid API key! Please visit your"
+msgstr ""
+
+#: formaloo.php:451 formaloo.php:849
+msgid "Formaloo dashboard here"
+msgstr ""
+
+#: formaloo.php:451
+msgid "to get a new one."
+msgstr ""
+
+#: formaloo.php:480
 msgid "Don't have a Formaloo account?"
 msgstr ""
 
-#: formaloo.php:466
+#: formaloo.php:480
 msgid "Try one for Free!"
 msgstr ""
 
-#: formaloo.php:500
+#: formaloo.php:514
 msgid "How to show"
 msgstr ""
 
-#: formaloo.php:506
+#: formaloo.php:520
 msgid "Link"
 msgstr ""
 
-#: formaloo.php:509
+#: formaloo.php:523
 msgid "iFrame"
 msgstr ""
 
-#: formaloo.php:512
+#: formaloo.php:526
 msgid "Script"
 msgstr ""
 
-#: formaloo.php:520
+#: formaloo.php:534
 msgid "Link title"
 msgstr ""
 
-#: formaloo.php:522
+#: formaloo.php:536
 msgid "(Choose a title for the form link)"
 msgstr ""
 
-#: formaloo.php:536
+#: formaloo.php:550
 msgid "Show logo"
 msgstr ""
 
-#: formaloo.php:538
+#: formaloo.php:552
 msgid "(Show the logo in the embedded form?)"
 msgstr ""
 
-#: formaloo.php:542 formaloo.php:555 formaloo.php:568
+#: formaloo.php:556 formaloo.php:569 formaloo.php:582
 msgid "Yes"
 msgstr ""
 
-#: formaloo.php:543 formaloo.php:556 formaloo.php:569
+#: formaloo.php:557 formaloo.php:570 formaloo.php:583
 msgid "No"
 msgstr ""
 
-#: formaloo.php:549
+#: formaloo.php:563
 msgid "Show title"
 msgstr ""
 
-#: formaloo.php:551
+#: formaloo.php:565
 msgid "(Show the title in the embedded form?)"
 msgstr ""
 
-#: formaloo.php:562
+#: formaloo.php:576
 msgid "Show description"
 msgstr ""
 
-#: formaloo.php:564
+#: formaloo.php:578
 msgid "(Show the description in the embedded form?)"
 msgstr ""
 
-#: formaloo.php:575
+#: formaloo.php:589
 msgid "Shortcode will appear here"
 msgstr ""
 
-#: formaloo.php:581
+#: formaloo.php:595
 msgid ""
 "Copy the shortcode above then go to your post/page editor. If it is "
 "Gutenberg Editor, add a Shortcode block and paste the shortcode. If it is "
@@ -119,145 +131,141 @@ msgid ""
 "the shortcode wherever you desire."
 msgstr ""
 
-#: formaloo.php:582
+#: formaloo.php:596
 msgid "More Info"
 msgstr ""
 
-#: formaloo.php:587
+#: formaloo.php:601
 msgid "Get shortcode"
 msgstr ""
 
-#: formaloo.php:601
+#: formaloo.php:615
 msgid "Additional Settings"
 msgstr ""
 
-#: formaloo.php:656
+#: formaloo.php:670
 msgid "Make sure you have a Formaloo account first, it's free! 👍"
 msgstr ""
 
-#: formaloo.php:657
+#: formaloo.php:671
 msgid "You can"
 msgstr ""
 
-#: formaloo.php:657
+#: formaloo.php:671
 msgid "create an account here"
 msgstr ""
 
-#: formaloo.php:659
+#: formaloo.php:673
 msgid "If so you can find your API key from your"
 msgstr ""
 
-#: formaloo.php:659
+#: formaloo.php:673
 msgid "profile page,"
 msgstr ""
 
-#: formaloo.php:659
+#: formaloo.php:673
 msgid "and enter it on the"
 msgstr ""
 
-#: formaloo.php:659
+#: formaloo.php:673
 msgid "settings page"
 msgstr ""
 
-#: formaloo.php:665
+#: formaloo.php:679
 msgid "User"
 msgstr ""
 
-#: formaloo.php:666
+#: formaloo.php:680
 msgid "Hello Dear"
 msgstr ""
 
-#: formaloo.php:666
+#: formaloo.php:680
 msgid "You can edit or view your forms right here or you can access"
 msgstr ""
 
-#: formaloo.php:666
+#: formaloo.php:680
 msgid "your full dashboard here"
 msgstr ""
 
-#: formaloo.php:677
+#: formaloo.php:691
 msgid ""
 "An error happened on the WordPress side. Make sure your server allows remote "
 "calls."
 msgstr ""
 
-#: formaloo.php:702
+#: formaloo.php:716
 msgid "Your forms"
 msgstr ""
 
-#: formaloo.php:705
+#: formaloo.php:719
 msgid "Create a form"
 msgstr ""
 
-#: formaloo.php:705
+#: formaloo.php:719
 msgid "Create a new form"
 msgstr ""
 
-#: formaloo.php:757
+#: formaloo.php:771
 msgid "An error happened on the WordPress side."
 msgstr ""
 
-#: formaloo.php:774
+#: formaloo.php:788
 msgid "Your Form Results"
 msgstr ""
 
-#: formaloo.php:819
+#: formaloo.php:833
 msgid "Setup Formaloo"
 msgstr ""
 
-#: formaloo.php:825
+#: formaloo.php:839
 msgid "Welcome to Formaloo!"
 msgstr ""
 
-#: formaloo.php:830
+#: formaloo.php:844
 msgid "To get started, we'll need to access your Formaloo account with an"
 msgstr ""
 
-#: formaloo.php:830
+#: formaloo.php:844
 msgid "API Key"
 msgstr ""
 
-#: formaloo.php:830
+#: formaloo.php:844
 msgid "Paste your Formaloo API Key, and click"
 msgstr ""
 
-#: formaloo.php:830 formaloo.php:856
+#: formaloo.php:844 formaloo.php:870
 msgid "Connect"
 msgstr ""
 
-#: formaloo.php:830
+#: formaloo.php:844
 msgid "to continue"
 msgstr ""
 
-#: formaloo.php:835
+#: formaloo.php:849
 msgid "You can access your"
 msgstr ""
 
-#: formaloo.php:835
-msgid "Formaloo dashboard here"
-msgstr ""
-
-#: formaloo.php:845
+#: formaloo.php:859
 msgid "API Private Key"
 msgstr ""
 
-#: formaloo.php:856
+#: formaloo.php:870
 msgid "Save"
 msgstr ""
 
-#: formaloo.php:867
+#: formaloo.php:881
 msgid "Change the Plugin Language"
 msgstr ""
 
-#: formaloo.php:873
+#: formaloo.php:887
 msgid "English"
 msgstr ""
 
-#: formaloo.php:876
+#: formaloo.php:890
 msgid "Farsi"
 msgstr ""
 
-#: formaloo.php:882
+#: formaloo.php:896
 msgid "Change"
 msgstr ""
 

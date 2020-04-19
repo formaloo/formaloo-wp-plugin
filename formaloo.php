@@ -114,7 +114,7 @@ class Formaloo {
 	 *
 	 * @var string
 	 */
-	private $option_name = 'formaloo_data';
+    private $option_name = 'formaloo_data';
 
 	/**
 	 * Formaloo constructor.
@@ -135,6 +135,8 @@ class Formaloo {
         add_shortcode('formaloo', array($this, 'formaloo_show_form_shortcode'));
 
         add_filter( 'submenu_file', array($this, 'formaloo_wp_admin_submenu_filter'));
+
+        add_action('admin_notices', array($this, 'formaloo_invalid_token_admin_notice'));
     }
 
     public function formaloo_show_form_shortcode($atts) {
@@ -429,16 +431,28 @@ class Formaloo {
                           'Authorization'=> 'Token ' . $private_key ) 
         ));
 
-        // print('Token ' . $private_key);
-        // print("\n");
-        // print_r($response);
-
 	    if (is_array($response) && !is_wp_error($response)) {
             $data = json_decode($response['body'], true);
         }
         
 	    return $data;
 
+    }
+
+    // display custom admin notice
+    function formaloo_invalid_token_admin_notice() { 
+        $currentScreen = get_current_screen();
+        $data = $this->getData();
+        $currentGetFormsStatus =  ($this->getForms($data['private_key']))['status'];
+        if ($currentGetFormsStatus == 401 && $currentScreen->id == 'toplevel_page_formaloo') {
+        ?>
+
+            <div class="notice notice-error is-dismissible inline">
+                <p><?php echo __('Invalid API key! Please visit your','formaloo') . ' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/" target="_blank">'. __('Formaloo dashboard here','formaloo') .'</a>'. ' ' . __('to get a new one.','formaloo'); ?></p>
+            </div>
+	
+        <?php 
+        }
     }
 
 	/**
@@ -475,8 +489,8 @@ class Formaloo {
 	public function formsListPage() {
 
         $data = $this->getData();
-	    $api_response = $this->getForms($data['private_key']);
-	    $not_ready = (empty($data['private_key']) || empty($api_response) || isset($api_response['error']));
+        $api_response = $this->getForms($data['private_key']);
+	    $not_ready = (empty($data['private_key']) || empty($api_response) || isset($api_response['error']) || $api_response['status'] != 200);
 
 	    ?>
 
