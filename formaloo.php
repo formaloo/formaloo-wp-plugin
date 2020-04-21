@@ -6,7 +6,7 @@
  * Author:            Formaloo team
  * Author URI:        https://formaloo.net/
  * Text Domain:       formaloo
- * Domain Path: /languages
+ * Domain Path:       /languages
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  */
@@ -448,7 +448,7 @@ class Formaloo {
         ?>
 
             <div class="notice notice-error is-dismissible inline">
-                <p><?php echo __('Invalid API key! Please visit your','formaloo') . ' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/" target="_blank">'. __('Formaloo dashboard here','formaloo') .'</a>'. ' ' . __('to get a new one.','formaloo'); ?></p>
+                <p><?php echo __('Invalid API Token! Please visit your','formaloo') . ' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/" target="_blank">'. __('Formaloo dashboard here','formaloo') .'</a>'. ' ' . __('to get a new one.','formaloo'); ?></p>
             </div>
 	
         <?php 
@@ -670,7 +670,7 @@ class Formaloo {
                             <?php echo $this->getStatusIcon(!$not_ready) . __("Make sure you have a Formaloo account first, it's free! 👍","formaloo"); ?>
                             <?php echo __('You can','formaloo') .' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/" target="_blank">'. __('create an account here','formaloo') .'</a>.'; ?>
                             <br>
-                            <?php echo __('If so you can find your API key from your','formaloo') .' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/profile/" target="_blank">'. __('profile page,','formaloo') .'</a> '. __('and enter it on the','formaloo') .' <a href="?page=formaloo-settings-page">'. __('settings page','formaloo') .'</a>.'; ?>
+                            <?php echo __('If so you can find your API Token from your','formaloo') .' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/profile/" target="_blank">'. __('profile page,','formaloo') .'</a> '. __('and enter it on the','formaloo') .' <a href="?page=formaloo-settings-page">'. __('settings page','formaloo') .'</a>.'; ?>
                         </p>
                     <?php else: ?>
                         <?php echo $this->getStatusIcon(!$not_ready); ?>
@@ -841,7 +841,7 @@ class Formaloo {
 
 	                <?php if ($not_ready): ?>
                         <p>
-                            <?php echo __('To get started, we\'ll need to access your Formaloo account with an','formaloo') .' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/profile/" target="_blank">'. __('API Key','formaloo') .'</a>. '. __('Paste your Formaloo API Key, and click','formaloo') .' <strong>'. __('Connect','formaloo') .'</strong> '. __('to continue','formaloo') .'.'; ?>
+                            <?php echo __('To get started, we\'ll need to access your Formaloo account with an','formaloo') .' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/profile/" target="_blank">'. __('API Token','formaloo') .'</a>. '. __('Paste your Formaloo API Token, and click','formaloo') .' <strong>'. __('Connect','formaloo') .'</strong> '. __('to continue','formaloo') .'.'; ?>
                             <!-- <br> -->
                             <?php //_e('Once the key set and saved, if you do not see any option, please reload the page. Thank you, you rock 🤘', 'formaloo'); ?>
                         </p>
@@ -856,7 +856,7 @@ class Formaloo {
                         <tbody>
                             <tr>
                                 <td scope="row">
-                                    <label><?php _e( 'API Private Key', 'formaloo' ); ?></label>
+                                    <label><?php _e( 'API Token', 'formaloo' ); ?></label>
                                 </td>
                                 <td>
                                     <input name="formaloo_private_key"

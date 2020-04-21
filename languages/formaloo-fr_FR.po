@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Formaloo Form Builder\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-19 05:42+0000\n"
-"PO-Revision-Date: 2020-04-19 05:49+0000\n"
+"POT-Creation-Date: 2020-04-21 05:00+0000\n"
+"PO-Revision-Date: 2020-04-21 05:04+0000\n"
 "Last-Translator: \n"
 "Language-Team: French (France)\n"
 "Language: fr_FR\n"
@@ -44,8 +44,8 @@ msgid "My Forms"
 msgstr "Mes formulaires"
 
 #: formaloo.php:451
-msgid "Invalid API key! Please visit your"
-msgstr "Clé API non valide! Veuillez visiter votre"
+msgid "Invalid API Token! Please visit your"
+msgstr "Jeton d'API non valide! Veuillez visiter votre"
 
 #: formaloo.php:451 formaloo.php:849
 msgid "Formaloo dashboard here"
@@ -160,8 +160,9 @@ msgid "create an account here"
 msgstr "pouvez créer un compte ici"
 
 #: formaloo.php:673
-msgid "If so you can find your API key from your"
-msgstr "Si c'est le cas, vous pouvez trouver votre clé API à partir de votre"
+msgid "If so you can find your API Token from your"
+msgstr ""
+"Si c'est le cas, vous pouvez trouver votre Jeton d'API à partir de votre"
 
 #: formaloo.php:673
 msgid "profile page,"
@@ -233,13 +234,13 @@ msgstr "Bienvenue à Formaloo!"
 msgid "To get started, we'll need to access your Formaloo account with an"
 msgstr "Pour commencer, nous devons accéder à votre compte Formaloo avec une"
 
-#: formaloo.php:844
-msgid "API Key"
-msgstr "clé API"
+#: formaloo.php:844 formaloo.php:859
+msgid "API Token"
+msgstr "Jeton d'API"
 
 #: formaloo.php:844
-msgid "Paste your Formaloo API Key, and click"
-msgstr "Collez votre clé API Formaloo et cliquez"
+msgid "Paste your Formaloo API Token, and click"
+msgstr "Collez votre Jeton d'API Formaloo et cliquez"
 
 #: formaloo.php:844 formaloo.php:870
 msgid "Connect"
@@ -252,10 +253,6 @@ msgstr "sur Se connecter pour continuer"
 #: formaloo.php:849
 msgid "You can access your"
 msgstr "Vous pouvez accéder à votre tableau"
-
-#: formaloo.php:859
-msgid "API Private Key"
-msgstr "Clé privée de l'API"
 
 #: formaloo.php:870
 msgid "Save"

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Formaloo Form Builder\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-19 05:42+0000\n"
-"PO-Revision-Date: 2020-04-19 06:34+0000\n"
+"POT-Creation-Date: 2020-04-21 05:00+0000\n"
+"PO-Revision-Date: 2020-04-21 05:02+0000\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "Language: de_DE\n"
@@ -43,8 +43,8 @@ msgid "My Forms"
 msgstr "Meine Formen"
 
 #: formaloo.php:451
-msgid "Invalid API key! Please visit your"
-msgstr "Ungültiger API-Schlüssel! Bitte besuchen Sie Ihre"
+msgid "Invalid API Token! Please visit your"
+msgstr "Ungültiger API-Token! Bitte besuchen Sie Ihre"
 
 #: formaloo.php:451 formaloo.php:849
 msgid "Formaloo dashboard here"
@@ -162,8 +162,8 @@ msgid "create an account here"
 msgstr "ein Konto erstellen."
 
 #: formaloo.php:673
-msgid "If so you can find your API key from your"
-msgstr "Wenn ja, können Sie Ihr API-Key aus Ihre"
+msgid "If so you can find your API Token from your"
+msgstr "Wenn ja, können Sie Ihr API-Token aus Ihre"
 
 #: formaloo.php:673
 msgid "profile page,"
@@ -233,13 +233,13 @@ msgstr "Willkommen bei Formaloo!"
 msgid "To get started, we'll need to access your Formaloo account with an"
 msgstr "Um loszulegen, müssen wir mit einem auf Ihr Formaloo-Konto zugreifen"
 
-#: formaloo.php:844
-msgid "API Key"
-msgstr "API-Schlüssel"
+#: formaloo.php:844 formaloo.php:859
+msgid "API Token"
+msgstr "API-Token"
 
 #: formaloo.php:844
-msgid "Paste your Formaloo API Key, and click"
-msgstr "Fugen Sie Ihr Formaloo API-Key ein und klicken Sie auf Verbinden,"
+msgid "Paste your Formaloo API Token, and click"
+msgstr "Paste your Formaloo API-Token, and click"
 
 #: formaloo.php:844 formaloo.php:870
 msgid "Connect"
@@ -252,10 +252,6 @@ msgstr " um fortzufahren"
 #: formaloo.php:849
 msgid "You can access your"
 msgstr "Hier Können Sie auf Ihr"
-
-#: formaloo.php:859
-msgid "API Private Key"
-msgstr "Privater API-Schlüssel"
 
 #: formaloo.php:870
 msgid "Save"

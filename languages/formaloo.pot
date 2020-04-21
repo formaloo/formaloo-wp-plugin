@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Formaloo Form Builder\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-19 05:42+0000\n"
+"POT-Creation-Date: 2020-04-21 05:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -44,7 +44,7 @@ msgid "My Forms"
 msgstr ""
 
 #: formaloo.php:451
-msgid "Invalid API key! Please visit your"
+msgid "Invalid API Token! Please visit your"
 msgstr ""
 
 #: formaloo.php:451 formaloo.php:849
@@ -156,7 +156,7 @@ msgid "create an account here"
 msgstr ""
 
 #: formaloo.php:673
-msgid "If so you can find your API key from your"
+msgid "If so you can find your API Token from your"
 msgstr ""
 
 #: formaloo.php:673
@@ -225,12 +225,12 @@ msgstr ""
 msgid "To get started, we'll need to access your Formaloo account with an"
 msgstr ""
 
-#: formaloo.php:844
-msgid "API Key"
+#: formaloo.php:844 formaloo.php:859
+msgid "API Token"
 msgstr ""
 
 #: formaloo.php:844
-msgid "Paste your Formaloo API Key, and click"
+msgid "Paste your Formaloo API Token, and click"
 msgstr ""
 
 #: formaloo.php:844 formaloo.php:870
@@ -243,10 +243,6 @@ msgstr ""
 
 #: formaloo.php:849
 msgid "You can access your"
-msgstr ""
-
-#: formaloo.php:859
-msgid "API Private Key"
 msgstr ""
 
 #: formaloo.php:870
