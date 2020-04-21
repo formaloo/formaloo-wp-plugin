@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Formaloo Form Builder\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-19 05:42+0000\n"
-"PO-Revision-Date: 2020-04-19 05:48+0000\n"
+"POT-Creation-Date: 2020-04-21 05:00+0000\n"
+"PO-Revision-Date: 2020-04-21 05:12+0000\n"
 "Last-Translator: \n"
 "Language-Team: Armenian\n"
 "Language: hy\n"
@@ -43,8 +43,8 @@ msgid "My Forms"
 msgstr "իմ ֆորմերը"
 
 #: formaloo.php:451
-msgid "Invalid API key! Please visit your"
-msgstr "Անվավեր API բանալի է: Խնդրում ենք այցելել ձեր"
+msgid "Invalid API Token! Please visit your"
+msgstr "Անվավեր API Token է: Խնդրում ենք այցելել ձեր"
 
 #: formaloo.php:451 formaloo.php:849
 msgid "Formaloo dashboard here"
@@ -161,12 +161,13 @@ msgid "create an account here"
 msgstr "Ստեղծիր քո հաշիւը այստեղ`"
 
 #: formaloo.php:673
-msgid "If so you can find your API key from your"
-msgstr "Քո profile էջից "
+msgid "If so you can find your API Token from your"
+msgstr "Քո profile էջից"
 
 #: formaloo.php:673
 msgid "profile page,"
-msgstr "Գտիր API բանալին"
+msgstr ""
+"Գտիր API Token-ը\n"
 
 #: formaloo.php:673
 msgid "and enter it on the"
@@ -232,13 +233,13 @@ msgstr "Բարի գալուստ Formaloo"
 msgid "To get started, we'll need to access your Formaloo account with an"
 msgstr "Սկսելու համար, մենք պէտք է մուտք գործենք քո Formaloo հաշիւ"
 
-#: formaloo.php:844
-msgid "API Key"
-msgstr "API բանալիով"
+#: formaloo.php:844 formaloo.php:859
+msgid "API Token"
+msgstr "API Token"
 
 #: formaloo.php:844
-msgid "Paste your Formaloo API Key, and click"
-msgstr "Տեղադրիր քո API բանալին եւ սեղմիր`"
+msgid "Paste your Formaloo API Token, and click"
+msgstr "Տեղադրիր քո API Token-ը եւ սեղմիր`"
 
 #: formaloo.php:844 formaloo.php:870
 msgid "Connect"
@@ -251,10 +252,6 @@ msgstr "- միացիր շարունակելու համար-ը:"
 #: formaloo.php:849
 msgid "You can access your"
 msgstr "Մուտք` քո"
-
-#: formaloo.php:859
-msgid "API Private Key"
-msgstr "API մասնաւոր բանալին"
 
 #: formaloo.php:870
 msgid "Save"
