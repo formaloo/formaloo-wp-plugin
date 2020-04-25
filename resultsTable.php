@@ -2,7 +2,7 @@
 /**
  * Create a new table class that will extend the WP_List_Table
  */
-class Results_List_Table extends WP_List_Table {
+class Formaloo_Results_List_Table extends WP_List_Table {
 
     private $formData = array();
 

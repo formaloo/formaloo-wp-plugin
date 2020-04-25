@@ -41,66 +41,19 @@ if(!defined('FORMALOO_X_API_KEY')) {
 
 require_once plugin_dir_path( __FILE__ ) . '/blocks/formaloo-block.php';
 
+require_once('gutenberg.php');
 
-function formaloo_gutenberg_block_callback($attr) {
-    
-    $formAddress = substr(parse_url($attr['url'])['path'],1);
-    $apiUrl = FORMALOO_PROTOCOL . '://api.' . FORMALOO_ENDPOINT .'/v1/forms/form/'. $formAddress . '/show/';
-    $formSlug = '';
-    $data = get_option('formaloo_data', array());
-    $private_key = $data['private_key'];
- 
-    $request = wp_remote_get( $apiUrl ,
-     array( 'timeout' => 10,
-     'headers' => array( 'x-api-key' => FORMALOO_X_API_KEY,
-                     'Authorization'=> 'Token ' . $private_key ) 
-    ));
- 
-    if( is_wp_error( $request ) ) {
-     return false; // Bail early
-    }
- 
-     $body = wp_remote_retrieve_body( $request );
- 
-     $data = json_decode( $body );
- 
-     if( ! empty( $data ) ) {
-         $formSlug = $data->data->form->slug;
-     }
- 
-     switch ($attr['show_type']) {
-         case 'link':
-             return '<a href="' . FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/'. $formAddress .'" target="_blank"> '. $attr['link_title'] .' </a>';
-         case 'iframe':
-             return '<iframe src="' . FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/'. $formAddress .'" class="custom-formaloo-iframe-style" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe><style>.custom-formaloo-iframe-style {display:block; width:100%; height:100vh;}</style>';
-         case 'script':
-             if ($attr['show_title'] == 0) {
-                 $show_title =  '#main-form .formz-form-title { display: none; }';
-             } 
-             if ($attr['show_descr'] == 0) {
-                 $show_desc =  '#main-form .formz-form-desc { display: none; }';
-             }
-             if ($attr['show_logo'] == 0) {
-                 $show_logo =  '#main-form .formz-main-logo { display: none; }';
-             }
-             return '
-                 <style>'. $show_title . $show_desc . $show_logo .'</style>
-                 <div id="formz-wrapper" data-formz-slug="'. $formSlug .'"></div>
-                 <script src="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT . '/istatic/js/main.js" type="text/javascript" async></script>
-             ';
-     }
- 
-}
+
 
 /*
  * Main class
  */
 /**
- * Class Formaloo
+ * Class Formaloo_Main_Class
  *
  * This class creates the option page and add the web app script
  */
-class Formaloo {
+class Formaloo_Main_Class {
 
 	/**
 	 * The security nonce
@@ -188,7 +141,7 @@ class Formaloo {
      */
     public function list_table_page() {
         $data = $this->getData();
-        $formListTable = new Forms_List_Table();
+        $formListTable = new Formaloo_Forms_List_Table();
         $formData = $this->getForms($data['private_key'], $formListTable->get_pagenum());
         $formListTable->setFormData($formData);
         $formListTable->setPrivateKey($data['private_key']);
@@ -200,7 +153,7 @@ class Formaloo {
         $results = array();
         $data = $this->getData();
         $private_key = $data['private_key'];
-        $resultListTable = new Results_List_Table();
+        $resultListTable = new Formaloo_Results_List_Table();
         
         $api_url = FORMALOO_PROTOCOL. '://api.'. FORMALOO_ENDPOINT .'/v1/forms/form/'. $slug .'/submits/?page='. $resultListTable->get_pagenum();
   
@@ -328,6 +281,9 @@ class Formaloo {
 
         wp_enqueue_style('thickbox');
         wp_enqueue_script('thickbox');
+
+        wp_enqueue_script( 'clipboard');
+        wp_add_inline_script( 'clipboard', 'new ClipboardJS(".formaloo_clipboard_btn");' );     
 
 	    wp_enqueue_style('formaloo-admin', FORMALOO_URL. 'assets/css/admin.css', false, 1.0);
         wp_enqueue_script('formaloo-admin', FORMALOO_URL. 'assets/js/admin.js', array(), 1.0);
@@ -602,11 +558,8 @@ class Formaloo {
                         </button>
                     </div>
                 <?php endif; ?>
-                </form>
-                <script src="<?php echo FORMALOO_URL ?>/assets/js/clipboard.min.js"></script>
+                </form>             
                 <script>
-                
-                    new ClipboardJS('.formaloo_clipboard_btn');
 
                     function getRowInfo($slug, $address) {
                         jQuery('.formaloo_clipboard_wrapper').addClass('hidden');
@@ -943,7 +896,7 @@ require_once('showActivationNotice.php');
 /*
  * Starts our plugin class, easy!
  */
-new Formaloo();
+new Formaloo_Main_Class();
 
 function formaloo_settings_link($links) { 
     $settings_link = '<a href="admin.php?page=formaloo-settings-page">Settings</a>'; 
