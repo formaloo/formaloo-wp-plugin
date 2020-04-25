@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Formaloo Form Builder\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-21 05:00+0000\n"
-"PO-Revision-Date: 2020-04-21 05:02+0000\n"
+"POT-Creation-Date: 2020-04-25 10:49+0000\n"
+"PO-Revision-Date: 2020-04-25 11:15+0000\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "Language: de_DE\n"
@@ -22,107 +22,107 @@ msgstr "Vielen Dank, dass Sie dieses Plugin verwenden!"
 msgid "Get Started by visiting the Settings Page"
 msgstr "Beginnen Sie mit dem Besuch der Einstellungsseite"
 
-#: formaloo.php:148 formaloo.php:544
+#: formaloo.php:94 formaloo.php:493
 msgid "Show Form"
 msgstr "Die Form zeigen"
 
-#: formaloo.php:362 formaloo.php:363
+#: formaloo.php:311 formaloo.php:312
 msgid "Formaloo"
 msgstr "Formaloo"
 
-#: formaloo.php:373 formaloo.php:374
+#: formaloo.php:322 formaloo.php:323
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: formaloo.php:382
+#: formaloo.php:331
 msgid "Results"
 msgstr "Ergebnisse"
 
-#: formaloo.php:389 formaloo.php:661
+#: formaloo.php:338 formaloo.php:607
 msgid "My Forms"
 msgstr "Meine Formen"
 
-#: formaloo.php:451
-msgid "Invalid API Token! Please visit your"
-msgstr "Ungültiger API-Token! Bitte besuchen Sie Ihre"
+#: formaloo.php:400
+msgid "Invalid API Token or API Key! Please visit your"
+msgstr "Ungültiger API-Schlüssel oder API-Token! Bitte besuchen Sie Ihre"
 
-#: formaloo.php:451 formaloo.php:849
+#: formaloo.php:400 formaloo.php:795
 msgid "Formaloo dashboard here"
 msgstr "Formaloo Dashboard zugreifen"
 
-#: formaloo.php:451
+#: formaloo.php:400
 msgid "to get a new one."
 msgstr "einen neuen bekommen."
 
-#: formaloo.php:480
+#: formaloo.php:429
 msgid "Don't have a Formaloo account?"
 msgstr "Haben Sie Noch Kein Formaloo-Konto?"
 
-#: formaloo.php:480
+#: formaloo.php:429
 msgid "Try one for Free!"
 msgstr "Probieren Sie es kostenlos aus!"
 
-#: formaloo.php:514
+#: formaloo.php:463
 msgid "How to show"
 msgstr "How to Show"
 
-#: formaloo.php:520
+#: formaloo.php:469
 msgid "Link"
 msgstr "Link"
 
-#: formaloo.php:523
+#: formaloo.php:472
 msgid "iFrame"
 msgstr "iFrame"
 
-#: formaloo.php:526
+#: formaloo.php:475
 msgid "Script"
 msgstr "Skript"
 
-#: formaloo.php:534
+#: formaloo.php:483
 msgid "Link title"
 msgstr "Links Titel"
 
-#: formaloo.php:536
+#: formaloo.php:485
 msgid "(Choose a title for the form link)"
 msgstr "(Wählen Sie einen Titel für den Form-Link aus)"
 
-#: formaloo.php:550
+#: formaloo.php:499
 msgid "Show logo"
 msgstr "Das Logo zeigen"
 
-#: formaloo.php:552
+#: formaloo.php:501
 msgid "(Show the logo in the embedded form?)"
 msgstr "(Zeige das logo in der eingebetteten From?)"
 
-#: formaloo.php:556 formaloo.php:569 formaloo.php:582
+#: formaloo.php:505 formaloo.php:518 formaloo.php:531
 msgid "Yes"
 msgstr "Ja"
 
-#: formaloo.php:557 formaloo.php:570 formaloo.php:583
+#: formaloo.php:506 formaloo.php:519 formaloo.php:532
 msgid "No"
 msgstr "Nein"
 
-#: formaloo.php:563
+#: formaloo.php:512
 msgid "Show title"
 msgstr "Der Titel zeigen"
 
-#: formaloo.php:565
+#: formaloo.php:514
 msgid "(Show the title in the embedded form?)"
 msgstr "(Zeige den Titel in der eingebetteten From?)"
 
-#: formaloo.php:576
+#: formaloo.php:525
 msgid "Show description"
 msgstr "Beschreibung anzeigen"
 
-#: formaloo.php:578
+#: formaloo.php:527
 msgid "(Show the description in the embedded form?)"
 msgstr "(Zeige die Beschreibung in der eingebetteten From?)"
 
-#: formaloo.php:589
+#: formaloo.php:538
 msgid "Shortcode will appear here"
 msgstr "The shortcode is displayed here"
 
-#: formaloo.php:595
+#: formaloo.php:544
 msgid ""
 "Copy the shortcode above then go to your post/page editor. If it is "
 "Gutenberg Editor, add a Shortcode block and paste the shortcode. If it is "
@@ -135,65 +135,65 @@ msgstr ""
 "Sie den Text-Tab (statt eines Visual-Tab) oder fugen Sie den Shortcode "
 "irgendwo ein."
 
-#: formaloo.php:596
+#: formaloo.php:545
 msgid "More Info"
 msgstr "Mehr Informationen"
 
-#: formaloo.php:601
+#: formaloo.php:550
 msgid "Get shortcode"
 msgstr "Der Shortcode erhalten"
 
-#: formaloo.php:615
+#: formaloo.php:561
 msgid "Additional Settings"
 msgstr "Zusätzliche Einstellungen"
 
-#: formaloo.php:670
+#: formaloo.php:616
 msgid "Make sure you have a Formaloo account first, it's free! 👍"
 msgstr ""
 "Stellen Sie Sicher, dass Sie zuerst ein Formaloo-Konto haben. Es ist "
 "kostenlos! 👍"
 
-#: formaloo.php:671
+#: formaloo.php:617
 msgid "You can"
 msgstr "Hier können Sie"
 
-#: formaloo.php:671
+#: formaloo.php:617
 msgid "create an account here"
 msgstr "ein Konto erstellen."
 
-#: formaloo.php:673
-msgid "If so you can find your API Token from your"
-msgstr "Wenn ja, können Sie Ihr API-Token aus Ihre"
+#: formaloo.php:619
+msgid "If so you can find your API Key & API Token from your"
+msgstr "Wenn ja, können Sie Ihr API-Schlüssel und API-Token aus Ihre"
 
-#: formaloo.php:673
+#: formaloo.php:619
 msgid "profile page,"
 msgstr "profilseite finden,"
 
-#: formaloo.php:673
+#: formaloo.php:619
 msgid "and enter it on the"
 msgstr "und es in den"
 
-#: formaloo.php:673
+#: formaloo.php:619
 msgid "settings page"
 msgstr " Einstellungsseite eingeben"
 
-#: formaloo.php:679
+#: formaloo.php:625
 msgid "User"
 msgstr "Nutzer/in"
 
-#: formaloo.php:680
+#: formaloo.php:626
 msgid "Hello Dear"
 msgstr "Hallo"
 
-#: formaloo.php:680
+#: formaloo.php:626
 msgid "You can edit or view your forms right here or you can access"
 msgstr "Hier können Sie Ihre Formen bearbeiten oder betrachten oder"
 
-#: formaloo.php:680
+#: formaloo.php:626
 msgid "your full dashboard here"
 msgstr "auf Ihr Dashboard zugreifen"
 
-#: formaloo.php:691
+#: formaloo.php:637
 msgid ""
 "An error happened on the WordPress side. Make sure your server allows remote "
 "calls."
@@ -201,119 +201,112 @@ msgstr ""
 "Auf der WordPress-Seite ist ein Fehler aufgetreten. Stellen Sie sicher, dass "
 "eine Internetverbindung besteht."
 
-#: formaloo.php:716
+#: formaloo.php:662
 msgid "Your forms"
 msgstr "Ihre Formen"
 
-#: formaloo.php:719
+#: formaloo.php:665
 msgid "Create a form"
 msgstr "Eine neue Form erstellen"
 
-#: formaloo.php:719
+#: formaloo.php:665
 msgid "Create a new form"
 msgstr "Eine neue Form erstellen"
 
-#: formaloo.php:771
+#: formaloo.php:717
 msgid "An error happened on the WordPress side."
 msgstr "Auf der WordPress-Seite ist ein Fehler aufgetreten."
 
-#: formaloo.php:788
+#: formaloo.php:734
 msgid "Your Form Results"
 msgstr "Ihre Forms Ergebnisse"
 
-#: formaloo.php:833
+#: formaloo.php:779
 msgid "Setup Formaloo"
 msgstr "Formaloo einrichten"
 
-#: formaloo.php:839
+#: formaloo.php:785
 msgid "Welcome to Formaloo!"
 msgstr "Willkommen bei Formaloo!"
 
-#: formaloo.php:844
+#: formaloo.php:790
 msgid "To get started, we'll need to access your Formaloo account with an"
 msgstr "Um loszulegen, müssen wir mit einem auf Ihr Formaloo-Konto zugreifen"
 
-#: formaloo.php:844 formaloo.php:859
-msgid "API Token"
-msgstr "API-Token"
+#: formaloo.php:790
+msgid "API Key & API Token"
+msgstr "API-Schlüssel und API-Token"
 
-#: formaloo.php:844
-msgid "Paste your Formaloo API Token, and click"
-msgstr "Paste your Formaloo API-Token, and click"
+#: formaloo.php:790
+msgid "Paste your Formaloo API Key & API Token, and click"
+msgstr ""
+"Fügen Sie Ihren Formaloo-API-Schlüssel und API-Token ein und klicken Sie auf"
 
-#: formaloo.php:844 formaloo.php:870
+#: formaloo.php:790 formaloo.php:830
 msgid "Connect"
 msgstr "Verbinden"
 
-#: formaloo.php:844
+#: formaloo.php:790
 msgid "to continue"
 msgstr " um fortzufahren"
 
-#: formaloo.php:849
+#: formaloo.php:795
 msgid "You can access your"
 msgstr "Hier Können Sie auf Ihr"
 
-#: formaloo.php:870
+#: formaloo.php:805
+msgid "API Key"
+msgstr "API-Schlüssel"
+
+#: formaloo.php:817
+msgid "API Token"
+msgstr "API-Token"
+
+#: formaloo.php:830
 msgid "Save"
 msgstr "Speichern"
 
-#: formaloo.php:881
-msgid "Change the Plugin Language"
-msgstr "Die Plugin-Sprache ändern"
-
-#: formaloo.php:887
-msgid "English"
-msgstr "Englisch"
-
-#: formaloo.php:890
-msgid "Farsi"
-msgstr "Persisch"
-
-#: formaloo.php:896
-msgid "Change"
-msgstr "Veränderung"
-
-#: listTable.php:65
+#: listTable.php:56
 msgid "Title"
 msgstr "Der Titel"
 
-#: listTable.php:66
+#: listTable.php:57
 msgid "Active"
 msgstr "Aktiv"
 
-#: listTable.php:67
+#: listTable.php:58
 msgid "Submit Count"
 msgstr "Anzahl senden"
 
-#: listTable.php:68
+#: listTable.php:59
 msgid "Download Results"
 msgstr "Downloads Ergebnisse"
 
-#: listTable.php:69
+#: listTable.php:60
 msgid "More Options"
 msgstr "Mehr Optionen"
 
-#: listTable.php:113
+#: listTable.php:104
 msgid "Download"
 msgstr "Download"
 
-#: listTable.php:180
+#: listTable.php:171
 msgid "Set-up Form Settings"
 msgstr "Forms Einstellungen einrichten"
 
-#: listTable.php:183
+#: listTable.php:174
 msgid "View"
 msgstr "Ansicht"
 
-#: listTable.php:184
+#: listTable.php:175
 msgid "Edit Form"
 msgstr "Die Form bearbeiten"
 
-#: listTable.php:184
+#: listTable.php:175
 msgid "Edit"
 msgstr "Bearbeiten"
 
-#: listTable.php:185
+#: listTable.php:176
 msgid "Get Shortcode"
 msgstr "Der Shortcode erhalten"
 

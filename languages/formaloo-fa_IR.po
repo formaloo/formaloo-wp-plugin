@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Formaloo Form Builder\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-21 05:00+0000\n"
-"PO-Revision-Date: 2020-04-21 05:00+0000\n"
+"POT-Creation-Date: 2020-04-25 10:49+0000\n"
+"PO-Revision-Date: 2020-04-25 10:54+0000\n"
 "Last-Translator: \n"
 "Language-Team: Persian\n"
 "Language: fa_IR\n"
@@ -22,107 +22,107 @@ msgstr "ممنون به خاطر استفاده از این پلاگین!"
 msgid "Get Started by visiting the Settings Page"
 msgstr "با مشاهده صفحه تنظیمات شروع کنید"
 
-#: formaloo.php:148 formaloo.php:544
+#: formaloo.php:94 formaloo.php:493
 msgid "Show Form"
 msgstr "نمایش فرم"
 
-#: formaloo.php:362 formaloo.php:363
+#: formaloo.php:311 formaloo.php:312
 msgid "Formaloo"
 msgstr "فرمالو"
 
-#: formaloo.php:373 formaloo.php:374
+#: formaloo.php:322 formaloo.php:323
 msgid "Settings"
 msgstr "تنظیمات"
 
-#: formaloo.php:382
+#: formaloo.php:331
 msgid "Results"
 msgstr "نتایج فرم"
 
-#: formaloo.php:389 formaloo.php:661
+#: formaloo.php:338 formaloo.php:607
 msgid "My Forms"
 msgstr "فرم‌های من"
 
-#: formaloo.php:451
-msgid "Invalid API Token! Please visit your"
-msgstr "توکن API شما اشتباه است. لطفا به"
+#: formaloo.php:400
+msgid "Invalid API Token or API Key! Please visit your"
+msgstr "توکن API یا کلید API شما اشتباه است. لطفا به"
 
-#: formaloo.php:451 formaloo.php:849
+#: formaloo.php:400 formaloo.php:795
 msgid "Formaloo dashboard here"
 msgstr "داشبورد فرمالو اینجا دسترسی داشته باشید"
 
-#: formaloo.php:451
+#: formaloo.php:400
 msgid "to get a new one."
 msgstr "و کلید جدید را بگیرید."
 
-#: formaloo.php:480
+#: formaloo.php:429
 msgid "Don't have a Formaloo account?"
 msgstr "اکانت فرمالو نداید؟"
 
-#: formaloo.php:480
+#: formaloo.php:429
 msgid "Try one for Free!"
 msgstr "آن را رایگان آزمایش کنید!"
 
-#: formaloo.php:514
+#: formaloo.php:463
 msgid "How to show"
 msgstr "چگونگی نمایش"
 
-#: formaloo.php:520
+#: formaloo.php:469
 msgid "Link"
 msgstr "پیوند"
 
-#: formaloo.php:523
+#: formaloo.php:472
 msgid "iFrame"
 msgstr "iFrame"
 
-#: formaloo.php:526
+#: formaloo.php:475
 msgid "Script"
 msgstr "اسکریپت"
 
-#: formaloo.php:534
+#: formaloo.php:483
 msgid "Link title"
 msgstr "عنوان پیوند"
 
-#: formaloo.php:536
+#: formaloo.php:485
 msgid "(Choose a title for the form link)"
-msgstr "کلید API خصوصی"
+msgstr "(یک عنوان برای لینک فرم انتخاب کنید)"
 
-#: formaloo.php:550
+#: formaloo.php:499
 msgid "Show logo"
 msgstr "نمایش لوگو"
 
-#: formaloo.php:552
+#: formaloo.php:501
 msgid "(Show the logo in the embedded form?)"
 msgstr "(لوگو در فرم تعبیه شده نمایش داده شود؟)"
 
-#: formaloo.php:556 formaloo.php:569 formaloo.php:582
+#: formaloo.php:505 formaloo.php:518 formaloo.php:531
 msgid "Yes"
 msgstr "بله"
 
-#: formaloo.php:557 formaloo.php:570 formaloo.php:583
+#: formaloo.php:506 formaloo.php:519 formaloo.php:532
 msgid "No"
 msgstr "خیر"
 
-#: formaloo.php:563
+#: formaloo.php:512
 msgid "Show title"
 msgstr "نمایش عنوان"
 
-#: formaloo.php:565
+#: formaloo.php:514
 msgid "(Show the title in the embedded form?)"
 msgstr "(عنوان در فرم تعبیه شده نمایش داده شود؟)"
 
-#: formaloo.php:576
+#: formaloo.php:525
 msgid "Show description"
 msgstr "نمایش توضیحات"
 
-#: formaloo.php:578
+#: formaloo.php:527
 msgid "(Show the description in the embedded form?)"
 msgstr "(توضیحات در فرم تعبیه شده نمایش داده شود؟)"
 
-#: formaloo.php:589
+#: formaloo.php:538
 msgid "Shortcode will appear here"
 msgstr "شورت کد ها اینجا نمایش داده خواهند شد"
 
-#: formaloo.php:595
+#: formaloo.php:544
 msgid ""
 "Copy the shortcode above then go to your post/page editor. If it is "
 "Gutenberg Editor, add a Shortcode block and paste the shortcode. If it is "
@@ -134,182 +134,175 @@ msgstr ""
 "آن جا پیست کنید. اگر ادیتور شما Classic می‌باشد، زبانه Text (بجای زبانه "
 "Visual) را باز کنید و شورت کد خود را هر جا که مناسب شما است پیست کنید."
 
-#: formaloo.php:596
+#: formaloo.php:545
 msgid "More Info"
 msgstr "اطلاعات بیشتر"
 
-#: formaloo.php:601
+#: formaloo.php:550
 msgid "Get shortcode"
 msgstr "دریافت شورت کد"
 
-#: formaloo.php:615
+#: formaloo.php:561
 msgid "Additional Settings"
 msgstr "تنظیمات اضافه"
 
-#: formaloo.php:670
+#: formaloo.php:616
 msgid "Make sure you have a Formaloo account first, it's free! 👍"
 msgstr "ابتدا از داشتن اکانت فرمالو مطمئن شوید، ساخت اکانت رایگان است! 👍"
 
-#: formaloo.php:671
+#: formaloo.php:617
 msgid "You can"
 msgstr "شما می‌توانید"
 
-#: formaloo.php:671
+#: formaloo.php:617
 msgid "create an account here"
 msgstr "اکانت جدید را اینجا بسازید"
 
-#: formaloo.php:673
-msgid "If so you can find your API Token from your"
-msgstr "بعد از ساختن اکانت، شما می‌توانید توکن API خود را در"
+#: formaloo.php:619
+msgid "If so you can find your API Key & API Token from your"
+msgstr "بعد از ساختن اکانت، شما می‌توانید کلید و توکن API خود را در"
 
-#: formaloo.php:673
+#: formaloo.php:619
 msgid "profile page,"
 msgstr "در صفحه پروفایل دریافت کنید،"
 
-#: formaloo.php:673
+#: formaloo.php:619
 msgid "and enter it on the"
 msgstr "و آن را در"
 
-#: formaloo.php:673
+#: formaloo.php:619
 msgid "settings page"
 msgstr "صفحه تنظیمات وارد کنید"
 
-#: formaloo.php:679
+#: formaloo.php:625
 msgid "User"
 msgstr "کاربر عزیز"
 
-#: formaloo.php:680
+#: formaloo.php:626
 msgid "Hello Dear"
 msgstr "سلام"
 
-#: formaloo.php:680
+#: formaloo.php:626
 msgid "You can edit or view your forms right here or you can access"
 msgstr "شما می‌توانید فرم خود را همینجا مشاهده یا ویرایش کنید یا شما می‌توانید"
 
-#: formaloo.php:680
+#: formaloo.php:626
 msgid "your full dashboard here"
 msgstr "به داشبورد خود اینجا دسترسی داشته باشید"
 
-#: formaloo.php:691
+#: formaloo.php:637
 msgid ""
 "An error happened on the WordPress side. Make sure your server allows remote "
 "calls."
 msgstr ""
 "خطایی از سمت وردپرس رخ داده است. از امکان اتصال به اینترنت خود مطمئن شوید."
 
-#: formaloo.php:716
+#: formaloo.php:662
 msgid "Your forms"
 msgstr "فرم‌های شما"
 
-#: formaloo.php:719
+#: formaloo.php:665
 msgid "Create a form"
 msgstr "ساخت فرم جدید"
 
-#: formaloo.php:719
+#: formaloo.php:665
 msgid "Create a new form"
 msgstr "ساخت فرم جدید"
 
-#: formaloo.php:771
+#: formaloo.php:717
 msgid "An error happened on the WordPress side."
 msgstr "خطایی از سمت وردپرس رخ داده است."
 
-#: formaloo.php:788
+#: formaloo.php:734
 msgid "Your Form Results"
 msgstr "نتایج فرم شما"
 
-#: formaloo.php:833
+#: formaloo.php:779
 msgid "Setup Formaloo"
 msgstr "تنظیم پلاگین فرمالو"
 
-#: formaloo.php:839
+#: formaloo.php:785
 msgid "Welcome to Formaloo!"
 msgstr "به فرمالو خوش آمدید"
 
-#: formaloo.php:844
+#: formaloo.php:790
 msgid "To get started, we'll need to access your Formaloo account with an"
 msgstr "برای شروع، ما دسترسی به اکانت فرمالو شما به کمک یک"
 
-#: formaloo.php:844 formaloo.php:859
-msgid "API Token"
-msgstr "توکن API نیاز داریم"
+#: formaloo.php:790
+msgid "API Key & API Token"
+msgstr "توکن API و کلید API نیاز داریم"
 
-#: formaloo.php:844
-msgid "Paste your Formaloo API Token, and click"
-msgstr "توکن API فرمالو خود را در باکس زیر وارد کنید و برای ادامه روی دکمه"
+#: formaloo.php:790
+msgid "Paste your Formaloo API Key & API Token, and click"
+msgstr ""
+"توکن API و کلید API فرمالو خود را در باکس زیر وارد کنید و برای ادامه روی دکمه"
 
-#: formaloo.php:844 formaloo.php:870
+#: formaloo.php:790 formaloo.php:830
 msgid "Connect"
 msgstr "اتصال"
 
-#: formaloo.php:844
+#: formaloo.php:790
 msgid "to continue"
 msgstr "کلیک کنید"
 
-#: formaloo.php:849
+#: formaloo.php:795
 msgid "You can access your"
 msgstr "شما می‌توانید به"
 
-#: formaloo.php:870
+#: formaloo.php:805
+msgid "API Key"
+msgstr "کلید API"
+
+#: formaloo.php:817
+msgid "API Token"
+msgstr "توکن API"
+
+#: formaloo.php:830
 msgid "Save"
 msgstr "ذخیره"
 
-#: formaloo.php:881
-msgid "Change the Plugin Language"
-msgstr "تغییر زبان پلاگین"
-
-#: formaloo.php:887
-msgid "English"
-msgstr "انگلیسی"
-
-#: formaloo.php:890
-msgid "Farsi"
-msgstr "فارسی"
-
-#: formaloo.php:896
-msgid "Change"
-msgstr "تغییر زبان"
-
-#: listTable.php:65
+#: listTable.php:56
 msgid "Title"
 msgstr "عنوان"
 
-#: listTable.php:66
+#: listTable.php:57
 msgid "Active"
 msgstr "فعال"
 
-#: listTable.php:67
+#: listTable.php:58
 msgid "Submit Count"
 msgstr "تعداد ثبت"
 
-#: listTable.php:68
+#: listTable.php:59
 msgid "Download Results"
 msgstr "دانلود نتایج"
 
-#: listTable.php:69
+#: listTable.php:60
 msgid "More Options"
 msgstr "تنظیمات بیشتر"
 
-#: listTable.php:113
+#: listTable.php:104
 msgid "Download"
 msgstr "دانلود"
 
-#: listTable.php:180
+#: listTable.php:171
 msgid "Set-up Form Settings"
 msgstr "تغییر تنظیمات فرم"
 
-#: listTable.php:183
+#: listTable.php:174
 msgid "View"
 msgstr "مشاهده"
 
-#: listTable.php:184
+#: listTable.php:175
 msgid "Edit Form"
 msgstr "ویرایش فرم"
 
-#: listTable.php:184
+#: listTable.php:175
 msgid "Edit"
 msgstr "ویرایش"
 
-#: listTable.php:185
+#: listTable.php:176
 msgid "Get Shortcode"
 msgstr "دریافت شورت کد"
 
