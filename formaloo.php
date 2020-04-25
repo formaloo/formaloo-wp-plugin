@@ -133,7 +133,6 @@ class Formaloo_Main_Class {
      */
     public function list_table_page() {
         $data = $this->getData();
-        print_r($data);
         $formListTable = new Formaloo_Forms_List_Table();
         $formData = $this->getForms($data['api_key'], $data['api_token'], $formListTable->get_pagenum());
         $formListTable->setFormData($formData);
