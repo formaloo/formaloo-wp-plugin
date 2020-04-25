@@ -8,9 +8,10 @@
 | Requires PHP | 5.2 |
 
 **Contributors:** Formaloo, idearun
+
 **Tags:** contact form, contact form plugin, forms, form builder, custom form, contact button, contact me, custom contact form, form manager, form, forms builder, forms creator, captcha, recaptcha, email form, web form, feedback form, payment form, survey form, donation form, email submit form, message form, mailchimp, mailchimp form, paypal, paypal form, stripe, stripe form, email subscription, contact form widget, user registration form, wordpress registration, wordpress login form, feedback
 
-License: GNU General Public License v2.0 or later
+**License:** GNU General Public License v2.0 or later
 
 ## Description
 
@@ -71,7 +72,7 @@ Your forms will be autmatically GDPR & HIPAA compatible. Don't worry about anyth
 
 1. Do I need to have coding skills to use Formaloo?
 
-...Absolutely not! 
+>>Absolutely not! 
 
 2. What type of forms can I build with Formaloo?
 
