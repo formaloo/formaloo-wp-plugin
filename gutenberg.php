@@ -6,13 +6,13 @@ function formaloo_gutenberg_block_callback($attr) {
   $apiUrl = FORMALOO_PROTOCOL . '://api.' . FORMALOO_ENDPOINT .'/v1/forms/form/'. $formAddress . '/show/';
   $formSlug = '';
   $data = get_option('formaloo_data', array());
-  $formaloo_api_token = $data['formaloo_api_token'];
-  $formaloo_api_key = $data['formaloo_api_key'];
+  $api_token = $data['api_token'];
+  $api_key = $data['api_key'];
 
   $request = wp_remote_get( $apiUrl ,
    array( 'timeout' => 10,
-   'headers' => array( 'x-api-key' => $formaloo_api_key,
-                   'Authorization'=> 'Token ' . $formaloo_api_token ) 
+   'headers' => array( 'x-api-key' => $api_key,
+                   'Authorization'=> 'Token ' . $api_token ) 
   ));
 
   if( is_wp_error( $request ) ) {

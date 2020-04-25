@@ -133,10 +133,11 @@ class Formaloo_Main_Class {
      */
     public function list_table_page() {
         $data = $this->getData();
+        print_r($data);
         $formListTable = new Formaloo_Forms_List_Table();
-        $formData = $this->getForms($data['formaloo_api_key'], $data['formaloo_api_token'], $formListTable->get_pagenum());
+        $formData = $this->getForms($data['api_key'], $data['api_token'], $formListTable->get_pagenum());
         $formListTable->setFormData($formData);
-        $formListTable->setPrivateKey($data['formaloo_api_token']);
+        $formListTable->setPrivateKey($data['api_token']);
         $formListTable->prepare_items();
         $formListTable->display();
     }
@@ -144,16 +145,16 @@ class Formaloo_Main_Class {
     public function results_table_page($slug) {
         $results = array();
         $data = $this->getData();
-        $formaloo_api_token = $data['formaloo_api_token'];
-        $formaloo_api_key = $data['formaloo_api_key'];
+        $api_token = $data['api_token'];
+        $api_key = $data['api_key'];
         $resultListTable = new Formaloo_Results_List_Table();
         
         $api_url = FORMALOO_PROTOCOL. '://api.'. FORMALOO_ENDPOINT .'/v1/forms/form/'. $slug .'/submits/?page='. $resultListTable->get_pagenum();
   
         $response = wp_remote_get( $api_url ,
         array( 'timeout' => 10,
-       'headers' => array( 'x-api-key' => $formaloo_api_key,
-                          'Authorization'=> 'Token ' . $formaloo_api_token ) 
+       'headers' => array( 'x-api-key' => $api_key,
+                          'Authorization'=> 'Token ' . $api_token ) 
         ));
   
         if (is_array($response) && !is_wp_error($response)) {
@@ -161,7 +162,7 @@ class Formaloo_Main_Class {
         }
 
         $resultListTable->setFormData($results);
-        $resultListTable->setPrivateKey($formaloo_api_token);
+        $resultListTable->setPrivateKey($api_token);
         $resultListTable->prepare_items();
         ?>
         <?php $resultListTable->display(); ?>
@@ -257,7 +258,7 @@ class Formaloo_Main_Class {
 		    // We remove the formaloo_ prefix to clean things up
             $field = substr($field, 9);
 
-			$data[$field] = esc_attr__($value);
+            $data[$field] = esc_attr__($value);
 
         }
 
@@ -290,8 +291,8 @@ class Formaloo_Main_Class {
 		$admin_options = array(
 			'ajax_url' => admin_url( 'admin-ajax.php' ),
             '_nonce'   => wp_create_nonce( $this->_nonce ),
-            'formaloo_api_token' => $data['formaloo_api_token'],
-            'formaloo_api_key' => $data['formaloo_api_key'],
+            'api_token' => $data['api_token'],
+            'api_key' => $data['api_key'],
             'protocol' => FORMALOO_PROTOCOL,
             'endpoint_url' => FORMALOO_ENDPOINT
 		);
@@ -363,12 +364,12 @@ class Formaloo_Main_Class {
 	/**
 	 * Make an API call to the Formaloo API and returns the response
      *
-     * @param $formaloo_api_token string
+     * @param $api_token string
      *
      *
      * @return array
 	 */
-	private function getForms($formaloo_api_key, $formaloo_api_token, $pageNum = 1) {
+	private function getForms($api_key, $api_token, $pageNum = 1) {
         
         $data = array();
         
@@ -376,8 +377,8 @@ class Formaloo_Main_Class {
 
         $response = wp_remote_get( $api_url ,
         array( 'timeout' => 10,
-       'headers' => array( 'x-api-key' => $formaloo_api_key,
-                          'Authorization'=> 'Token ' . $formaloo_api_token ) 
+       'headers' => array( 'x-api-key' => $api_key,
+                          'Authorization'=> 'Token ' . $api_token ) 
         ));
 
 	    if (is_array($response) && !is_wp_error($response)) {
@@ -392,7 +393,7 @@ class Formaloo_Main_Class {
     function formaloo_invalid_token_admin_notice() { 
         $currentScreen = get_current_screen();
         $data = $this->getData();
-        $currentGetFormsStatus =  ($this->getForms($data['formaloo_api_key'], $data['formaloo_api_token']))['status'];
+        $currentGetFormsStatus =  ($this->getForms($data['api_key'], $data['api_token']))['status'];
         if ($currentGetFormsStatus == 401 && $currentScreen->id == 'toplevel_page_formaloo') {
         ?>
 
@@ -438,8 +439,8 @@ class Formaloo_Main_Class {
 	public function formsListPage() {
 
         $data = $this->getData();
-        $api_response = $this->getForms($data['formaloo_api_key'], $data['formaloo_api_token']);
-	    $not_ready = (empty($data['formaloo_api_token']) || empty($data['formaloo_api_key']) || empty($api_response) || isset($api_response['error']) || $api_response['status'] != 200);
+        $api_response = $this->getForms($data['api_key'], $data['api_token']);
+	    $not_ready = (empty($data['api_token']) || empty($data['api_key']) || empty($api_response) || isset($api_response['error']) || $api_response['status'] != 200);
 
 	    ?>
 
@@ -628,7 +629,7 @@ class Formaloo_Main_Class {
                     <?php endif; ?>
                 </div>
 
-	            <?php if (!empty($data['formaloo_api_token']) /*&& !empty($data['public_key'])*/): ?>
+	            <?php if (!empty($data['api_token']) /*&& !empty($data['public_key'])*/): ?>
 
                     <?php
                     // if we don't even have a response from the API
@@ -680,7 +681,7 @@ class Formaloo_Main_Class {
 
     public function formResultsPage() {
         // $data = $this->getData();
-	    $not_ready = (empty($data['formaloo_api_token']) || empty($data['formaloo_api_key']));
+	    $not_ready = (empty($data['api_token']) || empty($data['api_key']));
 
 	    ?>
 
@@ -712,7 +713,7 @@ class Formaloo_Main_Class {
 
             <form id="formaloo-admin-form" class="postbox">
 
-	            <?php if (!empty($data['formaloo_api_token']) && !empty($data['slug_for_results'])): ?>
+	            <?php if (!empty($data['api_token']) && !empty($data['slug_for_results'])): ?>
                     <p class="notice notice-error">
                             <?php _e( 'An error happened on the WordPress side.', 'formaloo' ); ?>
                     </p>
@@ -733,7 +734,7 @@ class Formaloo_Main_Class {
                             <span class="dashicons dashicons-text-page"></span>
                             <?php _e('Your Form Results', 'formaloo'); ?>
                         </h3>
-                        <?php $this->results_table_page($_GET['results_slug']); ?>
+                        <?php $this->results_table_page(esc_url($_GET['results_slug'])); ?>
                     </div>
 
                 <?php endif; ?>
@@ -753,7 +754,7 @@ class Formaloo_Main_Class {
 
         $data = $this->getData();
 
-	    $not_ready = (empty($data['formaloo_api_token']) || empty($data['formaloo_api_key']));
+	    $not_ready = (empty($data['api_token']) || empty($data['api_key']));
 
 	    ?>
 
@@ -805,11 +806,11 @@ class Formaloo_Main_Class {
                                     <label><?php _e( 'API Key', 'formaloo' ); ?></label>
                                 </td>
                                 <td>
-                                    <input name="formaloo_formaloo_api_key"
-                                           id="formaloo_formaloo_api_key"
+                                    <input name="formaloo_api_key"
+                                           id="formaloo_api_key"
                                            class="regular-text"
                                            type="text"
-                                           value="<?php echo (isset($data['formaloo_api_key'])) ? $data['formaloo_api_key'] : ''; ?>"/>
+                                           value="<?php echo (isset($data['api_key'])) ? $data['api_key'] : ''; ?>"/>
                                 </td>
                             </tr>
                             <tr>
@@ -817,11 +818,11 @@ class Formaloo_Main_Class {
                                     <label><?php _e( 'API Token', 'formaloo' ); ?></label>
                                 </td>
                                 <td>
-                                    <input name="formaloo_formaloo_api_token"
-                                           id="formaloo_formaloo_api_token"
+                                    <input name="formaloo_api_token"
+                                           id="formaloo_api_token"
                                            class="regular-text"
                                            type="text"
-                                           value="<?php echo (isset($data['formaloo_api_token'])) ? $data['formaloo_api_token'] : ''; ?>"/>
+                                           value="<?php echo (isset($data['api_token'])) ? $data['api_token'] : ''; ?>"/>
                                 </td>
                             </tr>
                             <tr>

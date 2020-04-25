@@ -103,20 +103,22 @@ class Formaloo_Results_List_Table extends WP_List_Table {
     private function sort_data( $a, $b ) {
 
         // Set defaults
-        $orderby = 'date_created';
-        $order = 'asc';
+        $columns = ['date_created','full_results'];
+        $orders = ['asc', 'desc'];
 
-        // If orderby is set, use this as the sort column
-        if(!empty($_GET['orderby']))
-        {
-            $orderby = $_GET['orderby'];
+        $orderBy = isset( $_GET['orderby'] )  ? sanitize_text_field( $_GET['orderby'] ) : $columns[0];
+        $order = isset( $_GET['order'] )  ? sanitize_text_field( $_GET['order'] ) : $orders[0];
+
+        // If orderby exists, use this as the sort column
+        if (!in_array( $orderBy, $columns )) {
+            $orderBy = $columns[0];
         }
 
-        // If order is set use this as the order
-        if(!empty($_GET['order']))
-        {
-            $order = $_GET['order'];
+        // If order exists use this as the order
+        if (!in_array( $order, $orders )) {
+            $order = $orders[0];
         }
+        
 
         $result = strnatcmp( $a[$orderby], $b[$orderby] );
 
