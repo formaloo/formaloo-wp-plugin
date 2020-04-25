@@ -1,6 +1,10 @@
+
+<img src="https://user-images.githubusercontent.com/22890731/80283193-15f5df80-872b-11ea-8bcb-6fe7b2c0577c.png" alt="Formaloo Logo" title="Formaloo Logo" width="200" />
+
+
 # Form Builder by Formaloo - Drag & Drop Form Builder for WordPress
 
-| Tables        | Are          
+| Requirement        | Version          
 | ------------- |:-------------:|
 | Requires at least | 4.0 |
 | Tested up to | 5.4 |
@@ -64,9 +68,20 @@ Your forms will be autmatically GDPR & HIPAA compatible. Don't worry about anyth
 ## Screenshots
 
 1. Formaloo Drag & Drop Online Form Builder
+
+<img src="https://user-images.githubusercontent.com/22890731/80283209-31f98100-872b-11ea-9bef-527695b3b511.jpg" alt="Screenshot 1" title="Screenshot 1" width="400" />
+
 2. Add your forms in posts, pages and even in HTML templates
+
+<img src="https://user-images.githubusercontent.com/22890731/80283214-358d0800-872b-11ea-9be9-e372e56bb316.jpg" alt="Screenshot 2" title="Screenshot 2" width="400" />
+
 3. See your results instantly in your own website
+
+<img src="https://user-images.githubusercontent.com/22890731/80283218-37ef6200-872b-11ea-8e8e-1915bc061694.jpg" alt="Screenshot 3" title="Screenshot 3" width="400" />
+
 4. Use your forms anywhere with Wordpress's Shortcode, in Gutenberg or classic wordpress editor
+
+<img src="https://user-images.githubusercontent.com/22890731/80283225-3a51bc00-872b-11ea-8994-34a2d6130148.jpg" alt="Screenshot 4" title="Screenshot 4" width="400" />
 
 ## Frequently Asked Questions
 
