@@ -6,12 +6,13 @@ function formaloo_gutenberg_block_callback($attr) {
   $apiUrl = FORMALOO_PROTOCOL . '://api.' . FORMALOO_ENDPOINT .'/v1/forms/form/'. $formAddress . '/show/';
   $formSlug = '';
   $data = get_option('formaloo_data', array());
-  $private_key = $data['private_key'];
+  $formaloo_api_token = $data['formaloo_api_token'];
+  $formaloo_api_key = $data['formaloo_api_key'];
 
   $request = wp_remote_get( $apiUrl ,
    array( 'timeout' => 10,
-   'headers' => array( 'x-api-key' => FORMALOO_X_API_KEY,
-                   'Authorization'=> 'Token ' . $private_key ) 
+   'headers' => array( 'x-api-key' => $formaloo_api_key,
+                   'Authorization'=> 'Token ' . $formaloo_api_token ) 
   ));
 
   if( is_wp_error( $request ) ) {
@@ -44,8 +45,7 @@ function formaloo_gutenberg_block_callback($attr) {
            return '
                <style>'. $show_title . $show_desc . $show_logo .'</style>
                <div id="formz-wrapper" data-formz-slug="'. $formSlug .'"></div>
-               <script src="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT . '/istatic/js/main.js" type="text/javascript" async></script>
-           ';
+              '. wp_enqueue_script ( 'formaloo-form-js-script', FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT . '/istatic/js/main.js' );
    }
 
 }

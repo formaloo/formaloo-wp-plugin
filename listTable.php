@@ -13,15 +13,6 @@ class Formaloo_Forms_List_Table extends WP_List_Table {
         return $this->formData; 
     }
 
-    private $privateKey = '';
-
-    public function setPrivateKey($privateKey) { 
-        $this->privateKey = $privateKey; 
-    }
-    public function getPrivateKey() { 
-        return $this->privateKey; 
-    }
-
     /**
      * Prepare the items for the table to process
      *

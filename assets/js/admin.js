@@ -66,7 +66,7 @@ jQuery(document).ready(function() {
             type: 'get',
             headers: {
                 'x-api-key': formaloo_exchanger.x_api_key,
-                'Authorization': 'Token ' + formaloo_exchanger.private_key
+                'Authorization': 'Token ' + formaloo_exchanger.formaloo_api_token
             },
             success: function(data) {
                 window.open(data['data']['form']['excel'], "_self");
