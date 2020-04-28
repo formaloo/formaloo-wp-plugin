@@ -65,7 +65,7 @@ jQuery(document).ready(function() {
             url: formaloo_exchanger.protocol + '://api.'+ formaloo_exchanger.endpoint_url +'/v1/forms/form/' + jQuery(this).data('form-slug') + '/excel/',
             type: 'get',
             headers: {
-                'x-api-key': formaloo_exchanger.x_api_key,
+                'x-api-key': formaloo_exchanger.api_key,
                 'Authorization': 'Token ' + formaloo_exchanger.api_token
             },
             success: function(data) {

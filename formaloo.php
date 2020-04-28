@@ -150,6 +150,8 @@ class Formaloo_Main_Class {
         
         $api_url = FORMALOO_PROTOCOL. '://api.'. FORMALOO_ENDPOINT .'/v1/forms/form/'. $slug .'/submits/?page='. $resultListTable->get_pagenum();
   
+        print_r($api_url);
+
         $response = wp_remote_get( $api_url ,
         array( 'timeout' => 10,
        'headers' => array( 'x-api-key' => $api_key,
@@ -733,7 +735,7 @@ class Formaloo_Main_Class {
                             <span class="dashicons dashicons-text-page"></span>
                             <?php _e('Your Form Results', 'formaloo'); ?>
                         </h3>
-                        <?php $this->results_table_page(esc_url($_GET['results_slug'])); ?>
+                        <?php $this->results_table_page(esc_attr($_GET['results_slug'])); ?>
                     </div>
 
                 <?php endif; ?>
