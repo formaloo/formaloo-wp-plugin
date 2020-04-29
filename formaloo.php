@@ -394,7 +394,8 @@ class Formaloo_Main_Class {
     function formaloo_invalid_token_admin_notice() { 
         $currentScreen = get_current_screen();
         $data = $this->getData();
-        $currentGetFormsStatus =  ($this->getForms($data['api_key'], $data['api_token']))['status'];
+        $forms = $this->getForms($data['api_key'], $data['api_token']);
+        $currentGetFormsStatus = isset($forms['status'])? $forms['status'] : 401;
         if ($currentGetFormsStatus == 401 && $currentScreen->id == 'toplevel_page_formaloo') {
         ?>
 
@@ -826,7 +827,7 @@ class Formaloo_Main_Class {
                                            value="<?php echo (isset($data['api_token'])) ? $data['api_token'] : ''; ?>"/>
                                 </td>
                             </tr>
-                            <tr>
+                            <tr id="formaloo-settings-submit-row">
                                 <td>
                                     <button class="button button-primary formaloo-admin-save formaloo-button-black" type="submit">
                                         <?php ($not_ready) ? _e( 'Connect', 'formaloo' ) : _e( 'Save', 'formaloo' ) ?>

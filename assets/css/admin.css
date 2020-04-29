@@ -110,3 +110,6 @@
   background: black!important;
   border-color: black!important;
 }
+#formaloo-settings-submit-row {
+  display: flex;
+}
