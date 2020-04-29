@@ -8,6 +8,7 @@ jQuery(document).ready(function() {
         e.preventDefault();
 
         // We inject some extra fields required for the security
+        jQuery('#formaloo-settings-submit-row').append('<td><span class="spinner is-active"></span></td>');
         jQuery(this).append('<input type="hidden" name="action" value="store_admin_data" />');
         jQuery(this).append('<input type="hidden" name="security" value="' + formaloo_exchanger._nonce + '" />');
 
@@ -18,6 +19,7 @@ jQuery(document).ready(function() {
             data: jQuery(this).serialize(),
             success: function(response) {
                 setTimeout(function() {
+                    jQuery('.spinner').removeClass('is-active');
                     window.location.href = "?page=formaloo";
                     }, 1000);
             }
