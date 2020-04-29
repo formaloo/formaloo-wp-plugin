@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Formaloo Form Builder
  * Description:       Easily embed Formaloo forms into your blog or WP pages.
- * Version:           1.0.0
+ * Version:           1.1.0.3
  * Author:            Formaloo team
  * Author URI:        https://formaloo.net/
  * Text Domain:       formaloo
@@ -16,7 +16,7 @@
  * Plugin constants
  */
 if(!defined('FORMALOO_PLUGIN_VERSION'))
-	define('FORMALOO_PLUGIN_VERSION', '1.0.0');
+	define('FORMALOO_PLUGIN_VERSION', '1.1.0.3');
 if(!defined('FORMALOO_URL'))
 	define('FORMALOO_URL', plugin_dir_url( __FILE__ ));
 if(!defined('FORMALOO_PATH'))
@@ -71,7 +71,7 @@ class Formaloo_Main_Class {
         // Admin page calls
         // add_action('wp_footer',                 array($this,'addFooterCode'));
 
-        load_plugin_textdomain( 'formaloo', FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
+        load_plugin_textdomain( 'formaloo', false, 'formaloo/languages/' );
 
         add_action('admin_menu',                array($this,'addAdminMenu'));
         add_action('wp_ajax_store_admin_data',  array($this,'storeAdminData'));
