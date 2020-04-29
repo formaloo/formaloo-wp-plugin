@@ -71,7 +71,7 @@ class Formaloo_Main_Class {
         // Admin page calls
         // add_action('wp_footer',                 array($this,'addFooterCode'));
 
-        load_plugin_textdomain( 'formaloo', false, 'formaloo/languages/' );
+        load_plugin_textdomain( 'formaloo', FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
 
         add_action('admin_menu',                array($this,'addAdminMenu'));
         add_action('wp_ajax_store_admin_data',  array($this,'storeAdminData'));
