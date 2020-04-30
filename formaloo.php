@@ -37,6 +37,12 @@ require_once plugin_dir_path( __FILE__ ) . '/blocks/formaloo-block.php';
 require_once('gutenberg.php');
 
 
+add_action( 'plugins_loaded', 'formaloo_load_plugin_textdomain' );
+    
+function formaloo_load_plugin_textdomain() {
+    load_plugin_textdomain( 'formaloo', FALSE, FORMALOO_PATH . '/languages/' );
+}
+
 
 /*
  * Main class
@@ -82,11 +88,7 @@ class Formaloo_Main_Class {
 
         add_action('admin_notices', array($this, 'formaloo_invalid_token_admin_notice'));
 
-        add_action( 'plugins_loaded', 'formaloo_load_plugin_textdomain' );
-    }
-
-    function formaloo_load_plugin_textdomain() {
-        load_plugin_textdomain( 'formaloo', FALSE, FORMALOO_PATH . '/languages/' );
+        
     }
 
     public function formaloo_show_form_shortcode($atts) {
