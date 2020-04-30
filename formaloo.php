@@ -86,7 +86,7 @@ class Formaloo_Main_Class {
     }
 
     function formaloo_load_plugin_textdomain() {
-        load_plugin_textdomain( 'formaloo', FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
+        load_plugin_textdomain( 'formaloo', FALSE, FORMALOO_PATH . '/languages/' );
     }
 
     public function formaloo_show_form_shortcode($atts) {
