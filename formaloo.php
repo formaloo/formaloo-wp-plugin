@@ -71,8 +71,6 @@ class Formaloo_Main_Class {
         // Admin page calls
         // add_action('wp_footer',                 array($this,'addFooterCode'));
 
-        load_plugin_textdomain( 'formaloo', false, 'formaloo/languages/' );
-
         add_action('admin_menu',                array($this,'addAdminMenu'));
         add_action('wp_ajax_store_admin_data',  array($this,'storeAdminData'));
         add_action('wp_ajax_get_formaloo_shortcode',  array($this,'getFormalooShortcode'));
@@ -83,6 +81,12 @@ class Formaloo_Main_Class {
         add_filter( 'submenu_file', array($this, 'formaloo_wp_admin_submenu_filter'));
 
         add_action('admin_notices', array($this, 'formaloo_invalid_token_admin_notice'));
+
+        add_action( 'plugins_loaded', 'formaloo_load_plugin_textdomain' );
+    }
+
+    function formaloo_load_plugin_textdomain() {
+        load_plugin_textdomain( 'formaloo', FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
     }
 
     public function formaloo_show_form_shortcode($atts) {
