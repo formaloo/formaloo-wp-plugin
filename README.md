@@ -8,7 +8,7 @@
 | ------------- |:-------------:|
 | Requires at least | 4.0 |
 | Tested up to | 5.4 |
-| Stable tag | 1.1.0.3 |
+| Stable tag | 1.1.0.4 |
 | Requires PHP | 5.2 |
 
 **Contributors:** Formaloo, idearun
@@ -156,7 +156,7 @@ See our <a href="https://api.formaloo.net/docs">API documentation</a> for more i
 
 ## Changelog
 
-### 1.1.0.1
+### 1.1.0.4
 - **Added:** Export & Sync your forms with your own Google Drive (Google Sheet)
 - **Added:** Multi-langugage support added
 - **Added:** RTL langugages support added
