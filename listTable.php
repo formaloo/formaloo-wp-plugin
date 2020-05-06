@@ -144,8 +144,16 @@ class Formaloo_Forms_List_Table extends WP_List_Table {
         $columns = ['title','active','submitCount','excel', 'more'];
         $orders = ['asc', 'desc'];
 
-        $orderBy = isset( $_GET['orderby'] )  ? sanitize_text_field( $_GET['orderby'] ) : $columns[0];
-        $order = isset( $_GET['order'] )  ? sanitize_text_field( $_GET['order'] ) : $orders[0];
+        $orderBy = $columns[0];
+        $order = $orders[0];
+
+        if (isset( $_GET['orderby'] )) {
+            $orderBy = sanitize_text_field( $_GET['orderby'] );
+        }
+
+        if (isset( $_GET['order'] )) {
+            $order = sanitize_text_field( $_GET['order'] );
+        }
 
         // If orderby exists, use this as the sort column
         if (!in_array( $orderBy, $columns )) {
@@ -157,7 +165,7 @@ class Formaloo_Forms_List_Table extends WP_List_Table {
             $order = $orders[0];
         }
 
-        $result = strnatcmp( $a[$orderby], $b[$orderby] );
+        $result = strnatcmp( $a[sanitize_text_field( $_GET['orderby'] )], $b[sanitize_text_field( $_GET['orderby'] )] );
 
         if($order === 'asc')
         {

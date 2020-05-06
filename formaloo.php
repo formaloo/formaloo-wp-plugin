@@ -153,8 +153,6 @@ class Formaloo_Main_Class {
         
         $api_url = FORMALOO_PROTOCOL. '://api.'. FORMALOO_ENDPOINT .'/v1/forms/form/'. $slug .'/submits/?page='. $resultListTable->get_pagenum();
   
-        print_r($api_url);
-
         $response = wp_remote_get( $api_url ,
         array( 'timeout' => 10,
        'headers' => array( 'x-api-key' => $api_key,
@@ -171,6 +169,27 @@ class Formaloo_Main_Class {
         ?>
         <?php $resultListTable->display(); ?>
         <?php
+    }
+
+    public function get_user_profile_name() {
+        $result = array();
+        $data = $this->getData();
+        $api_token = $data['api_token'];
+        $api_key = $data['api_key'];
+        
+        $api_url = FORMALOO_PROTOCOL. '://api.'. FORMALOO_ENDPOINT .'/v2/profiles/profile/me/';
+  
+        $response = wp_remote_get( $api_url ,
+        array( 'timeout' => 10,
+       'headers' => array( 'x-api-key' => $api_key,
+                          'Authorization'=> 'Token ' . $api_token ) 
+        ));
+  
+        if (is_array($response) && !is_wp_error($response)) {
+          $result = json_decode($response['body'], true);
+        }
+
+        return $result['data']['profile']['first_name'];
     }
 
 	/**
@@ -564,6 +583,7 @@ class Formaloo_Main_Class {
                         jQuery('.formaloo_clipboard_wrapper').addClass('hidden');
                         jQuery(".form-table").append('<input name="formaloo_form_slug" id="formaloo_form_slug" type="hidden" value="' + $slug + '" />');
                         jQuery(".form-table").append('<input name="formaloo_form_address" id="formaloo_form_address" type="hidden" value="' + $address + '" />');
+                        jQuery('.formaloo-shortcode-post-row').find('a').remove();
                         jQuery(".formaloo-shortcode-post-row").append('<a href="<?php echo FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT ?>/dashboard/my-forms/' + $slug + '/share" target="_blank"><?php _e( 'Additional Settings', 'formaloo' ); ?></a>');
                     }
 
@@ -627,7 +647,7 @@ class Formaloo_Main_Class {
                     <?php else: ?>
                         <?php echo $this->getStatusIcon(!$not_ready); ?>
                         <?php 
-                            $formaloo_first_name = $api_response['data']['forms'][0]['owner']['first_name'];
+                            $formaloo_first_name = $this->get_user_profile_name();
                             $formaloo_user_name = empty($formaloo_first_name) ? __('User','formaloo') : $formaloo_first_name;
                             echo __('Hello Dear','formaloo'). ' ' . $formaloo_user_name .'! '. __('You can edit or view your forms right here or you can access', 'formaloo') .' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/" target="_blank">'. __('your full dashboard here','formaloo') .'</a>.'; 
                         ?>
