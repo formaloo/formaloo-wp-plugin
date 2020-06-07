@@ -28,7 +28,7 @@
   white-space: -o-pre-wrap;
   word-wrap: break-word;
 }
-.hidden {
+.formaloo_hidden {
   display: none;
   visibility: hidden;
 }
@@ -90,6 +90,7 @@
   background: #FFE7E1;
   border-radius: 8px;
   display: flex;
+  margin: 20px 0 !important;
 }
 .formaloo-api-settings-top-wrapper {
   display: flex;
@@ -112,4 +113,8 @@
 }
 #formaloo-settings-submit-row {
   display: flex;
+}
+.formaloo-feedback-wdiget-top-info img {
+  width: 150px;
+  padding-top: 10px;
 }

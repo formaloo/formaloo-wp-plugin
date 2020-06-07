@@ -3,11 +3,11 @@ msgstr ""
 "Project-Id-Version: Formaloo Form Builder\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-06-07 06:02+0000\n"
-"PO-Revision-Date: 2020-06-07 06:05+0000\n"
+"PO-Revision-Date: 2020-06-07 06:02+0000\n"
 "Last-Translator: \n"
-"Language-Team: French (France)\n"
-"Language: fr_FR\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"Language-Team: Spanish (Spain)\n"
+"Language: es_ES\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -16,18 +16,17 @@ msgstr ""
 
 #: showActivationNotice.php:26
 msgid "Thank you for using the Formaloo plugin!"
-msgstr "Merci d'utiliser le plugin Formaloo!"
+msgstr "¡Gracias por usar el complemento Formaloo!"
 
 #: showActivationNotice.php:26 git/showActivationNotice.php:26
 #: svn/trunk/showActivationNotice.php:26
 msgid "Get Started by visiting the Settings Page"
-msgstr "Commencez par visiter la page Paramètres"
+msgstr "Comience visitando la página de configuración"
 
 #: formaloo.php:97 formaloo.php:518 git/formaloo.php:97 git/formaloo.php:518
 #: svn/trunk/formaloo.php:97 svn/trunk/formaloo.php:518
 msgid "Show Form"
-msgstr ""
-"Afficher le formulaire\n"
+msgstr "Mostrar formulario"
 
 #: formaloo.php:335 formaloo.php:336 git/formaloo.php:335 git/formaloo.php:336
 #: svn/trunk/formaloo.php:335 svn/trunk/formaloo.php:336
@@ -37,45 +36,45 @@ msgstr "Formaloo"
 #: formaloo.php:346 formaloo.php:347 git/formaloo.php:346 git/formaloo.php:347
 #: svn/trunk/formaloo.php:346 svn/trunk/formaloo.php:347
 msgid "Settings"
-msgstr "Réglages"
+msgstr "Configuraciones"
 
 #: formaloo.php:355 git/formaloo.php:355 svn/trunk/formaloo.php:355
 msgid "Results"
-msgstr "Résultats"
+msgstr "Resultados"
 
 #: formaloo.php:362 formaloo.php:633 git/formaloo.php:362 git/formaloo.php:633
 #: svn/trunk/formaloo.php:362 svn/trunk/formaloo.php:633
 msgid "My Forms"
-msgstr "Mes formulaires"
+msgstr "Mis formas"
 
 #: formaloo.php:425 git/formaloo.php:425 svn/trunk/formaloo.php:425
 msgid "Invalid API Token or API Key! Please visit your"
-msgstr "Jeton d'API ou Clé d'API non valide! Veuillez visiter votre"
+msgstr "¡Token API o clave API no válidos! Visite su"
 
 #: formaloo.php:425 formaloo.php:821 git/formaloo.php:425 git/formaloo.php:821
 #: svn/trunk/formaloo.php:425 svn/trunk/formaloo.php:821
 msgid "Formaloo dashboard here"
-msgstr "de bord Formaloo ici"
+msgstr "panel de Formaloo aquí"
 
 #: formaloo.php:425 git/formaloo.php:425 svn/trunk/formaloo.php:425
 msgid "to get a new one."
-msgstr "pour en obtenir un nouveau."
+msgstr "para obtener uno nuevo."
 
 #: formaloo.php:454 git/formaloo.php:454 svn/trunk/formaloo.php:454
 msgid "Don't have a Formaloo account?"
-msgstr "Vous n'avez pas de compte Formaloo?"
+msgstr "¿No tienes una cuenta de Formaloo?"
 
 #: formaloo.php:454 git/formaloo.php:454 svn/trunk/formaloo.php:454
 msgid "Try one for Free!"
-msgstr "Essayez-en un gratuitement!"
+msgstr "Prueba uno gratis!"
 
 #: formaloo.php:488 git/formaloo.php:488 svn/trunk/formaloo.php:488
 msgid "How to show"
-msgstr "Comment montrer"
+msgstr "Cómo mostrar"
 
 #: formaloo.php:494 git/formaloo.php:494 svn/trunk/formaloo.php:494
 msgid "Link"
-msgstr "Lien"
+msgstr "Enlace"
 
 #: formaloo.php:497 git/formaloo.php:497 svn/trunk/formaloo.php:497
 msgid "iFrame"
@@ -87,51 +86,51 @@ msgstr "Script"
 
 #: formaloo.php:508 git/formaloo.php:508 svn/trunk/formaloo.php:508
 msgid "Link title"
-msgstr "Titre du lien"
+msgstr "Título del enlace"
 
 #: formaloo.php:510 git/formaloo.php:510 svn/trunk/formaloo.php:510
 msgid "(Choose a title for the form link)"
-msgstr "(Choisissez un titre pour le lien du formulaire)"
+msgstr "(Elija un título para el enlace del formulario)"
 
 #: formaloo.php:524 git/formaloo.php:524 svn/trunk/formaloo.php:524
 msgid "Show logo"
-msgstr "Afficher le logo"
+msgstr "Mostrar logo"
 
 #: formaloo.php:526 git/formaloo.php:526 svn/trunk/formaloo.php:526
 msgid "(Show the logo in the embedded form?)"
-msgstr "(Afficher le logo dans le formulaire intégré?)"
+msgstr "(¿Mostrar el logotipo en el formulario incrustado?)"
 
 #: formaloo.php:530 formaloo.php:543 formaloo.php:556 git/formaloo.php:530
 #: git/formaloo.php:543 git/formaloo.php:556 svn/trunk/formaloo.php:530
 #: svn/trunk/formaloo.php:543 svn/trunk/formaloo.php:556
 msgid "Yes"
-msgstr "Oui"
+msgstr "Si"
 
 #: formaloo.php:531 formaloo.php:544 formaloo.php:557 git/formaloo.php:531
 #: git/formaloo.php:544 git/formaloo.php:557 svn/trunk/formaloo.php:531
 #: svn/trunk/formaloo.php:544 svn/trunk/formaloo.php:557
 msgid "No"
-msgstr "Non"
+msgstr "No"
 
 #: formaloo.php:537 git/formaloo.php:537 svn/trunk/formaloo.php:537
 msgid "Show title"
-msgstr "Montrer le titre"
+msgstr "Mostrar título"
 
 #: formaloo.php:539 git/formaloo.php:539 svn/trunk/formaloo.php:539
 msgid "(Show the title in the embedded form?)"
-msgstr "(Afficher le titre dans le formulaire intégré?)"
+msgstr "(¿Mostrar el título en el formulario incrustado?)"
 
 #: formaloo.php:550 git/formaloo.php:550 svn/trunk/formaloo.php:550
 msgid "Show description"
-msgstr "Montrer la description"
+msgstr "Mostrar descripcion"
 
 #: formaloo.php:552 git/formaloo.php:552 svn/trunk/formaloo.php:552
 msgid "(Show the description in the embedded form?)"
-msgstr "(Afficher la description dans le formulaire intégré?)"
+msgstr "(¿Mostrar la descripción en el formulario incrustado?)"
 
 #: formaloo.php:563 git/formaloo.php:563 svn/trunk/formaloo.php:563
 msgid "Shortcode will appear here"
-msgstr "Le shortcode apparaîtra ici"
+msgstr "Shortcode aparecerá aquí"
 
 #: formaloo.php:569 git/formaloo.php:569 svn/trunk/formaloo.php:569
 msgid ""
@@ -140,207 +139,203 @@ msgid ""
 "Classic Editor, choose the Text tab (instead of Visual tab) tab and paste "
 "the shortcode wherever you desire."
 msgstr ""
-"Copiez le shortcode ci-dessus puis allez dans votre éditeur de publication / "
-"page. S'il s'agit de Gutenberg Editor, ajoutez un bloc Shortcode et collez "
-"le shortcode. S'il s'agit d'un éditeur classique, choisissez l'onglet Texte "
-"(au lieu de l'onglet Visuel) et collez le shortcode où vous le souhaitez."
+"Copie el shortcode arriba y luego vaya a su editor de publicaciones / "
+"páginas. Si es Gutenberg Editor, agregue un bloque Shortcode y pegue el "
+"shortcode. Si es el Editor clásico, elija la pestaña Texto (en lugar de la "
+"pestaña Visual) y pegue el shortcode donde lo desee."
 
 #: formaloo.php:570 git/formaloo.php:570 svn/trunk/formaloo.php:570
 msgid "More Info"
-msgstr "Plus d'informations"
+msgstr "Más información"
 
 #: formaloo.php:575 git/formaloo.php:575 svn/trunk/formaloo.php:575
 msgid "Get shortcode"
-msgstr "Obtenez un shortcode"
+msgstr "Obtener shortcode"
 
 #: formaloo.php:587 git/formaloo.php:587 svn/trunk/formaloo.php:587
 msgid "Additional Settings"
-msgstr "Paramètres additionnels"
+msgstr "Ajustes adicionales"
 
 #: formaloo.php:642 git/formaloo.php:642 svn/trunk/formaloo.php:642
 msgid "Make sure you have a Formaloo account first, it's free! 👍"
-msgstr "Assurez-vous d'abord d'avoir un compte Formaloo, c'est gratuit! 👍"
+msgstr "Asegúrese de tener una cuenta de Formaloo primero, ¡es gratis! 👍"
 
 #: formaloo.php:643 git/formaloo.php:643 svn/trunk/formaloo.php:643
 msgid "You can"
-msgstr "Vous"
+msgstr "Puedes crear"
 
 #: formaloo.php:643 git/formaloo.php:643 svn/trunk/formaloo.php:643
 msgid "create an account here"
-msgstr "pouvez créer un compte ici"
+msgstr "una cuenta aquí"
 
 #: formaloo.php:645 git/formaloo.php:645 svn/trunk/formaloo.php:645
 msgid "If so you can find your API Key & API Token from your"
-msgstr ""
-"Si c'est le cas, vous pouvez trouver votre Clé d'API et Jeton d'API à partir "
-"de votre"
+msgstr "Si es así, puede encontrar su clave API en su"
 
 #: formaloo.php:645 git/formaloo.php:645 svn/trunk/formaloo.php:645
 msgid "profile page,"
-msgstr "page de profil"
+msgstr "página de perfil"
 
 #: formaloo.php:645 git/formaloo.php:645 svn/trunk/formaloo.php:645
 msgid "and enter it on the"
-msgstr "et la saisir sur"
+msgstr "e ingresarla en la"
 
 #: formaloo.php:645 git/formaloo.php:645 svn/trunk/formaloo.php:645
 msgid "settings page"
-msgstr "la page des paramètres"
+msgstr "la página de configuración"
 
 #: formaloo.php:651 git/formaloo.php:651 svn/trunk/formaloo.php:651
 msgid "User"
-msgstr "Utilisateur"
+msgstr "Usuario"
 
 #: formaloo.php:652 git/formaloo.php:652 svn/trunk/formaloo.php:652
 msgid "Hello Dear"
-msgstr "Bonjour chère"
+msgstr "Hola"
 
 #: formaloo.php:652 git/formaloo.php:652 svn/trunk/formaloo.php:652
 msgid "You can edit or view your forms right here or you can access"
-msgstr ""
-"Vous pouvez modifier ou afficher vos formulaires ici ou vous pouvez accéder "
-"à "
+msgstr "Puede editar o ver sus formularios aquí mismo o puede acceder"
 
 #: formaloo.php:652 git/formaloo.php:652 svn/trunk/formaloo.php:652
 msgid "your full dashboard here"
-msgstr "votre tableau de bord complet ici"
+msgstr "a su panel completo aquí"
 
 #: formaloo.php:663 git/formaloo.php:663 svn/trunk/formaloo.php:663
 msgid ""
 "An error happened on the WordPress side. Make sure your server allows remote "
 "calls."
 msgstr ""
-"Une erreur s'est produite du côté de WordPress. Assurez-vous que votre "
-"serveur autorise les appels à distance."
+"Se produjo un error en el lado de WordPress. Asegúrese de que su servidor "
+"permita llamadas remotas."
 
 #: formaloo.php:688 git/formaloo.php:688 svn/trunk/formaloo.php:688
 msgid "Your forms"
-msgstr "Vos formulaires"
+msgstr "Sus formularios"
 
 #: formaloo.php:691 git/formaloo.php:691 svn/trunk/formaloo.php:691
 msgid "Create a form"
-msgstr "Créer un formulaire"
+msgstr "Crea un formulario"
 
 #: formaloo.php:691 git/formaloo.php:691 svn/trunk/formaloo.php:691
 msgid "Create a new form"
-msgstr "Créer un nouveau formulaire"
+msgstr "Crea un nuevo formulario"
 
 #: formaloo.php:743 git/formaloo.php:743 svn/trunk/formaloo.php:743
 msgid "An error happened on the WordPress side."
-msgstr "Une erreur s'est produite du côté de WordPress."
+msgstr "Se produjo un error en el lado de WordPress."
 
 #: formaloo.php:760 git/formaloo.php:760 svn/trunk/formaloo.php:760
 msgid "Your Form Results"
-msgstr "Vos résultats de formulaire"
+msgstr "Resultados de formulario"
 
 #: formaloo.php:805 git/formaloo.php:805 svn/trunk/formaloo.php:805
 msgid "Setup Formaloo"
-msgstr "Configurer Formaloo"
+msgstr "Configurar formulario"
 
 #: formaloo.php:811 git/formaloo.php:811 svn/trunk/formaloo.php:811
 msgid "Welcome to Formaloo!"
-msgstr "Bienvenue à Formaloo!"
+msgstr "Bienvenido a Formaloo!"
 
 #: formaloo.php:816 git/formaloo.php:816 svn/trunk/formaloo.php:816
 msgid "To get started, we'll need to access your Formaloo account with an"
-msgstr "Pour commencer, nous devons accéder à votre compte Formaloo avec une"
+msgstr "Para comenzar, necesitaremos acceder a su cuenta de Formaloo con una"
 
 #: formaloo.php:816 git/formaloo.php:816 svn/trunk/formaloo.php:816
 msgid "API Key & API Token"
-msgstr "Clé d'API et Jeton d'API"
+msgstr "Clave API y token API"
 
 #: formaloo.php:816 git/formaloo.php:816 svn/trunk/formaloo.php:816
 msgid "Paste your Formaloo API Key & API Token, and click"
-msgstr "Collez votre Clé d'API et Jeton d'API Formaloo et cliquez"
+msgstr "Pegue su clave API de Formaloo y haga clic en"
 
 #: formaloo.php:816 formaloo.php:854 git/formaloo.php:816 git/formaloo.php:856
 #: svn/trunk/formaloo.php:816 svn/trunk/formaloo.php:856
 msgid "Connect"
-msgstr "Relier"
+msgstr "Conectar"
 
 #: formaloo.php:816 git/formaloo.php:816 svn/trunk/formaloo.php:816
 msgid "to continue"
-msgstr "sur Se connecter pour continuer"
+msgstr "para continuar."
 
 #: formaloo.php:821 git/formaloo.php:821 svn/trunk/formaloo.php:821
 msgid "You can access your"
-msgstr "Vous pouvez accéder à votre tableau"
+msgstr "Puedes acceder a tu"
 
 #: formaloo.php:829 git/formaloo.php:831 svn/trunk/formaloo.php:831
 msgid "API Key"
-msgstr "Clé d'API"
+msgstr "Clave API"
 
 #: formaloo.php:841 git/formaloo.php:843 svn/trunk/formaloo.php:843
 msgid "API Token"
-msgstr "Jeton d'API"
+msgstr "Token API"
 
 #: formaloo.php:854 git/formaloo.php:856 svn/trunk/formaloo.php:856
 msgid "Save"
-msgstr "Enregistrer"
+msgstr "Salvar"
 
 #: formaloo.php:861
 msgid "Need Support? Feel free to contact us"
-msgstr "Besoin de soutien? N'hésitez pas à nous contacter"
+msgstr "¿Necesita ayuda? Siéntete libre de contactarnos"
 
 #: listTable.php:56 git/listTable.php:56 svn/trunk/listTable.php:56
 msgid "Title"
-msgstr "Titre"
+msgstr "Título"
 
 #: listTable.php:57 git/listTable.php:57 svn/trunk/listTable.php:57
 msgid "Active"
-msgstr "Actif"
+msgstr "Activo"
 
 #: listTable.php:58 git/listTable.php:58 svn/trunk/listTable.php:58
 msgid "Submit Count"
-msgstr "Soumettre le décompte"
+msgstr "Enviar cuenta"
 
 #: listTable.php:59 git/listTable.php:59 svn/trunk/listTable.php:59
 msgid "Download Results"
-msgstr "Télécharger les résultats"
+msgstr "Descargar resultados"
 
 #: listTable.php:60 git/listTable.php:60 svn/trunk/listTable.php:60
 msgid "More Options"
-msgstr "Plus d'options"
+msgstr "Mas opciones"
 
 #: listTable.php:104 git/listTable.php:104 svn/trunk/listTable.php:104
 msgid "Download"
-msgstr "Télécharger"
+msgstr "Descargar"
 
 #: listTable.php:179 git/listTable.php:179 svn/trunk/listTable.php:179
 msgid "Set-up Form Settings"
-msgstr "Configurer les paramètres du formulaire"
+msgstr "Configurar formulario"
 
 #: listTable.php:182 git/listTable.php:182 svn/trunk/listTable.php:182
 msgid "View"
-msgstr "Vue"
+msgstr "Ver"
 
 #: listTable.php:183 git/listTable.php:183 svn/trunk/listTable.php:183
 msgid "Edit Form"
-msgstr "Modifier le formulaire"
+msgstr "Editar formulario"
 
 #: listTable.php:183 git/listTable.php:183 svn/trunk/listTable.php:183
 msgid "Edit"
-msgstr "Éditer"
+msgstr "Editar"
 
 #: listTable.php:184 git/listTable.php:184 svn/trunk/listTable.php:184
 msgid "Get Shortcode"
-msgstr "Obtenez un shortcode"
+msgstr "Obtener shortcode"
 
 #: resultsTable.php:63 git/resultsTable.php:63 svn/trunk/resultsTable.php:63
 msgid "Date Created"
-msgstr "date créée"
+msgstr "Fecha de creacion"
 
 #: resultsTable.php:64 git/resultsTable.php:64 svn/trunk/resultsTable.php:64
 msgid "Show Full Results"
-msgstr "Afficher les résultats complets"
+msgstr "Mostrar resultados completos"
 
 #: resultsTable.php:151 git/resultsTable.php:151 svn/trunk/resultsTable.php:151
 msgid "Show Result"
-msgstr "Afficher le résultat"
+msgstr "Mostrar resultado"
 
 #: resultsTable.php:151 git/resultsTable.php:151 svn/trunk/resultsTable.php:151
 msgid "Full Result"
-msgstr "Résultats complets"
+msgstr "Resultado completo"
 
 #. Name of the plugin
 msgid "Formaloo Form Builder"
@@ -348,12 +343,11 @@ msgstr "Formaloo Form Builder"
 
 #. Description of the plugin
 msgid "Easily embed Formaloo forms into your blog or WP pages."
-msgstr ""
-"Intégrez facilement des formulaires Formaloo dans votre blog ou vos pages WP."
+msgstr "Incruste fácilmente formularios de Formaloo en su blog o páginas WP."
 
 #. Author of the plugin
 msgid "Formaloo team"
-msgstr "Équipe de Formaloo"
+msgstr "Equipo Formaloo"
 
 #. Author URI of the plugin
 msgid "https://formaloo.net/"

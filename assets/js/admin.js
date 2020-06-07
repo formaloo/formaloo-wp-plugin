@@ -49,7 +49,7 @@ jQuery(document).ready(function() {
             type: 'post',
             data: jQuery(toForm).serialize(),
             success: function(response) {
-                jQuery('.formaloo_clipboard_wrapper').removeClass('hidden');
+                jQuery('.formaloo_clipboard_wrapper').removeClass('formaloo_hidden');
                 jQuery('input#formaloo_shortcode_pre').val(response.data.output);
             }
         });

@@ -8,7 +8,7 @@
 | ------------- |:-------------:|
 | Requires at least | 4.0 |
 | Tested up to | 5.4 |
-| Stable tag | 1.1.0.4 |
+| Stable tag | 1.5.0.0 |
 | Requires PHP | 5.2 |
 
 **Contributors:** Formaloo, idearun

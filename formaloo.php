@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Formaloo Form Builder
  * Description:       Easily embed Formaloo forms into your blog or WP pages.
- * Version:           1.1.0.4
+ * Version:           1.5.0.0
  * Author:            Formaloo team
  * Author URI:        https://formaloo.net/
  * Text Domain:       formaloo
@@ -16,7 +16,7 @@
  * Plugin constants
  */
 if(!defined('FORMALOO_PLUGIN_VERSION'))
-	define('FORMALOO_PLUGIN_VERSION', '1.1.0.4');
+	define('FORMALOO_PLUGIN_VERSION', '1.5.0.0');
 if(!defined('FORMALOO_URL'))
 	define('FORMALOO_URL', plugin_dir_url( __FILE__ ));
 if(!defined('FORMALOO_PATH'))
@@ -296,6 +296,8 @@ class Formaloo_Main_Class {
 	 */
 	public function addAdminScripts() {
 
+        wp_enqueue_style( 'wp-color-picker' );
+
         wp_enqueue_style('thickbox');
         wp_enqueue_script('thickbox');
 
@@ -303,7 +305,7 @@ class Formaloo_Main_Class {
         wp_add_inline_script( 'clipboard', 'new ClipboardJS(".formaloo_clipboard_btn");' );     
 
 	    wp_enqueue_style('formaloo-admin', FORMALOO_URL. 'assets/css/admin.css', false, 1.0);
-        wp_enqueue_script('formaloo-admin', FORMALOO_URL. 'assets/js/admin.js', array(), 1.0);
+        wp_enqueue_script('formaloo-admin', FORMALOO_URL. 'assets/js/admin.js', array('wp-color-picker'), 1.0);
 
         if (get_locale() == 'fa_IR') {
             wp_enqueue_style('formaloo-admin-rtl', FORMALOO_URL. 'assets/css/rtl.css', false, 1.0);
@@ -338,7 +340,15 @@ class Formaloo_Main_Class {
 			'formaloo',
 			array($this, 'formsListPage'),
             'data:image/svg+xml;base64,' . $formalooIconBase64
-            // 'dashicons-forms'
+        );
+
+        add_submenu_page(
+            'formaloo',
+            __( 'Feedback Widget', 'formaloo' ),
+            __( 'Feedback Widget', 'formaloo' ),
+            'manage_options',
+            'formaloo-feedback-widget-page',
+            array($this, 'feedbackWidgetPage')
         );
         
         add_submenu_page(
@@ -347,7 +357,7 @@ class Formaloo_Main_Class {
             __( 'Settings', 'formaloo' ),
             'manage_options',
             'formaloo-settings-page',
-            array($this, 'adminLayout')
+            array($this, 'settingsPage')
         );
 
         add_submenu_page(
@@ -559,7 +569,7 @@ class Formaloo_Main_Class {
                         </tr>
                     </tbody>
                 </table>
-                <div class="formaloo_clipboard_wrapper hidden">
+                <div class="formaloo_clipboard_wrapper formaloo_hidden">
                     <input id="formaloo_shortcode_pre" type="text" class="regular-text" placeholder="<?php _e('Shortcode will appear here','formaloo'); ?>">
                     <button class="button button-primary formaloo_clipboard_btn" data-clipboard-target="#formaloo_shortcode_pre">
                         <img src="<?php echo FORMALOO_URL ?>/assets/images/clippy.svg" width="13" alt="Copy to clipboard">
@@ -580,7 +590,7 @@ class Formaloo_Main_Class {
                 <script>
 
                     function getRowInfo($slug, $address) {
-                        jQuery('.formaloo_clipboard_wrapper').addClass('hidden');
+                        jQuery('.formaloo_clipboard_wrapper').addClass('formaloo_hidden');
                         jQuery(".form-table").append('<input name="formaloo_form_slug" id="formaloo_form_slug" type="hidden" value="' + $slug + '" />');
                         jQuery(".form-table").append('<input name="formaloo_form_address" id="formaloo_form_address" type="hidden" value="' + $address + '" />');
                         jQuery('.formaloo-shortcode-post-row').find('a').remove();
@@ -603,7 +613,7 @@ class Formaloo_Main_Class {
                     }
 
                     jQuery("#formaloo_show_type").change(function() {
-                        jQuery('.formaloo_clipboard_wrapper').addClass('hidden');
+                        jQuery('.formaloo_clipboard_wrapper').addClass('formaloo_hidden');
                         if (jQuery(this).val() == "link") {
                             toggleRows(link = true);
                         } else if (jQuery(this).val() == "script") {
@@ -775,7 +785,7 @@ class Formaloo_Main_Class {
      *
      * @return void
 	 */
-	public function adminLayout() {
+	public function settingsPage() {
 
         $data = $this->getData();
 
@@ -784,8 +794,6 @@ class Formaloo_Main_Class {
 	    ?>
 
 		<div class="wrap">
-
-            <!-- <h1><?php // _e('Formaloo', 'formaloo'); ?></h1> -->
 
             <form id="formaloo-admin-form" class="postbox">
 
@@ -814,13 +822,9 @@ class Formaloo_Main_Class {
 	                <?php if ($not_ready): ?>
                         <p>
                             <?php echo __('To get started, we\'ll need to access your Formaloo account with an','formaloo') .' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/profile/" target="_blank">'. __('API Key & API Token','formaloo') .'</a>. '. __('Paste your Formaloo API Key & API Token, and click','formaloo') .' <strong>'. __('Connect','formaloo') .'</strong> '. __('to continue','formaloo') .'.'; ?>
-                            <!-- <br> -->
-                            <?php //_e('Once the key set and saved, if you do not see any option, please reload the page. Thank you, you rock 🤘', 'formaloo'); ?>
                         </p>
                     <?php else: ?>
                         <?php echo __('You can access your','formaloo') .' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/" target="_blank">'. __('Formaloo dashboard here','formaloo') .'</a>.'; ?>  
-                        <br>
-                        <br>
                     <?php endif; ?>
                     <?php echo $this->getStatusDiv(!$not_ready); ?>
 
@@ -859,11 +863,165 @@ class Formaloo_Main_Class {
                             </tr>
                         </tbody>
                     </table>
+
+                    <a href="<?php echo esc_url( 'https://web.' . FORMALOO_ENDPOINT . '/contact/' ); ?>" target="_blank"><?php _e( 'Need Support? Feel free to contact us', 'formaloo' ); ?></a>
                 </div>
 
             </form>
 
 		</div>
+
+		<?php
+
+    }
+
+    /**
+	 * Outputs the Feedback Widget Creation layout containing the form with all its options
+     *
+     * @return void
+	 */
+	public function feedbackWidgetPage() {
+
+        $data = $this->getData();
+
+	    $not_ready = (empty($data['api_token']) || empty($data['api_key']));
+
+	    ?>
+
+		<div class="wrap">
+
+            <form id="formaloo-admin-form" class="postbox">
+
+                <div class="form-group inside">
+
+	                <?php
+	                /*
+					 * --------------------------
+					 * Feedback Widget Settings
+					 * --------------------------
+					 */
+	                ?>
+
+                    <div class="formaloo-api-settings-top-wrapper">
+                        <img src="<?php echo FORMALOO_URL ?>assets/images/Formaloo_Logo.png" alt="formaloo-logo">
+                        <h1 class="formaloo-heading">
+                            <?php _e('Feedback Widget Creator', 'formaloo'); ?>
+                        </h1>
+                    </div>
+
+                    <div class="formaloo-feedback-wdiget-top-info">
+                        <img src="<?php echo FORMALOO_URL ?>assets/images/feedback_widget.png" alt="feedback-widget-design">
+                        <h3 class="formaloo-heading">
+		                    <?php _e('Create a feedback widget for your website in less than 1 minute:', 'formaloo'); ?>
+                        </h3>
+                    </div>
+
+	                <?php if ($not_ready): ?>
+                        <p>
+                            <?php echo __('To get started, we\'ll need to access your Formaloo account with an','formaloo') .' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/profile/" target="_blank">'. __('API Key & API Token','formaloo') .'</a>. '. __('Paste your Formaloo API Key & API Token, and click','formaloo') .' <strong>'. __('Connect','formaloo') .'</strong> '. __('to continue','formaloo') .'.'; ?>
+                        </p>
+                    <?php else: ?>
+                        <?php // echo __('You can access your','formaloo') .' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/" target="_blank">'. __('Formaloo dashboard here','formaloo') .'</a>.'; ?>  
+                    <?php endif; ?>
+                    <?php echo $this->getStatusDiv(!$not_ready); ?>
+
+                    <table class="form-table formaloo-widget-settings-table">
+                        <tbody>
+                            <tr>
+                                <td scope="row">
+                                    <label><strong><?php _e( 'Button Text', 'formaloo' ); ?></strong></label>
+                                </td>
+                                <td>
+                                    <input name="formaloo_feedback_widget_button_text"
+                                           id="formaloo_feedback_widget_button_text"
+                                           class="regular-text"
+                                           type="text"
+                                           value="<?php echo (isset($data['api_key'])) ? $data['api_key'] : ''; ?>"/>
+                                </td>
+                            </tr>
+                            <tr id="formaloo_feedback_widget_position_row">
+                                <td scope="row">
+                                    <label>
+                                        <strong>
+                                            <?php _e( 'Widget Position on Screen', 'formaloo' ); ?>
+                                        </strong>
+                                    </label>
+                                </td>
+                                <td>
+                                <fieldset>
+                                    <input type="radio" name="formaloo_feedback_widget_position" id="formaloo_feedback_widget_position_left" value="left" checked /> <label for = "formaloo_feedback_widget_position"><?php _e('Left','formaloo'); ?></label><br>
+                                    <input type="radio" name="formaloo_feedback_widget_position" id="formaloo_feedback_widget_position_right" value="right" /> <label for = "formaloo_feedback_widget_position"><?php _e('Right','formaloo'); ?></label><br>
+                                    <input type="radio" name="formaloo_feedback_widget_position" id="formaloo_feedback_widget_position_bottom_left" value="bottom_left" /> <label for = "formaloo_feedback_widget_position"><?php _e('Bottem Left','formaloo'); ?></label><br>
+                                    <input type="radio" name="formaloo_feedback_widget_position" id="formaloo_feedback_widget_position_bottom_right" value="bottom_right" /> <label for = "formaloo_feedback_widget_position"><?php _e('Bottom Right','formaloo'); ?></label> 
+                                </fieldset>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td scope="row">
+                                    <label><strong><?php _e( 'NPS Choices Icon', 'formaloo' ); ?></strong></label>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td scope="row">
+                                    <label><strong><?php _e( 'Question Title', 'formaloo' ); ?></strong></label>
+                                </td>
+                                <td>
+                                    <input name="formaloo_feedback_widget_question_text_title"
+                                           id="formaloo_feedback_widget_question_text_title"
+                                           class="regular-text"
+                                           type="text"
+                                           value="<?php echo (isset($data['api_key'])) ? $data['api_key'] : ''; ?>"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td scope="row">
+                                    <label><strong><?php _e( 'Submit Button Text', 'formaloo' ); ?></strong></label>
+                                </td>
+                                <td>
+                                    <input name="formaloo_feedback_widget_submit_button_text"
+                                           id="formaloo_feedback_widget_submit_button_text"
+                                           class="regular-text"
+                                           type="text"
+                                           value="<?php echo (isset($data['api_key'])) ? $data['api_key'] : ''; ?>"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td scope="row">
+                                    <label><strong><?php _e( 'Button Color', 'formaloo' ); ?></strong></label>
+                                </td>
+                                <td>
+                                    <input type="text" value="#F15524" class="formaloo_feedback_widget_button_color" data-default-color="#F15524" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td scope="row">
+                                    <label><strong><?php _e( 'Success Message After Submit', 'formaloo' ); ?></strong></label>
+                                </td>
+                                <td>
+                                    <input name="formaloo_feedback_widget_success_message_after_submit"
+                                           id="formaloo_feedback_widget_success_message_after_submit"
+                                           class="regular-text"
+                                           type="text"
+                                           value="<?php echo (isset($data['api_key'])) ? $data['api_key'] : ''; ?>"/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <a href="<?php echo esc_url( 'https://web.' . FORMALOO_ENDPOINT . '/contact/' ); ?>" target="_blank"><?php _e( 'Need Support? Feel free to contact us', 'formaloo' ); ?></a>
+                </div>
+
+            </form>
+
+		</div>
+        
+        <script>
+            jQuery(document).ready(function($){
+                $('.formaloo_feedback_widget_button_color').wpColorPicker();
+            });
+        </script>
 
 		<?php
 
