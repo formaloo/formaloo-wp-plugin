@@ -118,3 +118,22 @@
   width: 150px;
   padding-top: 10px;
 }
+.formaloo_feedback_widget_choice_icon {
+  display: inline-block;
+  padding: 20px;
+  background: rgba(0,0,0,.05);
+  margin-right: 10px;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+.formaloo_feedback_widget_choice_selected {
+  border: 2px solid #FFA500;
+}
+.formaloo_feedback_widget_choice_icon img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  object-fit: contain;
+}
