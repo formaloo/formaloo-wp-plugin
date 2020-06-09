@@ -157,3 +157,9 @@
     justify-content: center;
     background: rgba(0,0,0,0.5);
 }
+#formaloo-feedback-widget-script-textarea {
+  resize: none;
+  overflow: hidden;
+  height: 150px;
+  margin-right: 10px;
+}

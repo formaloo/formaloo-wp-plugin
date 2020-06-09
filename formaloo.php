@@ -912,7 +912,7 @@ class Formaloo_Main_Class {
                             <tbody>
                                 <tr>
                                     <td scope="row">
-                                        <label><?php _e( 'As a link', 'formaloo' ); ?></label><br>
+                                        <label><strong><?php _e( 'As a Link', 'formaloo' ); ?></strong></label><br>
                                         <small><?php _e( 'Share this URL with others to view the form directly', 'formaloo' ); ?></small>
                                     </td>
                                     <td>
@@ -921,12 +921,12 @@ class Formaloo_Main_Class {
                                 </tr>
                                 <tr>
                                     <td scope="row">
-                                        <label><?php _e( 'API Token', 'formaloo' ); ?></label><br>
+                                        <label><strong><?php _e( 'As a Script Tag', 'formaloo' ); ?></strong></label><br>
                                         <small><?php _e( 'Using this method, the form will become a part of your website\'s markup. To use this, put the the code snippet in your website footer.', 'formaloo' ); ?></small>
                                     </td>
                                     <td>
                                     <div class="formaloo_clipboard_wrapper">
-                                        <textarea id="formaloo-feedback-widget-script-textarea">Mussum ipsum cacilds...</textarea>
+                                        <textarea id="formaloo-feedback-widget-script-textarea"></textarea>
                                         <button class="button button-primary formaloo_clipboard_btn" data-clipboard-target="#formaloo-feedback-widget-script-textarea">
                                             <img src="<?php echo FORMALOO_URL ?>/assets/images/clippy.svg" width="13" alt="Copy to clipboard">
                                         </button>  
@@ -1198,9 +1198,7 @@ class Formaloo_Main_Class {
                     var npsFieldParams = { "form": formSlug, "slug" : npsFieldSlug, "title" : questionTitle, "thumbnail_type": selectedIcon};
                     var textFielParams = { "form": formSlug, "slug" : textFieldSlug, "title" : textBoxPlaceHolder};
                     var formParams = { "slug": formSlug, "title" : buttonText, "button_color" : hexToRgbA(buttonColor), "config" : selectedPosition, "form_type" : "nps", "success_message": successMessage, "button_text": buttonText};
-                    // if (len < 6 && len > 1) {
-                    //     this.submit();
-                    // }
+
                     var editTextFieldUrl = "<?php echo FORMALOO_PROTOCOL . '://api.' . FORMALOO_ENDPOINT . '/v2/fields/field/'; ?>"+textFieldSlug+"/";
                     var editNpsFieldUrl = "<?php echo FORMALOO_PROTOCOL . '://api.' . FORMALOO_ENDPOINT . '/v2/fields/field/'; ?>"+npsFieldSlug+"/";
                     var editFormUrl = "<?php echo FORMALOO_PROTOCOL . '://api.' . FORMALOO_ENDPOINT . '/v2/forms/form/'; ?>"+formSlug+"/";
@@ -1229,6 +1227,8 @@ class Formaloo_Main_Class {
                         console.log(err);
                         jQuery('.spinner').removeClass('is-active');
                     })
+
+                    //     this.submit();
 
                 });
 
@@ -1264,7 +1264,6 @@ class Formaloo_Main_Class {
                     }
                     throw new Error('Bad Hex');
                 }
-
             });
         </script>
 
