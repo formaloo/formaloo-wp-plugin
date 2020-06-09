@@ -481,8 +481,6 @@ class Formaloo_Main_Class {
 
 		<div class="wrap">
 
-            <!-- <h1><?php // _e('Formaloo', 'formaloo'); ?></h1> -->
-
             <div id="form-show-edit" style="display:none;">
             </div>
 
@@ -696,10 +694,15 @@ class Formaloo_Main_Class {
                         <div class="form-group inside">
                             <h3 class="formaloo-heading">
                                 <span class="dashicons dashicons-feedback"></span>
-                                <?php _e('Your forms', 'formaloo'); ?>
+                                <?php _e('Your Forms', 'formaloo'); ?>
                             </h3>
-                            <div class="formaloo-create-new-form">
-                                <a href="#TB_inline?&width=100vw&height=100vh&inlineId=form-show-create-form" title="<?php _e('Create a form', 'formaloo'); ?>" target="_blank" class="button formaloo-create-new-form-link thickbox" onclick = "showCreateForm()"><span class="dashicons dashicons-plus"></span> <?php _e('Create a new form', 'formaloo') ?></a>
+                            <div class="formaloo-create-form-wrapper">
+                                <div class="formaloo-create-form">
+                                    <a href="#TB_inline?&width=100vw&height=100vh&inlineId=form-show-create-form" title="<?php _e('Create a form', 'formaloo'); ?>" target="_blank" class="button button-primary formaloo-create-new-form-link thickbox" onclick = "showCreateForm()"><span class="dashicons dashicons-plus"></span> <?php _e('Create a new form', 'formaloo') ?></a>
+                                </div>
+                                <div class="formaloo-create-form">
+                                    <a href="<?php echo admin_url( "admin.php?page=formaloo-feedback-widget-page" ) ?>" target="_blank" class="button button-secondary formaloo-create-new-form-link"><span class="dashicons dashicons-star-half"></span> <?php _e('Create a feedback widget', 'formaloo'); ?></a>
+                                </div>
                             </div>
                             <?php $this->list_table_page(); ?>
                         </div>

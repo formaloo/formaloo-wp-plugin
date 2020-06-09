@@ -103,6 +103,7 @@ class Formaloo_Forms_List_Table extends WP_List_Table {
                 'address'      => $form['address'],
                 'excel'        => '<button class="button formaloo-get-excel-link" data-form-slug="'. $form['slug'] .'"> <span class="dashicons dashicons-download"></span> '. __('Download', 'formaloo') .' </button>',
                 'more'         => '<div class="formaloo-column-more-wrapper"><a href="'. FORMALOO_PROTOCOL .'://'. FORMALOO_ENDPOINT .'/dashboard/my-forms/'. $form['slug'] .'/edit" target="_blank" class="button formaloo-edit-link"><span class="dashicons dashicons-edit"></span></a> <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT . '/dashboard/my-forms/' . $form['slug'] . '/share" target="_blank" class="button formaloo-edit-link"><span class="dashicons dashicons-share"></span></a></div>',
+                'type'         => $form['form_type'],
             );
             $index++;
         }
@@ -180,9 +181,12 @@ class Formaloo_Forms_List_Table extends WP_List_Table {
         
         $actions = array(
                   'view'      => sprintf('<a href="%s://%s/%s" target="_blank">'. __('View','formaloo') .'</a>',FORMALOO_PROTOCOL,FORMALOO_ENDPOINT,$item['address']),
-                  'edit'      => '<a href="#TB_inline?&width=100vw&height=100vh&inlineId=form-show-edit" title="'. __('Edit Form','formaloo') .'" class="thickbox" onclick = "showEditFormWith(\''. FORMALOO_PROTOCOL .'\', \''. FORMALOO_ENDPOINT .'\', \''. $item['slug'] .'\')">'. __('Edit', 'formaloo') .'</a>',
-                  'results'      => '<a href="#TB_inline?&width=100vw&height=100vh&inlineId=form-show-options" class="thickbox" title="'. $modalTitle .'" onclick = "getRowInfo(\''. $item['slug'] .'\',\''. $item['address'] .'\')">'. __('Get Shortcode', 'formaloo') .'</a>'
+                  'edit'      => '<a href="#TB_inline?&width=100vw&height=100vh&inlineId=form-show-edit" title="'. __('Edit Form','formaloo') .'" class="thickbox" onclick = "showEditFormWith(\''. FORMALOO_PROTOCOL .'\', \''. FORMALOO_ENDPOINT .'\', \''. $item['slug'] .'\')">'. __('Edit', 'formaloo') .'</a>'
               );
+
+        if ($item['type'] != 'nps') {
+            $actions['shortcode'] = '<a href="#TB_inline?&width=100vw&height=100vh&inlineId=form-show-options" class="thickbox" title="'. $modalTitle .'" onclick = "getRowInfo(\''. $item['slug'] .'\',\''. $item['address'] .'\')">'. __('Get Shortcode', 'formaloo') .'</a>';
+        }
       
         return sprintf('%1$s %2$s', $item['title'], $this->row_actions($actions) );
     }

@@ -48,13 +48,23 @@
 }
 #edit-form-iframe, #show-result-iframe {
   height: 100vh;
-  /* width: 100vw; */
+}
+.formaloo-create-form-wrapper {
+  display: flex;
+  margin: 20px 0;
+}
+.formaloo-create-form {
+  flex: 50%;
+  margin: 0 10px;
 }
 .formaloo-get-excel-link, .formaloo-edit-link, .formaloo-create-new-form-link {
   display: flex!important;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+}
+.formaloo-create-new-form-link span {
+  margin-right: 5px;
 }
 .formaloo-edit-link {
   max-width: 35px;
