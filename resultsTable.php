@@ -148,7 +148,7 @@ class Formaloo_Results_List_Table extends WP_List_Table {
           $tableData[$key] = array(
               'ID'           => $key,
               'date_created' => date_format($date,"Y/m/d H:i:s"),
-              'full_results' => '<a href="#TB_inline?&width=100vh&height=100vw&inlineId=form-show-specific-result" class="thickbox button formaloo-show-result-button" title="'. __('Show Result','formaloo') .'" onclick = "showFormResultWith(\''. FORMALOO_PROTOCOL .'\', \''. FORMALOO_ENDPOINT .'\', \''. $row['form'] .'\' , \''. $row['slug'] .'\')"><span class="dashicons dashicons-visibility"></span> '. __('Full Result','formaloo') .'</a>'
+              'full_results' => '<a href="#TB_inline?&width=100vw&height=100vh&inlineId=form-show-specific-result" class="thickbox button formaloo-show-result-button" title="'. __('Show Result','formaloo') .'" onclick = "showFormResultWith(\''. FORMALOO_PROTOCOL .'\', \''. FORMALOO_ENDPOINT .'\', \''. $row['form'] .'\' , \''. $row['slug'] .'\')"><span class="dashicons dashicons-visibility"></span> '. __('Full Result','formaloo') .'</a>'
           );
 
           foreach ($rendered_data as $k => $v) {

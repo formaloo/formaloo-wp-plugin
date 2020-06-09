@@ -114,6 +114,13 @@
 #formaloo-settings-submit-row {
   display: flex;
 }
+#formaloo-feedback-widget-submit-row {
+  display: flex;
+  align-items: center;
+}
+#formaloo-feedback-widget-submit-row .spinner {
+  margin: 0;
+}
 .formaloo-feedback-wdiget-top-info img {
   width: 150px;
   padding-top: 10px;
@@ -136,4 +143,17 @@
   width: 35px;
   height: 35px;
   object-fit: contain;
+}
+#formaloo-feedback-widget-form .form-group {
+  position: relative;
+}
+.formaloo-feedback-widget-loading-gif-wrapper {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.5);
 }

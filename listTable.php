@@ -180,8 +180,8 @@ class Formaloo_Forms_List_Table extends WP_List_Table {
         
         $actions = array(
                   'view'      => sprintf('<a href="%s://%s/%s" target="_blank">'. __('View','formaloo') .'</a>',FORMALOO_PROTOCOL,FORMALOO_ENDPOINT,$item['address']),
-                  'edit'      => '<a href="#TB_inline?&width=100vh&height=100vw&inlineId=form-show-edit" title="'. __('Edit Form','formaloo') .'" class="thickbox" onclick = "showEditFormWith(\''. FORMALOO_PROTOCOL .'\', \''. FORMALOO_ENDPOINT .'\', \''. $item['slug'] .'\')">'. __('Edit', 'formaloo') .'</a>',
-                  'results'      => '<a href="#TB_inline?&width=100vh&height=100vw&inlineId=form-show-options" class="thickbox" title="'. $modalTitle .'" onclick = "getRowInfo(\''. $item['slug'] .'\',\''. $item['address'] .'\')">'. __('Get Shortcode', 'formaloo') .'</a>'
+                  'edit'      => '<a href="#TB_inline?&width=100vw&height=100vh&inlineId=form-show-edit" title="'. __('Edit Form','formaloo') .'" class="thickbox" onclick = "showEditFormWith(\''. FORMALOO_PROTOCOL .'\', \''. FORMALOO_ENDPOINT .'\', \''. $item['slug'] .'\')">'. __('Edit', 'formaloo') .'</a>',
+                  'results'      => '<a href="#TB_inline?&width=100vw&height=100vh&inlineId=form-show-options" class="thickbox" title="'. $modalTitle .'" onclick = "getRowInfo(\''. $item['slug'] .'\',\''. $item['address'] .'\')">'. __('Get Shortcode', 'formaloo') .'</a>'
               );
       
         return sprintf('%1$s %2$s', $item['title'], $this->row_actions($actions) );
