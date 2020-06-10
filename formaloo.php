@@ -926,7 +926,8 @@ class Formaloo_Main_Class {
                                 <tr>
                                     <td scope="row">
                                         <label><strong><?php _e( 'As a Script Tag', 'formaloo' ); ?></strong></label><br>
-                                        <small><?php _e( 'Using this method, the form will become a part of your website\'s markup. To use this, put the the code snippet in your website footer.', 'formaloo' ); ?></small>
+                                        <small><?php _e( 'Using this method, the form will become a part of your website\'s markup. To use this, put the the code snippet in your website footer:', 'formaloo' ); ?></small><br><br>
+                                        <a href="<?php echo FORMALOO_URL ?>assets/images/feedback_widget_helper.png" target="_blank"> <img src="<?php echo FORMALOO_URL ?>assets/images/feedback_widget_helper.png" id="formaloo-where-to-put-feedback-widget" alt="Feedback Widget Helper" /></a>
                                     </td>
                                     <td>
                                     <div class="formaloo_clipboard_wrapper">
@@ -1119,31 +1120,49 @@ class Formaloo_Main_Class {
                     jQuery("#formaloo_feedback_widget_choice_icon_type").val($(this).find("div").attr("data-value"));
                 });
 
-                <?php $data = $this->getData(); ?>
-                
-                $.ajax({
-                    url: "<?php echo esc_url( FORMALOO_PROTOCOL . '://api.' . FORMALOO_ENDPOINT . '/v1/forms/templates/list' ); ?>",
-                    type: 'GET',
-                    dataType: 'json',
-                    headers: {
-                        'x-api-key': '<?php echo $data['api_key']; ?>',
-                        'Authorization': '<?php echo 'Token ' . $data['api_token']; ?>'
-                    },
-                    contentType: 'application/json; charset=utf-8',
-                    success: function (result) {
-                        $.each(result['data']['forms'], function(i, form) {
-                            if (form['form_type'] == 'nps') {
-                                copyTemplate(form['slug']);
-                            }
-                        });
-                    },
-                    error: function (error) {
-                        disableFeedbackWidgetTable();
-                        var errorText = error['responseJSON']['errors']['general_errors'][0];
-                        showGeneralErrors(errorText);
-                        $('.formaloo-feedback-widget-loading-gif-wrapper').hide();
+                <?php 
+                    $data = $this->getData();
+
+                    $widgetId = esc_attr($_GET['widget_slug']);
+                    $widgetSlugToEdit = '';
+                    if ($widgetId != '') {
+                        $widgetSlugToEdit = $widgetId;
                     }
-                });
+                ?>
+
+                var widgetSlugToEdit = "<?php echo $widgetSlugToEdit; ?>";
+
+                if (widgetSlugToEdit.length > 0) {
+                    loadExistingWidget(widgetSlugToEdit);
+                } else {
+                    loadTemplates();
+                }
+                
+                function loadTemplates() {
+                    $.ajax({
+                        url: "<?php echo esc_url( FORMALOO_PROTOCOL . '://api.' . FORMALOO_ENDPOINT . '/v1/forms/templates/list' ); ?>",
+                        type: 'GET',
+                        dataType: 'json',
+                        headers: {
+                            'x-api-key': '<?php echo $data['api_key']; ?>',
+                            'Authorization': '<?php echo 'Token ' . $data['api_token']; ?>'
+                        },
+                        contentType: 'application/json; charset=utf-8',
+                        success: function (result) {
+                            $.each(result['data']['forms'], function(i, form) {
+                                if (form['form_type'] == 'nps') {
+                                    copyTemplate(form['slug']);
+                                }
+                            });
+                        },
+                        error: function (error) {
+                            disableFeedbackWidgetTable();
+                            var errorText = error['responseJSON']['errors']['general_errors'][0];
+                            showGeneralErrors(errorText);
+                            $('.formaloo-feedback-widget-loading-gif-wrapper').hide();
+                        }
+                    });
+                }
 
                 function copyTemplate(slug) {
                     $.ajax({
@@ -1155,26 +1174,7 @@ class Formaloo_Main_Class {
                         },
                         data: { 'copied_form' : slug },
                         success: function (result) {
-                            const form = result['data']['form'];
-
-                            // Setup Slug Inputs
-                            $('#formaloo_feedback_widget_form_slug').val(form['slug']);
-                            $('#formaloo_feedback_widget_form_address').val(form['address']);
-
-                            $('#formaloo_feedback_widget_button_text').val(form['title']);
-                            $('#formaloo_feedback_widget_submit_button_text').val(form['button_text']);
-                            $('#formaloo_feedback_widget_success_message_after_submit').val(form['success_message']);
-                            $.each(form['fields_list'], function(i, field) {
-                                if (field['type'] == 'long_text') {
-                                    $('#formaloo_feedback_widget_text_field_slug').val(field['slug']);
-                                    $('#formaloo_feedback_widget_textbox_placeholder').val(field['title']);
-                                } else {
-                                    $('#formaloo_feedback_widget_nps_field_slug').val(field['slug']);
-                                    $('#formaloo_feedback_widget_question_text_title').val(field['title']);
-                                }
-                            });
-
-                            $('.formaloo-feedback-widget-loading-gif-wrapper').hide();
+                            setupFormSettings(result['data']['form']);
                         },
                         error: function (error) {
                             disableFeedbackWidgetTable();
@@ -1183,6 +1183,58 @@ class Formaloo_Main_Class {
                             $('.formaloo-feedback-widget-loading-gif-wrapper').hide();
                         }
                     });
+                }
+
+                function loadExistingWidget(widgetSlug){
+                    $.ajax({
+                        url: "<?php echo esc_url( FORMALOO_PROTOCOL . '://api.' . FORMALOO_ENDPOINT . '/v2/forms/form/' ); ?>"+widgetSlug+"/",
+                        type: 'GET',
+                        dataType: 'json',
+                        headers: {
+                            'x-api-key': '<?php echo $data['api_key']; ?>',
+                            'Authorization': '<?php echo 'Token ' . $data['api_token']; ?>'
+                        },
+                        contentType: 'application/json; charset=utf-8',
+                        success: function (result) {
+                            setupFormSettings(result['data']['form']);
+                        },
+                        error: function (error) {
+                            disableFeedbackWidgetTable();
+                            var errorText = error['responseJSON']['errors']['general_errors'][0];
+                            showGeneralErrors(errorText);
+                            $('.formaloo-feedback-widget-loading-gif-wrapper').hide();
+                        }
+                    });
+                }
+
+                function setupFormSettings(form) {
+
+                    // Setup Slug Inputs
+                    $('#formaloo_feedback_widget_form_slug').val(form['slug']);
+                    $('#formaloo_feedback_widget_form_address').val(form['address']);
+
+                    $('#formaloo_feedback_widget_button_text').val(form['title']);
+                    $('#formaloo_feedback_widget_submit_button_text').val(form['button_text']);
+                    $('#formaloo_feedback_widget_success_message_after_submit').val(form['success_message']);
+                    
+                    $.each(form['fields_list'], function(i, field) {
+                        if (field['type'] == 'long_text') {
+                            $('#formaloo_feedback_widget_text_field_slug').val(field['slug']);
+                            $('#formaloo_feedback_widget_textbox_placeholder').val(field['title']);
+                        } else {
+                            $('#formaloo_feedback_widget_nps_field_slug').val(field['slug']);
+                            $('#formaloo_feedback_widget_question_text_title').val(field['title']);
+                            $(".formaloo_feedback_widget_choice_selected").removeClass("formaloo_feedback_widget_choice_selected");
+                            $('#' + field['thumbnail_type']).addClass("formaloo_feedback_widget_choice_selected");
+                        }
+                    });
+                    
+                    var formConfig = form['config'];
+
+                    if (formConfig != null) {
+                        $('#formaloo_feedback_widget_position_' + formConfig).attr('checked', 'checked');                    }
+
+                    $('.formaloo-feedback-widget-loading-gif-wrapper').hide();
                 }
 
                 $('#formaloo-feedback-widget-form').on('submit', function(e){
@@ -1236,7 +1288,6 @@ class Formaloo_Main_Class {
                     editField(editTextFieldUrl, textFielParams).then(function(data) {
                         editField(editNpsFieldUrl, npsFieldParams).then(function(data) {
                             editField(editFormUrl, formParams).then(function(data) {
-                            console.log(data);
                             tb_show("<?php _e( 'How to use your Feedback Widget', 'formaloo' ); ?>","#TB_inline?width=100vw&height=100vh&inlineId=formaloo-feedback-widget-show-options",null);
                             jQuery('.spinner').removeClass('is-active');
                             }).catch(function(err) {

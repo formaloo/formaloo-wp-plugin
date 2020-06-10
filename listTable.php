@@ -180,14 +180,16 @@ class Formaloo_Forms_List_Table extends WP_List_Table {
         $modalTitle = __('Set-up Form Settings', 'formaloo');
         
         $actions = array(
-                  'view'      => sprintf('<a href="%s://%s/%s" target="_blank">'. __('View','formaloo') .'</a>',FORMALOO_PROTOCOL,FORMALOO_ENDPOINT,$item['address']),
-                  'edit'      => '<a href="#TB_inline?&width=100vw&height=100vh&inlineId=form-show-edit" title="'. __('Edit Form','formaloo') .'" class="thickbox" onclick = "showEditFormWith(\''. FORMALOO_PROTOCOL .'\', \''. FORMALOO_ENDPOINT .'\', \''. $item['slug'] .'\')">'. __('Edit', 'formaloo') .'</a>'
+                  'view'      => sprintf('<a href="%s://%s/%s" target="_blank">'. __('View','formaloo') .'</a>',FORMALOO_PROTOCOL,FORMALOO_ENDPOINT,$item['address'])
               );
 
         if ($item['type'] != 'nps') {
             $actions['shortcode'] = '<a href="#TB_inline?&width=100vw&height=100vh&inlineId=form-show-options" class="thickbox" title="'. $modalTitle .'" onclick = "getRowInfo(\''. $item['slug'] .'\',\''. $item['address'] .'\')">'. __('Get Shortcode', 'formaloo') .'</a>';
+            $actions['edit'] = '<a href="#TB_inline?&width=100vw&height=100vh&inlineId=form-show-edit" title="'. __('Edit Form','formaloo') .'" class="thickbox" onclick = "showEditFormWith(\''. FORMALOO_PROTOCOL .'\', \''. FORMALOO_ENDPOINT .'\', \''. $item['slug'] .'\')">'. __('Edit', 'formaloo') .'</a>';
         } else {
-            $actions['show_widget'] = '<a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT . '/dashboard/my-forms/' . $item['slug'] . '/share" target="_blank">'. __('Use Widget', 'formaloo') .'</a>';
+            $actions['edit'] = '<a href="?page=formaloo-feedback-widget-page&widget_slug='. $item['slug'] .'" target="_blank">'. __('Edit', 'formaloo') .'</a>';
+            $actions['use_widget'] = '<a href="?page=formaloo-feedback-widget-page&widget_slug='. $item['slug'] .'" target="_blank">'. __('Use Widget', 'formaloo') .'</a>';
+
         }
       
         return sprintf('%1$s %2$s', $item['title'], $this->row_actions($actions) );

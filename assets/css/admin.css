@@ -183,3 +183,6 @@
 .formaloo-feedback-widget-disabled-table {
   background: whitesmoke;
 }
+#formaloo-where-to-put-feedback-widget {
+  width: 225px;
+}
