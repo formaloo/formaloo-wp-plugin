@@ -173,3 +173,13 @@
   height: 150px;
   margin-right: 10px;
 }
+.results-table .formaloo-heading a {
+  color: black;
+}
+.formaloo-feedback-widget-notice {
+  margin: 20px 0 !important;
+  padding: 10px;
+}
+.formaloo-feedback-widget-disabled-table {
+  background: whitesmoke;
+}

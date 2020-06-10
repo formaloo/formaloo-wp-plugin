@@ -771,6 +771,7 @@ class Formaloo_Main_Class {
                     <div class="form-group inside results-table">
                         <h3 class="formaloo-heading">
                             <span class="dashicons dashicons-text-page"></span>
+                            <a href="<?php echo admin_url( "admin.php?page=formaloo" ) ?>"><?php _e('My Forms', 'formaloo'); ?></a> / 
                             <?php _e('Your Form Results', 'formaloo'); ?>
                         </h3>
                         <?php $this->results_table_page(esc_attr($_GET['results_slug'])); ?>
@@ -919,7 +920,7 @@ class Formaloo_Main_Class {
                                         <small><?php _e( 'Share this URL with others to view the form directly', 'formaloo' ); ?></small>
                                     </td>
                                     <td>
-                                        <a href="" target="_blank" id="formaloo-feedback-widget">Test</a>
+                                        <a href="" target="_blank" id="formaloo-feedback-widget"></a>
                                     </td>
                                 </tr>
                                 <tr>
@@ -947,6 +948,8 @@ class Formaloo_Main_Class {
                         </h1>
                     </div>
 
+                    <p class="notice notice-error formaloo-feedback-widget-notice"></p> 
+
                     <div class="formaloo-feedback-wdiget-top-info">
                         <img src="<?php echo FORMALOO_URL ?>assets/images/feedback_widget.png" alt="feedback-widget-design">
                         <h3 class="formaloo-heading">
@@ -970,7 +973,6 @@ class Formaloo_Main_Class {
 
                     <table class="form-table formaloo-feedback-widget-settings-table">
                         <tbody>
-                            
                             <tr>
                                 <td scope="row">
                                     <label><strong><?php _e( 'Button Text', 'formaloo' ); ?></strong></label>
@@ -1097,17 +1099,19 @@ class Formaloo_Main_Class {
                             </tr>
                         </tbody>
                     </table>
-
+                    
                     <a href="<?php echo esc_url( FORMALOO_PROTOCOL . '://web.' . FORMALOO_ENDPOINT . '/contact/' ); ?>" target="_blank"><?php _e( 'Need Support? Feel free to contact us', 'formaloo' ); ?></a>
                 </div>
 
             </form>
-
+                            
 		</div>
         
         <script>
             jQuery(document).ready(function($){
+
                 $('.formaloo_feedback_widget_button_color').wpColorPicker();
+                $('.formaloo-feedback-widget-notice').hide();
 
                 $('.formaloo_feedback_widget_choice_icon').on("click",function(){
                     $(".formaloo_feedback_widget_choice_selected").removeClass("formaloo_feedback_widget_choice_selected");
@@ -1134,7 +1138,10 @@ class Formaloo_Main_Class {
                         });
                     },
                     error: function (error) {
-                        
+                        disableFeedbackWidgetTable();
+                        var errorText = error['responseJSON']['errors']['general_errors'][0];
+                        showGeneralErrors(errorText);
+                        $('.formaloo-feedback-widget-loading-gif-wrapper').hide();
                     }
                 });
 
@@ -1170,6 +1177,9 @@ class Formaloo_Main_Class {
                             $('.formaloo-feedback-widget-loading-gif-wrapper').hide();
                         },
                         error: function (error) {
+                            disableFeedbackWidgetTable();
+                            var errorText = error['responseJSON']['errors']['general_errors'][0];
+                            showGeneralErrors(errorText);
                             $('.formaloo-feedback-widget-loading-gif-wrapper').hide();
                         }
                     });
@@ -1177,6 +1187,8 @@ class Formaloo_Main_Class {
 
                 $('#formaloo-feedback-widget-form').on('submit', function(e){
                     e.preventDefault();
+
+                    $('.formaloo-feedback-widget-notice').hide();
 
                     jQuery('#formaloo-feedback-widget-submit-row').append('<td><span class="spinner is-active"></span></td>');
 
@@ -1193,14 +1205,24 @@ class Formaloo_Main_Class {
                     var submitButtonText = $('#formaloo_feedback_widget_submit_button_text').val();
                     var buttonColor = $('.formaloo_feedback_widget_button_color').val();
                     var successMessage = $('#formaloo_feedback_widget_success_message_after_submit').val();
-                    
+
                     $.each($("input[type='radio']").filter(":checked"), function () {
                         selectedPosition = $(this).val();
                     });
 
+
+                    try {
+                        hexToRgbA(buttonColor);
+                    }
+                    catch(err) {
+                        showGeneralErrors(err.message);
+                        jQuery('.spinner').removeClass('is-active');
+                    }
+
+
                     var npsFieldParams = { "form": formSlug, "slug" : npsFieldSlug, "title" : questionTitle, "thumbnail_type": selectedIcon};
                     var textFielParams = { "form": formSlug, "slug" : textFieldSlug, "title" : textBoxPlaceHolder};
-                    var formParams = { "slug": formSlug, "title" : buttonText, "button_color" : hexToRgbA(buttonColor), "config" : selectedPosition, "form_type" : "nps", "success_message": successMessage, "button_text": buttonText};
+                    var formParams = { "slug": formSlug, "title" : buttonText, "button_color" : hexToRgbA(buttonColor), "config" : selectedPosition, "form_type" : "nps", "success_message": successMessage, "button_text": submitButtonText};
 
                     var editTextFieldUrl = "<?php echo FORMALOO_PROTOCOL . '://api.' . FORMALOO_ENDPOINT . '/v2/fields/field/'; ?>"+textFieldSlug+"/";
                     var editNpsFieldUrl = "<?php echo FORMALOO_PROTOCOL . '://api.' . FORMALOO_ENDPOINT . '/v2/fields/field/'; ?>"+npsFieldSlug+"/";
@@ -1267,6 +1289,17 @@ class Formaloo_Main_Class {
                     }
                     throw new Error('Bad Hex');
                 }
+
+                function disableFeedbackWidgetTable() {
+                    $(".formaloo-feedback-widget-settings-table").addClass("formaloo-feedback-widget-disabled-table");
+                    $(".formaloo-feedback-widget-settings-table :input").attr("disabled", true);
+                }
+
+                function showGeneralErrors(errorText) {
+                    $('.formaloo-feedback-widget-notice').show();
+                    $('.formaloo-feedback-widget-notice').text(errorText);
+                }
+
             });
         </script>
 

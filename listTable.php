@@ -186,6 +186,8 @@ class Formaloo_Forms_List_Table extends WP_List_Table {
 
         if ($item['type'] != 'nps') {
             $actions['shortcode'] = '<a href="#TB_inline?&width=100vw&height=100vh&inlineId=form-show-options" class="thickbox" title="'. $modalTitle .'" onclick = "getRowInfo(\''. $item['slug'] .'\',\''. $item['address'] .'\')">'. __('Get Shortcode', 'formaloo') .'</a>';
+        } else {
+            $actions['show_widget'] = '<a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT . '/dashboard/my-forms/' . $item['slug'] . '/share" target="_blank">'. __('Use Widget', 'formaloo') .'</a>';
         }
       
         return sprintf('%1$s %2$s', $item['title'], $this->row_actions($actions) );
