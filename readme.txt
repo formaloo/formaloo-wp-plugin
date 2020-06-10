@@ -144,4 +144,6 @@ See our <a href="https://api.formaloo.net/docs">API documentation</a> for more i
 - Fixed: Loadtime increased by 300% 
 - Fixed: Gutenberg compatibility improved
 
-
+= 1.5.0.0 =
+- Added: Create & Edit Feedback Widgets for your Website
+- Minior bug fixes and improvements
