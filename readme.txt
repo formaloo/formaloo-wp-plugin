@@ -3,7 +3,7 @@ Contributors: Formaloo, idearun
 Tags: contact form, contact form plugin, forms, form builder, custom form, contact button, contact me, custom contact form, form manager, form, forms builder, forms creator, captcha, recaptcha, email form, web form, feedback form, payment form, survey form, donation form, email submit form, message form, mailchimp, mailchimp form, paypal, paypal form, stripe, stripe form, email subscription, contact form widget, user registration form, wordpress registration, wordpress login form, feedback
 Requires at least: 4.0
 Tested up to: 5.4
-Stable tag: 1.5.0.0
+Stable tag: 1.5.0.1
 Requires PHP: 5.2
 License: GNU General Public License v2.0 or later
 
@@ -63,6 +63,9 @@ Your forms will be autmatically GDPR & HIPAA compatible. Don't worry about anyth
 2. Add your forms in posts, pages and even in HTML templates
 3. See your results instantly in your own website
 4. Use your forms anywhere with Wordpress's Shortcode, in Gutenberg or classic wordpress editor
+5. Create and edit feedback widgets and put it on your website
+6. Download your form results as an Excel Sheet quickly from the forms page
+
 
 == Frequently Asked Questions ==
 
@@ -144,6 +147,7 @@ See our <a href="https://api.formaloo.net/docs">API documentation</a> for more i
 - Fixed: Loadtime increased by 300% 
 - Fixed: Gutenberg compatibility improved
 
-= 1.5.0.0 =
+= 1.5.0.1 =
 - Added: Create & Edit Feedback Widgets for your Website
+- Added: Spanish Language Support
 - Minior bug fixes and improvements

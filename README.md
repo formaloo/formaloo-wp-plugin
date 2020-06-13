@@ -8,7 +8,7 @@
 | ------------- |:-------------:|
 | Requires at least | 4.0 |
 | Tested up to | 5.4 |
-| Stable tag | 1.5.0.0 |
+| Stable tag | 1.5.0.1 |
 | Requires PHP | 5.2 |
 
 **Contributors:** Formaloo, idearun
@@ -82,6 +82,14 @@ Your forms will be autmatically GDPR & HIPAA compatible. Don't worry about anyth
 4. Use your forms anywhere with Wordpress's Shortcode, in Gutenberg or classic wordpress editor
 
 <img src="screenshots/screenshot-4.jpg" alt="Screenshot 4" title="Screenshot 4" width="400" />
+
+5. Create and edit feedback widgets and put it on your website
+
+<img src="screenshots/screenshot-5.gif" alt="Screenshot 5" title="Screenshot 5" width="400" />
+
+6. Download your form results as an Excel Sheet quickly from the forms page
+
+<img src="screenshots/screenshot-6.gif" alt="Screenshot 6" title="Screenshot 6" width="400" />
 
 ## Frequently Asked Questions
 
@@ -163,6 +171,6 @@ See our <a href="https://api.formaloo.net/docs">API documentation</a> for more i
 - **Fixed:** Loadtime increased by 300% 
 - **Fixed:** Gutenberg compatibility improved
 
-### 1.5.0.0
+### 1.5.0.1
 - **Added:** Create & Edit Feedback Widgets for your Website
 - Minior bug fixes and improvements

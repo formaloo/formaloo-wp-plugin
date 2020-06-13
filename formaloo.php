@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Formaloo Form Builder
  * Description:       Easily embed Formaloo forms into your blog or WP pages.
- * Version:           1.5.0.0
+ * Version:           1.5.0.1
  * Author:            Formaloo team
  * Author URI:        https://formaloo.net/
  * Text Domain:       formaloo
@@ -16,7 +16,7 @@
  * Plugin constants
  */
 if(!defined('FORMALOO_PLUGIN_VERSION'))
-	define('FORMALOO_PLUGIN_VERSION', '1.5.0.0');
+	define('FORMALOO_PLUGIN_VERSION', '1.5.0.1');
 if(!defined('FORMALOO_URL'))
 	define('FORMALOO_URL', plugin_dir_url( __FILE__ ));
 if(!defined('FORMALOO_PATH'))
@@ -701,7 +701,7 @@ class Formaloo_Main_Class {
                                     <a href="#TB_inline?&width=100vw&height=100vh&inlineId=form-show-create-form" title="<?php _e('Create a form', 'formaloo'); ?>" target="_blank" class="button button-primary formaloo-create-new-form-link thickbox" onclick = "showCreateForm()"><span class="dashicons dashicons-plus"></span> <?php _e('Create a new form', 'formaloo') ?></a>
                                 </div>
                                 <div class="formaloo-create-form">
-                                    <a href="<?php echo admin_url( "admin.php?page=formaloo-feedback-widget-page" ) ?>" target="_blank" class="button button-secondary formaloo-create-new-form-link"><span class="dashicons dashicons-star-half"></span> <?php _e('Create a feedback widget', 'formaloo'); ?></a>
+                                    <a href="<?php echo admin_url( "admin.php?page=formaloo-feedback-widget-page" ) ?>" class="button button-secondary formaloo-create-new-form-link"><span class="dashicons dashicons-star-half"></span> <?php _e('Create a feedback widget', 'formaloo'); ?></a>
                                 </div>
                             </div>
                             <?php $this->list_table_page(); ?>
@@ -926,7 +926,7 @@ class Formaloo_Main_Class {
                                 <tr>
                                     <td scope="row">
                                         <label><strong><?php _e( 'As a Script Tag', 'formaloo' ); ?></strong></label><br>
-                                        <small><?php _e( 'Using this method, the form will become a part of your website\'s markup. To use this, put the the code snippet in your website footer:', 'formaloo' ); ?></small><br><br>
+                                        <small><?php _e( 'Using this method, the form will become a part of your website\'s markup. To use this, put the code snippet in your website footer:', 'formaloo' ); ?></small><br><br>
                                         <a href="<?php echo FORMALOO_URL ?>assets/images/feedback_widget_helper.png" target="_blank"> <img src="<?php echo FORMALOO_URL ?>assets/images/feedback_widget_helper.png" id="formaloo-where-to-put-feedback-widget" alt="Feedback Widget Helper" /></a>
                                     </td>
                                     <td>
@@ -999,7 +999,7 @@ class Formaloo_Main_Class {
                                 <fieldset>
                                     <input type="radio" name="formaloo_feedback_widget_position" id="formaloo_feedback_widget_position_left" value="left" checked /> <label for = "formaloo_feedback_widget_position"><?php _e('Left','formaloo'); ?></label><br>
                                     <input type="radio" name="formaloo_feedback_widget_position" id="formaloo_feedback_widget_position_right" value="right" /> <label for = "formaloo_feedback_widget_position"><?php _e('Right','formaloo'); ?></label><br>
-                                    <input type="radio" name="formaloo_feedback_widget_position" id="formaloo_feedback_widget_position_bottom_left" value="bottom_left" /> <label for = "formaloo_feedback_widget_position"><?php _e('Bottem Left','formaloo'); ?></label><br>
+                                    <input type="radio" name="formaloo_feedback_widget_position" id="formaloo_feedback_widget_position_bottom_left" value="bottom_left" /> <label for = "formaloo_feedback_widget_position"><?php _e('Bottom Left','formaloo'); ?></label><br>
                                     <input type="radio" name="formaloo_feedback_widget_position" id="formaloo_feedback_widget_position_bottom_right" value="bottom_right" /> <label for = "formaloo_feedback_widget_position"><?php _e('Bottom Right','formaloo'); ?></label> 
                                 </fieldset>
                                 </td>
@@ -1111,7 +1111,6 @@ class Formaloo_Main_Class {
         <script>
             jQuery(document).ready(function($){
 
-                $('.formaloo_feedback_widget_button_color').wpColorPicker();
                 $('.formaloo-feedback-widget-notice').hide();
 
                 $('.formaloo_feedback_widget_choice_icon').on("click",function(){
@@ -1234,6 +1233,17 @@ class Formaloo_Main_Class {
                     if (formConfig != null) {
                         $('#formaloo_feedback_widget_position_' + formConfig).attr('checked', 'checked');                    }
 
+                    var buttonColors = JSON.parse(form['button_color']);
+                    var r = buttonColors['r'];
+                    var g = buttonColors['g'];
+                    var b = buttonColors['b'];
+                    var buttonColor = rgbToHex(r, g, b);
+
+                    $('.formaloo_feedback_widget_button_color').val(buttonColor);
+                    $('.formaloo_feedback_widget_button_color').attr('data-default-color', buttonColor);  
+
+                    $('.formaloo_feedback_widget_button_color').wpColorPicker();
+
                     $('.formaloo-feedback-widget-loading-gif-wrapper').hide();
                 }
 
@@ -1339,6 +1349,15 @@ class Formaloo_Main_Class {
                         return '{"r":'+String((c>>16)&255)+',"g":'+String((c>>8)&255)+',"b":'+String(c&255)+',"a":1}';
                     }
                     throw new Error('Bad Hex');
+                }
+
+                function componentToHex(c) {
+                    var hex = c.toString(16);
+                    return hex.length == 1 ? "0" + hex : hex;
+                }
+
+                function rgbToHex(r, g, b) {
+                    return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
                 }
 
                 function disableFeedbackWidgetTable() {

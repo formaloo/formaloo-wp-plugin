@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Formaloo Form Builder\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-10 15:42+0000\n"
-"PO-Revision-Date: 2020-06-10 15:58+0000\n"
+"POT-Creation-Date: 2020-06-13 05:14+0000\n"
+"PO-Revision-Date: 2020-06-13 05:15+0000\n"
 "Last-Translator: \n"
 "Language-Team: Armenian\n"
 "Language: hy\n"
@@ -12,9 +12,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.4.0; wp-5.4.1"
+"X-Loco-Version: 2.4.0; wp-5.4.2"
 
-#: showActivationNotice.php:26
+#: showActivationNotice.php:26 git/showActivationNotice.php:26
+#: svn/trunk/showActivationNotice.php:26
 msgid "Thank you for using the Formaloo plugin!"
 msgstr "Շնորհակալություն Formaloo plugin- ի օգտագործման համար:"
 
@@ -23,120 +24,122 @@ msgstr "Շնորհակալություն Formaloo plugin- ի օգտագործմ�
 msgid "Get Started by visiting the Settings Page"
 msgstr "Սկսէք ՝ այցելելով Կարգավորումների էջից"
 
-#: formaloo.php:97 formaloo.php:527 git/formaloo.php:97 git/formaloo.php:518
-#: svn/trunk/formaloo.php:97 svn/trunk/formaloo.php:518
+#: formaloo.php:97 formaloo.php:527 git/formaloo.php:97 git/formaloo.php:527
+#: svn/trunk/formaloo.php:97 svn/trunk/formaloo.php:527
 msgid "Show Form"
 msgstr "ցուցադրել ֆորմը"
 
-#: formaloo.php:338 formaloo.php:339 git/formaloo.php:335 git/formaloo.php:336
-#: svn/trunk/formaloo.php:335 svn/trunk/formaloo.php:336
+#: formaloo.php:338 formaloo.php:339 git/formaloo.php:338 git/formaloo.php:339
+#: svn/trunk/formaloo.php:338 svn/trunk/formaloo.php:339
 msgid "Formaloo"
 msgstr "Formaloo"
 
-#: formaloo.php:348 formaloo.php:349
+#: formaloo.php:348 formaloo.php:349 git/formaloo.php:348 git/formaloo.php:349
+#: svn/trunk/formaloo.php:348 svn/trunk/formaloo.php:349
 msgid "Feedback Widget"
 msgstr "Հետադարձ կապի վիդջեթը"
 
-#: formaloo.php:357 formaloo.php:358 git/formaloo.php:346 git/formaloo.php:347
-#: svn/trunk/formaloo.php:346 svn/trunk/formaloo.php:347
+#: formaloo.php:357 formaloo.php:358 git/formaloo.php:357 git/formaloo.php:358
+#: svn/trunk/formaloo.php:357 svn/trunk/formaloo.php:358
 msgid "Settings"
 msgstr "կարգաւորումներ"
 
-#: formaloo.php:366 git/formaloo.php:355 svn/trunk/formaloo.php:355
+#: formaloo.php:366 git/formaloo.php:366 svn/trunk/formaloo.php:366
 msgid "Results"
 msgstr "Արդիւնքներ"
 
-#: formaloo.php:373 formaloo.php:642 formaloo.php:774 git/formaloo.php:362
-#: git/formaloo.php:633 svn/trunk/formaloo.php:362 svn/trunk/formaloo.php:633
+#: formaloo.php:373 formaloo.php:642 formaloo.php:774 git/formaloo.php:373
+#: git/formaloo.php:642 git/formaloo.php:774 svn/trunk/formaloo.php:373
+#: svn/trunk/formaloo.php:642 svn/trunk/formaloo.php:774
 msgid "My Forms"
 msgstr "իմ ֆորմերը"
 
-#: formaloo.php:436 git/formaloo.php:425 svn/trunk/formaloo.php:425
+#: formaloo.php:436 git/formaloo.php:436 svn/trunk/formaloo.php:436
 msgid "Invalid API Token or API Key! Please visit your"
 msgstr "Անվավեր API Token կամ API Key է: Խնդրում ենք այցելել ձեր"
 
-#: formaloo.php:436 formaloo.php:832 git/formaloo.php:425 git/formaloo.php:821
-#: svn/trunk/formaloo.php:425 svn/trunk/formaloo.php:821
+#: formaloo.php:436 formaloo.php:832 git/formaloo.php:436 git/formaloo.php:832
+#: svn/trunk/formaloo.php:436 svn/trunk/formaloo.php:832
 msgid "Formaloo dashboard here"
 msgstr "Formaloo վահանակին (dashboard-ին)"
 
-#: formaloo.php:436 git/formaloo.php:425 svn/trunk/formaloo.php:425
+#: formaloo.php:436 git/formaloo.php:436 svn/trunk/formaloo.php:436
 msgid "to get a new one."
 msgstr "`նորը ստանալու համար:"
 
-#: formaloo.php:465 git/formaloo.php:454 svn/trunk/formaloo.php:454
+#: formaloo.php:465 git/formaloo.php:465 svn/trunk/formaloo.php:465
 msgid "Don't have a Formaloo account?"
 msgstr "Formaloo հաշիւ չունե՞ս?"
 
-#: formaloo.php:465 git/formaloo.php:454 svn/trunk/formaloo.php:454
+#: formaloo.php:465 git/formaloo.php:465 svn/trunk/formaloo.php:465
 msgid "Try one for Free!"
 msgstr "Փորձէք մեկը անվճար"
 
-#: formaloo.php:497 git/formaloo.php:488 svn/trunk/formaloo.php:488
+#: formaloo.php:497 git/formaloo.php:497 svn/trunk/formaloo.php:497
 msgid "How to show"
 msgstr "Ողջոյն"
 
-#: formaloo.php:503 git/formaloo.php:494 svn/trunk/formaloo.php:494
+#: formaloo.php:503 git/formaloo.php:503 svn/trunk/formaloo.php:503
 msgid "Link"
 msgstr "Հղում"
 
-#: formaloo.php:506 git/formaloo.php:497 svn/trunk/formaloo.php:497
+#: formaloo.php:506 git/formaloo.php:506 svn/trunk/formaloo.php:506
 msgid "iFrame"
 msgstr "iFrame"
 
-#: formaloo.php:509 git/formaloo.php:500 svn/trunk/formaloo.php:500
+#: formaloo.php:509 git/formaloo.php:509 svn/trunk/formaloo.php:509
 msgid "Script"
 msgstr "Script"
 
-#: formaloo.php:517 git/formaloo.php:508 svn/trunk/formaloo.php:508
+#: formaloo.php:517 git/formaloo.php:517 svn/trunk/formaloo.php:517
 msgid "Link title"
 msgstr "հղման վերնագիր"
 
-#: formaloo.php:519 git/formaloo.php:510 svn/trunk/formaloo.php:510
+#: formaloo.php:519 git/formaloo.php:519 svn/trunk/formaloo.php:519
 msgid "(Choose a title for the form link)"
 msgstr "(Վերնագիր որոշիր սոյն ֆորմի լինքի համար)"
 
-#: formaloo.php:533 git/formaloo.php:524 svn/trunk/formaloo.php:524
+#: formaloo.php:533 git/formaloo.php:533 svn/trunk/formaloo.php:533
 msgid "Show logo"
 msgstr "Ցուցադրել logo-ն"
 
-#: formaloo.php:535 git/formaloo.php:526 svn/trunk/formaloo.php:526
+#: formaloo.php:535 git/formaloo.php:535 svn/trunk/formaloo.php:535
 msgid "(Show the logo in the embedded form?)"
 msgstr "(Արդե՞օք ցուցադրել քո logo-ն ներկառուցւած ֆորմում?)"
 
-#: formaloo.php:539 formaloo.php:552 formaloo.php:565 git/formaloo.php:530
-#: git/formaloo.php:543 git/formaloo.php:556 svn/trunk/formaloo.php:530
-#: svn/trunk/formaloo.php:543 svn/trunk/formaloo.php:556
+#: formaloo.php:539 formaloo.php:552 formaloo.php:565 git/formaloo.php:539
+#: git/formaloo.php:552 git/formaloo.php:565 svn/trunk/formaloo.php:539
+#: svn/trunk/formaloo.php:552 svn/trunk/formaloo.php:565
 msgid "Yes"
 msgstr "Այո"
 
-#: formaloo.php:540 formaloo.php:553 formaloo.php:566 git/formaloo.php:531
-#: git/formaloo.php:544 git/formaloo.php:557 svn/trunk/formaloo.php:531
-#: svn/trunk/formaloo.php:544 svn/trunk/formaloo.php:557
+#: formaloo.php:540 formaloo.php:553 formaloo.php:566 git/formaloo.php:540
+#: git/formaloo.php:553 git/formaloo.php:566 svn/trunk/formaloo.php:540
+#: svn/trunk/formaloo.php:553 svn/trunk/formaloo.php:566
 msgid "No"
 msgstr "Ոչ"
 
-#: formaloo.php:546 git/formaloo.php:537 svn/trunk/formaloo.php:537
+#: formaloo.php:546 git/formaloo.php:546 svn/trunk/formaloo.php:546
 msgid "Show title"
 msgstr "Ցուցադրել վերնագիրը"
 
-#: formaloo.php:548 git/formaloo.php:539 svn/trunk/formaloo.php:539
+#: formaloo.php:548 git/formaloo.php:548 svn/trunk/formaloo.php:548
 msgid "(Show the title in the embedded form?)"
 msgstr "(Արդե՞օք ցուցադրել Վերնագիրը ներկառուցւած ֆորմում?)"
 
-#: formaloo.php:559 git/formaloo.php:550 svn/trunk/formaloo.php:550
+#: formaloo.php:559 git/formaloo.php:559 svn/trunk/formaloo.php:559
 msgid "Show description"
 msgstr "ցուցադրել բացատրութիւնը"
 
-#: formaloo.php:561 git/formaloo.php:552 svn/trunk/formaloo.php:552
+#: formaloo.php:561 git/formaloo.php:561 svn/trunk/formaloo.php:561
 msgid "(Show the description in the embedded form?)"
 msgstr "(Արդե՞օք ցուցադրել բացատրութիւնը ներկառուցւած ֆորմում?)"
 
-#: formaloo.php:572 git/formaloo.php:563 svn/trunk/formaloo.php:563
+#: formaloo.php:572 git/formaloo.php:572 svn/trunk/formaloo.php:572
 msgid "Shortcode will appear here"
 msgstr "Shortcode-ը կհայտնւի այստեղում"
 
-#: formaloo.php:578 git/formaloo.php:569 svn/trunk/formaloo.php:569
+#: formaloo.php:578 git/formaloo.php:578 svn/trunk/formaloo.php:578
 msgid ""
 "Copy the shortcode above then go to your post/page editor. If it is "
 "Gutenberg Editor, add a Shortcode block and paste the shortcode. If it is "
@@ -149,65 +152,65 @@ msgstr ""
 "Եթե ​​դա classic-ի  խմբագիրն է, ընտրիր Տեքստի ներդիրը ( visual ներդիրի "
 "փոխարէն) և տեղադրիր shortcode-ը որտեղ որ կցանկանաս:"
 
-#: formaloo.php:579 git/formaloo.php:570 svn/trunk/formaloo.php:570
+#: formaloo.php:579 git/formaloo.php:579 svn/trunk/formaloo.php:579
 msgid "More Info"
 msgstr "Լրացուցիչ տեղեկութիւններ"
 
-#: formaloo.php:584 git/formaloo.php:575 svn/trunk/formaloo.php:575
+#: formaloo.php:584 git/formaloo.php:584 svn/trunk/formaloo.php:584
 msgid "Get shortcode"
 msgstr "Ստացիր shortcode-ը"
 
-#: formaloo.php:596 git/formaloo.php:587 svn/trunk/formaloo.php:587
+#: formaloo.php:596 git/formaloo.php:596 svn/trunk/formaloo.php:596
 msgid "Additional Settings"
 msgstr "Լրացուցիչ Կարգաւորումներ"
 
-#: formaloo.php:651 git/formaloo.php:642 svn/trunk/formaloo.php:642
+#: formaloo.php:651 git/formaloo.php:651 svn/trunk/formaloo.php:651
 msgid "Make sure you have a Formaloo account first, it's free! 👍"
 msgstr ""
 "նախ վստահացիր քո Formaloo հաշւի(account-ի) առկայութեան մասին,դա անւճար է."
 
-#: formaloo.php:652 git/formaloo.php:643 svn/trunk/formaloo.php:643
+#: formaloo.php:652 git/formaloo.php:652 svn/trunk/formaloo.php:652
 msgid "You can"
 msgstr " "
 
-#: formaloo.php:652 git/formaloo.php:643 svn/trunk/formaloo.php:643
+#: formaloo.php:652 git/formaloo.php:652 svn/trunk/formaloo.php:652
 msgid "create an account here"
 msgstr "Ստեղծիր քո հաշիւը այստեղ`"
 
-#: formaloo.php:654 git/formaloo.php:645 svn/trunk/formaloo.php:645
+#: formaloo.php:654 git/formaloo.php:654 svn/trunk/formaloo.php:654
 msgid "If so you can find your API Key & API Token from your"
 msgstr "Քո profile էջից"
 
-#: formaloo.php:654 git/formaloo.php:645 svn/trunk/formaloo.php:645
+#: formaloo.php:654 git/formaloo.php:654 svn/trunk/formaloo.php:654
 msgid "profile page,"
 msgstr ""
 "Գտիր API Token-ը և API Key-ն\n"
 
-#: formaloo.php:654 git/formaloo.php:645 svn/trunk/formaloo.php:645
+#: formaloo.php:654 git/formaloo.php:654 svn/trunk/formaloo.php:654
 msgid "and enter it on the"
 msgstr "եւ գրանցիր դա կարգաւորման"
 
-#: formaloo.php:654 git/formaloo.php:645 svn/trunk/formaloo.php:645
+#: formaloo.php:654 git/formaloo.php:654 svn/trunk/formaloo.php:654
 msgid "settings page"
 msgstr "(settings-ի) էջում"
 
-#: formaloo.php:660 git/formaloo.php:651 svn/trunk/formaloo.php:651
+#: formaloo.php:660 git/formaloo.php:660 svn/trunk/formaloo.php:660
 msgid "User"
 msgstr "գործածող"
 
-#: formaloo.php:661 git/formaloo.php:652 svn/trunk/formaloo.php:652
+#: formaloo.php:661 git/formaloo.php:661 svn/trunk/formaloo.php:661
 msgid "Hello Dear"
 msgstr "Ողջոյն սիրելի"
 
-#: formaloo.php:661 git/formaloo.php:652 svn/trunk/formaloo.php:652
+#: formaloo.php:661 git/formaloo.php:661 svn/trunk/formaloo.php:661
 msgid "You can edit or view your forms right here or you can access"
 msgstr "խմբագրիր կամ դիտիր քո ֆորմերը այստեղ կամ մուտք գործիր քո ամբողջ"
 
-#: formaloo.php:661 git/formaloo.php:652 svn/trunk/formaloo.php:652
+#: formaloo.php:661 git/formaloo.php:661 svn/trunk/formaloo.php:661
 msgid "your full dashboard here"
 msgstr "վահանակին (dashboard-ին) այստեղից"
 
-#: formaloo.php:672 git/formaloo.php:663 svn/trunk/formaloo.php:663
+#: formaloo.php:672 git/formaloo.php:672 svn/trunk/formaloo.php:672
 msgid ""
 "An error happened on the WordPress side. Make sure your server allows remote "
 "calls."
@@ -215,165 +218,176 @@ msgstr ""
 "Սխալ է տեղի ունեցել WordPress- ի կողմից, Համոզվեք, որ ձեր սերվերը թույլ է "
 "տալիս հեռավոր զանգերը:"
 
-#: formaloo.php:697
+#: formaloo.php:697 git/formaloo.php:697 svn/trunk/formaloo.php:697
 msgid "Your Forms"
 msgstr "Ձեր ֆորմերը"
 
-#: formaloo.php:701 git/formaloo.php:691 svn/trunk/formaloo.php:691
+#: formaloo.php:701 git/formaloo.php:701 svn/trunk/formaloo.php:701
 msgid "Create a form"
 msgstr "նոր ֆորմի ստեղծում"
 
-#: formaloo.php:701 git/formaloo.php:691 svn/trunk/formaloo.php:691
+#: formaloo.php:701 git/formaloo.php:701 svn/trunk/formaloo.php:701
 msgid "Create a new form"
 msgstr "նոր ֆորմի ստեղծում"
 
-#: formaloo.php:704
+#: formaloo.php:704 git/formaloo.php:704 svn/trunk/formaloo.php:704
 msgid "Create a feedback widget"
 msgstr "Ստեղծեք հետադարձ կապի վիդջեթ"
 
-#: formaloo.php:757 git/formaloo.php:743 svn/trunk/formaloo.php:743
+#: formaloo.php:757 git/formaloo.php:757 svn/trunk/formaloo.php:757
 msgid "An error happened on the WordPress side."
 msgstr "Սխալ է տեղի ունեցել WordPress- ի կողմից"
 
-#: formaloo.php:775 git/formaloo.php:760 svn/trunk/formaloo.php:760
+#: formaloo.php:775 git/formaloo.php:775 svn/trunk/formaloo.php:775
 msgid "Your Form Results"
 msgstr "քո ֆորմի արդիւնքները"
 
-#: formaloo.php:818 git/formaloo.php:805 svn/trunk/formaloo.php:805
+#: formaloo.php:818 git/formaloo.php:818 svn/trunk/formaloo.php:818
 msgid "Setup Formaloo"
 msgstr "Կարգաւորել Formaloo-ն"
 
-#: formaloo.php:824 git/formaloo.php:811 svn/trunk/formaloo.php:811
+#: formaloo.php:824 git/formaloo.php:824 svn/trunk/formaloo.php:824
 msgid "Welcome to Formaloo!"
 msgstr "Բարի գալուստ Formaloo"
 
-#: formaloo.php:829 formaloo.php:963 git/formaloo.php:816
-#: svn/trunk/formaloo.php:816
+#: formaloo.php:829 formaloo.php:963 git/formaloo.php:829 git/formaloo.php:963
+#: svn/trunk/formaloo.php:829 svn/trunk/formaloo.php:963
 msgid "To get started, we'll need to access your Formaloo account with an"
 msgstr "Սկսելու համար, մենք պէտք է մուտք գործենք քո Formaloo հաշիւ"
 
-#: formaloo.php:829 formaloo.php:963 git/formaloo.php:816
-#: svn/trunk/formaloo.php:816
+#: formaloo.php:829 formaloo.php:963 git/formaloo.php:829 git/formaloo.php:963
+#: svn/trunk/formaloo.php:829 svn/trunk/formaloo.php:963
 msgid "API Key & API Token"
 msgstr "API Key և API Token"
 
-#: formaloo.php:829 formaloo.php:963 git/formaloo.php:816
-#: svn/trunk/formaloo.php:816
+#: formaloo.php:829 formaloo.php:963 git/formaloo.php:829 git/formaloo.php:963
+#: svn/trunk/formaloo.php:829 svn/trunk/formaloo.php:963
 msgid "Paste your Formaloo API Key & API Token, and click"
 msgstr "Տեղադրիր քո API Key և API Token-ը եւ սեղմիր`"
 
-#: formaloo.php:829 formaloo.php:865 formaloo.php:963 git/formaloo.php:816
-#: git/formaloo.php:856 svn/trunk/formaloo.php:816 svn/trunk/formaloo.php:856
+#: formaloo.php:829 formaloo.php:865 formaloo.php:963 git/formaloo.php:829
+#: git/formaloo.php:865 git/formaloo.php:963 svn/trunk/formaloo.php:829
+#: svn/trunk/formaloo.php:865 svn/trunk/formaloo.php:963
 msgid "Connect"
 msgstr "միանալ"
 
-#: formaloo.php:829 formaloo.php:963 git/formaloo.php:816
-#: svn/trunk/formaloo.php:816
+#: formaloo.php:829 formaloo.php:963 git/formaloo.php:829 git/formaloo.php:963
+#: svn/trunk/formaloo.php:829 svn/trunk/formaloo.php:963
 msgid "to continue"
 msgstr "- միացիր շարունակելու համար-ը:"
 
-#: formaloo.php:832 git/formaloo.php:821 svn/trunk/formaloo.php:821
+#: formaloo.php:832 git/formaloo.php:832 svn/trunk/formaloo.php:832
 msgid "You can access your"
 msgstr "Մուտք` քո"
 
-#: formaloo.php:840 git/formaloo.php:831 svn/trunk/formaloo.php:831
+#: formaloo.php:840 git/formaloo.php:840 svn/trunk/formaloo.php:840
 msgid "API Key"
 msgstr "API Key"
 
-#: formaloo.php:852 git/formaloo.php:843 svn/trunk/formaloo.php:843
+#: formaloo.php:852 git/formaloo.php:852 svn/trunk/formaloo.php:852
 msgid "API Token"
 msgstr "API Token"
 
-#: formaloo.php:865 git/formaloo.php:856 svn/trunk/formaloo.php:856
+#: formaloo.php:865 git/formaloo.php:865 svn/trunk/formaloo.php:865
 msgid "Save"
 msgstr "պահել"
 
-#: formaloo.php:872 formaloo.php:1104
+#: formaloo.php:872 formaloo.php:1104 git/formaloo.php:872
+#: git/formaloo.php:1104 svn/trunk/formaloo.php:872 svn/trunk/formaloo.php:1104
 msgid "Need Support? Feel free to contact us"
 msgstr "Աջակցության կարիք ունե՞ք: Ազատորեն կապվեք մեզ հետ"
 
-#: formaloo.php:919
+#: formaloo.php:919 git/formaloo.php:919 svn/trunk/formaloo.php:919
 msgid "As a Link"
 msgstr "Որպես հղում"
 
-#: formaloo.php:920
+#: formaloo.php:920 git/formaloo.php:920 svn/trunk/formaloo.php:920
 msgid "Share this URL with others to view the form directly"
 msgstr "Կիսեք այս URL- ը ուրիշների հետ `ձևը ուղղակիորեն դիտելու համար"
 
-#: formaloo.php:928
+#: formaloo.php:928 git/formaloo.php:928 svn/trunk/formaloo.php:928
 msgid "As a Script Tag"
 msgstr "Որպես սցենարի պիտակ"
 
 #: formaloo.php:929
 msgid ""
 "Using this method, the form will become a part of your website's markup. To "
-"use this, put the the code snippet in your website footer:"
+"use this, put the code snippet in your website footer:"
 msgstr ""
 "Օգտագործելով այս մեթոդը, ձևը կդառնա ձեր կայքի նշագրման մի մասը: Դրանից "
 "օգտվելու համար ձեր կայքի ներքևի մասում տեղադրեք ծածկագրի կոդ:"
 
-#: formaloo.php:948
+#: formaloo.php:948 git/formaloo.php:948 svn/trunk/formaloo.php:948
 msgid "Feedback Widget Creator"
 msgstr "Հետադարձ կապի վիջեթ ստեղծող"
 
-#: formaloo.php:957
+#: formaloo.php:957 git/formaloo.php:957 svn/trunk/formaloo.php:957
 msgid "Create a feedback widget for your website in less than 1 minute:"
 msgstr ""
 "Ստեղծեք հետադարձ կապի վիջեթ ձեր կայքի համար 1 րոպեից պակաս ժամանակահատվածում."
 
-#: formaloo.php:979 formaloo.php:987
+#: formaloo.php:979 formaloo.php:987 git/formaloo.php:979 git/formaloo.php:987
+#: svn/trunk/formaloo.php:979 svn/trunk/formaloo.php:987
 msgid "Button Text"
 msgstr "Կոճակի տեքստ"
 
-#: formaloo.php:994
+#: formaloo.php:994 git/formaloo.php:994 svn/trunk/formaloo.php:994
 msgid "Widget Position on Screen"
 msgstr "վիջեթ-ի դիրքը էկրանի վրա"
 
-#: formaloo.php:1000
+#: formaloo.php:1000 git/formaloo.php:1000 svn/trunk/formaloo.php:1000
 msgid "Left"
 msgstr "Ձախ"
 
-#: formaloo.php:1001
+#: formaloo.php:1001 git/formaloo.php:1001 svn/trunk/formaloo.php:1001
 msgid "Right"
 msgstr "Աջ"
 
 #: formaloo.php:1002
-msgid "Bottem Left"
+msgid "Bottom Left"
 msgstr "Ստորին ձախ"
 
-#: formaloo.php:1003
+#: formaloo.php:1003 git/formaloo.php:1003 svn/trunk/formaloo.php:1003
 msgid "Bottom Right"
 msgstr "Ստորին աջ"
 
-#: formaloo.php:1009
+#: formaloo.php:1009 git/formaloo.php:1009 svn/trunk/formaloo.php:1009
 msgid "NPS Choices Icon"
 msgstr "NPS- ի ընտրանքների պատկերակ"
 
-#: formaloo.php:1036 formaloo.php:1044
+#: formaloo.php:1036 formaloo.php:1044 git/formaloo.php:1036
+#: git/formaloo.php:1044 svn/trunk/formaloo.php:1036
+#: svn/trunk/formaloo.php:1044
 msgid "Question Title"
 msgstr "Հարցի վերնագիր"
 
-#: formaloo.php:1049 formaloo.php:1057
+#: formaloo.php:1049 formaloo.php:1057 git/formaloo.php:1049
+#: git/formaloo.php:1057 svn/trunk/formaloo.php:1049
+#: svn/trunk/formaloo.php:1057
 msgid "TextBox Placeholder"
 msgstr "Տեքստի տուփ տեղադրող"
 
-#: formaloo.php:1062 formaloo.php:1070
+#: formaloo.php:1062 formaloo.php:1070 git/formaloo.php:1062
+#: git/formaloo.php:1070 svn/trunk/formaloo.php:1062
+#: svn/trunk/formaloo.php:1070
 msgid "Submit Button Text"
 msgstr "Ներկայացրեք կոճակի տեքստը"
 
-#: formaloo.php:1075
+#: formaloo.php:1075 git/formaloo.php:1075 svn/trunk/formaloo.php:1075
 msgid "Button Color"
 msgstr "Կոճակի գույնը"
 
-#: formaloo.php:1083 formaloo.php:1091
+#: formaloo.php:1083 formaloo.php:1091 git/formaloo.php:1083
+#: git/formaloo.php:1091 svn/trunk/formaloo.php:1083
+#: svn/trunk/formaloo.php:1091
 msgid "Success Message After Submit"
 msgstr "Հաջողության հաղորդագրություն ներկայացնելուց հետո"
 
-#: formaloo.php:1097
+#: formaloo.php:1097 git/formaloo.php:1097 svn/trunk/formaloo.php:1097
 msgid "Save Changes"
 msgstr "Պահպանել փոփոխությունները"
 
-#: formaloo.php:1291
+#: formaloo.php:1301 git/formaloo.php:1291 svn/trunk/formaloo.php:1291
 msgid "How to use your Feedback Widget"
 msgstr "Ինչպես օգտագործել ձեր հետադարձ կապի վիդջեթը"
 
@@ -402,28 +416,29 @@ msgstr ""
 msgid "Download"
 msgstr "ներբեռնել"
 
-#: listTable.php:180 git/listTable.php:179 svn/trunk/listTable.php:179
+#: listTable.php:180 git/listTable.php:180 svn/trunk/listTable.php:180
 msgid "Set-up Form Settings"
 msgstr "Կարգաւորել ֆորմը"
 
-#: listTable.php:183 git/listTable.php:182 svn/trunk/listTable.php:182
+#: listTable.php:183 git/listTable.php:183 svn/trunk/listTable.php:183
 msgid "View"
 msgstr "դիտել"
 
-#: listTable.php:187 git/listTable.php:184 svn/trunk/listTable.php:184
+#: listTable.php:187 git/listTable.php:187 svn/trunk/listTable.php:187
 msgid "Get Shortcode"
 msgstr "Ստացիր shortcode-ը"
 
-#: listTable.php:188 git/listTable.php:183 svn/trunk/listTable.php:183
+#: listTable.php:188 git/listTable.php:188 svn/trunk/listTable.php:188
 msgid "Edit Form"
 msgstr "ֆորմի խմբագրում"
 
-#: listTable.php:188 listTable.php:190 git/listTable.php:183
-#: svn/trunk/listTable.php:183
+#: listTable.php:188 listTable.php:190 git/listTable.php:188
+#: git/listTable.php:190 svn/trunk/listTable.php:188
+#: svn/trunk/listTable.php:190
 msgid "Edit"
 msgstr "Խմբագրել"
 
-#: listTable.php:191
+#: listTable.php:191 git/listTable.php:191 svn/trunk/listTable.php:191
 msgid "Use Widget"
 msgstr "Օգտագործեք վիդջեթը"
 
@@ -442,10 +457,6 @@ msgstr "Ցուցադրել Արդիւնքը"
 #: resultsTable.php:151 git/resultsTable.php:151 svn/trunk/resultsTable.php:151
 msgid "Full Result"
 msgstr "Ամբողջ արդիւնքը"
-
-#: git/formaloo.php:688 svn/trunk/formaloo.php:688
-msgid "Your forms"
-msgstr "քո ֆորմերը"
 
 #. Name of the plugin
 msgid "Formaloo Form Builder"
