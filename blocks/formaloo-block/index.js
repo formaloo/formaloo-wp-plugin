@@ -15,7 +15,7 @@
 	 */
 	var __ = wp.i18n.__;
 
-	var smileIcon = wp.element.createElement(
+	var formalooIcon = wp.element.createElement(
 		"svg",
 		{
 			width: 20,
@@ -44,7 +44,7 @@
 		 * An icon property should be specified to make it easier to identify a block.
 		 * These can be any of WordPress’ Dashicons, or a custom svg element.
 		 */
-		icon: smileIcon,
+		icon: formalooIcon,
 
 		/**
 		 * Blocks are grouped into categories to help users browse and discover them.
@@ -68,6 +68,10 @@
 				type: 'string',
 				default: "script"
 			},
+			selected_form_address: {
+				type: 'string',
+				default: ""
+			},
 			link_title: {
 				type: 'string',
 				default: __('Show Form','formaloo')
@@ -81,6 +85,10 @@
 				default: true,
 			},
 			show_logo: {
+				type: 'boolean',
+				default: true,
+			},
+			show_form_selector: {
 				type: 'boolean',
 				default: true,
 			},
@@ -106,10 +114,22 @@
 					show_type: value
 				});
 			};
+
+			var onChangeFormAddress = function onChangeFormAddress(value) {
+				props.setAttributes({
+					selected_form_address: value
+				});
+			};
 	
 			var onChangeLinkTitle = function onChangeLinkTitle(value) {
 				props.setAttributes({
 					link_title: value
+				});
+			};
+
+			var onChangeSelectFormAddress = function onChangeSelectFormAddress(value) {
+				props.setAttributes({
+					show_form_selector: value
 				});
 			};
 	
@@ -130,7 +150,7 @@
 					show_descr: value
 				});
 			};
-			
+
 			// https://regexr.com/3um70
 			function is_url(str) {
 				regexp = /^(https?|chrome):\/\/[^\s$.?#].[^\s]*$/g;
@@ -140,7 +160,7 @@
 					return false;
 				}
 			}
-
+				
 			return (
 				wp.element.createElement(
 					wp.element.Fragment,
@@ -148,70 +168,88 @@
 					wp.element.createElement(
 						wp.editor.InspectorControls,
 						null,
-						wp.element.createElement( 'hr', {
-              style: {marginTop:20}
-            }),
 						wp.element.createElement(
-							wp.components.SelectControl,
-							{
-								label: __('Show Type','formaloo'),
-								value: props.attributes.show_type,
-								options: [
+							wp.components.PanelBody,
+							{ title: __('Form Settings', 'formaloo'), initialOpen: true },
+							wp.element.createElement( 
+								wp.components.PanelRow, 
+								null,
+								wp.element.createElement(
+									wp.components.SelectControl,
 									{
-										value: null,
-										label: __('Select a Show Type','formaloo'),
-										disabled: true
-									},
-									{
-										value: 'link',
-										label: __('Link','formaloo')
-									},
-									{
-										value: 'iframe',
-										label: __('iFrame','formaloo')
-									},
-									{
-										value: 'script',
-										label: __('Script','formaloo')
+										label: __('Show Type','formaloo'),
+										value: props.attributes.show_type,
+										options: [
+											{
+												value: null,
+												label: __('Select a Show Type','formaloo'),
+												disabled: true
+											},
+											{
+												value: 'link',
+												label: __('Link','formaloo')
+											},
+											{
+												value: 'iframe',
+												label: __('iFrame','formaloo')
+											},
+											{
+												value: 'script',
+												label: __('Script','formaloo')
+											}
+										],
+										onChange: onChangeShowType
 									}
-								],
-								onChange: onChangeShowType
-							}
-						),
-						props.attributes.show_type == 'link' && wp.element.createElement(
-							wp.components.TextControl,
-							{
-								label: __('Link Title','formaloo'),
-								value: props.attributes.link_title,
-								onChange: onChangeLinkTitle
-							}
-						),
-						props.attributes.show_type == 'script' &&
-						wp.element.createElement(
-							wp.components.ToggleControl,
-							{
-								label: __('Show Logo','formaloo'),
-								checked: props.attributes.show_logo,
-								onChange: onChangeShowLogo
-							}
-						),
-						props.attributes.show_type == 'script' &&
-						wp.element.createElement(
-							wp.components.ToggleControl,
-							{
-								label: __('Show Title','formaloo'),
-								checked: props.attributes.show_title,
-								onChange: onChangeShowTitle
-							}
-						),
-						props.attributes.show_type == 'script' &&
-						wp.element.createElement(
-							wp.components.ToggleControl,
-							{
-								label: __('Show Description','formaloo'),
-								checked: props.attributes.show_descr,
-								onChange: onChangeShowDescription
-							}
+								),
+							),
+							props.attributes.show_type == 'link' && wp.element.createElement( 
+								wp.components.PanelRow, 
+								null,
+								 wp.element.createElement(
+									wp.components.TextControl,
+									{
+										label: __('Link Title','formaloo'),
+										value: props.attributes.link_title,
+										onChange: onChangeLinkTitle
+									}
+								),
+							),
+							props.attributes.show_type == 'script' && wp.element.createElement( 
+								wp.components.PanelRow, 
+								null,
+								wp.element.createElement(
+									wp.components.ToggleControl,
+									{
+										label: __('Show Logo','formaloo'),
+										checked: props.attributes.show_logo,
+										onChange: onChangeShowLogo
+									}
+								),
+							),
+							props.attributes.show_type == 'script' && wp.element.createElement( 
+								wp.components.PanelRow, 
+								null,
+								wp.element.createElement(
+									wp.components.ToggleControl,
+									{
+										label: __('Show Title','formaloo'),
+										checked: props.attributes.show_title,
+										onChange: onChangeShowTitle
+									}
+								),
+							),
+							props.attributes.show_type == 'script' && wp.element.createElement( 
+								wp.components.PanelRow, 
+								null,
+								wp.element.createElement(
+									wp.components.ToggleControl,
+									{
+										label: __('Show Description','formaloo'),
+										checked: props.attributes.show_descr,
+										onChange: onChangeShowDescription
+									}
+								),
+							),
 						),
 					),
 					wp.element.createElement(
@@ -222,27 +260,56 @@
 							{
 								className: 'formaloo-guten-div'
 							},
-							wp.element.createElement(wp.components.TextControl, {
+							wp.element.createElement(
+								wp.components.ToggleControl,
+								{
+									label: __('Select an Existing Form','formaloo'),
+									checked: props.attributes.show_form_selector,
+									onChange: onChangeSelectFormAddress
+								}
+							),
+							(!props.attributes.show_form_selector) && wp.element.createElement(wp.components.TextControl, {
 								label: __('Form URL','formaloo'),
 								placeholder: __('Enter the Form URL','formaloo'),
 								onChange: onChangeURL,
 								value: props.attributes.url || ''
 							}),
-							(!props.attributes.url) && wp.element.createElement(
+							(props.attributes.show_form_selector) && wp.element.createElement(
+								wp.components.SelectControl,
+								{
+									label: __('Choose one of your forms: ','formaloo'),
+									value: props.attributes.selected_form_address,
+									options: formaloo_exchanger.forms_list['data']['forms'].map(form => {
+										return {
+											value: form['address'],
+											label: form['title']
+										}
+									}),
+									onChange: onChangeFormAddress
+								}
+							),
+							(!props.attributes.show_form_selector) && (!props.attributes.url) && wp.element.createElement(
 								'p',
 								{
 									className: 'formaloo-back-info'
 								},
 								__('Please enter the form URL in the text field above e.g. https://formaloo.net/feedback','formaloo')
 							),
-							is_url(props.attributes.url) && wp.element.createElement(
+							(!props.attributes.show_form_selector) && is_url(props.attributes.url) && wp.element.createElement(
 								'p',
 								{
 									className: 'formaloo-back-success'
 								},
 								__('* You can change form view options on the inspector control','formaloo')
 							),
-							!is_url(props.attributes.url) && (props.attributes.url) && wp.element.createElement(
+							(props.attributes.show_form_selector) && wp.element.createElement(
+								'p',
+								{
+									className: 'formaloo-back-success'
+								},
+								__('* You can change form view options on the inspector control','formaloo')
+							),
+							(!props.attributes.show_form_selector) && !is_url(props.attributes.url) && (props.attributes.url) && wp.element.createElement(
 								'p',
 								{
 									className: 'formaloo-back-err'

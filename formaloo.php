@@ -38,6 +38,7 @@ require_once('gutenberg.php');
 
 add_action('plugins_loaded', array('Formaloo_Main_Class', 'loadTextDomain'));
 
+
 /*
  * Main class
  */
@@ -83,9 +84,11 @@ class Formaloo_Main_Class {
         add_action('admin_notices', array($this, 'formaloo_invalid_token_admin_notice'));
 
     }
+    
 
     public static function loadTextDomain() {
         load_plugin_textdomain('formaloo', false, dirname(plugin_basename(__FILE__ )) . '/languages/');
+        wp_set_script_translations( 'formaloo-block/index.js', 'formaloo', dirname(plugin_basename(__FILE__ )) . '/languages/' );
     }
 
     public function formaloo_show_form_shortcode($atts) {
@@ -321,10 +324,18 @@ class Formaloo_Main_Class {
             'api_key' => $data['api_key'],
             'protocol' => FORMALOO_PROTOCOL,
             'endpoint_url' => FORMALOO_ENDPOINT
-		);
+        );
+        
+        $gutenberg_options = array(
+            'forms_list' => $this->getForms($data['api_key'], $data['api_token'])
+        );
 
-		wp_localize_script('formaloo-admin', 'formaloo_exchanger', $admin_options);
+        wp_localize_script('formaloo-admin', 'formaloo_exchanger', $admin_options);
 
+        wp_enqueue_script('formaloo-gutenberg', FORMALOO_URL. 'formaloo-block/index.js');
+        wp_localize_script('formaloo-gutenberg', 'formaloo_exchanger', $gutenberg_options);
+
+        
 	}
 
 	/**

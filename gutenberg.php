@@ -2,7 +2,11 @@
 
 function formaloo_gutenberg_block_callback($attr) {
     
-  $formAddress = substr(parse_url($attr['url'])['path'],1);
+  if ($attr['show_form_selector']) {
+    $formAddress = $attr['selected_form_address'];
+  } else {
+    $formAddress = substr(parse_url($attr['url'])['path'],1);
+  }
   $apiUrl = FORMALOO_PROTOCOL . '://api.' . FORMALOO_ENDPOINT .'/v1/forms/form/'. $formAddress . '/show/';
   $formSlug = '';
   $data = get_option('formaloo_data', array());

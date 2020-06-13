@@ -63,6 +63,10 @@ function formaloo_block_block_init() {
 						'type' => 'string',
 						'default' => 'script',
 				),
+				'selected_form_address' => array( 
+					'type' => 'string',
+					'default' => '',
+				),
 				'link_title' => array( 
 						'type' => 'string',
 						'default' => 'Show Form',
@@ -79,6 +83,10 @@ function formaloo_block_block_init() {
 						'type' => 'boolean',
 						'default' => true,
 				),
+				'show_form_selector' => array(
+					'type' => 'boolean',
+					'default' => true,
+			),
 		),
 	) );
 }

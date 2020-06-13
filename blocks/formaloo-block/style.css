@@ -12,7 +12,7 @@
 	text-decoration: none!important;
 	text-transform: none!important;
 	background: #FFF5F2!important;
-  padding: 25px !important;
+	padding: 25px !important;
 }
 .formaloo-guten-div a {
 	margin-top: 20px!important;
@@ -27,16 +27,16 @@
 }
 .formaloo-guten-div .formaloo-back-err {
 	border: 1px dotted crimson;
-    padding: 0 20px;
-    width: fit-content;
+	padding: 0 20px;
+	width: fit-content;
 }
 .formaloo-guten-div .formaloo-back-success {
 	border: 1px dotted green;
-    padding: 0 20px;
-    width: fit-content;
+  padding: 0 20px;
+  width: fit-content;
 }
 .formaloo-guten-div .formaloo-back-info {
 	border: 1px dotted #191e23;
-    padding: 0 20px;
-    width: fit-content;
+  padding: 0 20px;
+  width: fit-content;
 }
