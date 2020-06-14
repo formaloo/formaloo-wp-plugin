@@ -8,7 +8,7 @@
 | ------------- |:-------------:|
 | Requires at least | 4.0 |
 | Tested up to | 5.4 |
-| Stable tag | 1.5.0.1 |
+| Stable tag | 1.5.1.1 |
 | Requires PHP | 5.2 |
 
 **Contributors:** Formaloo, idearun
@@ -91,6 +91,10 @@ Your forms will be autmatically GDPR & HIPAA compatible. Don't worry about anyth
 
 <img src="screenshots/screenshot-6.gif" alt="Screenshot 6" title="Screenshot 6" width="400" />
 
+7. Select an existing form of yours or just paste any Formaloo form URL to embed it on your website
+
+<img src="screenshots/screenshot-7.gif" alt="Screenshot 7" title="Screenshot 7" width="400" />
+
 ## Frequently Asked Questions
 
 1. Do I need to have coding skills to use Formaloo? 
@@ -171,6 +175,8 @@ See our <a href="https://api.formaloo.net/docs">API documentation</a> for more i
 - **Fixed:** Loadtime increased by 300% 
 - **Fixed:** Gutenberg compatibility improved
 
-### 1.5.0.1
+### 1.5.1.1
 - **Added:** Create & Edit Feedback Widgets for your Website
+- **Added:** Select an existing form of your Formaloo account in the Gutenberg block in addition to pasting any Formaloo form URL
+- **Added:** Spanish Language Support
 - Minior bug fixes and improvements
