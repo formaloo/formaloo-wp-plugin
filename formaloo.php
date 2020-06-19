@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Formaloo Form Builder
  * Description:       Easily embed Formaloo forms into your blog or WP pages.
- * Version:           1.5.1.1
+ * Version:           1.5.1.2
  * Author:            Formaloo team
  * Author URI:        https://formaloo.net/
  * Text Domain:       formaloo
@@ -16,7 +16,7 @@
  * Plugin constants
  */
 if(!defined('FORMALOO_PLUGIN_VERSION'))
-	define('FORMALOO_PLUGIN_VERSION', '1.5.1.1');
+	define('FORMALOO_PLUGIN_VERSION', '1.5.1.2');
 if(!defined('FORMALOO_URL'))
 	define('FORMALOO_URL', plugin_dir_url( __FILE__ ));
 if(!defined('FORMALOO_PATH'))
@@ -323,19 +323,12 @@ class Formaloo_Main_Class {
             'api_token' => $data['api_token'],
             'api_key' => $data['api_key'],
             'protocol' => FORMALOO_PROTOCOL,
-            'endpoint_url' => FORMALOO_ENDPOINT
-        );
-        
-        $gutenberg_options = array(
+            'endpoint_url' => FORMALOO_ENDPOINT,
             'forms_list' => $this->getForms($data['api_key'], $data['api_token'])
         );
-
+        
         wp_localize_script('formaloo-admin', 'formaloo_exchanger', $admin_options);
 
-        wp_enqueue_script('formaloo-gutenberg', FORMALOO_URL. 'formaloo-block/index.js');
-        wp_localize_script('formaloo-gutenberg', 'formaloo_exchanger', $gutenberg_options);
-
-        
 	}
 
 	/**

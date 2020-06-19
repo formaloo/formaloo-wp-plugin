@@ -18,9 +18,9 @@ function formaloo_block_block_init() {
 		return;
 	}
 	$dir = dirname( __FILE__ );
-	global $formalooClss;
 
 	$index_js = 'formaloo-block/index.js';
+
 	wp_register_script(
 		'formaloo-block-block-editor',
 		plugins_url( $index_js, __FILE__ ),

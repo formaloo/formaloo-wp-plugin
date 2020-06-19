@@ -8,7 +8,7 @@
 | ------------- |:-------------:|
 | Requires at least | 4.0 |
 | Tested up to | 5.4 |
-| Stable tag | 1.5.1.1 |
+| Stable tag | 1.5.1.2 |
 | Requires PHP | 5.2 |
 
 **Contributors:** Formaloo, idearun
@@ -175,7 +175,7 @@ See our <a href="https://api.formaloo.net/docs">API documentation</a> for more i
 - **Fixed:** Loadtime increased by 300% 
 - **Fixed:** Gutenberg compatibility improved
 
-### 1.5.1.1
+### 1.5.1.2
 - **Added:** Create & Edit Feedback Widgets for your Website
 - **Added:** Select an existing form of your Formaloo account in the Gutenberg block in addition to pasting any Formaloo form URL
 - **Added:** Spanish Language Support
