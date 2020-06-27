@@ -349,6 +349,15 @@ class Formaloo_Main_Class {
 
         add_submenu_page(
             'formaloo',
+            __( 'Templates', 'formaloo' ),
+            __( 'Templates', 'formaloo' ),
+            'manage_options',
+            'formaloo-templates-page',
+            array($this, 'templatesPage')
+        );
+
+        add_submenu_page(
+            'formaloo',
             __( 'Feedback Widget', 'formaloo' ),
             __( 'Feedback Widget', 'formaloo' ),
             'manage_options',
@@ -885,6 +894,196 @@ class Formaloo_Main_Class {
     }
 
     /**
+	 * Outputs the Formaloo Templates
+     *
+     * @return void
+	 */
+	public function templatesPage() {
+
+        $data = $this->getData();
+
+	    $not_ready = (empty($data['api_token']) || empty($data['api_key']));
+
+	    ?>
+
+		<div class="wrap">
+
+            <form id="formaloo-templates-form" class="postbox">
+
+                <div class="form-group inside">
+
+	                <?php
+	                /*
+					 * --------------------------
+					 * Templates Page
+					 * --------------------------
+					 */
+                    ?>
+                    
+                    <div class="formaloo-loading-gif-wrapper">
+                        <div class="formaloo-full-page-wrapper">
+                            <div class="formaloo-loader-wrapper">
+                                <div class="formaloo-borders formaloo-first"></div>
+                                <div class="formaloo-borders formaloo-middle"></div>
+                                <div class="formaloo-borders formaloo-last"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="formaloo-api-settings-top-wrapper">
+                        <img src="<?php echo FORMALOO_URL ?>assets/images/Formaloo_Logo.png" alt="formaloo-logo">
+                        <h1 class="formaloo-heading">
+                            <?php _e('Templates', 'formaloo'); ?>
+                        </h1>
+                    </div>
+
+                    <p class="notice notice-error formaloo-templates-notice"></p> 
+
+	                <?php if ($not_ready): ?>
+                        <p>
+                            <?php echo __('To get started, we\'ll need to access your Formaloo account with an','formaloo') .' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/profile/" target="_blank">'. __('API Key & API Token','formaloo') .'</a>. '. __('Paste your Formaloo API Key & API Token, and click','formaloo') .' <strong>'. __('Connect','formaloo') .'</strong> '. __('to continue','formaloo') .'.'; ?>
+                        </p>
+                    <?php else: ?>
+                        <?php // echo __('You can access your','formaloo') .' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/" target="_blank">'. __('Formaloo dashboard here','formaloo') .'</a>.'; ?>  
+                    <?php endif; ?>
+                    <?php echo $this->getStatusDiv(!$not_ready); ?>
+
+                    <input type="hidden" id="formaloo_templates_form_slug" name="formaloo_templates_form_slug" value="">
+
+                    <div class="formaloo-templates-grid-container"></div>
+                    
+                    <div id="formaloo-tempaltes-pagination-wrapper">
+                        <div id="formaloo-templates-prev-page" class="button button-primary">
+                        <?php _e('Prev', 'formaloo'); ?>
+                        </div>
+                        <p id="formaloo-templates-current-page-number">
+
+                        </p>
+                        <div id="formaloo-templates-next-page"  class="button button-primary">
+                        <?php _e('Next', 'formaloo'); ?>
+                        </div>
+                    </div>
+                    
+                </div>
+
+            </form>
+                            
+		</div>
+        
+        <script>
+            jQuery(document).ready(function($){
+
+                <?php 
+                    $data = $this->getData();
+                ?>
+
+                $('.formaloo-templates-notice').hide();
+                loadTemplates();
+                
+                function loadTemplates(url = '') {
+
+                    var finalUrl = ''
+
+                    if (url == '') {
+                        finalUrl = '<?php echo esc_url( FORMALOO_PROTOCOL . '://api.' . FORMALOO_ENDPOINT . '/v1/forms/templates/list/?page=1' ); ?>';
+                    } else {
+                        finalUrl = url
+                    }
+
+                    $.ajax({
+                        url: finalUrl,
+                        type: 'GET',
+                        dataType: 'json',
+                        headers: {
+                            'x-api-key': '<?php echo $data['api_key']; ?>',
+                            'Authorization': '<?php echo 'Token ' . $data['api_token']; ?>'
+                        },
+                        contentType: 'application/json; charset=utf-8',
+                        success: function (result) {
+                            showLoadingGif();
+
+                            $( '.formaloo-templates-grid-container' ).empty();
+
+                            $.each(result['data']['forms'], function(i, form) {
+                                $( '.formaloo-templates-grid-container' ).append( $( '<div class="formaloo-templates-grid-item"><div class="formaloo-templates-grid-item-inner"><img src="' + form['logo'] + '" alt="' + form['title'] + '"><div class="formaloo-template-title">' + form['title'] + '</div></div><div class="formaloo-templates-hover-div"><div class="text">John Doe</div></div></div>' ) );
+                            });
+
+                            handlePagination(result['data']['current_page'], result['data']['previous'], result['data']['next']);
+
+                            hideLoadingGif();
+                        },
+                        error: function (error) {
+                            var errorText = error['responseJSON']['errors']['general_errors'][0];
+                            showGeneralErrors(errorText);
+                            hideLoadingGif();
+                        }
+                    });
+                }
+
+                function handlePagination(currentPage, prev, next) {
+                    $( "#formaloo-templates-prev-page").unbind( "click" );
+                    $( "#formaloo-templates-next-page").unbind( "click" );
+                    if (prev == null){
+                        $('#formaloo-templates-prev-page').addClass("formaloo-disabled-next-prev-button");
+                    } else {
+                        $('#formaloo-templates-prev-page').removeClass("formaloo-disabled-next-prev-button");
+                        $( '#formaloo-templates-prev-page' ).click(function() {
+                            loadTemplates(prev);
+                        });
+                    }
+                    if (next == null){
+                        $('#formaloo-templates-next-page').addClass("formaloo-disabled-next-prev-button");
+                    } else {
+                        $('#formaloo-templates-next-page').removeClass("formaloo-disabled-next-prev-button");
+                        $( '#formaloo-templates-next-page' ).click(function() {
+                            loadTemplates(next);
+                        });
+                    }
+                    $('#formaloo-templates-current-page-number').text(currentPage);
+                }
+
+                function copyTemplate(slug) {
+                    $.ajax({
+                        url: "<?php echo esc_url( FORMALOO_PROTOCOL . '://api.' . FORMALOO_ENDPOINT . '/v1/forms/form/copy/' ); ?>",
+                        type: 'POST',
+                        headers: {
+                            'x-api-key': '<?php echo $data['api_key']; ?>',
+                            'Authorization': '<?php echo 'Token ' . $data['api_token']; ?>'
+                        },
+                        data: { 'copied_form' : slug },
+                        success: function (result) {
+                            
+                        },
+                        error: function (error) {
+                            var errorText = error['responseJSON']['errors']['general_errors'][0];
+                            showGeneralErrors(errorText);
+                            hideLoadingGif();
+                        }
+                    });
+                }
+
+                function showGeneralErrors(errorText) {
+                    $('.formaloo-feedback-widget-notice').show();
+                    $('.formaloo-feedback-widget-notice').text(errorText);
+                }
+
+                function showLoadingGif() {
+                    $('.formaloo-loading-gif-wrapper').show();
+                }
+
+                function hideLoadingGif() {
+                    $('.formaloo-loading-gif-wrapper').hide();
+                }
+
+            });
+            
+        </script>
+
+		<?php
+
+    }
+
+    /**
 	 * Outputs the Feedback Widget Creation layout containing the form with all its options
      *
      * @return void
@@ -911,8 +1110,12 @@ class Formaloo_Main_Class {
 					 */
                     ?>
                     
-                    <div class="formaloo-feedback-widget-loading-gif-wrapper">
-                        <img src="<?php echo FORMALOO_URL ?>assets/images/loading.gif" alt="feedback-widget-loading-gif">
+                    <div class="formaloo-loading-gif-wrapper">
+                        <div class="formaloo-loader-wrapper">
+                            <div class="formaloo-borders formaloo-first"></div>
+                            <div class="formaloo-borders formaloo-middle"></div>
+                            <div class="formaloo-borders formaloo-last"></div>
+                        </div>
                     </div>
 
                     <div id="formaloo-feedback-widget-show-options" style="display:none;">
@@ -1162,7 +1365,7 @@ class Formaloo_Main_Class {
                             disableFeedbackWidgetTable();
                             var errorText = error['responseJSON']['errors']['general_errors'][0];
                             showGeneralErrors(errorText);
-                            $('.formaloo-feedback-widget-loading-gif-wrapper').hide();
+                            hideLoadingGif();
                         }
                     });
                 }
@@ -1183,7 +1386,7 @@ class Formaloo_Main_Class {
                             disableFeedbackWidgetTable();
                             var errorText = error['responseJSON']['errors']['general_errors'][0];
                             showGeneralErrors(errorText);
-                            $('.formaloo-feedback-widget-loading-gif-wrapper').hide();
+                            hideLoadingGif();
                         }
                     });
                 }
@@ -1205,7 +1408,7 @@ class Formaloo_Main_Class {
                             disableFeedbackWidgetTable();
                             var errorText = error['responseJSON']['errors']['general_errors'][0];
                             showGeneralErrors(errorText);
-                            $('.formaloo-feedback-widget-loading-gif-wrapper').hide();
+                            hideLoadingGif();
                         }
                     });
                 }
@@ -1248,7 +1451,7 @@ class Formaloo_Main_Class {
 
                     $('.formaloo_feedback_widget_button_color').wpColorPicker();
 
-                    $('.formaloo-feedback-widget-loading-gif-wrapper').hide();
+                    hideLoadingGif();
                 }
 
                 $('#formaloo-feedback-widget-form').on('submit', function(e){
@@ -1372,6 +1575,10 @@ class Formaloo_Main_Class {
                 function showGeneralErrors(errorText) {
                     $('.formaloo-feedback-widget-notice').show();
                     $('.formaloo-feedback-widget-notice').text(errorText);
+                }
+
+                function hideLoadingGif() {
+                    $('.formaloo-loading-gif-wrapper').hide();
                 }
 
             });

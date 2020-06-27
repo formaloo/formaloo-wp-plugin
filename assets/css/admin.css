@@ -157,16 +157,6 @@
 #formaloo-feedback-widget-form .form-group {
   position: relative;
 }
-.formaloo-feedback-widget-loading-gif-wrapper {
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(0,0,0,0.5);
-}
 #formaloo-feedback-widget-script-textarea {
   resize: none;
   overflow: hidden;
@@ -185,4 +175,109 @@
 }
 #formaloo-where-to-put-feedback-widget {
   width: 225px;
+}
+@keyframes formalooGradient {
+  0% {background-position: 0%}
+  100% {background-position: 100%}
+}
+.formaloo-loading-gif-wrapper {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.5);
+  z-index: 99;
+}
+.formaloo-loader-wrapper {
+  width: 120px;
+  height: 120px;
+  overflow: hidden;
+  direction: ltr;
+}
+.formaloo-borders {
+  height: 16.5%;
+  border-radius: 20px;
+  transition: 0.5s;
+  background: linear-gradient(45deg, #FF3706, #f46444 , #F17C58, #565988,  #0957df, #0050db  ) ;
+  background-size: 600% 100%;
+  animation: formalooGradient 1s linear infinite;
+  animation-direction: alternate;
+}
+.formaloo-first {
+  width: 75%;
+}
+.formaloo-middle {
+  width: 46%;
+  margin: 11% 0;
+}
+.formaloo-last {
+  width: 21.5%;
+}
+.formaloo-templates-grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  margin: 10px;
+}
+.formaloo-templates-grid-item {
+  position: relative;
+  padding: 20px;
+}
+.formaloo-templates-grid-item-inner {
+  font-size: large;
+  padding: 10px;
+  background: white;
+  border: 1px solid #CFD8DC;
+  border-radius: 4px;
+  text-align: center;
+  cursor: pointer;
+}
+.formaloo-templates-grid-item img {
+  width: 220px;
+  height: 175px;
+  object-fit: contain;
+}
+.formaloo-template-title {
+  font-size: medium;
+  text-align: left;
+  color: #263238;
+  margin: 0.5rem 0;
+}
+.formaloo-templates-hover-div {
+  display:none;
+  transition: .5s ease;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+#formaloo-tempaltes-pagination-wrapper {
+  display: flex;
+  align-items: center;
+  margin-left: 30px;
+}
+#formaloo-templates-current-page-number {
+  font-weight: bold;
+  color: #263238;
+  padding: 0 10px;
+}
+#formaloo-templates-next-page {
+  cursor: pointer;
+  margin: 0 10px;
+}
+#formaloo-templates-prev-page {
+  cursor: pointer;
+  margin-right: 10px;
+}
+.formaloo-disabled-next-prev-button {
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.formaloo-templates-grid-container:empty {
+  height: 100vh;
 }
