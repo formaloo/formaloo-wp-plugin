@@ -20,15 +20,15 @@ function formaloo_gutenberg_block_callback($attr) {
   ));
 
   if( is_wp_error( $request ) ) {
-   return false; // Bail early
+   return false;
   }
 
    $body = wp_remote_retrieve_body( $request );
 
-   $data = json_decode( $body );
+   $result = json_decode( $body );
 
-   if( ! empty( $data ) ) {
-       $formSlug = $data->data->form->slug;
+   if( ! empty( $result ) ) {
+       $formSlug = $result->data->form->slug;
    }
 
    switch ($attr['show_type']) {

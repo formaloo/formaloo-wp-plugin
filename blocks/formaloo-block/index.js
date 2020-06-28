@@ -153,7 +153,6 @@
 
 			// https://regexr.com/3um70
 			function is_url(str) {
-				console.log(formaloo_exchanger);
 				regexp = /^(https?|chrome):\/\/[^\s$.?#].[^\s]*$/g;
 				if (regexp.test(str)) {
 					return true;

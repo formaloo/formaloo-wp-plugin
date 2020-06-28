@@ -720,6 +720,46 @@ class Formaloo_Main_Class {
                             <?php $this->list_table_page(); ?>
                         </div>
 
+                        <script>
+                            jQuery(document).ready(function($){
+
+                                var created_from_template = false;
+                                <?php if (esc_attr($_GET['created_from_template']) == true): ?>
+                                    created_from_template = true;
+                                <?php endif; ?>
+
+                                if (created_from_template == true) {
+                                    blink($('table').find('tbody').find('tr:first'), 3, 300, '#FFE7E1');
+                                    removeURLParameters(['created_from_template']);
+                                }
+
+                                function removeURLParameters(removeParams) {
+                                    const deleteRegex = new RegExp(removeParams.join('=|') + '=')
+
+                                    const params = location.search.slice(1).split('&')
+                                    let search = []
+                                    for (let i = 0; i < params.length; i++) if (deleteRegex.test(params[i]) === false) search.push(params[i])
+
+                                    window.history.replaceState({}, document.title, location.pathname + (search.length ? '?' + search.join('&') : '') + location.hash)
+                                }
+
+                                function blink(target, count, blinkspeed, bc) {
+                                    let promises=[];
+                                    const b=target.css(`background-color`);
+                                    target.css(`background-color`, bc||b);
+                                    for (i=1; i<count; i++) {
+                                            const blink = target.fadeTo(blinkspeed||100, .3).fadeTo(blinkspeed||100, 1.0);
+                                            promises.push(blink);
+                                    }
+                                    // wait for all the blinking to finish before changing the background color back
+                                    $.when.apply(null, promises).done(function() {
+                                            target.css(`background-color`, b);
+                                    });
+                                    promises=undefined;
+                                }
+                            });
+                        </script>
+
                     <?php endif; ?>
 
                 <?php endif; ?>
@@ -1005,17 +1045,29 @@ class Formaloo_Main_Class {
                             $( '.formaloo-templates-grid-container' ).empty();
 
                             $.each(result['data']['forms'], function(i, form) {
-                                $( '.formaloo-templates-grid-container' ).append( $( '<div class="formaloo-templates-grid-item"><div class="formaloo-templates-grid-item-inner"><img src="' + form['logo'] + '" alt="' + form['title'] + '"><div class="formaloo-template-title">' + form['title'] + '</div></div><div class="formaloo-templates-hover-div"><div class="text">John Doe</div></div></div>' ) );
+                                $( '.formaloo-templates-grid-container' ).append( $( '<div class="formaloo-templates-grid-item"><div class="formaloo-templates-grid-item-inner"><img src="' + form['logo'] + '" alt="' + form['title'] + '"><div class="formaloo-template-title">' + form['title'] + '</div><div class="formaloo-templates-hover-div"><a href="<?php echo FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT ?>/' + form['address'] + '?TB_iframe=true&width=100vw&height=100vh" title="<?php _e('Preview the template', 'formaloo'); ?>" target="_blank" class="button button-secondary formaloo-preview-template-link thickbox" onclick="resizeIframe();"><?php _e('Preview', 'formaloo') ?></a><a href="#" class="button button-primary" data-form-slug="' + form['slug'] + '" onclick="copyTemplate(event, this)"><?php _e('Use', 'formaloo'); ?></a></div></div></div>' ) );
                             });
 
                             handlePagination(result['data']['current_page'], result['data']['previous'], result['data']['next']);
-
+                            handleHover();
                             hideLoadingGif();
+
                         },
                         error: function (error) {
                             var errorText = error['responseJSON']['errors']['general_errors'][0];
                             showGeneralErrors(errorText);
                             hideLoadingGif();
+                        }
+                    });
+                }
+
+                function handleHover() {
+                    $(".formaloo-templates-grid-item").on({
+                        mouseenter: function () {
+                            $(this).find('div.formaloo-templates-grid-item-inner').find('div.formaloo-templates-hover-div').css('visibility','visible');
+                        },
+                        mouseleave: function () {
+                            $(this).find('div.formaloo-templates-grid-item-inner').find('div.formaloo-templates-hover-div').css('visibility','hidden');
                         }
                     });
                 }
@@ -1042,41 +1094,59 @@ class Formaloo_Main_Class {
                     $('#formaloo-templates-current-page-number').text(currentPage);
                 }
 
-                function copyTemplate(slug) {
-                    $.ajax({
-                        url: "<?php echo esc_url( FORMALOO_PROTOCOL . '://api.' . FORMALOO_ENDPOINT . '/v1/forms/form/copy/' ); ?>",
-                        type: 'POST',
-                        headers: {
-                            'x-api-key': '<?php echo $data['api_key']; ?>',
-                            'Authorization': '<?php echo 'Token ' . $data['api_token']; ?>'
-                        },
-                        data: { 'copied_form' : slug },
-                        success: function (result) {
-                            
-                        },
-                        error: function (error) {
-                            var errorText = error['responseJSON']['errors']['general_errors'][0];
-                            showGeneralErrors(errorText);
-                            hideLoadingGif();
-                        }
-                    });
-                }
-
-                function showGeneralErrors(errorText) {
-                    $('.formaloo-feedback-widget-notice').show();
-                    $('.formaloo-feedback-widget-notice').text(errorText);
-                }
-
-                function showLoadingGif() {
-                    $('.formaloo-loading-gif-wrapper').show();
-                }
-
-                function hideLoadingGif() {
-                    $('.formaloo-loading-gif-wrapper').hide();
-                }
-
             });
-            
+
+            function showLoadingGif() {
+                jQuery('.formaloo-loading-gif-wrapper').show();
+            }
+
+            function hideLoadingGif() {
+                jQuery('.formaloo-loading-gif-wrapper').hide();
+            }
+
+            function showGeneralErrors(errorText) {
+                jQuery('.formaloo-templates-notice').show();
+                jQuery('.formaloo-templates-notice').text(errorText);
+            }
+
+            function copyTemplate(e, form) {
+
+                e.preventDefault();
+
+                var formSlug = form.dataset.formSlug;
+
+                <?php 
+                    $data = $this->getData();
+                ?>
+
+                jQuery.ajax({
+                    url: "<?php echo esc_url( FORMALOO_PROTOCOL . '://api.' . FORMALOO_ENDPOINT . '/v1/forms/form/copy/' ); ?>",
+                    type: 'POST',
+                    headers: {
+                        'x-api-key': '<?php echo $data['api_key']; ?>',
+                        'Authorization': '<?php echo 'Token ' . $data['api_token']; ?>'
+                    },
+                    data: { 'copied_form' : formSlug },
+                    success: function (result) {
+                        showLoadingGif();
+                        window.location.href = "?page=formaloo&created_from_template=true";
+                    },
+                    error: function (error) {
+                        var errorText = error['responseJSON']['errors']['general_errors'][0];
+                        showGeneralErrors(errorText);
+                        hideLoadingGif();
+                    }
+                });
+
+            }
+
+            function resizeIframe() {
+                var TB_WIDTH = jQuery(document).width();
+                jQuery("#TB_window").animate({
+                    width: TB_WIDTH + 'px',
+                });
+            }
+
         </script>
 
 		<?php
