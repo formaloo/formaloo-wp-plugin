@@ -23,7 +23,7 @@ if(!defined('FORMALOO_PATH'))
 	define('FORMALOO_PATH', plugin_dir_path( __FILE__ ));
 if(!defined('FORMALOO_ENDPOINT')) {
     if (get_locale() == 'fa_IR') {
-        define('FORMALOO_ENDPOINT', 'formaloo.com');
+        define('FORMALOO_ENDPOINT', 'staging.formaloo.com');
     } else {
         define('FORMALOO_ENDPOINT', 'formaloo.net');
     }
@@ -961,12 +961,10 @@ class Formaloo_Main_Class {
                     ?>
                     
                     <div class="formaloo-loading-gif-wrapper">
-                        <div class="formaloo-full-page-wrapper">
-                            <div class="formaloo-loader-wrapper">
-                                <div class="formaloo-borders formaloo-first"></div>
-                                <div class="formaloo-borders formaloo-middle"></div>
-                                <div class="formaloo-borders formaloo-last"></div>
-                            </div>
+                        <div class="formaloo-loader-wrapper">
+                            <div class="formaloo-borders formaloo-first"></div>
+                            <div class="formaloo-borders formaloo-middle"></div>
+                            <div class="formaloo-borders formaloo-last"></div>
                         </div>
                     </div>
                     
@@ -990,6 +988,19 @@ class Formaloo_Main_Class {
 
                     <input type="hidden" id="formaloo_templates_form_slug" name="formaloo_templates_form_slug" value="">
 
+                    <div class="formaloo-templates-toolbar-wrapper">
+                        <div class="alignleft actions">
+                            <select id="formaloo-templates-category-selector-top">
+                                <option value="-1"><?php _e('All Categories', 'formaloo'); ?></option>
+                            </select>
+                            <input type="submit" id="formaloo-templates-category-submit" class="button action" value="<?php _e('Apply', 'formaloo'); ?>">
+                        </div>
+                        <p class="search-box">
+                            <input type="search" id="formaloo-templates-search-text" placeholder="<?php _e('Search a template..', 'formaloo'); ?>">
+                            <input type="submit" id="formaloo-templates-search-submit" class="button" value="<?php _e('Search', 'formaloo'); ?>">
+                        </p>
+                    </div>
+
                     <div class="formaloo-templates-grid-container"></div>
                     
                     <div id="formaloo-tempaltes-pagination-wrapper">
@@ -997,7 +1008,7 @@ class Formaloo_Main_Class {
                         <?php _e('Prev', 'formaloo'); ?>
                         </div>
                         <p id="formaloo-templates-current-page-number">
-
+                            -
                         </p>
                         <div id="formaloo-templates-next-page"  class="button button-primary">
                         <?php _e('Next', 'formaloo'); ?>
@@ -1019,8 +1030,13 @@ class Formaloo_Main_Class {
 
                 $('.formaloo-templates-notice').hide();
                 loadTemplates();
+                loadCategories();
+                var searchText = '';
+                var selectedCategory = '';
                 
-                function loadTemplates(url = '') {
+                function loadTemplates(url = '', searchText = '', category = '') {
+
+                    showLoadingGif();
 
                     var finalUrl = ''
 
@@ -1030,6 +1046,18 @@ class Formaloo_Main_Class {
                         finalUrl = url
                     }
 
+                    if (searchText != '') {
+                        var searchUrl = new URL(finalUrl);
+                        searchUrl.searchParams.append('search', searchText);
+                        finalUrl = searchUrl.toString();
+                    }
+
+                    if (category != '') {
+                        var categorizedUrl = new URL(finalUrl);
+                        categorizedUrl.searchParams.append('category', category);
+                        finalUrl = categorizedUrl.toString();
+                    }
+ 
                     $.ajax({
                         url: finalUrl,
                         type: 'GET',
@@ -1040,7 +1068,6 @@ class Formaloo_Main_Class {
                         },
                         contentType: 'application/json; charset=utf-8',
                         success: function (result) {
-                            showLoadingGif();
 
                             $( '.formaloo-templates-grid-container' ).empty();
 
@@ -1061,6 +1088,46 @@ class Formaloo_Main_Class {
                     });
                 }
 
+                function loadCategories() {
+
+                    $.ajax({
+                        url: '<?php echo esc_url( FORMALOO_PROTOCOL . '://api.' . FORMALOO_ENDPOINT . '/v2/forms/templates/categories/' ); ?>',
+                        type: 'GET',
+                        dataType: 'json',
+                        headers: {
+                            'x-api-key': '<?php echo $data['api_key']; ?>'
+                        },
+                        contentType: 'application/json; charset=utf-8',
+                        success: function (result) {
+                            $.each(result['data']['categories'], function(i, category) {
+                                $( '#formaloo-templates-category-selector-top' ).append( $( '<option value="'+ category['slug'] +'">'+ category['title'] +'</option>' ) );
+                            });
+                        },
+                        error: function (error) {
+                            var errorText = error['responseJSON']['errors']['general_errors'][0];
+                            showGeneralErrors(errorText);
+                        }
+                    });
+                }
+
+                $('#formaloo-templates-search-submit').click(function(e) {
+                    e.preventDefault();
+                    var val = $('#formaloo-templates-search-text').val();
+                    searchText = val;
+                    loadTemplates('', searchText, '');
+                });
+
+                $('#formaloo-templates-category-submit').click(function(e) {
+                    e.preventDefault();
+                    var val = $( "#formaloo-templates-category-selector-top option:selected" ).val();
+                    if (val == '-1') {
+                        selectedCategory = '';
+                    } else {
+                        selectedCategory = val;
+                    }
+                    loadTemplates('', '', selectedCategory);
+                });
+
                 function handleHover() {
                     $(".formaloo-templates-grid-item").on({
                         mouseenter: function () {
@@ -1080,7 +1147,7 @@ class Formaloo_Main_Class {
                     } else {
                         $('#formaloo-templates-prev-page').removeClass("formaloo-disabled-next-prev-button");
                         $( '#formaloo-templates-prev-page' ).click(function() {
-                            loadTemplates(prev);
+                            loadTemplates(prev, searchText, selectedCategory);
                         });
                     }
                     if (next == null){
@@ -1088,7 +1155,7 @@ class Formaloo_Main_Class {
                     } else {
                         $('#formaloo-templates-next-page').removeClass("formaloo-disabled-next-prev-button");
                         $( '#formaloo-templates-next-page' ).click(function() {
-                            loadTemplates(next);
+                            loadTemplates(next, searchText, selectedCategory);
                         });
                     }
                     $('#formaloo-templates-current-page-number').text(currentPage);
@@ -1415,6 +1482,7 @@ class Formaloo_Main_Class {
                 }
                 
                 function loadTemplates() {
+                    
                     $.ajax({
                         url: "<?php echo esc_url( FORMALOO_PROTOCOL . '://api.' . FORMALOO_ENDPOINT . '/v1/forms/templates/list' ); ?>",
                         type: 'GET',
