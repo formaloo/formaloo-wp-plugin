@@ -36,3 +36,8 @@
 #formaloo-customize-form tr, #formaloo-customize-form p {
   text-align: right;
 }
+#formaloo-tempaltes-pagination-wrapper {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}

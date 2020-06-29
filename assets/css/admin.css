@@ -280,7 +280,7 @@
 }
 #formaloo-templates-prev-page {
   cursor: pointer;
-  margin-right: 10px;
+  margin: 0 10px;
 }
 .formaloo-disabled-next-prev-button {
   pointer-events: none;
@@ -294,4 +294,18 @@
   display: flex;
   justify-content: space-between;
   margin: 20px 20px 0 20px;
+}
+.formaloo-templates-not-found-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: large;
+  padding: 15px 0;
+  color: lightgray;
+}
+.formaloo-templates-not-found-wrapper img {
+  width: 250px;
+  filter: grayscale(100%);
+  margin-bottom: 25px;
 }

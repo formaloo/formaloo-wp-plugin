@@ -308,11 +308,11 @@ class Formaloo_Main_Class {
         wp_add_inline_script( 'clipboard', 'new ClipboardJS(".formaloo_clipboard_btn");' );
         wp_add_inline_script( 'clipboard', 'new ClipboardJS(".formaloo_widget_clipboard_btn");' );     
 
-	    wp_enqueue_style('formaloo-admin', FORMALOO_URL. 'assets/css/admin.css', false, 1.0);
-        wp_enqueue_script('formaloo-admin', FORMALOO_URL. 'assets/js/admin.js', array('wp-color-picker'), 1.0);
+	    wp_enqueue_style('formaloo-admin', FORMALOO_URL. 'assets/css/admin.css', false, FORMALOO_PLUGIN_VERSION);
+        wp_enqueue_script('formaloo-admin', FORMALOO_URL. 'assets/js/admin.js', array('wp-color-picker'), FORMALOO_PLUGIN_VERSION);
 
         if (get_locale() == 'fa_IR') {
-            wp_enqueue_style('formaloo-admin-rtl', FORMALOO_URL. 'assets/css/rtl.css', false, 1.0);
+            wp_enqueue_style('formaloo-admin-rtl', FORMALOO_URL. 'assets/css/rtl.css', false, FORMALOO_PLUGIN_VERSION);
         }
 
         $data = $this->getData();
@@ -1070,13 +1070,18 @@ class Formaloo_Main_Class {
                         success: function (result) {
 
                             $( '.formaloo-templates-grid-container' ).empty();
+                            
+                            if(result['data']['forms'].length == 0) {
+                                $( '.formaloo-templates-grid-container' ).append( $( '<div></div><div class="formaloo-templates-not-found-wrapper"><img src="<?php echo FORMALOO_URL ?>assets/images/feedback_widget.png" alt="Template not found" ><?php _e('Template not found', 'formaloo'); ?></div><div></div>' ) );
+                            } else {
+                                $.each(result['data']['forms'], function(i, form) {
+                                    $( '.formaloo-templates-grid-container' ).append( $( '<div class="formaloo-templates-grid-item"><div class="formaloo-templates-grid-item-inner"><img src="' + form['logo'] + '" alt="' + form['title'] + '"><div class="formaloo-template-title">' + form['title'] + '</div><div class="formaloo-templates-hover-div"><a href="<?php echo FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT ?>/' + form['address'] + '?TB_iframe=true&width=100vw&height=100vh" title="<?php _e('Preview the template', 'formaloo'); ?>" target="_blank" class="button button-secondary formaloo-preview-template-link thickbox" onclick="resizeIframe();"><?php _e('Preview', 'formaloo') ?></a><a href="#" class="button button-primary" data-form-slug="' + form['slug'] + '" onclick="copyTemplate(event, this)"><?php _e('Use', 'formaloo'); ?></a></div></div></div>' ) );
+                                });
 
-                            $.each(result['data']['forms'], function(i, form) {
-                                $( '.formaloo-templates-grid-container' ).append( $( '<div class="formaloo-templates-grid-item"><div class="formaloo-templates-grid-item-inner"><img src="' + form['logo'] + '" alt="' + form['title'] + '"><div class="formaloo-template-title">' + form['title'] + '</div><div class="formaloo-templates-hover-div"><a href="<?php echo FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT ?>/' + form['address'] + '?TB_iframe=true&width=100vw&height=100vh" title="<?php _e('Preview the template', 'formaloo'); ?>" target="_blank" class="button button-secondary formaloo-preview-template-link thickbox" onclick="resizeIframe();"><?php _e('Preview', 'formaloo') ?></a><a href="#" class="button button-primary" data-form-slug="' + form['slug'] + '" onclick="copyTemplate(event, this)"><?php _e('Use', 'formaloo'); ?></a></div></div></div>' ) );
-                            });
+                                handlePagination(result['data']['current_page'], result['data']['previous'], result['data']['next']);
+                                handleHover();
+                            }
 
-                            handlePagination(result['data']['current_page'], result['data']['previous'], result['data']['next']);
-                            handleHover();
                             hideLoadingGif();
 
                         },

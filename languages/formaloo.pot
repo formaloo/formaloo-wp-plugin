@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Formaloo Form Builder\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-29 09:26+0000\n"
+"POT-Creation-Date: 2020-06-29 10:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -246,29 +246,29 @@ msgstr ""
 msgid "Welcome to Formaloo!"
 msgstr ""
 
-#: formaloo.php:882 formaloo.php:982 formaloo.php:1307 git/formaloo.php:833
+#: formaloo.php:882 formaloo.php:982 formaloo.php:1312 git/formaloo.php:833
 #: git/formaloo.php:967 svn/trunk/formaloo.php:833 svn/trunk/formaloo.php:967
 msgid "To get started, we'll need to access your Formaloo account with an"
 msgstr ""
 
-#: formaloo.php:882 formaloo.php:982 formaloo.php:1307 git/formaloo.php:833
+#: formaloo.php:882 formaloo.php:982 formaloo.php:1312 git/formaloo.php:833
 #: git/formaloo.php:967 svn/trunk/formaloo.php:833 svn/trunk/formaloo.php:967
 msgid "API Key & API Token"
 msgstr ""
 
-#: formaloo.php:882 formaloo.php:982 formaloo.php:1307 git/formaloo.php:833
+#: formaloo.php:882 formaloo.php:982 formaloo.php:1312 git/formaloo.php:833
 #: git/formaloo.php:967 svn/trunk/formaloo.php:833 svn/trunk/formaloo.php:967
 msgid "Paste your Formaloo API Key & API Token, and click"
 msgstr ""
 
-#: formaloo.php:882 formaloo.php:918 formaloo.php:982 formaloo.php:1307
+#: formaloo.php:882 formaloo.php:918 formaloo.php:982 formaloo.php:1312
 #: git/formaloo.php:833 git/formaloo.php:869 git/formaloo.php:967
 #: svn/trunk/formaloo.php:833 svn/trunk/formaloo.php:869
 #: svn/trunk/formaloo.php:967
 msgid "Connect"
 msgstr ""
 
-#: formaloo.php:882 formaloo.php:982 formaloo.php:1307 git/formaloo.php:833
+#: formaloo.php:882 formaloo.php:982 formaloo.php:1312 git/formaloo.php:833
 #: git/formaloo.php:967 svn/trunk/formaloo.php:833 svn/trunk/formaloo.php:967
 msgid "to continue"
 msgstr ""
@@ -289,7 +289,7 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#: formaloo.php:925 formaloo.php:1448 git/formaloo.php:876
+#: formaloo.php:925 formaloo.php:1453 git/formaloo.php:876
 #: git/formaloo.php:1108 svn/trunk/formaloo.php:876 svn/trunk/formaloo.php:1108
 msgid "Need Support? Feel free to contact us"
 msgstr ""
@@ -319,105 +319,109 @@ msgid "Next"
 msgstr ""
 
 #: formaloo.php:1075
+msgid "Template not found"
+msgstr ""
+
+#: formaloo.php:1078
 msgid "Preview the template"
 msgstr ""
 
-#: formaloo.php:1075
+#: formaloo.php:1078
 msgid "Preview"
 msgstr ""
 
-#: formaloo.php:1075
+#: formaloo.php:1078
 msgid "Use"
 msgstr ""
 
-#: formaloo.php:1263 git/formaloo.php:923 svn/trunk/formaloo.php:923
+#: formaloo.php:1268 git/formaloo.php:923 svn/trunk/formaloo.php:923
 msgid "As a Link"
 msgstr ""
 
-#: formaloo.php:1264 git/formaloo.php:924 svn/trunk/formaloo.php:924
+#: formaloo.php:1269 git/formaloo.php:924 svn/trunk/formaloo.php:924
 msgid "Share this URL with others to view the form directly"
 msgstr ""
 
-#: formaloo.php:1272 git/formaloo.php:932 svn/trunk/formaloo.php:932
+#: formaloo.php:1277 git/formaloo.php:932 svn/trunk/formaloo.php:932
 msgid "As a Script Tag"
 msgstr ""
 
-#: formaloo.php:1273 git/formaloo.php:933 svn/trunk/formaloo.php:933
+#: formaloo.php:1278 git/formaloo.php:933 svn/trunk/formaloo.php:933
 msgid ""
 "Using this method, the form will become a part of your website's markup. To "
 "use this, put the code snippet in your website footer:"
 msgstr ""
 
-#: formaloo.php:1292 git/formaloo.php:952 svn/trunk/formaloo.php:952
+#: formaloo.php:1297 git/formaloo.php:952 svn/trunk/formaloo.php:952
 msgid "Feedback Widget Creator"
 msgstr ""
 
-#: formaloo.php:1301 git/formaloo.php:961 svn/trunk/formaloo.php:961
+#: formaloo.php:1306 git/formaloo.php:961 svn/trunk/formaloo.php:961
 msgid "Create a feedback widget for your website in less than 1 minute:"
 msgstr ""
 
-#: formaloo.php:1323 formaloo.php:1331 git/formaloo.php:983
+#: formaloo.php:1328 formaloo.php:1336 git/formaloo.php:983
 #: git/formaloo.php:991 svn/trunk/formaloo.php:983 svn/trunk/formaloo.php:991
 msgid "Button Text"
 msgstr ""
 
-#: formaloo.php:1338 git/formaloo.php:998 svn/trunk/formaloo.php:998
+#: formaloo.php:1343 git/formaloo.php:998 svn/trunk/formaloo.php:998
 msgid "Widget Position on Screen"
 msgstr ""
 
-#: formaloo.php:1344 git/formaloo.php:1004 svn/trunk/formaloo.php:1004
+#: formaloo.php:1349 git/formaloo.php:1004 svn/trunk/formaloo.php:1004
 msgid "Left"
 msgstr ""
 
-#: formaloo.php:1345 git/formaloo.php:1005 svn/trunk/formaloo.php:1005
+#: formaloo.php:1350 git/formaloo.php:1005 svn/trunk/formaloo.php:1005
 msgid "Right"
 msgstr ""
 
-#: formaloo.php:1346 git/formaloo.php:1006 svn/trunk/formaloo.php:1006
+#: formaloo.php:1351 git/formaloo.php:1006 svn/trunk/formaloo.php:1006
 msgid "Bottom Left"
 msgstr ""
 
-#: formaloo.php:1347 git/formaloo.php:1007 svn/trunk/formaloo.php:1007
+#: formaloo.php:1352 git/formaloo.php:1007 svn/trunk/formaloo.php:1007
 msgid "Bottom Right"
 msgstr ""
 
-#: formaloo.php:1353 git/formaloo.php:1013 svn/trunk/formaloo.php:1013
+#: formaloo.php:1358 git/formaloo.php:1013 svn/trunk/formaloo.php:1013
 msgid "NPS Choices Icon"
 msgstr ""
 
-#: formaloo.php:1380 formaloo.php:1388 git/formaloo.php:1040
+#: formaloo.php:1385 formaloo.php:1393 git/formaloo.php:1040
 #: git/formaloo.php:1048 svn/trunk/formaloo.php:1040
 #: svn/trunk/formaloo.php:1048
 msgid "Question Title"
 msgstr ""
 
-#: formaloo.php:1393 formaloo.php:1401 git/formaloo.php:1053
+#: formaloo.php:1398 formaloo.php:1406 git/formaloo.php:1053
 #: git/formaloo.php:1061 svn/trunk/formaloo.php:1053
 #: svn/trunk/formaloo.php:1061
 msgid "TextBox Placeholder"
 msgstr ""
 
-#: formaloo.php:1406 formaloo.php:1414 git/formaloo.php:1066
+#: formaloo.php:1411 formaloo.php:1419 git/formaloo.php:1066
 #: git/formaloo.php:1074 svn/trunk/formaloo.php:1066
 #: svn/trunk/formaloo.php:1074
 msgid "Submit Button Text"
 msgstr ""
 
-#: formaloo.php:1419 git/formaloo.php:1079 svn/trunk/formaloo.php:1079
+#: formaloo.php:1424 git/formaloo.php:1079 svn/trunk/formaloo.php:1079
 msgid "Button Color"
 msgstr ""
 
-#: formaloo.php:1427 formaloo.php:1435 git/formaloo.php:1087
+#: formaloo.php:1432 formaloo.php:1440 git/formaloo.php:1087
 #: git/formaloo.php:1095 svn/trunk/formaloo.php:1087
 #: svn/trunk/formaloo.php:1095
 msgid "Success Message After Submit"
 msgstr ""
 
-#: formaloo.php:1441 git/formaloo.php:1101 svn/trunk/formaloo.php:1101
+#: formaloo.php:1446 git/formaloo.php:1101 svn/trunk/formaloo.php:1101
 msgid "Save Changes"
 msgstr ""
 
-#: formaloo.php:1646 git/formaloo.php:1305 svn/trunk/formaloo.php:1305
+#: formaloo.php:1651 git/formaloo.php:1305 svn/trunk/formaloo.php:1305
 msgid "How to use your Feedback Widget"
 msgstr ""
 
