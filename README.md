@@ -8,7 +8,7 @@
 | ------------- |:-------------:|
 | Requires at least | 4.0 |
 | Tested up to | 5.4 |
-| Stable tag | 1.5.1.2 |
+| Stable tag | 1.6.0.0 |
 | Requires PHP | 5.2 |
 
 **Contributors:** Formaloo, idearun
@@ -179,4 +179,8 @@ See our <a href="https://api.formaloo.net/docs">API documentation</a> for more i
 - **Added:** Create & Edit Feedback Widgets for your Website
 - **Added:** Select an existing form of your Formaloo account in the Gutenberg block in addition to pasting any Formaloo form URL
 - **Added:** Spanish Language Support
-- Minior bug fixes and improvements
+- Minor bug fixes and improvements
+
+### 1.6.0.0
+- **Added:** You can now preview and use different form templates from Templates page
+- Minor bug fixes and improvements

@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Formaloo Form Builder
  * Description:       Easily embed Formaloo forms into your blog or WP pages.
- * Version:           1.5.1.2
+ * Version:           1.6.0.0
  * Author:            Formaloo team
  * Author URI:        https://formaloo.net/
  * Text Domain:       formaloo
@@ -16,7 +16,7 @@
  * Plugin constants
  */
 if(!defined('FORMALOO_PLUGIN_VERSION'))
-	define('FORMALOO_PLUGIN_VERSION', '1.5.1.2');
+	define('FORMALOO_PLUGIN_VERSION', '1.6.0.0');
 if(!defined('FORMALOO_URL'))
 	define('FORMALOO_URL', plugin_dir_url( __FILE__ ));
 if(!defined('FORMALOO_PATH'))
@@ -745,15 +745,15 @@ class Formaloo_Main_Class {
 
                                 function blink(target, count, blinkspeed, bc) {
                                     let promises=[];
-                                    const b=target.css(`background-color`);
-                                    target.css(`background-color`, bc||b);
+                                    const b=target.css('background-color');
+                                    target.css('background-color', bc||b);
                                     for (i=1; i<count; i++) {
-                                            const blink = target.fadeTo(blinkspeed||100, .3).fadeTo(blinkspeed||100, 1.0);
-                                            promises.push(blink);
+                                        const blink = target.fadeTo(blinkspeed||100, .3).fadeTo(blinkspeed||100, 1.0);
+                                        promises.push(blink);
                                     }
                                     // wait for all the blinking to finish before changing the background color back
                                     $.when.apply(null, promises).done(function() {
-                                            target.css(`background-color`, b);
+                                        target.css('background-color', bc);
                                     });
                                     promises=undefined;
                                 }
@@ -1114,7 +1114,7 @@ class Formaloo_Main_Class {
                     e.preventDefault();
                     var val = $('#formaloo-templates-search-text').val();
                     searchText = val;
-                    loadTemplates('', searchText, '');
+                    loadTemplates('', searchText, selectedCategory);
                 });
 
                 $('#formaloo-templates-category-submit').click(function(e) {
@@ -1125,7 +1125,7 @@ class Formaloo_Main_Class {
                     } else {
                         selectedCategory = val;
                     }
-                    loadTemplates('', '', selectedCategory);
+                    loadTemplates('', searchText, selectedCategory);
                 });
 
                 function handleHover() {
