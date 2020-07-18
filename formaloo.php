@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Formaloo Form Builder
  * Description:       Easily embed Formaloo forms into your blog or WP pages.
- * Version:           1.6.0.0
+ * Version:           1.6.0.1
  * Author:            Formaloo team
  * Author URI:        https://formaloo.net/
  * Text Domain:       formaloo
@@ -16,7 +16,7 @@
  * Plugin constants
  */
 if(!defined('FORMALOO_PLUGIN_VERSION'))
-	define('FORMALOO_PLUGIN_VERSION', '1.6.0.0');
+	define('FORMALOO_PLUGIN_VERSION', '1.6.0.1');
 if(!defined('FORMALOO_URL'))
 	define('FORMALOO_URL', plugin_dir_url( __FILE__ ));
 if(!defined('FORMALOO_PATH'))
@@ -1567,7 +1567,7 @@ class Formaloo_Main_Class {
                     $('#formaloo_feedback_widget_success_message_after_submit').val(form['success_message']);
                     
                     $.each(form['fields_list'], function(i, field) {
-                        if (field['type'] == 'long_text') {
+                        if (field['type'] == 'long_text' || field['type'] == 'short_text') {
                             $('#formaloo_feedback_widget_text_field_slug').val(field['slug']);
                             $('#formaloo_feedback_widget_textbox_placeholder').val(field['title']);
                         } else {

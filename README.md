@@ -8,7 +8,7 @@
 | ------------- |:-------------:|
 | Requires at least | 4.0 |
 | Tested up to | 5.4 |
-| Stable tag | 1.6.0.0 |
+| Stable tag | 1.6.0.1 |
 | Requires PHP | 5.2 |
 
 **Contributors:** Formaloo, idearun
@@ -181,6 +181,6 @@ See our <a href="https://api.formaloo.net/docs">API documentation</a> for more i
 - **Added:** Spanish Language Support
 - Minor bug fixes and improvements
 
-### 1.6.0.0
+### 1.6.0.1
 - **Added:** You can now preview and use different form templates from Templates page
 - Minor bug fixes and improvements
