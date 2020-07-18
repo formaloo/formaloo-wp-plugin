@@ -497,10 +497,6 @@ class Formaloo_Main_Class {
             <div id="form-show-edit" style="display:none;">
             </div>
 
-            <div id="form-show-create-form" style="display:none;">
-
-            </div>
-            
             <div id="form-show-options" style="display:none;">
                 <form id="formaloo-customize-form">
                 <table class="form-table">
@@ -600,7 +596,6 @@ class Formaloo_Main_Class {
                 <?php endif; ?>
                 </form>             
                 <script>
-
                     function getRowInfo($slug, $address) {
                         jQuery('.formaloo_clipboard_wrapper').addClass('formaloo_hidden');
                         jQuery(".form-table").append('<input name="formaloo_form_slug" id="formaloo_form_slug" type="hidden" value="' + $slug + '" />');
@@ -610,17 +605,47 @@ class Formaloo_Main_Class {
                     }
 
                     function showEditFormWith($protocol, $url, $slug) {
-                        jQuery("#form-show-edit").append('<iframe id="edit-form-iframe" width="100%" height="100%" src="'+ $protocol +'://'+ $url +'/dashboard/my-forms/'+ $slug +'/edit" frameborder="0" onload="resizeIframe();">');
+                        jQuery("#form-show-edit").append('<iframe id="edit-form-iframe" width="100%" height="100%" src="'+ $protocol +'://'+ $url +'/dashboard/my-forms/'+ $slug +'/edit/" frameborder="0" onload="resizeIframe();">');
                     }
 
-                    function showCreateForm($protocol, $url, $slug) {
-                        jQuery("#form-show-create-form").append('<iframe id="edit-form-iframe" width="100%" height="100%" src="<?php echo FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT ?>/formMaker/newForm/" frameborder="0" onload="resizeIframe();">');
+                    function createNewForm(e) {
+                        e.preventDefault();
+                        jQuery.ajax({
+                            url: "<?php echo esc_url( FORMALOO_PROTOCOL . '://api.' . FORMALOO_ENDPOINT . '/v1/forms/form/' ); ?>",
+                            type: 'POST',
+                            headers: {
+                                'x-api-key': '<?php echo $data['api_key']; ?>',
+                                'Authorization': '<?php echo 'Token ' . $data['api_token']; ?>'
+                            },
+                            data: { 'active' : true, 'show_title' : true },
+                            success: function (result) {
+                                var formSlug = result['data']['form']['slug'];
+                                tb_show('<?php _e('Create a form', 'formaloo'); ?>', '<?php echo FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT ?>/dashboard/my-forms/' + formSlug + '/edit/&TB_iframe=true&width=100vw&height=100vh');
+
+                                jQuery( 'body' ).on( 'thickbox:iframe:loaded', function ( event ) {
+                                    console.log('test');
+                                    resizeIframe();
+                                });
+                                
+                                jQuery( 'body' ).on( 'thickbox:removed', function ( event ) {
+                                    location.reload();
+                                });
+                            },
+                            error: function (error) {
+                                // handle create new form error
+                            }
+                        });
                     }
 
                     function resizeIframe() {
                         var TB_WIDTH = jQuery(document).width();
                         jQuery("#TB_window").animate({
                             width: TB_WIDTH + 'px',
+                            height: '100vh'
+                        });
+                        jQuery("iframe").animate({
+                            width: '100%',
+                            height: '100vh'
                         });
                     }
 
@@ -704,6 +729,7 @@ class Formaloo_Main_Class {
                          * --------------------------
                          */
                         ?>
+
                         <div class="form-group inside">
                             <h3 class="formaloo-heading">
                                 <span class="dashicons dashicons-feedback"></span>
@@ -711,7 +737,7 @@ class Formaloo_Main_Class {
                             </h3>
                             <div class="formaloo-create-form-wrapper">
                                 <div class="formaloo-create-form">
-                                    <a href="#TB_inline?&width=100vw&height=100vh&inlineId=form-show-create-form" title="<?php _e('Create a form', 'formaloo'); ?>" target="_blank" class="button button-primary formaloo-create-new-form-link thickbox" onclick = "showCreateForm()"><span class="dashicons dashicons-plus"></span> <?php _e('Create a new form', 'formaloo') ?></a>
+                                    <a href="#" class="button button-primary formaloo-create-new-form-link" onclick="createNewForm(event);"><span class="dashicons dashicons-plus"></span> <?php _e('Create a new form', 'formaloo') ?></a>
                                 </div>
                                 <div class="formaloo-create-form">
                                     <a href="<?php echo admin_url( "admin.php?page=formaloo-feedback-widget-page" ) ?>" class="button button-secondary formaloo-create-new-form-link"><span class="dashicons dashicons-star-half"></span> <?php _e('Create a feedback widget', 'formaloo'); ?></a>
@@ -1663,9 +1689,6 @@ class Formaloo_Main_Class {
                         console.log(err);
                         jQuery('.spinner').removeClass('is-active');
                     })
-
-                    //     this.submit();
-
                 });
 
                 function editField(urlString, params) {

@@ -10,7 +10,7 @@ cp -R ./* ../svn/trunk/
 cd ../svn/trunk/
 
 # 4. Move assets/ to SVN /assets/
-mv ./assets/ ../assets/
+mv ./screenshots/ ../assets/
 
 # 5. Clean up unnecessary files
 rm -rf .git/

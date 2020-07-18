@@ -23,6 +23,6 @@ deploy:
 # Deployment script requires few enviromnet variables
 env:
   global:
-  - SVN_REPOSITORY={PLUGIN SVN REPOSITORY URL}
+  - SVN_REPOSITORY=https://plugins.svn.wordpress.org/formaloo-form-builder
   - secure: {ENCRYPTED SVN ACCOUNT USERNAME}
   - secure: {ENCRYPTED SVN ACCOUNT PASSWORD}

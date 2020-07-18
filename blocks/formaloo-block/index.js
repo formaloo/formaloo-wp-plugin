@@ -90,7 +90,7 @@
 			},
 			show_form_selector: {
 				type: 'boolean',
-				default: true,
+				default: false,
 			},
 		},
 
@@ -128,9 +128,11 @@
 			};
 
 			var onChangeSelectFormAddress = function onChangeSelectFormAddress(value) {
-				props.setAttributes({
-					show_form_selector: value
-				});
+				if (formaloo_exchanger.forms_list['status'] == '200') {
+					props.setAttributes({
+						show_form_selector: value
+					});
+				}
 			};
 	
 			var onChangeShowLogo = function onChangeShowLogo(value) {
@@ -267,6 +269,13 @@
 									checked: props.attributes.show_form_selector,
 									onChange: onChangeSelectFormAddress
 								}
+							),
+							(!props.attributes.show_form_selector) && (formaloo_exchanger.forms_list['status'] != '200') && wp.element.createElement(
+								'p',
+								{
+									className: 'formaloo-back-err'
+								},
+								__('To select an existing form, please login first at the plugin\'s Settings page','formaloo')
 							),
 							(!props.attributes.show_form_selector) && wp.element.createElement(wp.components.TextControl, {
 								label: __('Form URL','formaloo'),

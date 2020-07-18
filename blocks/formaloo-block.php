@@ -85,7 +85,7 @@ function formaloo_block_block_init() {
 				),
 				'show_form_selector' => array(
 					'type' => 'boolean',
-					'default' => true,
+					'default' => false,
 			),
 		),
 	) );
