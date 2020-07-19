@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Formaloo Form Builder
  * Description:       Easily embed Formaloo forms into your blog or WP pages.
- * Version:           1.6.0.1
+ * Version:           1.7.0.0
  * Author:            Formaloo team
  * Author URI:        https://formaloo.net/
  * Text Domain:       formaloo
@@ -16,7 +16,7 @@
  * Plugin constants
  */
 if(!defined('FORMALOO_PLUGIN_VERSION'))
-	define('FORMALOO_PLUGIN_VERSION', '1.6.0.1');
+	define('FORMALOO_PLUGIN_VERSION', '1.7.0.0');
 if(!defined('FORMALOO_URL'))
 	define('FORMALOO_URL', plugin_dir_url( __FILE__ ));
 if(!defined('FORMALOO_PATH'))
@@ -35,6 +35,7 @@ if(!defined('FORMALOO_PROTOCOL'))
 require_once plugin_dir_path( __FILE__ ) . '/blocks/formaloo-block.php';
 
 require_once('gutenberg.php');
+require_once('classic-editor.php');
 
 add_action('plugins_loaded', array('Formaloo_Main_Class', 'loadTextDomain'));
 
@@ -70,7 +71,6 @@ class Formaloo_Main_Class {
 	 */
 	public function __construct() {
         // Admin page calls
-        // add_action('wp_footer',                 array($this,'addFooterCode'));
 
         add_action('admin_menu',                array($this,'addAdminMenu'));
         add_action('wp_ajax_store_admin_data',  array($this,'storeAdminData'));
@@ -82,6 +82,8 @@ class Formaloo_Main_Class {
         add_filter( 'submenu_file', array($this, 'formaloo_wp_admin_submenu_filter'));
 
         add_action('admin_notices', array($this, 'formaloo_invalid_token_admin_notice'));
+
+        // add_action('admin_head', array($this,'formaloo_add_mce_button'));
 
     }
     
@@ -130,6 +132,32 @@ class Formaloo_Main_Class {
                     '. wp_enqueue_script ( 'formaloo-form-js-script', FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT . '/istatic/js/main.js' );
         }
 
+    }
+
+    // hooks your functions into the correct filters
+    function formaloo_add_mce_button() {
+        // check user permissions
+        if ( !current_user_can( 'edit_posts' ) &&  !current_user_can( 'edit_pages' ) ) {
+                return;
+        }
+        // check if WYSIWYG is enabled
+        if ( 'true' == get_user_option( 'rich_editing' ) ) {
+            add_filter( 'mce_external_plugins', array($this,'formaloo_add_tinymce_plugin') );
+            add_filter( 'mce_buttons', array($this,'formaloo_register_mce_button') );
+        }
+    }
+
+    // register new button in the editor
+    function formaloo_register_mce_button( $buttons ) {
+        array_push( $buttons, 'formaloo_mce_button' );
+        return $buttons;
+    }
+
+    // declare a script for the new button
+    // the script will insert the shortcode on the click event
+    function formaloo_add_tinymce_plugin( $plugin_array ) {
+        $plugin_array['formaloo_mce_button'] = FORMALOO_URL . 'assets/js/formaloo-mce-button.js';
+        return $plugin_array;
     }
 
     /**
@@ -701,7 +729,7 @@ class Formaloo_Main_Class {
                     <?php endif; ?>
                 </div>
 
-	            <?php if (!empty($data['api_token']) /*&& !empty($data['public_key'])*/): ?>
+	            <?php if (!empty($data['api_token']) && !empty($data['api_key']) /*&& !empty($data['public_key'])*/): ?>
 
                     <?php
                     // if we don't even have a response from the API
