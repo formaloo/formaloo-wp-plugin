@@ -9,7 +9,7 @@ branches:
   - "/\\d\\.\\d\\.\\d/"
 deploy:
   provider: script
-  script: deploy/deploy.sh
+  script: sh deploy/deploy.sh
   on:
     tags: true
 env:
