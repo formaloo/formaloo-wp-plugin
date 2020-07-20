@@ -1,8 +1,9 @@
 language: php
 php:
-- 5.2.0
+- 5.2
 script:
 - php -l *.php
+dist: precise
 branches:
   only:
   - "/\\d\\.\\d\\.\\d/"
