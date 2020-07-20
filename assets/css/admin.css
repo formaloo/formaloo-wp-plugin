@@ -309,3 +309,20 @@
   filter: grayscale(100%);
   margin-bottom: 25px;
 }
+.formaloo-excel-export-notice {
+	margin: 10px 0px !important;
+}
+.formaloo-get-excel-wrapper {
+	display: flex;
+	flex-direction: column;
+}
+.formaloo-get-excel-wrapper p{
+	color: lightslategray;
+	font-size: small;
+}
+.formaloo-get-excel-wrapper p>span {
+  color: blue;
+}
+.formaloo-get-excel-button-wrapper {
+	display: flex;
+}

@@ -61,22 +61,29 @@ jQuery(document).ready(function() {
 
         // We inject some extra fields required for the security
         jQuery(this).append('<input type="hidden" name="security" value="' + formaloo_exchanger._nonce + '" />');
-        jQuery(this).parent().append('<span class="spinner is-active"></span>')
+        jQuery(this).parent().append('<span class="spinner is-active"></span>');
+
+        console.log(jQuery(this).parent());
 
         jQuery.ajax({
-            url: formaloo_exchanger.protocol + '://api.'+ formaloo_exchanger.endpoint_url +'/v1/forms/form/' + jQuery(this).data('form-slug') + '/excel/',
-            type: 'get',
+            url: formaloo_exchanger.protocol + '://api.'+ formaloo_exchanger.endpoint_url +'/v2/forms/form/' + jQuery(this).data('form-slug') + '/excel/',
+            type: 'post',
             headers: {
                 'x-api-key': formaloo_exchanger.api_key,
                 'Authorization': 'Token ' + formaloo_exchanger.api_token
             },
-            success: function(data) {
-                window.open(data['data']['form']['excel'], "_self");
-                jQuery('.spinner').removeClass('is-active'); 
+            success: function(result) {
+                if (result['data']['form']['async_export']) {
+                    jQuery('.formaloo-excel-export-notice').remove();
+                    jQuery('#my-forms-header').append("<div class='notice notice-info is-dismissible formaloo-excel-export-notice'> <p>" + formaloo_exchanger.async_excel_export_message + "</p> </div>");
+                } else {
+                    window.open(result['data']['form']['excel_file'], "_self");
+                }
+                jQuery('.spinner').remove();
             },
             error: function(error) {
                 console.log(error);
-                jQuery('.spinner').removeClass('is-active');
+                jQuery('.spinner').remove();
             }
         });
 

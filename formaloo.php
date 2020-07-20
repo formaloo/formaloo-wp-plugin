@@ -352,7 +352,8 @@ class Formaloo_Main_Class {
             'api_key' => $data['api_key'],
             'protocol' => FORMALOO_PROTOCOL,
             'endpoint_url' => FORMALOO_ENDPOINT,
-            'forms_list' => $this->getForms($data['api_key'], $data['api_token'])
+            'forms_list' => $this->getForms($data['api_key'], $data['api_token']),
+            'async_excel_export_message' => __('Your excel file will be ready in a couple of minutes. Please refresh this page to see the result.','formaloo')
         );
         
         wp_localize_script('formaloo-admin', 'formaloo_exchanger', $admin_options);
@@ -701,7 +702,7 @@ class Formaloo_Main_Class {
 
             <form id="formaloo-admin-form" class="postbox">
 
-                <div class="form-group inside">
+                <div class="form-group inside" id="my-forms-header">
                     <div class="formaloo-api-settings-top-wrapper">
                         <img src="<?php echo FORMALOO_URL ?>assets/images/Formaloo_Logo.png" alt="formaloo-logo">
                         <h1 class="formaloo-heading">
