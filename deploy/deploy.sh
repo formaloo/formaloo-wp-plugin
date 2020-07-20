@@ -13,6 +13,7 @@ cd ../svn/trunk/
 mv ./screenshots/ ../assets/
 
 pwd
+
 ls -al
 
 # 5. Clean up unnecessary files
