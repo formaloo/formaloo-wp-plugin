@@ -1,6 +1,6 @@
 language: php
 php:
-- 5.2
+- 5.2.0
 script:
 - php -l *.php
 branches:
