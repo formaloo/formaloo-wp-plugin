@@ -12,6 +12,9 @@ cd ../svn/trunk/
 # 4. Move assets/ to SVN /assets/
 mv ./screenshots/ ../assets/
 
+pwd
+ls -al
+
 # 5. Clean up unnecessary files
 rm -rf .git/
 rm -rf deploy/
