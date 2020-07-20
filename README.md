@@ -1,5 +1,5 @@
 
-[![Build Status](https://travis-ci.org/formaloo/formaloo-wp-plugin.svg?branch=master)](https://travis-ci.org/formaloo/formaloo-wp-plugin)
+[![Build Status](https://travis-ci.org/formaloo/formaloo-wp-plugin.svg)](https://travis-ci.org/formaloo/formaloo-wp-plugin)
 
 
 <img src="https://user-images.githubusercontent.com/22890731/80283193-15f5df80-872b-11ea-8bcb-6fe7b2c0577c.png" alt="Formaloo Logo" title="Formaloo Logo" width="200" />
