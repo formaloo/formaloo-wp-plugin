@@ -182,5 +182,7 @@ See our <a href="https://api.formaloo.net/docs">API documentation</a> for more i
 - Minor bug fixes and improvements
 
 ### 1.7.0.0
-- **Added:** You can now preview and use different form templates from Templates page
+- **Added**: Adding Form Shortcode option is now added to the users who use the beloved Classic Editor!
+- **Added**: You can now preview and use different form templates from Templates page
+- **Updated**: You can now download your last requested excel file asynchronously
 - Minor bug fixes and improvements
