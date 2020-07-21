@@ -4,6 +4,9 @@
 svn co $SVN_REPOSITORY ../svn
 
 # 2. Copy git repository contents to SNV trunk/ directory
+
+ls -la ./*
+
 cp -R ./* ../svn/trunk/
 
 # 3. Switch to SVN repository
