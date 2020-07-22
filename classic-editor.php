@@ -65,7 +65,7 @@ class Formaloo_Admin_Editor {
 	 */
 	public function shortcode_modal() {
 		?>
-            <div id="formaloo-form-shortcode">
+            <div id="formaloo-form-shortcode" style="display:none;">
               <form id="formaloo-customize-form">
                 <table class="form-table">
                       <tbody>
@@ -179,6 +179,7 @@ class Formaloo_Admin_Editor {
                 <?php endif; ?>
                 </form>  
                 <script>
+
 
                     jQuery("#formaloo-form-shortcode-options").hide();
                     jQuery(".formaloo-shortcode-post-row").hide();

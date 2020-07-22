@@ -27,3 +27,4 @@ node_modules
 *.sql
 *.tar.gz
 *.zip
+sync.sh
