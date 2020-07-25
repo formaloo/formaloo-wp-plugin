@@ -71,7 +71,7 @@ class Formaloo_Admin_Editor {
                       <tbody>
                         <tr>
                             <td scope="row">
-                                <label><?php _e( 'Select a from', 'formaloo' ); ?></label>
+                                <label><?php _e( 'Select a form', 'formaloo' ); ?></label>
                             </td>
                             <td>
                                 <select name="formaloo_forms_list"

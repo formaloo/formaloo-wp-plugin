@@ -3,12 +3,12 @@ msgstr ""
 "Project-Id-Version: Formaloo Form Builder\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
-"Language-Team: فارسی\n"
+"Language-Team: Persian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-06-29 10:54+0000\n"
-"PO-Revision-Date: 2020-06-29 10:57+0000\n"
+"POT-Creation-Date: 2020-07-25 08:09+0000\n"
+"PO-Revision-Date: 2020-07-25 08:10+0000\n"
 "Language: fa_IR\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Loco https://localise.biz/\n"
@@ -16,134 +16,250 @@ msgstr ""
 
 #: showActivationNotice.php:26 git/showActivationNotice.php:26
 #: svn/trunk/showActivationNotice.php:26
+#: svn/tags/1.7.0.0/showActivationNotice.php:26
+#: svn/tags/1.7.0.1/showActivationNotice.php:26
 msgid "Thank you for using the Formaloo plugin!"
 msgstr "ممنون که از افزونه فرمالو استفاده می‌کنید!"
 
 #: showActivationNotice.php:26 git/showActivationNotice.php:26
 #: svn/trunk/showActivationNotice.php:26
+#: svn/tags/1.7.0.0/showActivationNotice.php:26
+#: svn/tags/1.7.0.1/showActivationNotice.php:26
 msgid "Get Started by visiting the Settings Page"
 msgstr "با مشاهده صفحه تنظیمات شروع کنید"
 
-#: formaloo.php:100 formaloo.php:540 git/formaloo.php:100 git/formaloo.php:531
-#: svn/trunk/formaloo.php:100 svn/trunk/formaloo.php:531
+#: formaloo.php:115 formaloo.php:578 classic-editor.php:119
+#: git/formaloo.php:102 git/formaloo.php:565 git/classic-editor.php:119
+#: svn/trunk/formaloo.php:102 svn/trunk/formaloo.php:565
+#: svn/trunk/classic-editor.php:119 svn/tags/1.7.0.0/formaloo.php:102
+#: svn/tags/1.7.0.0/formaloo.php:565 svn/tags/1.7.0.0/classic-editor.php:119
+#: svn/tags/1.7.0.1/formaloo.php:102 svn/tags/1.7.0.1/formaloo.php:565
+#: svn/tags/1.7.0.1/classic-editor.php:119
 msgid "Show Form"
 msgstr "نمایش فرم"
 
-#: formaloo.php:342 formaloo.php:343 git/formaloo.php:342 git/formaloo.php:343
-#: svn/trunk/formaloo.php:342 svn/trunk/formaloo.php:343
+#: formaloo.php:369 git/formaloo.php:356 svn/trunk/formaloo.php:356
+#: svn/tags/1.7.0.0/formaloo.php:356 svn/tags/1.7.0.1/formaloo.php:356
+msgid ""
+"Your excel file will be ready in a couple of minutes. Please refresh this "
+"page to see the result."
+msgstr ""
+"خروجی اکسل شما تا لحظاتی بعد آماده خواهد شد. لطفا برای دسترسی صفحه را رفرش "
+"کنید."
+
+#: formaloo.php:384 formaloo.php:385 git/formaloo.php:371 git/formaloo.php:372
+#: svn/trunk/formaloo.php:371 svn/trunk/formaloo.php:372
+#: svn/tags/1.7.0.0/formaloo.php:371 svn/tags/1.7.0.0/formaloo.php:372
+#: svn/tags/1.7.0.1/formaloo.php:371 svn/tags/1.7.0.1/formaloo.php:372
 msgid "Formaloo"
 msgstr "فرمالو"
 
-#: formaloo.php:352 formaloo.php:353 formaloo.php:974
+#: formaloo.php:394 formaloo.php:395 formaloo.php:1045 git/formaloo.php:381
+#: git/formaloo.php:382 git/formaloo.php:1029 svn/trunk/formaloo.php:381
+#: svn/trunk/formaloo.php:382 svn/trunk/formaloo.php:1029
+#: svn/tags/1.7.0.0/formaloo.php:381 svn/tags/1.7.0.0/formaloo.php:382
+#: svn/tags/1.7.0.0/formaloo.php:1029 svn/tags/1.7.0.1/formaloo.php:381
+#: svn/tags/1.7.0.1/formaloo.php:382 svn/tags/1.7.0.1/formaloo.php:1029
 msgid "Templates"
 msgstr "قالب‌ها"
 
-#: formaloo.php:361 formaloo.php:362 git/formaloo.php:352 git/formaloo.php:353
-#: svn/trunk/formaloo.php:352 svn/trunk/formaloo.php:353
+#: formaloo.php:403 formaloo.php:404 git/formaloo.php:390 git/formaloo.php:391
+#: svn/trunk/formaloo.php:390 svn/trunk/formaloo.php:391
+#: svn/tags/1.7.0.0/formaloo.php:390 svn/tags/1.7.0.0/formaloo.php:391
+#: svn/tags/1.7.0.1/formaloo.php:390 svn/tags/1.7.0.1/formaloo.php:391
 msgid "Feedback Widget"
 msgstr "ابزارک نظرسنجی"
 
-#: formaloo.php:370 formaloo.php:371 git/formaloo.php:361 git/formaloo.php:362
-#: svn/trunk/formaloo.php:361 svn/trunk/formaloo.php:362
+#: formaloo.php:412 formaloo.php:413 git/formaloo.php:399 git/formaloo.php:400
+#: svn/trunk/formaloo.php:399 svn/trunk/formaloo.php:400
+#: svn/tags/1.7.0.0/formaloo.php:399 svn/tags/1.7.0.0/formaloo.php:400
+#: svn/tags/1.7.0.1/formaloo.php:399 svn/tags/1.7.0.1/formaloo.php:400
 msgid "Settings"
 msgstr "تنظیمات"
 
-#: formaloo.php:379 git/formaloo.php:370 svn/trunk/formaloo.php:370
+#: formaloo.php:421 git/formaloo.php:408 svn/trunk/formaloo.php:408
+#: svn/tags/1.7.0.0/formaloo.php:408 svn/tags/1.7.0.1/formaloo.php:408
 msgid "Results"
 msgstr "نتایج فرم"
 
-#: formaloo.php:386 formaloo.php:655 formaloo.php:827 git/formaloo.php:377
-#: git/formaloo.php:646 git/formaloo.php:778 svn/trunk/formaloo.php:377
-#: svn/trunk/formaloo.php:646 svn/trunk/formaloo.php:778
+#: formaloo.php:428 formaloo.php:721 formaloo.php:899 git/formaloo.php:415
+#: git/formaloo.php:709 git/formaloo.php:882 svn/trunk/formaloo.php:415
+#: svn/trunk/formaloo.php:709 svn/trunk/formaloo.php:882
+#: svn/tags/1.7.0.0/formaloo.php:415 svn/tags/1.7.0.0/formaloo.php:709
+#: svn/tags/1.7.0.0/formaloo.php:882 svn/tags/1.7.0.1/formaloo.php:415
+#: svn/tags/1.7.0.1/formaloo.php:709 svn/tags/1.7.0.1/formaloo.php:882
 msgid "My Forms"
 msgstr "فرم‌های من"
 
-#: formaloo.php:449 git/formaloo.php:440 svn/trunk/formaloo.php:440
+#: formaloo.php:491 git/formaloo.php:478 svn/trunk/formaloo.php:478
+#: svn/tags/1.7.0.0/formaloo.php:478 svn/tags/1.7.0.1/formaloo.php:478
 msgid "Invalid API Token or API Key! Please visit your"
 msgstr "توکن API یا کلید API شما اشتباه است. لطفا به"
 
-#: formaloo.php:449 formaloo.php:885 git/formaloo.php:440 git/formaloo.php:836
-#: svn/trunk/formaloo.php:440 svn/trunk/formaloo.php:836
+#: formaloo.php:491 formaloo.php:957 git/formaloo.php:478 git/formaloo.php:940
+#: svn/trunk/formaloo.php:478 svn/trunk/formaloo.php:940
+#: svn/tags/1.7.0.0/formaloo.php:478 svn/tags/1.7.0.0/formaloo.php:940
+#: svn/tags/1.7.0.1/formaloo.php:478 svn/tags/1.7.0.1/formaloo.php:940
 msgid "Formaloo dashboard here"
 msgstr "داشبورد فرمالو اینجا دسترسی داشته باشید"
 
-#: formaloo.php:449 git/formaloo.php:440 svn/trunk/formaloo.php:440
+#: formaloo.php:491 git/formaloo.php:478 svn/trunk/formaloo.php:478
+#: svn/tags/1.7.0.0/formaloo.php:478 svn/tags/1.7.0.1/formaloo.php:478
 msgid "to get a new one."
 msgstr "و کلید جدید را بگیرید."
 
-#: formaloo.php:478 git/formaloo.php:469 svn/trunk/formaloo.php:469
+#: formaloo.php:520 git/formaloo.php:507 svn/trunk/formaloo.php:507
+#: svn/tags/1.7.0.0/formaloo.php:507 svn/tags/1.7.0.1/formaloo.php:507
 msgid "Don't have a Formaloo account?"
 msgstr "اکانت فرمالو نداید؟"
 
-#: formaloo.php:478 git/formaloo.php:469 svn/trunk/formaloo.php:469
+#: formaloo.php:520 git/formaloo.php:507 svn/trunk/formaloo.php:507
+#: svn/tags/1.7.0.0/formaloo.php:507 svn/tags/1.7.0.1/formaloo.php:507
 msgid "Try one for Free!"
 msgstr "آن را رایگان آزمایش کنید!"
 
-#: formaloo.php:510 git/formaloo.php:501 svn/trunk/formaloo.php:501
+#: formaloo.php:548 classic-editor.php:89 git/formaloo.php:535
+#: git/classic-editor.php:89 svn/trunk/formaloo.php:535
+#: svn/trunk/classic-editor.php:89 svn/tags/1.7.0.0/formaloo.php:535
+#: svn/tags/1.7.0.0/classic-editor.php:89 svn/tags/1.7.0.1/formaloo.php:535
+#: svn/tags/1.7.0.1/classic-editor.php:89
 msgid "How to show"
 msgstr "چگونگی نمایش"
 
-#: formaloo.php:516 git/formaloo.php:507 svn/trunk/formaloo.php:507
+#: formaloo.php:554 classic-editor.php:95 git/formaloo.php:541
+#: git/classic-editor.php:95 svn/trunk/formaloo.php:541
+#: svn/trunk/classic-editor.php:95 svn/tags/1.7.0.0/formaloo.php:541
+#: svn/tags/1.7.0.0/classic-editor.php:95 svn/tags/1.7.0.1/formaloo.php:541
+#: svn/tags/1.7.0.1/classic-editor.php:95
 msgid "Link"
 msgstr "پیوند"
 
-#: formaloo.php:519 git/formaloo.php:510 svn/trunk/formaloo.php:510
+#: formaloo.php:557 classic-editor.php:98 git/formaloo.php:544
+#: git/classic-editor.php:98 svn/trunk/formaloo.php:544
+#: svn/trunk/classic-editor.php:98 svn/tags/1.7.0.0/formaloo.php:544
+#: svn/tags/1.7.0.0/classic-editor.php:98 svn/tags/1.7.0.1/formaloo.php:544
+#: svn/tags/1.7.0.1/classic-editor.php:98
 msgid "iFrame"
 msgstr "iFrame"
 
-#: formaloo.php:522 git/formaloo.php:513 svn/trunk/formaloo.php:513
+#: formaloo.php:560 classic-editor.php:101 git/formaloo.php:547
+#: git/classic-editor.php:101 svn/trunk/formaloo.php:547
+#: svn/trunk/classic-editor.php:101 svn/tags/1.7.0.0/formaloo.php:547
+#: svn/tags/1.7.0.0/classic-editor.php:101 svn/tags/1.7.0.1/formaloo.php:547
+#: svn/tags/1.7.0.1/classic-editor.php:101
 msgid "Script"
 msgstr "اسکریپت"
 
-#: formaloo.php:530 git/formaloo.php:521 svn/trunk/formaloo.php:521
+#: formaloo.php:568 classic-editor.php:109 git/formaloo.php:555
+#: git/classic-editor.php:109 svn/trunk/formaloo.php:555
+#: svn/trunk/classic-editor.php:109 svn/tags/1.7.0.0/formaloo.php:555
+#: svn/tags/1.7.0.0/classic-editor.php:109 svn/tags/1.7.0.1/formaloo.php:555
+#: svn/tags/1.7.0.1/classic-editor.php:109
 msgid "Link title"
 msgstr "عنوان پیوند"
 
-#: formaloo.php:532 git/formaloo.php:523 svn/trunk/formaloo.php:523
+#: formaloo.php:570 classic-editor.php:111 git/formaloo.php:557
+#: git/classic-editor.php:111 svn/trunk/formaloo.php:557
+#: svn/trunk/classic-editor.php:111 svn/tags/1.7.0.0/formaloo.php:557
+#: svn/tags/1.7.0.0/classic-editor.php:111 svn/tags/1.7.0.1/formaloo.php:557
+#: svn/tags/1.7.0.1/classic-editor.php:111
 msgid "(Choose a title for the form link)"
 msgstr "(یک عنوان برای لینک فرم انتخاب کنید)"
 
-#: formaloo.php:546 git/formaloo.php:537 svn/trunk/formaloo.php:537
+#: formaloo.php:584 classic-editor.php:125 git/formaloo.php:571
+#: git/classic-editor.php:125 svn/trunk/formaloo.php:571
+#: svn/trunk/classic-editor.php:125 svn/tags/1.7.0.0/formaloo.php:571
+#: svn/tags/1.7.0.0/classic-editor.php:125 svn/tags/1.7.0.1/formaloo.php:571
+#: svn/tags/1.7.0.1/classic-editor.php:125
 msgid "Show logo"
 msgstr "نمایش لوگو"
 
-#: formaloo.php:548 git/formaloo.php:539 svn/trunk/formaloo.php:539
+#: formaloo.php:586 classic-editor.php:127 git/formaloo.php:573
+#: git/classic-editor.php:127 svn/trunk/formaloo.php:573
+#: svn/trunk/classic-editor.php:127 svn/tags/1.7.0.0/formaloo.php:573
+#: svn/tags/1.7.0.0/classic-editor.php:127 svn/tags/1.7.0.1/formaloo.php:573
+#: svn/tags/1.7.0.1/classic-editor.php:127
 msgid "(Show the logo in the embedded form?)"
 msgstr "(لوگو در فرم تعبیه شده نمایش داده شود؟)"
 
-#: formaloo.php:552 formaloo.php:565 formaloo.php:578 git/formaloo.php:543
-#: git/formaloo.php:556 git/formaloo.php:569 svn/trunk/formaloo.php:543
-#: svn/trunk/formaloo.php:556 svn/trunk/formaloo.php:569
+#: formaloo.php:590 formaloo.php:603 formaloo.php:616 classic-editor.php:131
+#: classic-editor.php:144 classic-editor.php:157 git/formaloo.php:577
+#: git/formaloo.php:590 git/formaloo.php:603 git/classic-editor.php:131
+#: git/classic-editor.php:144 git/classic-editor.php:157
+#: svn/trunk/formaloo.php:577 svn/trunk/formaloo.php:590
+#: svn/trunk/formaloo.php:603 svn/trunk/classic-editor.php:131
+#: svn/trunk/classic-editor.php:144 svn/trunk/classic-editor.php:157
+#: svn/tags/1.7.0.0/formaloo.php:577 svn/tags/1.7.0.0/formaloo.php:590
+#: svn/tags/1.7.0.0/formaloo.php:603 svn/tags/1.7.0.0/classic-editor.php:131
+#: svn/tags/1.7.0.0/classic-editor.php:144
+#: svn/tags/1.7.0.0/classic-editor.php:157 svn/tags/1.7.0.1/formaloo.php:577
+#: svn/tags/1.7.0.1/formaloo.php:590 svn/tags/1.7.0.1/formaloo.php:603
+#: svn/tags/1.7.0.1/classic-editor.php:131
+#: svn/tags/1.7.0.1/classic-editor.php:144
+#: svn/tags/1.7.0.1/classic-editor.php:157
 msgid "Yes"
 msgstr "بله"
 
-#: formaloo.php:553 formaloo.php:566 formaloo.php:579 git/formaloo.php:544
-#: git/formaloo.php:557 git/formaloo.php:570 svn/trunk/formaloo.php:544
-#: svn/trunk/formaloo.php:557 svn/trunk/formaloo.php:570
+#: formaloo.php:591 formaloo.php:604 formaloo.php:617 classic-editor.php:132
+#: classic-editor.php:145 classic-editor.php:158 git/formaloo.php:578
+#: git/formaloo.php:591 git/formaloo.php:604 git/classic-editor.php:132
+#: git/classic-editor.php:145 git/classic-editor.php:158
+#: svn/trunk/formaloo.php:578 svn/trunk/formaloo.php:591
+#: svn/trunk/formaloo.php:604 svn/trunk/classic-editor.php:132
+#: svn/trunk/classic-editor.php:145 svn/trunk/classic-editor.php:158
+#: svn/tags/1.7.0.0/formaloo.php:578 svn/tags/1.7.0.0/formaloo.php:591
+#: svn/tags/1.7.0.0/formaloo.php:604 svn/tags/1.7.0.0/classic-editor.php:132
+#: svn/tags/1.7.0.0/classic-editor.php:145
+#: svn/tags/1.7.0.0/classic-editor.php:158 svn/tags/1.7.0.1/formaloo.php:578
+#: svn/tags/1.7.0.1/formaloo.php:591 svn/tags/1.7.0.1/formaloo.php:604
+#: svn/tags/1.7.0.1/classic-editor.php:132
+#: svn/tags/1.7.0.1/classic-editor.php:145
+#: svn/tags/1.7.0.1/classic-editor.php:158
 msgid "No"
 msgstr "خیر"
 
-#: formaloo.php:559 git/formaloo.php:550 svn/trunk/formaloo.php:550
+#: formaloo.php:597 classic-editor.php:138 git/formaloo.php:584
+#: git/classic-editor.php:138 svn/trunk/formaloo.php:584
+#: svn/trunk/classic-editor.php:138 svn/tags/1.7.0.0/formaloo.php:584
+#: svn/tags/1.7.0.0/classic-editor.php:138 svn/tags/1.7.0.1/formaloo.php:584
+#: svn/tags/1.7.0.1/classic-editor.php:138
 msgid "Show title"
 msgstr "نمایش عنوان"
 
-#: formaloo.php:561 git/formaloo.php:552 svn/trunk/formaloo.php:552
+#: formaloo.php:599 classic-editor.php:140 git/formaloo.php:586
+#: git/classic-editor.php:140 svn/trunk/formaloo.php:586
+#: svn/trunk/classic-editor.php:140 svn/tags/1.7.0.0/formaloo.php:586
+#: svn/tags/1.7.0.0/classic-editor.php:140 svn/tags/1.7.0.1/formaloo.php:586
+#: svn/tags/1.7.0.1/classic-editor.php:140
 msgid "(Show the title in the embedded form?)"
 msgstr "(عنوان در فرم تعبیه شده نمایش داده شود؟)"
 
-#: formaloo.php:572 git/formaloo.php:563 svn/trunk/formaloo.php:563
+#: formaloo.php:610 classic-editor.php:151 git/formaloo.php:597
+#: git/classic-editor.php:151 svn/trunk/formaloo.php:597
+#: svn/trunk/classic-editor.php:151 svn/tags/1.7.0.0/formaloo.php:597
+#: svn/tags/1.7.0.0/classic-editor.php:151 svn/tags/1.7.0.1/formaloo.php:597
+#: svn/tags/1.7.0.1/classic-editor.php:151
 msgid "Show description"
 msgstr "نمایش توضیحات"
 
-#: formaloo.php:574 git/formaloo.php:565 svn/trunk/formaloo.php:565
+#: formaloo.php:612 classic-editor.php:153 git/formaloo.php:599
+#: git/classic-editor.php:153 svn/trunk/formaloo.php:599
+#: svn/trunk/classic-editor.php:153 svn/tags/1.7.0.0/formaloo.php:599
+#: svn/tags/1.7.0.0/classic-editor.php:153 svn/tags/1.7.0.1/formaloo.php:599
+#: svn/tags/1.7.0.1/classic-editor.php:153
 msgid "(Show the description in the embedded form?)"
 msgstr "(توضیحات در فرم تعبیه شده نمایش داده شود؟)"
 
-#: formaloo.php:585 git/formaloo.php:576 svn/trunk/formaloo.php:576
+#: formaloo.php:623 classic-editor.php:164 git/formaloo.php:610
+#: git/classic-editor.php:164 svn/trunk/formaloo.php:610
+#: svn/trunk/classic-editor.php:164 svn/tags/1.7.0.0/formaloo.php:610
+#: svn/tags/1.7.0.0/classic-editor.php:164 svn/tags/1.7.0.1/formaloo.php:610
+#: svn/tags/1.7.0.1/classic-editor.php:164
 msgid "Shortcode will appear here"
 msgstr "شورت کد ها اینجا نمایش داده خواهند شد"
 
-#: formaloo.php:591 git/formaloo.php:582 svn/trunk/formaloo.php:582
+#: formaloo.php:629 git/formaloo.php:616 svn/trunk/formaloo.php:616
+#: svn/tags/1.7.0.0/formaloo.php:616 svn/tags/1.7.0.1/formaloo.php:616
 msgid ""
 "Copy the shortcode above then go to your post/page editor. If it is "
 "Gutenberg Editor, add a Shortcode block and paste the shortcode. If it is "
@@ -155,203 +271,273 @@ msgstr ""
 "آن جا پیست کنید. اگر ادیتور شما Classic می‌باشد، زبانه Text (بجای زبانه "
 "Visual) را باز کنید و شورت کد خود را هر جا که مناسب شما است پیست کنید."
 
-#: formaloo.php:592 git/formaloo.php:583 svn/trunk/formaloo.php:583
+#: formaloo.php:630 git/formaloo.php:617 svn/trunk/formaloo.php:617
+#: svn/tags/1.7.0.0/formaloo.php:617 svn/tags/1.7.0.1/formaloo.php:617
 msgid "More Info"
 msgstr "اطلاعات بیشتر"
 
-#: formaloo.php:597 git/formaloo.php:588 svn/trunk/formaloo.php:588
+#: formaloo.php:635 git/formaloo.php:622 svn/trunk/formaloo.php:622
+#: svn/tags/1.7.0.0/formaloo.php:622 svn/tags/1.7.0.1/formaloo.php:622
 msgid "Get shortcode"
 msgstr "دریافت شورت کد"
 
-#: formaloo.php:609 git/formaloo.php:600 svn/trunk/formaloo.php:600
+#: formaloo.php:646 classic-editor.php:216 git/formaloo.php:633
+#: git/classic-editor.php:216 svn/trunk/formaloo.php:633
+#: svn/trunk/classic-editor.php:216 svn/tags/1.7.0.0/formaloo.php:633
+#: svn/tags/1.7.0.0/classic-editor.php:215 svn/tags/1.7.0.1/formaloo.php:633
+#: svn/tags/1.7.0.1/classic-editor.php:215
 msgid "Additional Settings"
 msgstr "تنظیمات اضافه"
 
-#: formaloo.php:664 git/formaloo.php:655 svn/trunk/formaloo.php:655
+#: formaloo.php:665 git/formaloo.php:652 svn/trunk/formaloo.php:652
+#: svn/tags/1.7.0.0/formaloo.php:652 svn/tags/1.7.0.1/formaloo.php:652
+msgid "Create a form"
+msgstr "ساخت فرم جدید"
+
+#: formaloo.php:730 git/formaloo.php:718 svn/trunk/formaloo.php:718
+#: svn/tags/1.7.0.0/formaloo.php:718 svn/tags/1.7.0.1/formaloo.php:718
 msgid "Make sure you have a Formaloo account first, it's free! 👍"
 msgstr "ابتدا از داشتن اکانت فرمالو مطمئن شوید، ساخت اکانت رایگان است! 👍"
 
-#: formaloo.php:665 git/formaloo.php:656 svn/trunk/formaloo.php:656
+#: formaloo.php:731 git/formaloo.php:719 svn/trunk/formaloo.php:719
+#: svn/tags/1.7.0.0/formaloo.php:719 svn/tags/1.7.0.1/formaloo.php:719
 msgid "You can"
 msgstr "شما می‌توانید"
 
-#: formaloo.php:665 git/formaloo.php:656 svn/trunk/formaloo.php:656
+#: formaloo.php:731 git/formaloo.php:719 svn/trunk/formaloo.php:719
+#: svn/tags/1.7.0.0/formaloo.php:719 svn/tags/1.7.0.1/formaloo.php:719
 msgid "create an account here"
 msgstr "اکانت جدید را اینجا بسازید"
 
-#: formaloo.php:667 git/formaloo.php:658 svn/trunk/formaloo.php:658
+#: formaloo.php:733 git/formaloo.php:721 svn/trunk/formaloo.php:721
+#: svn/tags/1.7.0.0/formaloo.php:721 svn/tags/1.7.0.1/formaloo.php:721
 msgid "If so you can find your API Key & API Token from your"
 msgstr "بعد از ساختن اکانت، شما می‌توانید کلید و توکن API خود را در"
 
-#: formaloo.php:667 git/formaloo.php:658 svn/trunk/formaloo.php:658
+#: formaloo.php:733 git/formaloo.php:721 svn/trunk/formaloo.php:721
+#: svn/tags/1.7.0.0/formaloo.php:721 svn/tags/1.7.0.1/formaloo.php:721
 msgid "profile page,"
 msgstr "در صفحه پروفایل دریافت کنید،"
 
-#: formaloo.php:667 git/formaloo.php:658 svn/trunk/formaloo.php:658
+#: formaloo.php:733 git/formaloo.php:721 svn/trunk/formaloo.php:721
+#: svn/tags/1.7.0.0/formaloo.php:721 svn/tags/1.7.0.1/formaloo.php:721
 msgid "and enter it on the"
 msgstr "و آن را در"
 
-#: formaloo.php:667 git/formaloo.php:658 svn/trunk/formaloo.php:658
+#: formaloo.php:733 git/formaloo.php:721 svn/trunk/formaloo.php:721
+#: svn/tags/1.7.0.0/formaloo.php:721 svn/tags/1.7.0.1/formaloo.php:721
 msgid "settings page"
 msgstr "صفحه تنظیمات وارد کنید"
 
-#: formaloo.php:673 git/formaloo.php:664 svn/trunk/formaloo.php:664
+#: formaloo.php:739 git/formaloo.php:727 svn/trunk/formaloo.php:727
+#: svn/tags/1.7.0.0/formaloo.php:727 svn/tags/1.7.0.1/formaloo.php:727
 msgid "User"
 msgstr "کاربر عزیز"
 
-#: formaloo.php:674 git/formaloo.php:665 svn/trunk/formaloo.php:665
+#: formaloo.php:740 git/formaloo.php:728 svn/trunk/formaloo.php:728
+#: svn/tags/1.7.0.0/formaloo.php:728 svn/tags/1.7.0.1/formaloo.php:728
 msgid "Hello Dear"
 msgstr "سلام"
 
-#: formaloo.php:674 git/formaloo.php:665 svn/trunk/formaloo.php:665
+#: formaloo.php:740 git/formaloo.php:728 svn/trunk/formaloo.php:728
+#: svn/tags/1.7.0.0/formaloo.php:728 svn/tags/1.7.0.1/formaloo.php:728
 msgid "You can edit or view your forms right here or you can access"
 msgstr "شما می‌توانید فرم خود را همینجا مشاهده یا ویرایش کنید یا شما می‌توانید"
 
-#: formaloo.php:674 git/formaloo.php:665 svn/trunk/formaloo.php:665
+#: formaloo.php:740 git/formaloo.php:728 svn/trunk/formaloo.php:728
+#: svn/tags/1.7.0.0/formaloo.php:728 svn/tags/1.7.0.1/formaloo.php:728
 msgid "your full dashboard here"
 msgstr "به داشبورد خود اینجا دسترسی داشته باشید"
 
-#: formaloo.php:685 git/formaloo.php:676 svn/trunk/formaloo.php:676
+#: formaloo.php:751 git/formaloo.php:739 svn/trunk/formaloo.php:739
+#: svn/tags/1.7.0.0/formaloo.php:739 svn/tags/1.7.0.1/formaloo.php:739
 msgid ""
 "An error happened on the WordPress side. Make sure your server allows remote "
 "calls."
 msgstr ""
 "خطایی از سمت وردپرس رخ داده است. از امکان اتصال به اینترنت خود مطمئن شوید."
 
-#: formaloo.php:710 git/formaloo.php:701 svn/trunk/formaloo.php:701
+#: formaloo.php:777 git/formaloo.php:765 svn/trunk/formaloo.php:765
+#: svn/tags/1.7.0.0/formaloo.php:765 svn/tags/1.7.0.1/formaloo.php:765
 msgid "Your Forms"
 msgstr "فرم‌های شما"
 
-#: formaloo.php:714 git/formaloo.php:705 svn/trunk/formaloo.php:705
-msgid "Create a form"
-msgstr "ساخت فرم جدید"
+#: formaloo.php:781
+msgid "Create a Blank Form"
+msgstr "ساخت فرم ساده"
 
-#: formaloo.php:714 git/formaloo.php:705 svn/trunk/formaloo.php:705
-msgid "Create a new form"
-msgstr "ساخت فرم جدید"
+#: formaloo.php:784
+msgid "Select a Template"
+msgstr "انتخاب قالب آماده"
 
-#: formaloo.php:717 git/formaloo.php:708 svn/trunk/formaloo.php:708
+#: formaloo.php:787 git/formaloo.php:772 svn/trunk/formaloo.php:772
+#: svn/tags/1.7.0.0/formaloo.php:772 svn/tags/1.7.0.1/formaloo.php:772
 msgid "Create a feedback widget"
 msgstr "ساخت ابزارک نظرسنجی"
 
-#: formaloo.php:810 git/formaloo.php:761 svn/trunk/formaloo.php:761
+#: formaloo.php:839 formaloo.php:1000 formaloo.php:1093 formaloo.php:1538
+#: git/formaloo.php:980 git/formaloo.php:1508 svn/trunk/formaloo.php:980
+#: svn/trunk/formaloo.php:1508 svn/tags/1.7.0.0/formaloo.php:980
+#: svn/tags/1.7.0.0/formaloo.php:1508 svn/tags/1.7.0.1/formaloo.php:980
+#: svn/tags/1.7.0.1/formaloo.php:1508
+msgid "Need Support? Feel free to contact us"
+msgstr "به پشتیبانی نیاز دارید؟ با ما در ارتباط باشید"
+
+#: formaloo.php:882 git/formaloo.php:865 svn/trunk/formaloo.php:865
+#: svn/tags/1.7.0.0/formaloo.php:865 svn/tags/1.7.0.1/formaloo.php:865
 msgid "An error happened on the WordPress side."
 msgstr "خطایی از سمت وردپرس رخ داده است."
 
-#: formaloo.php:828 git/formaloo.php:779 svn/trunk/formaloo.php:779
+#: formaloo.php:900 git/formaloo.php:883 svn/trunk/formaloo.php:883
+#: svn/tags/1.7.0.0/formaloo.php:883 svn/tags/1.7.0.1/formaloo.php:883
 msgid "Your Form Results"
 msgstr "نتایج فرم شما"
 
-#: formaloo.php:871 git/formaloo.php:822 svn/trunk/formaloo.php:822
+#: formaloo.php:943 git/formaloo.php:926 svn/trunk/formaloo.php:926
+#: svn/tags/1.7.0.0/formaloo.php:926 svn/tags/1.7.0.1/formaloo.php:926
 msgid "Setup Formaloo"
 msgstr "تنظیم پلاگین فرمالو"
 
-#: formaloo.php:877 git/formaloo.php:828 svn/trunk/formaloo.php:828
+#: formaloo.php:949 git/formaloo.php:932 svn/trunk/formaloo.php:932
+#: svn/tags/1.7.0.0/formaloo.php:932 svn/tags/1.7.0.1/formaloo.php:932
 msgid "Welcome to Formaloo!"
 msgstr "به فرمالو خوش آمدید"
 
-#: formaloo.php:882 formaloo.php:982 formaloo.php:1312 git/formaloo.php:833
-#: git/formaloo.php:967 svn/trunk/formaloo.php:833 svn/trunk/formaloo.php:967
+#: formaloo.php:954 formaloo.php:1053 formaloo.php:1393 git/formaloo.php:937
+#: git/formaloo.php:1037 git/formaloo.php:1367 svn/trunk/formaloo.php:937
+#: svn/trunk/formaloo.php:1037 svn/trunk/formaloo.php:1367
+#: svn/tags/1.7.0.0/formaloo.php:937 svn/tags/1.7.0.0/formaloo.php:1037
+#: svn/tags/1.7.0.0/formaloo.php:1367 svn/tags/1.7.0.1/formaloo.php:937
+#: svn/tags/1.7.0.1/formaloo.php:1037 svn/tags/1.7.0.1/formaloo.php:1367
 msgid "To get started, we'll need to access your Formaloo account with an"
 msgstr "برای شروع، ما دسترسی به اکانت فرمالو شما به کمک یک"
 
-#: formaloo.php:882 formaloo.php:982 formaloo.php:1312 git/formaloo.php:833
-#: git/formaloo.php:967 svn/trunk/formaloo.php:833 svn/trunk/formaloo.php:967
+#: formaloo.php:954 formaloo.php:1053 formaloo.php:1393 git/formaloo.php:937
+#: git/formaloo.php:1037 git/formaloo.php:1367 svn/trunk/formaloo.php:937
+#: svn/trunk/formaloo.php:1037 svn/trunk/formaloo.php:1367
+#: svn/tags/1.7.0.0/formaloo.php:937 svn/tags/1.7.0.0/formaloo.php:1037
+#: svn/tags/1.7.0.0/formaloo.php:1367 svn/tags/1.7.0.1/formaloo.php:937
+#: svn/tags/1.7.0.1/formaloo.php:1037 svn/tags/1.7.0.1/formaloo.php:1367
 msgid "API Key & API Token"
 msgstr "توکن API و کلید API نیاز داریم"
 
-#: formaloo.php:882 formaloo.php:982 formaloo.php:1312 git/formaloo.php:833
-#: git/formaloo.php:967 svn/trunk/formaloo.php:833 svn/trunk/formaloo.php:967
+#: formaloo.php:954 formaloo.php:1053 formaloo.php:1393 git/formaloo.php:937
+#: git/formaloo.php:1037 git/formaloo.php:1367 svn/trunk/formaloo.php:937
+#: svn/trunk/formaloo.php:1037 svn/trunk/formaloo.php:1367
+#: svn/tags/1.7.0.0/formaloo.php:937 svn/tags/1.7.0.0/formaloo.php:1037
+#: svn/tags/1.7.0.0/formaloo.php:1367 svn/tags/1.7.0.1/formaloo.php:937
+#: svn/tags/1.7.0.1/formaloo.php:1037 svn/tags/1.7.0.1/formaloo.php:1367
 msgid "Paste your Formaloo API Key & API Token, and click"
 msgstr ""
 "توکن API و کلید API فرمالو خود را در باکس زیر وارد کنید و برای ادامه روی دکمه"
 
-#: formaloo.php:882 formaloo.php:918 formaloo.php:982 formaloo.php:1312
-#: git/formaloo.php:833 git/formaloo.php:869 git/formaloo.php:967
-#: svn/trunk/formaloo.php:833 svn/trunk/formaloo.php:869
-#: svn/trunk/formaloo.php:967
+#: formaloo.php:954 formaloo.php:990 formaloo.php:1053 formaloo.php:1393
+#: git/formaloo.php:937 git/formaloo.php:973 git/formaloo.php:1037
+#: git/formaloo.php:1367 svn/trunk/formaloo.php:937 svn/trunk/formaloo.php:973
+#: svn/trunk/formaloo.php:1037 svn/trunk/formaloo.php:1367
+#: svn/tags/1.7.0.0/formaloo.php:937 svn/tags/1.7.0.0/formaloo.php:973
+#: svn/tags/1.7.0.0/formaloo.php:1037 svn/tags/1.7.0.0/formaloo.php:1367
+#: svn/tags/1.7.0.1/formaloo.php:937 svn/tags/1.7.0.1/formaloo.php:973
+#: svn/tags/1.7.0.1/formaloo.php:1037 svn/tags/1.7.0.1/formaloo.php:1367
 msgid "Connect"
 msgstr "اتصال"
 
-#: formaloo.php:882 formaloo.php:982 formaloo.php:1312 git/formaloo.php:833
-#: git/formaloo.php:967 svn/trunk/formaloo.php:833 svn/trunk/formaloo.php:967
+#: formaloo.php:954 formaloo.php:1053 formaloo.php:1393 git/formaloo.php:937
+#: git/formaloo.php:1037 git/formaloo.php:1367 svn/trunk/formaloo.php:937
+#: svn/trunk/formaloo.php:1037 svn/trunk/formaloo.php:1367
+#: svn/tags/1.7.0.0/formaloo.php:937 svn/tags/1.7.0.0/formaloo.php:1037
+#: svn/tags/1.7.0.0/formaloo.php:1367 svn/tags/1.7.0.1/formaloo.php:937
+#: svn/tags/1.7.0.1/formaloo.php:1037 svn/tags/1.7.0.1/formaloo.php:1367
 msgid "to continue"
 msgstr "کلیک کنید"
 
-#: formaloo.php:885 git/formaloo.php:836 svn/trunk/formaloo.php:836
+#: formaloo.php:957 git/formaloo.php:940 svn/trunk/formaloo.php:940
+#: svn/tags/1.7.0.0/formaloo.php:940 svn/tags/1.7.0.1/formaloo.php:940
 msgid "You can access your"
 msgstr "شما می‌توانید به"
 
-#: formaloo.php:893 git/formaloo.php:844 svn/trunk/formaloo.php:844
+#: formaloo.php:965 git/formaloo.php:948 svn/trunk/formaloo.php:948
+#: svn/tags/1.7.0.0/formaloo.php:948 svn/tags/1.7.0.1/formaloo.php:948
 msgid "API Key"
 msgstr "کلید API"
 
-#: formaloo.php:905 git/formaloo.php:856 svn/trunk/formaloo.php:856
+#: formaloo.php:977 git/formaloo.php:960 svn/trunk/formaloo.php:960
+#: svn/tags/1.7.0.0/formaloo.php:960 svn/tags/1.7.0.1/formaloo.php:960
 msgid "API Token"
 msgstr "توکن API"
 
-#: formaloo.php:918 git/formaloo.php:869 svn/trunk/formaloo.php:869
+#: formaloo.php:990 git/formaloo.php:973 svn/trunk/formaloo.php:973
+#: svn/tags/1.7.0.0/formaloo.php:973 svn/tags/1.7.0.1/formaloo.php:973
 msgid "Save"
 msgstr "ذخیره"
 
-#: formaloo.php:925 formaloo.php:1453 git/formaloo.php:876
-#: git/formaloo.php:1108 svn/trunk/formaloo.php:876 svn/trunk/formaloo.php:1108
-msgid "Need Support? Feel free to contact us"
-msgstr "به پشتیبانی نیاز دارید؟ با ما در ارتباط باشید"
-
-#: formaloo.php:994
+#: formaloo.php:1065 git/formaloo.php:1049 svn/trunk/formaloo.php:1049
+#: svn/tags/1.7.0.0/formaloo.php:1049 svn/tags/1.7.0.1/formaloo.php:1049
 msgid "All Categories"
 msgstr "تمام دسته‌بندی‌ها"
 
-#: formaloo.php:996
+#: formaloo.php:1067 git/formaloo.php:1051 svn/trunk/formaloo.php:1051
+#: svn/tags/1.7.0.0/formaloo.php:1051 svn/tags/1.7.0.1/formaloo.php:1051
 msgid "Apply"
 msgstr "اجرا"
 
-#: formaloo.php:999
+#: formaloo.php:1070 git/formaloo.php:1054 svn/trunk/formaloo.php:1054
+#: svn/tags/1.7.0.0/formaloo.php:1054 svn/tags/1.7.0.1/formaloo.php:1054
 msgid "Search a template.."
 msgstr "جستجوی قالب.."
 
-#: formaloo.php:1000
+#: formaloo.php:1071 git/formaloo.php:1055 svn/trunk/formaloo.php:1055
+#: svn/tags/1.7.0.0/formaloo.php:1055 svn/tags/1.7.0.1/formaloo.php:1055
 msgid "Search"
 msgstr "جستجو"
 
-#: formaloo.php:1008
+#: formaloo.php:1079 git/formaloo.php:1063 svn/trunk/formaloo.php:1063
+#: svn/tags/1.7.0.0/formaloo.php:1063 svn/tags/1.7.0.1/formaloo.php:1063
 msgid "Prev"
 msgstr "قبلی"
 
-#: formaloo.php:1014
+#: formaloo.php:1085 git/formaloo.php:1069 svn/trunk/formaloo.php:1069
+#: svn/tags/1.7.0.0/formaloo.php:1069 svn/tags/1.7.0.1/formaloo.php:1069
 msgid "Next"
 msgstr "بعدی"
 
-#: formaloo.php:1075
+#: formaloo.php:1147 git/formaloo.php:1130 svn/trunk/formaloo.php:1130
+#: svn/tags/1.7.0.0/formaloo.php:1130 svn/tags/1.7.0.1/formaloo.php:1130
 msgid "Template not found"
 msgstr "قالبی پیدا نشد"
 
-#: formaloo.php:1078
+#: formaloo.php:1150 git/formaloo.php:1133 svn/trunk/formaloo.php:1133
+#: svn/tags/1.7.0.0/formaloo.php:1133 svn/tags/1.7.0.1/formaloo.php:1133
 msgid "Preview the template"
 msgstr "پیش‌نمایش قالب"
 
-#: formaloo.php:1078
+#: formaloo.php:1150 git/formaloo.php:1133 svn/trunk/formaloo.php:1133
+#: svn/tags/1.7.0.0/formaloo.php:1133 svn/tags/1.7.0.1/formaloo.php:1133
 msgid "Preview"
 msgstr "پیش‌نمایش"
 
-#: formaloo.php:1078
+#: formaloo.php:1150 git/formaloo.php:1133 svn/trunk/formaloo.php:1133
+#: svn/tags/1.7.0.0/formaloo.php:1133 svn/tags/1.7.0.1/formaloo.php:1133
 msgid "Use"
 msgstr "استفاده"
 
-#: formaloo.php:1268 git/formaloo.php:923 svn/trunk/formaloo.php:923
+#: formaloo.php:1349 git/formaloo.php:1323 svn/trunk/formaloo.php:1323
+#: svn/tags/1.7.0.0/formaloo.php:1323 svn/tags/1.7.0.1/formaloo.php:1323
 msgid "As a Link"
 msgstr "به عنوان لینک"
 
-#: formaloo.php:1269 git/formaloo.php:924 svn/trunk/formaloo.php:924
+#: formaloo.php:1350 git/formaloo.php:1324 svn/trunk/formaloo.php:1324
+#: svn/tags/1.7.0.0/formaloo.php:1324 svn/tags/1.7.0.1/formaloo.php:1324
 msgid "Share this URL with others to view the form directly"
 msgstr "برای مشاهده ابزارک به صورت مجزا، از این لینک استفاده کنید"
 
-#: formaloo.php:1277 git/formaloo.php:932 svn/trunk/formaloo.php:932
+#: formaloo.php:1358 git/formaloo.php:1332 svn/trunk/formaloo.php:1332
+#: svn/tags/1.7.0.0/formaloo.php:1332 svn/tags/1.7.0.1/formaloo.php:1332
 msgid "As a Script Tag"
 msgstr "تگ اسکریپت"
 
-#: formaloo.php:1278 git/formaloo.php:933 svn/trunk/formaloo.php:933
+#: formaloo.php:1359 git/formaloo.php:1333 svn/trunk/formaloo.php:1333
+#: svn/tags/1.7.0.0/formaloo.php:1333 svn/tags/1.7.0.1/formaloo.php:1333
 msgid ""
 "Using this method, the form will become a part of your website's markup. To "
 "use this, put the code snippet in your website footer:"
@@ -359,144 +545,230 @@ msgstr ""
 "با استفاده از کد روبرو شما می‌توانید این ابزارک را در وب‌سایتتان نمایش دهید. "
 "کد روبرو را در بخش فوتر وب‌سایت طبق راهنمای زیر کپی کنید:"
 
-#: formaloo.php:1297 git/formaloo.php:952 svn/trunk/formaloo.php:952
+#: formaloo.php:1378 git/formaloo.php:1352 svn/trunk/formaloo.php:1352
+#: svn/tags/1.7.0.0/formaloo.php:1352 svn/tags/1.7.0.1/formaloo.php:1352
 msgid "Feedback Widget Creator"
 msgstr "ساخت ابزارک نظرسنجی"
 
-#: formaloo.php:1306 git/formaloo.php:961 svn/trunk/formaloo.php:961
+#: formaloo.php:1387 git/formaloo.php:1361 svn/trunk/formaloo.php:1361
+#: svn/tags/1.7.0.0/formaloo.php:1361 svn/tags/1.7.0.1/formaloo.php:1361
 msgid "Create a feedback widget for your website in less than 1 minute:"
 msgstr "ابزارک نظرسنجی را در کمتر از ۱ دقیقه به وب‌سایتتان اضافه کنید:"
 
-#: formaloo.php:1328 formaloo.php:1336 git/formaloo.php:983
-#: git/formaloo.php:991 svn/trunk/formaloo.php:983 svn/trunk/formaloo.php:991
+#: formaloo.php:1409 formaloo.php:1417 git/formaloo.php:1383
+#: git/formaloo.php:1391 svn/trunk/formaloo.php:1383
+#: svn/trunk/formaloo.php:1391 svn/tags/1.7.0.0/formaloo.php:1383
+#: svn/tags/1.7.0.0/formaloo.php:1391 svn/tags/1.7.0.1/formaloo.php:1383
+#: svn/tags/1.7.0.1/formaloo.php:1391
 msgid "Button Text"
 msgstr "عنوان دکمه"
 
-#: formaloo.php:1343 git/formaloo.php:998 svn/trunk/formaloo.php:998
+#: formaloo.php:1424 git/formaloo.php:1398 svn/trunk/formaloo.php:1398
+#: svn/tags/1.7.0.0/formaloo.php:1398 svn/tags/1.7.0.1/formaloo.php:1398
 msgid "Widget Position on Screen"
 msgstr "جایگاه ابزارک بر روی صفحه"
 
-#: formaloo.php:1349 git/formaloo.php:1004 svn/trunk/formaloo.php:1004
+#: formaloo.php:1430 git/formaloo.php:1404 svn/trunk/formaloo.php:1404
+#: svn/tags/1.7.0.0/formaloo.php:1404 svn/tags/1.7.0.1/formaloo.php:1404
 msgid "Left"
 msgstr "چپ"
 
-#: formaloo.php:1350 git/formaloo.php:1005 svn/trunk/formaloo.php:1005
+#: formaloo.php:1431 git/formaloo.php:1405 svn/trunk/formaloo.php:1405
+#: svn/tags/1.7.0.0/formaloo.php:1405 svn/tags/1.7.0.1/formaloo.php:1405
 msgid "Right"
 msgstr "راست"
 
-#: formaloo.php:1351 git/formaloo.php:1006 svn/trunk/formaloo.php:1006
+#: formaloo.php:1432 git/formaloo.php:1406 svn/trunk/formaloo.php:1406
+#: svn/tags/1.7.0.0/formaloo.php:1406 svn/tags/1.7.0.1/formaloo.php:1406
 msgid "Bottom Left"
 msgstr "پایین چپ"
 
-#: formaloo.php:1352 git/formaloo.php:1007 svn/trunk/formaloo.php:1007
+#: formaloo.php:1433 git/formaloo.php:1407 svn/trunk/formaloo.php:1407
+#: svn/tags/1.7.0.0/formaloo.php:1407 svn/tags/1.7.0.1/formaloo.php:1407
 msgid "Bottom Right"
 msgstr "پایین راست"
 
-#: formaloo.php:1358 git/formaloo.php:1013 svn/trunk/formaloo.php:1013
+#: formaloo.php:1439 git/formaloo.php:1413 svn/trunk/formaloo.php:1413
+#: svn/tags/1.7.0.0/formaloo.php:1413 svn/tags/1.7.0.1/formaloo.php:1413
 msgid "NPS Choices Icon"
 msgstr "نوع آیکون انتخاب"
 
-#: formaloo.php:1385 formaloo.php:1393 git/formaloo.php:1040
-#: git/formaloo.php:1048 svn/trunk/formaloo.php:1040
-#: svn/trunk/formaloo.php:1048
+#: formaloo.php:1466 formaloo.php:1474 git/formaloo.php:1440
+#: git/formaloo.php:1448 svn/trunk/formaloo.php:1440
+#: svn/trunk/formaloo.php:1448 svn/tags/1.7.0.0/formaloo.php:1440
+#: svn/tags/1.7.0.0/formaloo.php:1448 svn/tags/1.7.0.1/formaloo.php:1440
+#: svn/tags/1.7.0.1/formaloo.php:1448
 msgid "Question Title"
 msgstr "عنوان  سوال"
 
-#: formaloo.php:1398 formaloo.php:1406 git/formaloo.php:1053
-#: git/formaloo.php:1061 svn/trunk/formaloo.php:1053
-#: svn/trunk/formaloo.php:1061
+#: formaloo.php:1479 formaloo.php:1487 git/formaloo.php:1453
+#: git/formaloo.php:1461 svn/trunk/formaloo.php:1453
+#: svn/trunk/formaloo.php:1461 svn/tags/1.7.0.0/formaloo.php:1453
+#: svn/tags/1.7.0.0/formaloo.php:1461 svn/tags/1.7.0.1/formaloo.php:1453
+#: svn/tags/1.7.0.1/formaloo.php:1461
 msgid "TextBox Placeholder"
 msgstr "متن نگه‌دارنده سوال"
 
-#: formaloo.php:1411 formaloo.php:1419 git/formaloo.php:1066
-#: git/formaloo.php:1074 svn/trunk/formaloo.php:1066
-#: svn/trunk/formaloo.php:1074
+#: formaloo.php:1492 formaloo.php:1500 git/formaloo.php:1466
+#: git/formaloo.php:1474 svn/trunk/formaloo.php:1466
+#: svn/trunk/formaloo.php:1474 svn/tags/1.7.0.0/formaloo.php:1466
+#: svn/tags/1.7.0.0/formaloo.php:1474 svn/tags/1.7.0.1/formaloo.php:1466
+#: svn/tags/1.7.0.1/formaloo.php:1474
 msgid "Submit Button Text"
 msgstr "عنوان دکمه ثبت"
 
-#: formaloo.php:1424 git/formaloo.php:1079 svn/trunk/formaloo.php:1079
+#: formaloo.php:1505 git/formaloo.php:1479 svn/trunk/formaloo.php:1479
+#: svn/tags/1.7.0.0/formaloo.php:1479 svn/tags/1.7.0.1/formaloo.php:1479
 msgid "Button Color"
 msgstr "رنگ دکمه"
 
-#: formaloo.php:1432 formaloo.php:1440 git/formaloo.php:1087
-#: git/formaloo.php:1095 svn/trunk/formaloo.php:1087
-#: svn/trunk/formaloo.php:1095
+#: formaloo.php:1513 formaloo.php:1521 git/formaloo.php:1487
+#: git/formaloo.php:1495 svn/trunk/formaloo.php:1487
+#: svn/trunk/formaloo.php:1495 svn/tags/1.7.0.0/formaloo.php:1487
+#: svn/tags/1.7.0.0/formaloo.php:1495 svn/tags/1.7.0.1/formaloo.php:1487
+#: svn/tags/1.7.0.1/formaloo.php:1495
 msgid "Success Message After Submit"
 msgstr "پیام موفقیت"
 
-#: formaloo.php:1446 git/formaloo.php:1101 svn/trunk/formaloo.php:1101
+#: formaloo.php:1527 git/formaloo.php:1501 svn/trunk/formaloo.php:1501
+#: svn/tags/1.7.0.0/formaloo.php:1501 svn/tags/1.7.0.1/formaloo.php:1501
 msgid "Save Changes"
 msgstr "ذخیره تغییرات"
 
-#: formaloo.php:1651 git/formaloo.php:1305 svn/trunk/formaloo.php:1305
+#: formaloo.php:1733 git/formaloo.php:1706 svn/trunk/formaloo.php:1706
+#: svn/tags/1.7.0.0/formaloo.php:1706 svn/tags/1.7.0.1/formaloo.php:1706
 msgid "How to use your Feedback Widget"
 msgstr "چگونه از ابزارک نظرسنجی استفاده کنیم؟"
 
 #: listTable.php:56 git/listTable.php:56 svn/trunk/listTable.php:56
+#: svn/tags/1.7.0.0/listTable.php:56 svn/tags/1.7.0.1/listTable.php:56
 msgid "Title"
 msgstr "عنوان"
 
 #: listTable.php:57 git/listTable.php:57 svn/trunk/listTable.php:57
+#: svn/tags/1.7.0.0/listTable.php:57 svn/tags/1.7.0.1/listTable.php:57
 msgid "Active"
 msgstr "فعال"
 
 #: listTable.php:58 git/listTable.php:58 svn/trunk/listTable.php:58
+#: svn/tags/1.7.0.0/listTable.php:58 svn/tags/1.7.0.1/listTable.php:58
 msgid "Submit Count"
 msgstr "تعداد ثبت"
 
 #: listTable.php:59 git/listTable.php:59 svn/trunk/listTable.php:59
+#: svn/tags/1.7.0.0/listTable.php:59 svn/tags/1.7.0.1/listTable.php:59
 msgid "Download Results"
 msgstr "دانلود نتایج"
 
 #: listTable.php:60 git/listTable.php:60 svn/trunk/listTable.php:60
+#: svn/tags/1.7.0.0/listTable.php:60 svn/tags/1.7.0.1/listTable.php:60
 msgid "More Options"
 msgstr "تنظیمات بیشتر"
 
-#: listTable.php:104 git/listTable.php:104 svn/trunk/listTable.php:104
+#: listTable.php:106 listTable.php:114 git/listTable.php:106
+#: git/listTable.php:114 svn/trunk/listTable.php:106
+#: svn/trunk/listTable.php:114 svn/tags/1.7.0.0/listTable.php:106
+#: svn/tags/1.7.0.0/listTable.php:114 svn/tags/1.7.0.1/listTable.php:106
+#: svn/tags/1.7.0.1/listTable.php:114
+msgid "Exporting.."
+msgstr "در حال گرفتن خروجی.."
+
+#: listTable.php:108 listTable.php:114 listTable.php:116 listTable.php:116
+#: git/listTable.php:108 git/listTable.php:114 git/listTable.php:116
+#: git/listTable.php:116 svn/trunk/listTable.php:108
+#: svn/trunk/listTable.php:114 svn/trunk/listTable.php:116
+#: svn/trunk/listTable.php:116 svn/tags/1.7.0.0/listTable.php:108
+#: svn/tags/1.7.0.0/listTable.php:114 svn/tags/1.7.0.0/listTable.php:116
+#: svn/tags/1.7.0.0/listTable.php:116 svn/tags/1.7.0.1/listTable.php:108
+#: svn/tags/1.7.0.1/listTable.php:114 svn/tags/1.7.0.1/listTable.php:116
+#: svn/tags/1.7.0.1/listTable.php:116
 msgid "Download"
 msgstr "دانلود"
 
-#: listTable.php:180 git/listTable.php:180 svn/trunk/listTable.php:180
+#: listTable.php:114 listTable.php:116 git/listTable.php:114
+#: git/listTable.php:116 svn/trunk/listTable.php:114
+#: svn/trunk/listTable.php:116 svn/tags/1.7.0.0/listTable.php:114
+#: svn/tags/1.7.0.0/listTable.php:116 svn/tags/1.7.0.1/listTable.php:114
+#: svn/tags/1.7.0.1/listTable.php:116
+msgid "Last Export"
+msgstr "آخرین خروجی"
+
+#: listTable.php:204 git/listTable.php:204 svn/trunk/listTable.php:204
+#: svn/tags/1.7.0.0/listTable.php:204 svn/tags/1.7.0.1/listTable.php:204
 msgid "Set-up Form Settings"
 msgstr "تغییر تنظیمات فرم"
 
-#: listTable.php:183 git/listTable.php:183 svn/trunk/listTable.php:183
+#: listTable.php:207 git/listTable.php:207 svn/trunk/listTable.php:207
+#: svn/tags/1.7.0.0/listTable.php:207 svn/tags/1.7.0.1/listTable.php:207
 msgid "View"
 msgstr "مشاهده"
 
-#: listTable.php:187 git/listTable.php:187 svn/trunk/listTable.php:187
+#: listTable.php:211 git/listTable.php:211 svn/trunk/listTable.php:211
+#: svn/tags/1.7.0.0/listTable.php:211 svn/tags/1.7.0.1/listTable.php:211
 msgid "Get Shortcode"
 msgstr "دریافت شورت کد"
 
-#: listTable.php:188 git/listTable.php:188 svn/trunk/listTable.php:188
+#: listTable.php:212 git/listTable.php:212 svn/trunk/listTable.php:212
+#: svn/tags/1.7.0.0/listTable.php:212 svn/tags/1.7.0.1/listTable.php:212
 msgid "Edit Form"
 msgstr "ویرایش فرم"
 
-#: listTable.php:188 listTable.php:190 git/listTable.php:188
-#: git/listTable.php:190 svn/trunk/listTable.php:188
-#: svn/trunk/listTable.php:190
+#: listTable.php:212 listTable.php:214 git/listTable.php:212
+#: git/listTable.php:214 svn/trunk/listTable.php:212
+#: svn/trunk/listTable.php:214 svn/tags/1.7.0.0/listTable.php:212
+#: svn/tags/1.7.0.0/listTable.php:214 svn/tags/1.7.0.1/listTable.php:212
+#: svn/tags/1.7.0.1/listTable.php:214
 msgid "Edit"
 msgstr "ویرایش"
 
-#: listTable.php:191 git/listTable.php:191 svn/trunk/listTable.php:191
+#: listTable.php:215 git/listTable.php:215 svn/trunk/listTable.php:215
+#: svn/tags/1.7.0.0/listTable.php:215 svn/tags/1.7.0.1/listTable.php:215
 msgid "Use Widget"
 msgstr "استفاده از ابزارک"
 
 #: resultsTable.php:63 git/resultsTable.php:63 svn/trunk/resultsTable.php:63
+#: svn/tags/1.7.0.0/resultsTable.php:63 svn/tags/1.7.0.1/resultsTable.php:63
 msgid "Date Created"
 msgstr "تاریخ ایجاد"
 
 #: resultsTable.php:64 git/resultsTable.php:64 svn/trunk/resultsTable.php:64
+#: svn/tags/1.7.0.0/resultsTable.php:64 svn/tags/1.7.0.1/resultsTable.php:64
 msgid "Show Full Results"
 msgstr "نمایش نتایج کامل"
 
 #: resultsTable.php:151 git/resultsTable.php:151 svn/trunk/resultsTable.php:151
+#: svn/tags/1.7.0.0/resultsTable.php:151 svn/tags/1.7.0.1/resultsTable.php:151
 msgid "Show Result"
 msgstr "نمایش نتیجه"
 
 #: resultsTable.php:151 git/resultsTable.php:151 svn/trunk/resultsTable.php:151
+#: svn/tags/1.7.0.0/resultsTable.php:151 svn/tags/1.7.0.1/resultsTable.php:151
 msgid "Full Result"
 msgstr "نتیجه کامل"
+
+#: classic-editor.php:46 classic-editor.php:48 git/classic-editor.php:46
+#: git/classic-editor.php:48 svn/trunk/classic-editor.php:46
+#: svn/trunk/classic-editor.php:48 svn/tags/1.7.0.0/classic-editor.php:46
+#: svn/tags/1.7.0.0/classic-editor.php:48
+#: svn/tags/1.7.0.1/classic-editor.php:46
+#: svn/tags/1.7.0.1/classic-editor.php:48
+msgid "Add Form"
+msgstr "اضافه کردن فرم"
+
+#: classic-editor.php:74
+msgid "Select a form"
+msgstr "انتخاب فرم"
+
+#: classic-editor.php:176 git/classic-editor.php:176
+#: svn/trunk/classic-editor.php:176 svn/tags/1.7.0.0/classic-editor.php:176
+#: svn/tags/1.7.0.1/classic-editor.php:176
+msgid "Insert shortcode"
+msgstr "درج شورت کد"
+
+#: git/formaloo.php:769 svn/trunk/formaloo.php:769
+#: svn/tags/1.7.0.0/formaloo.php:769 svn/tags/1.7.0.1/formaloo.php:769
+msgid "Create a new form"
+msgstr "ساخت فرم جدید"
 
 #. Name of the plugin
 msgid "Formaloo Form Builder"

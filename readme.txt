@@ -158,4 +158,5 @@ See our <a href="https://api.formaloo.net/docs">API documentation</a> for more i
 - Added: Adding Form Shortcode option is now added to the users who use the beloved Classic Editor!
 - Added: You can now preview and use different form templates from Templates page
 - Updated: You can now download your last requested excel file asynchronously
+- Added: German and French Language Support
 - Minor bug fixes and improvements
