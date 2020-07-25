@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Formaloo Form Builder
  * Description:       Easily embed Formaloo forms into your blog or WP pages.
- * Version:           1.7.0.3
+ * Version:           1.7.1.0
  * Author:            Formaloo team
  * Author URI:        https://formaloo.net/
  * Text Domain:       formaloo
@@ -16,7 +16,7 @@
  * Plugin constants
  */
 if(!defined('FORMALOO_PLUGIN_VERSION'))
-	define('FORMALOO_PLUGIN_VERSION', '1.7.0.3');
+	define('FORMALOO_PLUGIN_VERSION', '1.7.1.0');
 if(!defined('FORMALOO_URL'))
 	define('FORMALOO_URL', plugin_dir_url( __FILE__ ));
 if(!defined('FORMALOO_PATH'))
@@ -63,6 +63,19 @@ class Formaloo_Main_Class {
 	 * @var string
 	 */
     private $option_name = 'formaloo_data';
+
+	/**
+	 * Returns the support url
+     *
+     * @return array
+	 */
+	private function getSupportUrl() {
+        if (get_locale() == 'fa_IR') {
+            return FORMALOO_PROTOCOL . '://formaloo.com/contact-us/';
+        } else {
+            return FORMALOO_PROTOCOL . '://en.formaloo.com/contact/';
+        }
+    }
 
 	/**
 	 * Formaloo constructor.
@@ -652,7 +665,6 @@ class Formaloo_Main_Class {
                                 tb_show('<?php _e('Create a form', 'formaloo'); ?>', '<?php echo FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT ?>/dashboard/my-forms/' + formSlug + '/edit/&TB_iframe=true&width=100vw&height=100vh');
 
                                 jQuery( 'body' ).on( 'thickbox:iframe:loaded', function ( event ) {
-                                    console.log('test');
                                     resizeIframe();
                                 });
                                 
@@ -766,7 +778,10 @@ class Formaloo_Main_Class {
                             </h3>
                             <div class="formaloo-create-form-wrapper">
                                 <div class="formaloo-create-form">
-                                    <a href="#" class="button button-primary formaloo-create-new-form-link" onclick="createNewForm(event);"><span class="dashicons dashicons-plus"></span> <?php _e('Create a new form', 'formaloo') ?></a>
+                                    <a href="#" class="button button-primary formaloo-create-new-form-link" onclick="createNewForm(event);"><span class="dashicons dashicons-plus"></span> <?php _e('Create a Blank Form', 'formaloo') ?></a>
+                                </div>
+                                <div class="formaloo-create-form">
+                                    <a href="<?php echo admin_url( "admin.php?page=formaloo-templates-page" ) ?>" class="button button-primary formaloo-create-new-form-link"><span class="dashicons dashicons-welcome-add-page"></span> <?php _e('Select a Template', 'formaloo') ?></a>
                                 </div>
                                 <div class="formaloo-create-form">
                                     <a href="<?php echo admin_url( "admin.php?page=formaloo-feedback-widget-page" ) ?>" class="button button-secondary formaloo-create-new-form-link"><span class="dashicons dashicons-star-half"></span> <?php _e('Create a feedback widget', 'formaloo'); ?></a>
@@ -820,6 +835,8 @@ class Formaloo_Main_Class {
                 <?php endif; ?>
 
             </form>
+
+            <a href="<?php echo esc_url( $this->getSupportUrl() ); ?>" target="_blank"><?php _e( 'Need Support? Feel free to contact us', 'formaloo' ); ?></a>
 		</div>
 
 		<?php
@@ -976,12 +993,11 @@ class Formaloo_Main_Class {
                             </tr>
                         </tbody>
                     </table>
-
-                    <a href="<?php echo esc_url( FORMALOO_PROTOCOL . '://web.' . FORMALOO_ENDPOINT . '/contact/' ); ?>" target="_blank"><?php _e( 'Need Support? Feel free to contact us', 'formaloo' ); ?></a>
                 </div>
 
             </form>
 
+            <a href="<?php echo esc_url( $this->getSupportUrl() ); ?>" target="_blank"><?php _e( 'Need Support? Feel free to contact us', 'formaloo' ); ?></a>
 		</div>
 
 		<?php
@@ -1073,7 +1089,8 @@ class Formaloo_Main_Class {
                 </div>
 
             </form>
-                            
+
+            <a href="<?php echo esc_url( $this->getSupportUrl() ); ?>" target="_blank"><?php _e( 'Need Support? Feel free to contact us', 'formaloo' ); ?></a>             
 		</div>
         
         <script>
@@ -1130,7 +1147,11 @@ class Formaloo_Main_Class {
                                 $( '.formaloo-templates-grid-container' ).append( $( '<div></div><div class="formaloo-templates-not-found-wrapper"><img src="<?php echo FORMALOO_URL ?>assets/images/feedback_widget.png" alt="Template not found" ><?php _e('Template not found', 'formaloo'); ?></div><div></div>' ) );
                             } else {
                                 $.each(result['data']['forms'], function(i, form) {
-                                    $( '.formaloo-templates-grid-container' ).append( $( '<div class="formaloo-templates-grid-item"><div class="formaloo-templates-grid-item-inner"><img src="' + form['logo'] + '" alt="' + form['title'] + '"><div class="formaloo-template-title">' + form['title'] + '</div><div class="formaloo-templates-hover-div"><a href="<?php echo FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT ?>/' + form['address'] + '?TB_iframe=true&width=100vw&height=100vh" title="<?php _e('Preview the template', 'formaloo'); ?>" target="_blank" class="button button-secondary formaloo-preview-template-link thickbox" onclick="resizeIframe();"><?php _e('Preview', 'formaloo') ?></a><a href="#" class="button button-primary" data-form-slug="' + form['slug'] + '" onclick="copyTemplate(event, this)"><?php _e('Use', 'formaloo'); ?></a></div></div></div>' ) );
+                                    $( '.formaloo-templates-grid-container' ).append( $( '<div class="formaloo-templates-grid-item"><div class="formaloo-templates-grid-item-inner"><img src="' + form['logo'] + '" alt="' + form['title'] + '"><div class="formaloo-template-title">' + form['title'] + '</div><div class="formaloo-templates-hover-div"><a href="<?php echo FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT ?>/' + form['address'] + '?TB_iframe=true&width=100vw&height=100vh" title="<?php _e('Preview the template', 'formaloo'); ?>" target="_blank" class="button button-secondary formaloo-preview-template-link thickbox"><?php _e('Preview', 'formaloo') ?></a><a href="#" class="button button-primary" data-form-slug="' + form['slug'] + '" onclick="copyTemplate(event, this)"><?php _e('Use', 'formaloo'); ?></a></div></div></div>' ) );
+                                });
+
+                                jQuery( 'body' ).on( 'thickbox:iframe:loaded', function ( event ) {
+                                    resizeIframe();
                                 });
 
                                 handlePagination(result['data']['current_page'], result['data']['previous'], result['data']['next']);
@@ -1145,6 +1166,18 @@ class Formaloo_Main_Class {
                             showGeneralErrors(errorText);
                             hideLoadingGif();
                         }
+                    });
+                }
+
+                function resizeIframe() {
+                    var TB_WIDTH = jQuery(document).width();
+                    jQuery("#TB_window").animate({
+                        width: TB_WIDTH + 'px',
+                        height: '100vh'
+                    });
+                    jQuery("iframe").animate({
+                        width: '100%',
+                        height: '100vh'
                     });
                 }
 
@@ -1265,13 +1298,6 @@ class Formaloo_Main_Class {
                     }
                 });
 
-            }
-
-            function resizeIframe() {
-                var TB_WIDTH = jQuery(document).width();
-                jQuery("#TB_window").animate({
-                    width: TB_WIDTH + 'px',
-                });
             }
 
         </script>
@@ -1505,10 +1531,11 @@ class Formaloo_Main_Class {
                         </tbody>
                     </table>
                     
-                    <a href="<?php echo esc_url( FORMALOO_PROTOCOL . '://web.' . FORMALOO_ENDPOINT . '/contact/' ); ?>" target="_blank"><?php _e( 'Need Support? Feel free to contact us', 'formaloo' ); ?></a>
                 </div>
 
             </form>
+
+            <a href="<?php echo esc_url( $this->getSupportUrl() ); ?>" target="_blank"><?php _e( 'Need Support? Feel free to contact us', 'formaloo' ); ?></a>
                             
 		</div>
         

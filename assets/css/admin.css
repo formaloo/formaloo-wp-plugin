@@ -326,3 +326,6 @@
 .formaloo-get-excel-button-wrapper {
 	display: flex;
 }
+#formaloo-feedback-widget-submit-row .submit {
+  padding: 0;
+}
