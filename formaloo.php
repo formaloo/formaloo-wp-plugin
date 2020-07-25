@@ -103,7 +103,7 @@ class Formaloo_Main_Class {
 
     public static function loadTextDomain() {
         load_plugin_textdomain('formaloo', false, dirname(plugin_basename(__FILE__ )) . '/languages/');
-        wp_set_script_translations( 'formaloo-block/index.js', 'formaloo', dirname(plugin_basename(__FILE__ )) . '/languages/' );
+        wp_set_script_translations( 'blocks/formaloo-block/index.js', 'formaloo', dirname(plugin_basename(__FILE__ )) . '/languages/' );
     }
 
     public function formaloo_show_form_shortcode($atts) {
