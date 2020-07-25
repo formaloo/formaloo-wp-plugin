@@ -38,7 +38,7 @@ class Formaloo_Admin_Editor {
 		}
 
     // Setup the icon - currently using a dashicon.
-    $icon = '<span class="wp-media-buttons-icon wpforms-menu-icon" style="font-size:16px;margin-top:-2px;"><?xml version="1.0" encoding="utf-8"?> <!-- Generator: Adobe Illustrator 24.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --> <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 14 14" style="enable-background:new 0 0 14 14;" xml:space="preserve"> <style type="text/css"> .st0{fill:#F95C30;} </style> <path class="st0" d="M10.5,1H3.6C2.2,1,1,2.1,1,3.5v6.9C1,11.8,2.1,13,3.5,13h6.9c1.4,0,2.6-1.1,2.6-2.5V3.6C13,2.2,11.9,1,10.5,1z M5.3,9.7c0,0.3-0.3,0.5-0.5,0.5H4.3c-0.3,0-0.5-0.3-0.5-0.5V9.2c0-0.3,0.3-0.5,0.5-0.5h0.5c0.3,0,0.5,0.3,0.5,0.5V9.7z M7.9,7.3 c0,0.3-0.3,0.5-0.5,0.5H4.2c-0.3,0-0.5-0.3-0.5-0.5V6.7c0.1-0.3,0.3-0.5,0.5-0.5h3.2c0.3,0,0.5,0.3,0.5,0.5L7.9,7.3z M10.3,4.9 c0,0.3-0.3,0.5-0.5,0.5L4.3,5.3c-0.3,0-0.5-0.2-0.5-0.5V4.2c0-0.3,0.3-0.5,0.5-0.5h5.6c0.3,0,0.5,0.3,0.5,0.5V4.9z"/> </svg></span>';
+    $icon = '<span class="wp-media-buttons-icon formaloo-menu-icon" style="font-size:16px;margin-top:-2px;"><?xml version="1.0" encoding="utf-8"?> <!-- Generator: Adobe Illustrator 24.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --> <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 14 14" style="enable-background:new 0 0 14 14;" xml:space="preserve"> <style type="text/css"> .st0{fill:#F95C30;} </style> <path class="st0" d="M10.5,1H3.6C2.2,1,1,2.1,1,3.5v6.9C1,11.8,2.1,13,3.5,13h6.9c1.4,0,2.6-1.1,2.6-2.5V3.6C13,2.2,11.9,1,10.5,1z M5.3,9.7c0,0.3-0.3,0.5-0.5,0.5H4.3c-0.3,0-0.5-0.3-0.5-0.5V9.2c0-0.3,0.3-0.5,0.5-0.5h0.5c0.3,0,0.5,0.3,0.5,0.5V9.7z M7.9,7.3 c0,0.3-0.3,0.5-0.5,0.5H4.2c-0.3,0-0.5-0.3-0.5-0.5V6.7c0.1-0.3,0.3-0.5,0.5-0.5h3.2c0.3,0,0.5,0.3,0.5,0.5L7.9,7.3z M10.3,4.9 c0,0.3-0.3,0.5-0.5,0.5L4.3,5.3c-0.3,0-0.5-0.2-0.5-0.5V4.2c0-0.3,0.3-0.5,0.5-0.5h5.6c0.3,0,0.5,0.3,0.5,0.5V4.9z"/> </svg></span>';
 
 		printf(
 			'<a href="#TB_inline?&width=100vw&height=100vh&inlineId=formaloo-form-shortcode" class="button thickbox" data-editor="%s" title="%s">%s %s</a>',
@@ -47,9 +47,6 @@ class Formaloo_Admin_Editor {
 			$icon,
 			__( 'Add Form', 'formaloo' )
 		);
-
-		// If we have made it this far then load the JS.
-		wp_enqueue_script( 'wpforms-editor', WPFORMS_PLUGIN_URL . 'assets/js/admin-editor.js', array( 'jquery' ), WPFORMS_VERSION, true );
 
 		add_action( 'admin_footer', array( $this, 'shortcode_modal' ) );
 	}
