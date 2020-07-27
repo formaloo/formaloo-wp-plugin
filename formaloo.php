@@ -1044,7 +1044,7 @@ class Formaloo_Main_Class {
                     <div id="formaloo-guest-template-login" style="display:none;">
                         <div class="form-group inside">
                             <?php if ($not_ready): ?>
-                            <p style="text-align: right;">
+                            <p id="formaloo-guest-template-login-descr">
                                 <?php echo __('To get started, we\'ll need to access your Formaloo account with an','formaloo') .' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/profile/" target="_blank">'. __('API Key & API Token','formaloo') .'</a>. '. __('Paste your Formaloo API Key & API Token, and click','formaloo') .' <strong>'. __('Connect','formaloo') .'</strong> '. __('to continue','formaloo') .'.'; ?>
                             </p>
                             <?php endif; ?>
