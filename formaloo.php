@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Formaloo Form Builder
  * Description:       Easily embed Formaloo forms into your blog or WP pages.
- * Version:           1.7.1.0
+ * Version:           1.7.1.1
  * Author:            Formaloo team
  * Author URI:        https://formaloo.net/
  * Text Domain:       formaloo
@@ -16,7 +16,7 @@
  * Plugin constants
  */
 if(!defined('FORMALOO_PLUGIN_VERSION'))
-	define('FORMALOO_PLUGIN_VERSION', '1.7.1.0');
+	define('FORMALOO_PLUGIN_VERSION', '1.7.1.1');
 if(!defined('FORMALOO_URL'))
 	define('FORMALOO_URL', plugin_dir_url( __FILE__ ));
 if(!defined('FORMALOO_PATH'))
@@ -1019,6 +1019,8 @@ class Formaloo_Main_Class {
 
 		<div class="wrap">
 
+            <form id="formaloo-templates-admin-form" class="postbox"></form>
+
             <form id="formaloo-templates-form" class="postbox">
 
                 <div class="form-group inside">
@@ -1038,6 +1040,56 @@ class Formaloo_Main_Class {
                             <div class="formaloo-borders formaloo-last"></div>
                         </div>
                     </div>
+
+                    <div id="formaloo-guest-template-login" style="display:none;">
+                        <div class="form-group inside">
+                            <?php if ($not_ready): ?>
+                            <p style="text-align: right;">
+                                <?php echo __('To get started, we\'ll need to access your Formaloo account with an','formaloo') .' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/profile/" target="_blank">'. __('API Key & API Token','formaloo') .'</a>. '. __('Paste your Formaloo API Key & API Token, and click','formaloo') .' <strong>'. __('Connect','formaloo') .'</strong> '. __('to continue','formaloo') .'.'; ?>
+                            </p>
+                            <?php endif; ?>
+                            <?php echo $this->getStatusDiv(!$not_ready); ?>
+                        </div>
+
+                        <div class="form-group inside">
+                            <table class="form-table formaloo-api-settings-table">
+                                <tbody>
+                                    <tr>
+                                        <td scope="row">
+                                            <label><?php _e( 'API Key', 'formaloo' ); ?></label>
+                                        </td>
+                                        <td>
+                                            <input name="formaloo_api_key"
+                                                id="formaloo_api_key"
+                                                class="regular-text"
+                                                type="text"
+                                                form="formaloo-templates-admin-form"
+                                                value="<?php echo (isset($data['api_key'])) ? $data['api_key'] : ''; ?>"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row">
+                                            <label><?php _e( 'API Token', 'formaloo' ); ?></label>
+                                        </td>
+                                        <td>
+                                            <input name="formaloo_api_token"
+                                                id="formaloo_api_token"
+                                                class="regular-text"
+                                                type="text"
+                                                form="formaloo-templates-admin-form"
+                                                value="<?php echo (isset($data['api_token'])) ? $data['api_token'] : ''; ?>"/>
+                                        </td>
+                                    </tr>
+                                    <tr id="formaloo-settings-submit-row">
+                                        <td>
+                                            <input class="button button-primary formaloo-admin-save formaloo-button-black" type="submit" form="formaloo-templates-admin-form" value="<?php ($not_ready) ? _e( 'Connect', 'formaloo' ) : _e( 'Save', 'formaloo' )?>">
+                                            </input>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                     
                     <div class="formaloo-api-settings-top-wrapper">
                         <img src="<?php echo FORMALOO_URL ?>assets/images/Formaloo_Logo.png" alt="formaloo-logo">
@@ -1047,15 +1099,6 @@ class Formaloo_Main_Class {
                     </div>
 
                     <p class="notice notice-error formaloo-templates-notice"></p> 
-
-	                <?php if ($not_ready): ?>
-                        <p>
-                            <?php echo __('To get started, we\'ll need to access your Formaloo account with an','formaloo') .' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/profile/" target="_blank">'. __('API Key & API Token','formaloo') .'</a>. '. __('Paste your Formaloo API Key & API Token, and click','formaloo') .' <strong>'. __('Connect','formaloo') .'</strong> '. __('to continue','formaloo') .'.'; ?>
-                        </p>
-                    <?php else: ?>
-                        <?php // echo __('You can access your','formaloo') .' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/" target="_blank">'. __('Formaloo dashboard here','formaloo') .'</a>.'; ?>  
-                    <?php endif; ?>
-                    <?php echo $this->getStatusDiv(!$not_ready); ?>
 
                     <input type="hidden" id="formaloo_templates_form_slug" name="formaloo_templates_form_slug" value="">
 
@@ -1135,8 +1178,7 @@ class Formaloo_Main_Class {
                         type: 'GET',
                         dataType: 'json',
                         headers: {
-                            'x-api-key': '<?php echo $data['api_key']; ?>',
-                            'Authorization': '<?php echo 'Token ' . $data['api_token']; ?>'
+                            'x-api-key': '<?php echo $data['api_key']; ?>'
                         },
                         contentType: 'application/json; charset=utf-8',
                         success: function (result) {
@@ -1187,9 +1229,6 @@ class Formaloo_Main_Class {
                         url: '<?php echo esc_url( FORMALOO_PROTOCOL . '://api.' . FORMALOO_ENDPOINT . '/v2/forms/templates/categories/' ); ?>',
                         type: 'GET',
                         dataType: 'json',
-                        headers: {
-                            'x-api-key': '<?php echo $data['api_key']; ?>'
-                        },
                         contentType: 'application/json; charset=utf-8',
                         success: function (result) {
                             $.each(result['data']['categories'], function(i, category) {
@@ -1277,7 +1316,41 @@ class Formaloo_Main_Class {
 
                 <?php 
                     $data = $this->getData();
+                    $not_ready = (empty($data['api_token']) || empty($data['api_key']));
+
+                    if ($not_ready):
                 ?>
+                
+                // window.location.href = "?page=formaloo-settings-page";
+
+                tb_show("<?php _e( 'To use this template, please login first', 'formaloo' ); ?>","#TB_inline?width=100vw&height=100vh&inlineId=formaloo-guest-template-login",null);
+
+
+                jQuery(document).on('submit', '#formaloo-templates-admin-form', function(e) {
+
+                    e.preventDefault();
+
+                    // We inject some extra fields required for the security
+                    jQuery('#formaloo-settings-submit-row').append('<td><span class="spinner is-active"></span></td>');
+                    jQuery(this).append('<input type="hidden" form="formaloo-templates-admin-form" name="action" value="store_admin_data" />');
+                    jQuery(this).append('<input type="hidden" form="formaloo-templates-admin-form" name="security" value="' + formaloo_exchanger._nonce + '" />');
+
+                    // We make our call
+                    jQuery.ajax({
+                        url: formaloo_exchanger.ajax_url,
+                        type: 'post',
+                        data: jQuery(this).serialize(),
+                        success: function(response) {
+                            setTimeout(function() {
+                                jQuery('.spinner').removeClass('is-active');
+                                window.location.href = "?page=formaloo-templates-page";
+                                }, 1000);
+                        }
+                    });
+
+                });
+
+                <?php else: ?>
 
                 jQuery.ajax({
                     url: "<?php echo esc_url( FORMALOO_PROTOCOL . '://api.' . FORMALOO_ENDPOINT . '/v1/forms/form/copy/' ); ?>",
@@ -1297,6 +1370,8 @@ class Formaloo_Main_Class {
                         hideLoadingGif();
                     }
                 });
+
+                <?php endif; ?>
 
             }
 
@@ -1574,10 +1649,12 @@ class Formaloo_Main_Class {
                         url: "<?php echo esc_url( FORMALOO_PROTOCOL . '://api.' . FORMALOO_ENDPOINT . '/v1/forms/templates/list' ); ?>",
                         type: 'GET',
                         dataType: 'json',
+                        /*
                         headers: {
                             'x-api-key': '<?php echo $data['api_key']; ?>',
                             'Authorization': '<?php echo 'Token ' . $data['api_token']; ?>'
                         },
+                        */
                         contentType: 'application/json; charset=utf-8',
                         success: function (result) {
                             $.each(result['data']['forms'], function(i, form) {

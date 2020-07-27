@@ -7,8 +7,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-07-25 08:09+0000\n"
-"PO-Revision-Date: 2020-07-25 08:15+0000\n"
+"POT-Creation-Date: 2020-07-27 05:41+0000\n"
+"PO-Revision-Date: 2020-07-27 05:43+0000\n"
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Loco https://localise.biz/\n"
@@ -28,17 +28,17 @@ msgstr "Vielen Dank, dass Sie das Formaloo-Plugin verwenden!"
 msgid "Get Started by visiting the Settings Page"
 msgstr "Beginnen Sie mit dem Besuch der Einstellungsseite"
 
-#: formaloo.php:115 formaloo.php:578 classic-editor.php:119
-#: git/formaloo.php:102 git/formaloo.php:565 git/classic-editor.php:119
-#: svn/trunk/formaloo.php:102 svn/trunk/formaloo.php:565
-#: svn/trunk/classic-editor.php:119 svn/tags/1.7.0.0/formaloo.php:102
+#: formaloo.php:115 formaloo.php:578 classic-editor.php:116
+#: git/formaloo.php:115 git/formaloo.php:578 git/classic-editor.php:116
+#: svn/trunk/formaloo.php:115 svn/trunk/formaloo.php:578
+#: svn/trunk/classic-editor.php:116 svn/tags/1.7.0.0/formaloo.php:102
 #: svn/tags/1.7.0.0/formaloo.php:565 svn/tags/1.7.0.0/classic-editor.php:119
 #: svn/tags/1.7.0.1/formaloo.php:102 svn/tags/1.7.0.1/formaloo.php:565
 #: svn/tags/1.7.0.1/classic-editor.php:119
 msgid "Show Form"
 msgstr "Die Form zeigen"
 
-#: formaloo.php:369 git/formaloo.php:356 svn/trunk/formaloo.php:356
+#: formaloo.php:369 git/formaloo.php:369 svn/trunk/formaloo.php:369
 #: svn/tags/1.7.0.0/formaloo.php:356 svn/tags/1.7.0.1/formaloo.php:356
 msgid ""
 "Your excel file will be ready in a couple of minutes. Please refresh this "
@@ -47,148 +47,148 @@ msgstr ""
 "Ihre Excel-Datei ist in wenigen Minuten fertig. Bitte aktualisieren Sie "
 "diese Seite, um das Ergebnis zu sehen."
 
-#: formaloo.php:384 formaloo.php:385 git/formaloo.php:371 git/formaloo.php:372
-#: svn/trunk/formaloo.php:371 svn/trunk/formaloo.php:372
+#: formaloo.php:384 formaloo.php:385 git/formaloo.php:384 git/formaloo.php:385
+#: svn/trunk/formaloo.php:384 svn/trunk/formaloo.php:385
 #: svn/tags/1.7.0.0/formaloo.php:371 svn/tags/1.7.0.0/formaloo.php:372
 #: svn/tags/1.7.0.1/formaloo.php:371 svn/tags/1.7.0.1/formaloo.php:372
 msgid "Formaloo"
 msgstr "Formaloo"
 
-#: formaloo.php:394 formaloo.php:395 formaloo.php:1045 git/formaloo.php:381
-#: git/formaloo.php:382 git/formaloo.php:1029 svn/trunk/formaloo.php:381
-#: svn/trunk/formaloo.php:382 svn/trunk/formaloo.php:1029
+#: formaloo.php:394 formaloo.php:395 formaloo.php:1097 git/formaloo.php:394
+#: git/formaloo.php:395 git/formaloo.php:1045 svn/trunk/formaloo.php:394
+#: svn/trunk/formaloo.php:395 svn/trunk/formaloo.php:1045
 #: svn/tags/1.7.0.0/formaloo.php:381 svn/tags/1.7.0.0/formaloo.php:382
 #: svn/tags/1.7.0.0/formaloo.php:1029 svn/tags/1.7.0.1/formaloo.php:381
 #: svn/tags/1.7.0.1/formaloo.php:382 svn/tags/1.7.0.1/formaloo.php:1029
 msgid "Templates"
 msgstr "Vorlagen"
 
-#: formaloo.php:403 formaloo.php:404 git/formaloo.php:390 git/formaloo.php:391
-#: svn/trunk/formaloo.php:390 svn/trunk/formaloo.php:391
+#: formaloo.php:403 formaloo.php:404 git/formaloo.php:403 git/formaloo.php:404
+#: svn/trunk/formaloo.php:403 svn/trunk/formaloo.php:404
 #: svn/tags/1.7.0.0/formaloo.php:390 svn/tags/1.7.0.0/formaloo.php:391
 #: svn/tags/1.7.0.1/formaloo.php:390 svn/tags/1.7.0.1/formaloo.php:391
 msgid "Feedback Widget"
 msgstr "Feedback-Widget"
 
-#: formaloo.php:412 formaloo.php:413 git/formaloo.php:399 git/formaloo.php:400
-#: svn/trunk/formaloo.php:399 svn/trunk/formaloo.php:400
+#: formaloo.php:412 formaloo.php:413 git/formaloo.php:412 git/formaloo.php:413
+#: svn/trunk/formaloo.php:412 svn/trunk/formaloo.php:413
 #: svn/tags/1.7.0.0/formaloo.php:399 svn/tags/1.7.0.0/formaloo.php:400
 #: svn/tags/1.7.0.1/formaloo.php:399 svn/tags/1.7.0.1/formaloo.php:400
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: formaloo.php:421 git/formaloo.php:408 svn/trunk/formaloo.php:408
+#: formaloo.php:421 git/formaloo.php:421 svn/trunk/formaloo.php:421
 #: svn/tags/1.7.0.0/formaloo.php:408 svn/tags/1.7.0.1/formaloo.php:408
 msgid "Results"
 msgstr "Ergebnisse"
 
-#: formaloo.php:428 formaloo.php:721 formaloo.php:899 git/formaloo.php:415
-#: git/formaloo.php:709 git/formaloo.php:882 svn/trunk/formaloo.php:415
-#: svn/trunk/formaloo.php:709 svn/trunk/formaloo.php:882
+#: formaloo.php:428 formaloo.php:721 formaloo.php:899 git/formaloo.php:428
+#: git/formaloo.php:721 git/formaloo.php:899 svn/trunk/formaloo.php:428
+#: svn/trunk/formaloo.php:721 svn/trunk/formaloo.php:899
 #: svn/tags/1.7.0.0/formaloo.php:415 svn/tags/1.7.0.0/formaloo.php:709
 #: svn/tags/1.7.0.0/formaloo.php:882 svn/tags/1.7.0.1/formaloo.php:415
 #: svn/tags/1.7.0.1/formaloo.php:709 svn/tags/1.7.0.1/formaloo.php:882
 msgid "My Forms"
 msgstr "Meine Formen"
 
-#: formaloo.php:491 git/formaloo.php:478 svn/trunk/formaloo.php:478
+#: formaloo.php:491 git/formaloo.php:491 svn/trunk/formaloo.php:491
 #: svn/tags/1.7.0.0/formaloo.php:478 svn/tags/1.7.0.1/formaloo.php:478
 msgid "Invalid API Token or API Key! Please visit your"
 msgstr "Ungültiger API-Schlüssel oder API-Token! Bitte besuchen Sie Ihre"
 
-#: formaloo.php:491 formaloo.php:957 git/formaloo.php:478 git/formaloo.php:940
-#: svn/trunk/formaloo.php:478 svn/trunk/formaloo.php:940
+#: formaloo.php:491 formaloo.php:957 git/formaloo.php:491 git/formaloo.php:957
+#: svn/trunk/formaloo.php:491 svn/trunk/formaloo.php:957
 #: svn/tags/1.7.0.0/formaloo.php:478 svn/tags/1.7.0.0/formaloo.php:940
 #: svn/tags/1.7.0.1/formaloo.php:478 svn/tags/1.7.0.1/formaloo.php:940
 msgid "Formaloo dashboard here"
 msgstr "Formaloo Dashboard zugreifen"
 
-#: formaloo.php:491 git/formaloo.php:478 svn/trunk/formaloo.php:478
+#: formaloo.php:491 git/formaloo.php:491 svn/trunk/formaloo.php:491
 #: svn/tags/1.7.0.0/formaloo.php:478 svn/tags/1.7.0.1/formaloo.php:478
 msgid "to get a new one."
 msgstr "einen neuen bekommen."
 
-#: formaloo.php:520 git/formaloo.php:507 svn/trunk/formaloo.php:507
+#: formaloo.php:520 git/formaloo.php:520 svn/trunk/formaloo.php:520
 #: svn/tags/1.7.0.0/formaloo.php:507 svn/tags/1.7.0.1/formaloo.php:507
 msgid "Don't have a Formaloo account?"
 msgstr "Haben Sie Noch Kein Formaloo-Konto?"
 
-#: formaloo.php:520 git/formaloo.php:507 svn/trunk/formaloo.php:507
+#: formaloo.php:520 git/formaloo.php:520 svn/trunk/formaloo.php:520
 #: svn/tags/1.7.0.0/formaloo.php:507 svn/tags/1.7.0.1/formaloo.php:507
 msgid "Try one for Free!"
 msgstr "Probieren Sie es kostenlos aus!"
 
-#: formaloo.php:548 classic-editor.php:89 git/formaloo.php:535
-#: git/classic-editor.php:89 svn/trunk/formaloo.php:535
-#: svn/trunk/classic-editor.php:89 svn/tags/1.7.0.0/formaloo.php:535
+#: formaloo.php:548 classic-editor.php:86 git/formaloo.php:548
+#: git/classic-editor.php:86 svn/trunk/formaloo.php:548
+#: svn/trunk/classic-editor.php:86 svn/tags/1.7.0.0/formaloo.php:535
 #: svn/tags/1.7.0.0/classic-editor.php:89 svn/tags/1.7.0.1/formaloo.php:535
 #: svn/tags/1.7.0.1/classic-editor.php:89
 msgid "How to show"
 msgstr "How to Show"
 
-#: formaloo.php:554 classic-editor.php:95 git/formaloo.php:541
-#: git/classic-editor.php:95 svn/trunk/formaloo.php:541
-#: svn/trunk/classic-editor.php:95 svn/tags/1.7.0.0/formaloo.php:541
+#: formaloo.php:554 classic-editor.php:92 git/formaloo.php:554
+#: git/classic-editor.php:92 svn/trunk/formaloo.php:554
+#: svn/trunk/classic-editor.php:92 svn/tags/1.7.0.0/formaloo.php:541
 #: svn/tags/1.7.0.0/classic-editor.php:95 svn/tags/1.7.0.1/formaloo.php:541
 #: svn/tags/1.7.0.1/classic-editor.php:95
 msgid "Link"
 msgstr "Link"
 
-#: formaloo.php:557 classic-editor.php:98 git/formaloo.php:544
-#: git/classic-editor.php:98 svn/trunk/formaloo.php:544
-#: svn/trunk/classic-editor.php:98 svn/tags/1.7.0.0/formaloo.php:544
+#: formaloo.php:557 classic-editor.php:95 git/formaloo.php:557
+#: git/classic-editor.php:95 svn/trunk/formaloo.php:557
+#: svn/trunk/classic-editor.php:95 svn/tags/1.7.0.0/formaloo.php:544
 #: svn/tags/1.7.0.0/classic-editor.php:98 svn/tags/1.7.0.1/formaloo.php:544
 #: svn/tags/1.7.0.1/classic-editor.php:98
 msgid "iFrame"
 msgstr "iFrame"
 
-#: formaloo.php:560 classic-editor.php:101 git/formaloo.php:547
-#: git/classic-editor.php:101 svn/trunk/formaloo.php:547
-#: svn/trunk/classic-editor.php:101 svn/tags/1.7.0.0/formaloo.php:547
+#: formaloo.php:560 classic-editor.php:98 git/formaloo.php:560
+#: git/classic-editor.php:98 svn/trunk/formaloo.php:560
+#: svn/trunk/classic-editor.php:98 svn/tags/1.7.0.0/formaloo.php:547
 #: svn/tags/1.7.0.0/classic-editor.php:101 svn/tags/1.7.0.1/formaloo.php:547
 #: svn/tags/1.7.0.1/classic-editor.php:101
 msgid "Script"
 msgstr "Skript"
 
-#: formaloo.php:568 classic-editor.php:109 git/formaloo.php:555
-#: git/classic-editor.php:109 svn/trunk/formaloo.php:555
-#: svn/trunk/classic-editor.php:109 svn/tags/1.7.0.0/formaloo.php:555
+#: formaloo.php:568 classic-editor.php:106 git/formaloo.php:568
+#: git/classic-editor.php:106 svn/trunk/formaloo.php:568
+#: svn/trunk/classic-editor.php:106 svn/tags/1.7.0.0/formaloo.php:555
 #: svn/tags/1.7.0.0/classic-editor.php:109 svn/tags/1.7.0.1/formaloo.php:555
 #: svn/tags/1.7.0.1/classic-editor.php:109
 msgid "Link title"
 msgstr "Links Titel"
 
-#: formaloo.php:570 classic-editor.php:111 git/formaloo.php:557
-#: git/classic-editor.php:111 svn/trunk/formaloo.php:557
-#: svn/trunk/classic-editor.php:111 svn/tags/1.7.0.0/formaloo.php:557
+#: formaloo.php:570 classic-editor.php:108 git/formaloo.php:570
+#: git/classic-editor.php:108 svn/trunk/formaloo.php:570
+#: svn/trunk/classic-editor.php:108 svn/tags/1.7.0.0/formaloo.php:557
 #: svn/tags/1.7.0.0/classic-editor.php:111 svn/tags/1.7.0.1/formaloo.php:557
 #: svn/tags/1.7.0.1/classic-editor.php:111
 msgid "(Choose a title for the form link)"
 msgstr "(Wählen Sie einen Titel für den Form-Link aus)"
 
-#: formaloo.php:584 classic-editor.php:125 git/formaloo.php:571
-#: git/classic-editor.php:125 svn/trunk/formaloo.php:571
-#: svn/trunk/classic-editor.php:125 svn/tags/1.7.0.0/formaloo.php:571
+#: formaloo.php:584 classic-editor.php:122 git/formaloo.php:584
+#: git/classic-editor.php:122 svn/trunk/formaloo.php:584
+#: svn/trunk/classic-editor.php:122 svn/tags/1.7.0.0/formaloo.php:571
 #: svn/tags/1.7.0.0/classic-editor.php:125 svn/tags/1.7.0.1/formaloo.php:571
 #: svn/tags/1.7.0.1/classic-editor.php:125
 msgid "Show logo"
 msgstr "Das Logo zeigen"
 
-#: formaloo.php:586 classic-editor.php:127 git/formaloo.php:573
-#: git/classic-editor.php:127 svn/trunk/formaloo.php:573
-#: svn/trunk/classic-editor.php:127 svn/tags/1.7.0.0/formaloo.php:573
+#: formaloo.php:586 classic-editor.php:124 git/formaloo.php:586
+#: git/classic-editor.php:124 svn/trunk/formaloo.php:586
+#: svn/trunk/classic-editor.php:124 svn/tags/1.7.0.0/formaloo.php:573
 #: svn/tags/1.7.0.0/classic-editor.php:127 svn/tags/1.7.0.1/formaloo.php:573
 #: svn/tags/1.7.0.1/classic-editor.php:127
 msgid "(Show the logo in the embedded form?)"
 msgstr "(Zeige das logo in der eingebetteten From?)"
 
-#: formaloo.php:590 formaloo.php:603 formaloo.php:616 classic-editor.php:131
-#: classic-editor.php:144 classic-editor.php:157 git/formaloo.php:577
-#: git/formaloo.php:590 git/formaloo.php:603 git/classic-editor.php:131
-#: git/classic-editor.php:144 git/classic-editor.php:157
-#: svn/trunk/formaloo.php:577 svn/trunk/formaloo.php:590
-#: svn/trunk/formaloo.php:603 svn/trunk/classic-editor.php:131
-#: svn/trunk/classic-editor.php:144 svn/trunk/classic-editor.php:157
+#: formaloo.php:590 formaloo.php:603 formaloo.php:616 classic-editor.php:128
+#: classic-editor.php:141 classic-editor.php:154 git/formaloo.php:590
+#: git/formaloo.php:603 git/formaloo.php:616 git/classic-editor.php:128
+#: git/classic-editor.php:141 git/classic-editor.php:154
+#: svn/trunk/formaloo.php:590 svn/trunk/formaloo.php:603
+#: svn/trunk/formaloo.php:616 svn/trunk/classic-editor.php:128
+#: svn/trunk/classic-editor.php:141 svn/trunk/classic-editor.php:154
 #: svn/tags/1.7.0.0/formaloo.php:577 svn/tags/1.7.0.0/formaloo.php:590
 #: svn/tags/1.7.0.0/formaloo.php:603 svn/tags/1.7.0.0/classic-editor.php:131
 #: svn/tags/1.7.0.0/classic-editor.php:144
@@ -200,13 +200,13 @@ msgstr "(Zeige das logo in der eingebetteten From?)"
 msgid "Yes"
 msgstr "Ja"
 
-#: formaloo.php:591 formaloo.php:604 formaloo.php:617 classic-editor.php:132
-#: classic-editor.php:145 classic-editor.php:158 git/formaloo.php:578
-#: git/formaloo.php:591 git/formaloo.php:604 git/classic-editor.php:132
-#: git/classic-editor.php:145 git/classic-editor.php:158
-#: svn/trunk/formaloo.php:578 svn/trunk/formaloo.php:591
-#: svn/trunk/formaloo.php:604 svn/trunk/classic-editor.php:132
-#: svn/trunk/classic-editor.php:145 svn/trunk/classic-editor.php:158
+#: formaloo.php:591 formaloo.php:604 formaloo.php:617 classic-editor.php:129
+#: classic-editor.php:142 classic-editor.php:155 git/formaloo.php:591
+#: git/formaloo.php:604 git/formaloo.php:617 git/classic-editor.php:129
+#: git/classic-editor.php:142 git/classic-editor.php:155
+#: svn/trunk/formaloo.php:591 svn/trunk/formaloo.php:604
+#: svn/trunk/formaloo.php:617 svn/trunk/classic-editor.php:129
+#: svn/trunk/classic-editor.php:142 svn/trunk/classic-editor.php:155
 #: svn/tags/1.7.0.0/formaloo.php:578 svn/tags/1.7.0.0/formaloo.php:591
 #: svn/tags/1.7.0.0/formaloo.php:604 svn/tags/1.7.0.0/classic-editor.php:132
 #: svn/tags/1.7.0.0/classic-editor.php:145
@@ -218,47 +218,47 @@ msgstr "Ja"
 msgid "No"
 msgstr "Nein"
 
-#: formaloo.php:597 classic-editor.php:138 git/formaloo.php:584
-#: git/classic-editor.php:138 svn/trunk/formaloo.php:584
-#: svn/trunk/classic-editor.php:138 svn/tags/1.7.0.0/formaloo.php:584
+#: formaloo.php:597 classic-editor.php:135 git/formaloo.php:597
+#: git/classic-editor.php:135 svn/trunk/formaloo.php:597
+#: svn/trunk/classic-editor.php:135 svn/tags/1.7.0.0/formaloo.php:584
 #: svn/tags/1.7.0.0/classic-editor.php:138 svn/tags/1.7.0.1/formaloo.php:584
 #: svn/tags/1.7.0.1/classic-editor.php:138
 msgid "Show title"
 msgstr "Der Titel zeigen"
 
-#: formaloo.php:599 classic-editor.php:140 git/formaloo.php:586
-#: git/classic-editor.php:140 svn/trunk/formaloo.php:586
-#: svn/trunk/classic-editor.php:140 svn/tags/1.7.0.0/formaloo.php:586
+#: formaloo.php:599 classic-editor.php:137 git/formaloo.php:599
+#: git/classic-editor.php:137 svn/trunk/formaloo.php:599
+#: svn/trunk/classic-editor.php:137 svn/tags/1.7.0.0/formaloo.php:586
 #: svn/tags/1.7.0.0/classic-editor.php:140 svn/tags/1.7.0.1/formaloo.php:586
 #: svn/tags/1.7.0.1/classic-editor.php:140
 msgid "(Show the title in the embedded form?)"
 msgstr "(Zeige den Titel in der eingebetteten From?)"
 
-#: formaloo.php:610 classic-editor.php:151 git/formaloo.php:597
-#: git/classic-editor.php:151 svn/trunk/formaloo.php:597
-#: svn/trunk/classic-editor.php:151 svn/tags/1.7.0.0/formaloo.php:597
+#: formaloo.php:610 classic-editor.php:148 git/formaloo.php:610
+#: git/classic-editor.php:148 svn/trunk/formaloo.php:610
+#: svn/trunk/classic-editor.php:148 svn/tags/1.7.0.0/formaloo.php:597
 #: svn/tags/1.7.0.0/classic-editor.php:151 svn/tags/1.7.0.1/formaloo.php:597
 #: svn/tags/1.7.0.1/classic-editor.php:151
 msgid "Show description"
 msgstr "Beschreibung anzeigen"
 
-#: formaloo.php:612 classic-editor.php:153 git/formaloo.php:599
-#: git/classic-editor.php:153 svn/trunk/formaloo.php:599
-#: svn/trunk/classic-editor.php:153 svn/tags/1.7.0.0/formaloo.php:599
+#: formaloo.php:612 classic-editor.php:150 git/formaloo.php:612
+#: git/classic-editor.php:150 svn/trunk/formaloo.php:612
+#: svn/trunk/classic-editor.php:150 svn/tags/1.7.0.0/formaloo.php:599
 #: svn/tags/1.7.0.0/classic-editor.php:153 svn/tags/1.7.0.1/formaloo.php:599
 #: svn/tags/1.7.0.1/classic-editor.php:153
 msgid "(Show the description in the embedded form?)"
 msgstr "(Zeige die Beschreibung in der eingebetteten From?)"
 
-#: formaloo.php:623 classic-editor.php:164 git/formaloo.php:610
-#: git/classic-editor.php:164 svn/trunk/formaloo.php:610
-#: svn/trunk/classic-editor.php:164 svn/tags/1.7.0.0/formaloo.php:610
+#: formaloo.php:623 classic-editor.php:161 git/formaloo.php:623
+#: git/classic-editor.php:161 svn/trunk/formaloo.php:623
+#: svn/trunk/classic-editor.php:161 svn/tags/1.7.0.0/formaloo.php:610
 #: svn/tags/1.7.0.0/classic-editor.php:164 svn/tags/1.7.0.1/formaloo.php:610
 #: svn/tags/1.7.0.1/classic-editor.php:164
 msgid "Shortcode will appear here"
 msgstr "The shortcode is displayed here"
 
-#: formaloo.php:629 git/formaloo.php:616 svn/trunk/formaloo.php:616
+#: formaloo.php:629 git/formaloo.php:629 svn/trunk/formaloo.php:629
 #: svn/tags/1.7.0.0/formaloo.php:616 svn/tags/1.7.0.1/formaloo.php:616
 msgid ""
 "Copy the shortcode above then go to your post/page editor. If it is "
@@ -272,87 +272,87 @@ msgstr ""
 "Sie den Text-Tab (statt eines Visual-Tab) oder fugen Sie den Shortcode "
 "irgendwo ein."
 
-#: formaloo.php:630 git/formaloo.php:617 svn/trunk/formaloo.php:617
+#: formaloo.php:630 git/formaloo.php:630 svn/trunk/formaloo.php:630
 #: svn/tags/1.7.0.0/formaloo.php:617 svn/tags/1.7.0.1/formaloo.php:617
 msgid "More Info"
 msgstr "Mehr Informationen"
 
-#: formaloo.php:635 git/formaloo.php:622 svn/trunk/formaloo.php:622
+#: formaloo.php:635 git/formaloo.php:635 svn/trunk/formaloo.php:635
 #: svn/tags/1.7.0.0/formaloo.php:622 svn/tags/1.7.0.1/formaloo.php:622
 msgid "Get shortcode"
 msgstr "Der Shortcode erhalten"
 
-#: formaloo.php:646 classic-editor.php:216 git/formaloo.php:633
-#: git/classic-editor.php:216 svn/trunk/formaloo.php:633
-#: svn/trunk/classic-editor.php:216 svn/tags/1.7.0.0/formaloo.php:633
+#: formaloo.php:646 classic-editor.php:213 git/formaloo.php:646
+#: git/classic-editor.php:213 svn/trunk/formaloo.php:646
+#: svn/trunk/classic-editor.php:213 svn/tags/1.7.0.0/formaloo.php:633
 #: svn/tags/1.7.0.0/classic-editor.php:215 svn/tags/1.7.0.1/formaloo.php:633
 #: svn/tags/1.7.0.1/classic-editor.php:215
 msgid "Additional Settings"
 msgstr "Zusätzliche Einstellungen"
 
-#: formaloo.php:665 git/formaloo.php:652 svn/trunk/formaloo.php:652
+#: formaloo.php:665 git/formaloo.php:665 svn/trunk/formaloo.php:665
 #: svn/tags/1.7.0.0/formaloo.php:652 svn/tags/1.7.0.1/formaloo.php:652
 msgid "Create a form"
 msgstr "Eine neue Form erstellen"
 
-#: formaloo.php:730 git/formaloo.php:718 svn/trunk/formaloo.php:718
+#: formaloo.php:730 git/formaloo.php:730 svn/trunk/formaloo.php:730
 #: svn/tags/1.7.0.0/formaloo.php:718 svn/tags/1.7.0.1/formaloo.php:718
 msgid "Make sure you have a Formaloo account first, it's free! 👍"
 msgstr ""
 "Stellen Sie Sicher, dass Sie zuerst ein Formaloo-Konto haben. Es ist "
 "kostenlos! 👍"
 
-#: formaloo.php:731 git/formaloo.php:719 svn/trunk/formaloo.php:719
+#: formaloo.php:731 git/formaloo.php:731 svn/trunk/formaloo.php:731
 #: svn/tags/1.7.0.0/formaloo.php:719 svn/tags/1.7.0.1/formaloo.php:719
 msgid "You can"
 msgstr "Hier können Sie"
 
-#: formaloo.php:731 git/formaloo.php:719 svn/trunk/formaloo.php:719
+#: formaloo.php:731 git/formaloo.php:731 svn/trunk/formaloo.php:731
 #: svn/tags/1.7.0.0/formaloo.php:719 svn/tags/1.7.0.1/formaloo.php:719
 msgid "create an account here"
 msgstr "ein Konto erstellen."
 
-#: formaloo.php:733 git/formaloo.php:721 svn/trunk/formaloo.php:721
+#: formaloo.php:733 git/formaloo.php:733 svn/trunk/formaloo.php:733
 #: svn/tags/1.7.0.0/formaloo.php:721 svn/tags/1.7.0.1/formaloo.php:721
 msgid "If so you can find your API Key & API Token from your"
 msgstr "Wenn ja, können Sie Ihr API-Schlüssel und API-Token aus Ihre"
 
-#: formaloo.php:733 git/formaloo.php:721 svn/trunk/formaloo.php:721
+#: formaloo.php:733 git/formaloo.php:733 svn/trunk/formaloo.php:733
 #: svn/tags/1.7.0.0/formaloo.php:721 svn/tags/1.7.0.1/formaloo.php:721
 msgid "profile page,"
 msgstr "profilseite finden,"
 
-#: formaloo.php:733 git/formaloo.php:721 svn/trunk/formaloo.php:721
+#: formaloo.php:733 git/formaloo.php:733 svn/trunk/formaloo.php:733
 #: svn/tags/1.7.0.0/formaloo.php:721 svn/tags/1.7.0.1/formaloo.php:721
 msgid "and enter it on the"
 msgstr "und es in den"
 
-#: formaloo.php:733 git/formaloo.php:721 svn/trunk/formaloo.php:721
+#: formaloo.php:733 git/formaloo.php:733 svn/trunk/formaloo.php:733
 #: svn/tags/1.7.0.0/formaloo.php:721 svn/tags/1.7.0.1/formaloo.php:721
 msgid "settings page"
 msgstr " Einstellungsseite eingeben"
 
-#: formaloo.php:739 git/formaloo.php:727 svn/trunk/formaloo.php:727
+#: formaloo.php:739 git/formaloo.php:739 svn/trunk/formaloo.php:739
 #: svn/tags/1.7.0.0/formaloo.php:727 svn/tags/1.7.0.1/formaloo.php:727
 msgid "User"
 msgstr "Nutzer/in"
 
-#: formaloo.php:740 git/formaloo.php:728 svn/trunk/formaloo.php:728
+#: formaloo.php:740 git/formaloo.php:740 svn/trunk/formaloo.php:740
 #: svn/tags/1.7.0.0/formaloo.php:728 svn/tags/1.7.0.1/formaloo.php:728
 msgid "Hello Dear"
 msgstr "Hallo"
 
-#: formaloo.php:740 git/formaloo.php:728 svn/trunk/formaloo.php:728
+#: formaloo.php:740 git/formaloo.php:740 svn/trunk/formaloo.php:740
 #: svn/tags/1.7.0.0/formaloo.php:728 svn/tags/1.7.0.1/formaloo.php:728
 msgid "You can edit or view your forms right here or you can access"
 msgstr "Hier können Sie Ihre Formen bearbeiten oder betrachten oder"
 
-#: formaloo.php:740 git/formaloo.php:728 svn/trunk/formaloo.php:728
+#: formaloo.php:740 git/formaloo.php:740 svn/trunk/formaloo.php:740
 #: svn/tags/1.7.0.0/formaloo.php:728 svn/tags/1.7.0.1/formaloo.php:728
 msgid "your full dashboard here"
 msgstr "auf Ihr Dashboard zugreifen"
 
-#: formaloo.php:751 git/formaloo.php:739 svn/trunk/formaloo.php:739
+#: formaloo.php:751 git/formaloo.php:751 svn/trunk/formaloo.php:751
 #: svn/tags/1.7.0.0/formaloo.php:739 svn/tags/1.7.0.1/formaloo.php:739
 msgid ""
 "An error happened on the WordPress side. Make sure your server allows remote "
@@ -361,73 +361,74 @@ msgstr ""
 "Auf der WordPress-Seite ist ein Fehler aufgetreten. Stellen Sie sicher, dass "
 "eine Internetverbindung besteht."
 
-#: formaloo.php:777 git/formaloo.php:765 svn/trunk/formaloo.php:765
+#: formaloo.php:777 git/formaloo.php:777 svn/trunk/formaloo.php:777
 #: svn/tags/1.7.0.0/formaloo.php:765 svn/tags/1.7.0.1/formaloo.php:765
 msgid "Your Forms"
 msgstr "Ihre Formulare"
 
-#: formaloo.php:781
+#: formaloo.php:781 git/formaloo.php:781 svn/trunk/formaloo.php:781
 msgid "Create a Blank Form"
 msgstr "Erstellen Sie ein leeres Formular"
 
-#: formaloo.php:784
+#: formaloo.php:784 git/formaloo.php:784 svn/trunk/formaloo.php:784
 msgid "Select a Template"
 msgstr "Wählen Sie eine Vorlage aus"
 
-#: formaloo.php:787 git/formaloo.php:772 svn/trunk/formaloo.php:772
+#: formaloo.php:787 git/formaloo.php:787 svn/trunk/formaloo.php:787
 #: svn/tags/1.7.0.0/formaloo.php:772 svn/tags/1.7.0.1/formaloo.php:772
 msgid "Create a feedback widget"
 msgstr "Erstellen Sie ein Feedback-Widget"
 
-#: formaloo.php:839 formaloo.php:1000 formaloo.php:1093 formaloo.php:1538
-#: git/formaloo.php:980 git/formaloo.php:1508 svn/trunk/formaloo.php:980
-#: svn/trunk/formaloo.php:1508 svn/tags/1.7.0.0/formaloo.php:980
-#: svn/tags/1.7.0.0/formaloo.php:1508 svn/tags/1.7.0.1/formaloo.php:980
-#: svn/tags/1.7.0.1/formaloo.php:1508
+#: formaloo.php:839 formaloo.php:1000 formaloo.php:1136 formaloo.php:1613
+#: git/formaloo.php:839 git/formaloo.php:1000 git/formaloo.php:1093
+#: git/formaloo.php:1538 svn/trunk/formaloo.php:839 svn/trunk/formaloo.php:1000
+#: svn/trunk/formaloo.php:1093 svn/trunk/formaloo.php:1538
+#: svn/tags/1.7.0.0/formaloo.php:980 svn/tags/1.7.0.0/formaloo.php:1508
+#: svn/tags/1.7.0.1/formaloo.php:980 svn/tags/1.7.0.1/formaloo.php:1508
 msgid "Need Support? Feel free to contact us"
 msgstr "Brauche Unterstützung? Fühlen Sie sich frei uns zu kontaktieren"
 
-#: formaloo.php:882 git/formaloo.php:865 svn/trunk/formaloo.php:865
+#: formaloo.php:882 git/formaloo.php:882 svn/trunk/formaloo.php:882
 #: svn/tags/1.7.0.0/formaloo.php:865 svn/tags/1.7.0.1/formaloo.php:865
 msgid "An error happened on the WordPress side."
 msgstr "Auf der WordPress-Seite ist ein Fehler aufgetreten."
 
-#: formaloo.php:900 git/formaloo.php:883 svn/trunk/formaloo.php:883
+#: formaloo.php:900 git/formaloo.php:900 svn/trunk/formaloo.php:900
 #: svn/tags/1.7.0.0/formaloo.php:883 svn/tags/1.7.0.1/formaloo.php:883
 msgid "Your Form Results"
 msgstr "Ihre Forms Ergebnisse"
 
-#: formaloo.php:943 git/formaloo.php:926 svn/trunk/formaloo.php:926
+#: formaloo.php:943 git/formaloo.php:943 svn/trunk/formaloo.php:943
 #: svn/tags/1.7.0.0/formaloo.php:926 svn/tags/1.7.0.1/formaloo.php:926
 msgid "Setup Formaloo"
 msgstr "Formaloo einrichten"
 
-#: formaloo.php:949 git/formaloo.php:932 svn/trunk/formaloo.php:932
+#: formaloo.php:949 git/formaloo.php:949 svn/trunk/formaloo.php:949
 #: svn/tags/1.7.0.0/formaloo.php:932 svn/tags/1.7.0.1/formaloo.php:932
 msgid "Welcome to Formaloo!"
 msgstr "Willkommen bei Formaloo!"
 
-#: formaloo.php:954 formaloo.php:1053 formaloo.php:1393 git/formaloo.php:937
-#: git/formaloo.php:1037 git/formaloo.php:1367 svn/trunk/formaloo.php:937
-#: svn/trunk/formaloo.php:1037 svn/trunk/formaloo.php:1367
+#: formaloo.php:954 formaloo.php:1048 formaloo.php:1468 git/formaloo.php:954
+#: git/formaloo.php:1053 git/formaloo.php:1393 svn/trunk/formaloo.php:954
+#: svn/trunk/formaloo.php:1053 svn/trunk/formaloo.php:1393
 #: svn/tags/1.7.0.0/formaloo.php:937 svn/tags/1.7.0.0/formaloo.php:1037
 #: svn/tags/1.7.0.0/formaloo.php:1367 svn/tags/1.7.0.1/formaloo.php:937
 #: svn/tags/1.7.0.1/formaloo.php:1037 svn/tags/1.7.0.1/formaloo.php:1367
 msgid "To get started, we'll need to access your Formaloo account with an"
 msgstr "Um loszulegen, müssen wir mit einem auf Ihr Formaloo-Konto zugreifen"
 
-#: formaloo.php:954 formaloo.php:1053 formaloo.php:1393 git/formaloo.php:937
-#: git/formaloo.php:1037 git/formaloo.php:1367 svn/trunk/formaloo.php:937
-#: svn/trunk/formaloo.php:1037 svn/trunk/formaloo.php:1367
+#: formaloo.php:954 formaloo.php:1048 formaloo.php:1468 git/formaloo.php:954
+#: git/formaloo.php:1053 git/formaloo.php:1393 svn/trunk/formaloo.php:954
+#: svn/trunk/formaloo.php:1053 svn/trunk/formaloo.php:1393
 #: svn/tags/1.7.0.0/formaloo.php:937 svn/tags/1.7.0.0/formaloo.php:1037
 #: svn/tags/1.7.0.0/formaloo.php:1367 svn/tags/1.7.0.1/formaloo.php:937
 #: svn/tags/1.7.0.1/formaloo.php:1037 svn/tags/1.7.0.1/formaloo.php:1367
 msgid "API Key & API Token"
 msgstr "API-Schlüssel und API-Token"
 
-#: formaloo.php:954 formaloo.php:1053 formaloo.php:1393 git/formaloo.php:937
-#: git/formaloo.php:1037 git/formaloo.php:1367 svn/trunk/formaloo.php:937
-#: svn/trunk/formaloo.php:1037 svn/trunk/formaloo.php:1367
+#: formaloo.php:954 formaloo.php:1048 formaloo.php:1468 git/formaloo.php:954
+#: git/formaloo.php:1053 git/formaloo.php:1393 svn/trunk/formaloo.php:954
+#: svn/trunk/formaloo.php:1053 svn/trunk/formaloo.php:1393
 #: svn/tags/1.7.0.0/formaloo.php:937 svn/tags/1.7.0.0/formaloo.php:1037
 #: svn/tags/1.7.0.0/formaloo.php:1367 svn/tags/1.7.0.1/formaloo.php:937
 #: svn/tags/1.7.0.1/formaloo.php:1037 svn/tags/1.7.0.1/formaloo.php:1367
@@ -435,112 +436,120 @@ msgid "Paste your Formaloo API Key & API Token, and click"
 msgstr ""
 "Fügen Sie Ihren Formaloo-API-Schlüssel und API-Token ein und klicken Sie auf"
 
-#: formaloo.php:954 formaloo.php:990 formaloo.php:1053 formaloo.php:1393
-#: git/formaloo.php:937 git/formaloo.php:973 git/formaloo.php:1037
-#: git/formaloo.php:1367 svn/trunk/formaloo.php:937 svn/trunk/formaloo.php:973
-#: svn/trunk/formaloo.php:1037 svn/trunk/formaloo.php:1367
-#: svn/tags/1.7.0.0/formaloo.php:937 svn/tags/1.7.0.0/formaloo.php:973
-#: svn/tags/1.7.0.0/formaloo.php:1037 svn/tags/1.7.0.0/formaloo.php:1367
-#: svn/tags/1.7.0.1/formaloo.php:937 svn/tags/1.7.0.1/formaloo.php:973
-#: svn/tags/1.7.0.1/formaloo.php:1037 svn/tags/1.7.0.1/formaloo.php:1367
+#: formaloo.php:954 formaloo.php:990 formaloo.php:1048 formaloo.php:1085
+#: formaloo.php:1468 git/formaloo.php:954 git/formaloo.php:990
+#: git/formaloo.php:1053 git/formaloo.php:1393 svn/trunk/formaloo.php:954
+#: svn/trunk/formaloo.php:990 svn/trunk/formaloo.php:1053
+#: svn/trunk/formaloo.php:1393 svn/tags/1.7.0.0/formaloo.php:937
+#: svn/tags/1.7.0.0/formaloo.php:973 svn/tags/1.7.0.0/formaloo.php:1037
+#: svn/tags/1.7.0.0/formaloo.php:1367 svn/tags/1.7.0.1/formaloo.php:937
+#: svn/tags/1.7.0.1/formaloo.php:973 svn/tags/1.7.0.1/formaloo.php:1037
+#: svn/tags/1.7.0.1/formaloo.php:1367
 msgid "Connect"
 msgstr "Verbinden"
 
-#: formaloo.php:954 formaloo.php:1053 formaloo.php:1393 git/formaloo.php:937
-#: git/formaloo.php:1037 git/formaloo.php:1367 svn/trunk/formaloo.php:937
-#: svn/trunk/formaloo.php:1037 svn/trunk/formaloo.php:1367
+#: formaloo.php:954 formaloo.php:1048 formaloo.php:1468 git/formaloo.php:954
+#: git/formaloo.php:1053 git/formaloo.php:1393 svn/trunk/formaloo.php:954
+#: svn/trunk/formaloo.php:1053 svn/trunk/formaloo.php:1393
 #: svn/tags/1.7.0.0/formaloo.php:937 svn/tags/1.7.0.0/formaloo.php:1037
 #: svn/tags/1.7.0.0/formaloo.php:1367 svn/tags/1.7.0.1/formaloo.php:937
 #: svn/tags/1.7.0.1/formaloo.php:1037 svn/tags/1.7.0.1/formaloo.php:1367
 msgid "to continue"
 msgstr " um fortzufahren"
 
-#: formaloo.php:957 git/formaloo.php:940 svn/trunk/formaloo.php:940
+#: formaloo.php:957 git/formaloo.php:957 svn/trunk/formaloo.php:957
 #: svn/tags/1.7.0.0/formaloo.php:940 svn/tags/1.7.0.1/formaloo.php:940
 msgid "You can access your"
 msgstr "Hier Können Sie auf Ihr"
 
-#: formaloo.php:965 git/formaloo.php:948 svn/trunk/formaloo.php:948
-#: svn/tags/1.7.0.0/formaloo.php:948 svn/tags/1.7.0.1/formaloo.php:948
+#: formaloo.php:965 formaloo.php:1059 git/formaloo.php:965
+#: svn/trunk/formaloo.php:965 svn/tags/1.7.0.0/formaloo.php:948
+#: svn/tags/1.7.0.1/formaloo.php:948
 msgid "API Key"
 msgstr "API-Schlüssel"
 
-#: formaloo.php:977 git/formaloo.php:960 svn/trunk/formaloo.php:960
-#: svn/tags/1.7.0.0/formaloo.php:960 svn/tags/1.7.0.1/formaloo.php:960
+#: formaloo.php:977 formaloo.php:1072 git/formaloo.php:977
+#: svn/trunk/formaloo.php:977 svn/tags/1.7.0.0/formaloo.php:960
+#: svn/tags/1.7.0.1/formaloo.php:960
 msgid "API Token"
 msgstr "API-Token"
 
-#: formaloo.php:990 git/formaloo.php:973 svn/trunk/formaloo.php:973
-#: svn/tags/1.7.0.0/formaloo.php:973 svn/tags/1.7.0.1/formaloo.php:973
+#: formaloo.php:990 formaloo.php:1085 git/formaloo.php:990
+#: svn/trunk/formaloo.php:990 svn/tags/1.7.0.0/formaloo.php:973
+#: svn/tags/1.7.0.1/formaloo.php:973
 msgid "Save"
 msgstr "Speichern"
 
-#: formaloo.php:1065 git/formaloo.php:1049 svn/trunk/formaloo.php:1049
+#: formaloo.php:1108 git/formaloo.php:1065 svn/trunk/formaloo.php:1065
 #: svn/tags/1.7.0.0/formaloo.php:1049 svn/tags/1.7.0.1/formaloo.php:1049
 msgid "All Categories"
 msgstr "Alle Kategorien"
 
-#: formaloo.php:1067 git/formaloo.php:1051 svn/trunk/formaloo.php:1051
+#: formaloo.php:1110 git/formaloo.php:1067 svn/trunk/formaloo.php:1067
 #: svn/tags/1.7.0.0/formaloo.php:1051 svn/tags/1.7.0.1/formaloo.php:1051
 msgid "Apply"
 msgstr "Anwenden"
 
-#: formaloo.php:1070 git/formaloo.php:1054 svn/trunk/formaloo.php:1054
+#: formaloo.php:1113 git/formaloo.php:1070 svn/trunk/formaloo.php:1070
 #: svn/tags/1.7.0.0/formaloo.php:1054 svn/tags/1.7.0.1/formaloo.php:1054
 msgid "Search a template.."
 msgstr "Suchen Sie eine Vorlage.."
 
-#: formaloo.php:1071 git/formaloo.php:1055 svn/trunk/formaloo.php:1055
+#: formaloo.php:1114 git/formaloo.php:1071 svn/trunk/formaloo.php:1071
 #: svn/tags/1.7.0.0/formaloo.php:1055 svn/tags/1.7.0.1/formaloo.php:1055
 msgid "Search"
 msgstr "Suche"
 
-#: formaloo.php:1079 git/formaloo.php:1063 svn/trunk/formaloo.php:1063
+#: formaloo.php:1122 git/formaloo.php:1079 svn/trunk/formaloo.php:1079
 #: svn/tags/1.7.0.0/formaloo.php:1063 svn/tags/1.7.0.1/formaloo.php:1063
 msgid "Prev"
 msgstr "Bisherige"
 
-#: formaloo.php:1085 git/formaloo.php:1069 svn/trunk/formaloo.php:1069
+#: formaloo.php:1128 git/formaloo.php:1085 svn/trunk/formaloo.php:1085
 #: svn/tags/1.7.0.0/formaloo.php:1069 svn/tags/1.7.0.1/formaloo.php:1069
 msgid "Next"
 msgstr "Nächster"
 
-#: formaloo.php:1147 git/formaloo.php:1130 svn/trunk/formaloo.php:1130
+#: formaloo.php:1189 git/formaloo.php:1147 svn/trunk/formaloo.php:1147
 #: svn/tags/1.7.0.0/formaloo.php:1130 svn/tags/1.7.0.1/formaloo.php:1130
 msgid "Template not found"
 msgstr "Vorlage nicht gefunden"
 
-#: formaloo.php:1150 git/formaloo.php:1133 svn/trunk/formaloo.php:1133
+#: formaloo.php:1192 git/formaloo.php:1150 svn/trunk/formaloo.php:1150
 #: svn/tags/1.7.0.0/formaloo.php:1133 svn/tags/1.7.0.1/formaloo.php:1133
 msgid "Preview the template"
 msgstr "Vorschau der Vorlage"
 
-#: formaloo.php:1150 git/formaloo.php:1133 svn/trunk/formaloo.php:1133
+#: formaloo.php:1192 git/formaloo.php:1150 svn/trunk/formaloo.php:1150
 #: svn/tags/1.7.0.0/formaloo.php:1133 svn/tags/1.7.0.1/formaloo.php:1133
 msgid "Preview"
 msgstr "Vorschau"
 
-#: formaloo.php:1150 git/formaloo.php:1133 svn/trunk/formaloo.php:1133
+#: formaloo.php:1192 git/formaloo.php:1150 svn/trunk/formaloo.php:1150
 #: svn/tags/1.7.0.0/formaloo.php:1133 svn/tags/1.7.0.1/formaloo.php:1133
 msgid "Use"
 msgstr "Verwenden"
 
-#: formaloo.php:1349 git/formaloo.php:1323 svn/trunk/formaloo.php:1323
+#: formaloo.php:1326
+msgid "To use this template, please login first"
+msgstr "Um diese Vorlage zu verwenden, melden Sie sich zuerst an"
+
+#: formaloo.php:1424 git/formaloo.php:1349 svn/trunk/formaloo.php:1349
 #: svn/tags/1.7.0.0/formaloo.php:1323 svn/tags/1.7.0.1/formaloo.php:1323
 msgid "As a Link"
 msgstr "Als Link"
 
-#: formaloo.php:1350 git/formaloo.php:1324 svn/trunk/formaloo.php:1324
+#: formaloo.php:1425 git/formaloo.php:1350 svn/trunk/formaloo.php:1350
 #: svn/tags/1.7.0.0/formaloo.php:1324 svn/tags/1.7.0.1/formaloo.php:1324
 msgid "Share this URL with others to view the form directly"
 msgstr "Teilen Sie diese URL mit anderen, um das Formular direkt anzuzeigen"
 
-#: formaloo.php:1358 git/formaloo.php:1332 svn/trunk/formaloo.php:1332
+#: formaloo.php:1433 git/formaloo.php:1358 svn/trunk/formaloo.php:1358
 #: svn/tags/1.7.0.0/formaloo.php:1332 svn/tags/1.7.0.1/formaloo.php:1332
 msgid "As a Script Tag"
 msgstr "Als Skript-Tag"
 
-#: formaloo.php:1359 git/formaloo.php:1333 svn/trunk/formaloo.php:1333
+#: formaloo.php:1434 git/formaloo.php:1359 svn/trunk/formaloo.php:1359
 #: svn/tags/1.7.0.0/formaloo.php:1333 svn/tags/1.7.0.1/formaloo.php:1333
 msgid ""
 "Using this method, the form will become a part of your website's markup. To "
@@ -549,98 +558,98 @@ msgstr ""
 "Mit dieser Methode wird das Formular Teil des Markups Ihrer Website. Fügen "
 "Sie dazu das Code-Snippet in die Fußzeile Ihrer Website ein:"
 
-#: formaloo.php:1378 git/formaloo.php:1352 svn/trunk/formaloo.php:1352
+#: formaloo.php:1453 git/formaloo.php:1378 svn/trunk/formaloo.php:1378
 #: svn/tags/1.7.0.0/formaloo.php:1352 svn/tags/1.7.0.1/formaloo.php:1352
 msgid "Feedback Widget Creator"
 msgstr "Feedback Widget Creator"
 
-#: formaloo.php:1387 git/formaloo.php:1361 svn/trunk/formaloo.php:1361
+#: formaloo.php:1462 git/formaloo.php:1387 svn/trunk/formaloo.php:1387
 #: svn/tags/1.7.0.0/formaloo.php:1361 svn/tags/1.7.0.1/formaloo.php:1361
 msgid "Create a feedback widget for your website in less than 1 minute:"
 msgstr ""
 "Erstellen Sie in weniger als 1 Minute ein Feedback-Widget für Ihre Website:"
 
-#: formaloo.php:1409 formaloo.php:1417 git/formaloo.php:1383
-#: git/formaloo.php:1391 svn/trunk/formaloo.php:1383
-#: svn/trunk/formaloo.php:1391 svn/tags/1.7.0.0/formaloo.php:1383
+#: formaloo.php:1484 formaloo.php:1492 git/formaloo.php:1409
+#: git/formaloo.php:1417 svn/trunk/formaloo.php:1409
+#: svn/trunk/formaloo.php:1417 svn/tags/1.7.0.0/formaloo.php:1383
 #: svn/tags/1.7.0.0/formaloo.php:1391 svn/tags/1.7.0.1/formaloo.php:1383
 #: svn/tags/1.7.0.1/formaloo.php:1391
 msgid "Button Text"
 msgstr "Schaltflächentext"
 
-#: formaloo.php:1424 git/formaloo.php:1398 svn/trunk/formaloo.php:1398
+#: formaloo.php:1499 git/formaloo.php:1424 svn/trunk/formaloo.php:1424
 #: svn/tags/1.7.0.0/formaloo.php:1398 svn/tags/1.7.0.1/formaloo.php:1398
 msgid "Widget Position on Screen"
 msgstr "Widget-Position auf dem Bildschirm"
 
-#: formaloo.php:1430 git/formaloo.php:1404 svn/trunk/formaloo.php:1404
+#: formaloo.php:1505 git/formaloo.php:1430 svn/trunk/formaloo.php:1430
 #: svn/tags/1.7.0.0/formaloo.php:1404 svn/tags/1.7.0.1/formaloo.php:1404
 msgid "Left"
 msgstr "Links"
 
-#: formaloo.php:1431 git/formaloo.php:1405 svn/trunk/formaloo.php:1405
+#: formaloo.php:1506 git/formaloo.php:1431 svn/trunk/formaloo.php:1431
 #: svn/tags/1.7.0.0/formaloo.php:1405 svn/tags/1.7.0.1/formaloo.php:1405
 msgid "Right"
 msgstr "Recht"
 
-#: formaloo.php:1432 git/formaloo.php:1406 svn/trunk/formaloo.php:1406
+#: formaloo.php:1507 git/formaloo.php:1432 svn/trunk/formaloo.php:1432
 #: svn/tags/1.7.0.0/formaloo.php:1406 svn/tags/1.7.0.1/formaloo.php:1406
 msgid "Bottom Left"
 msgstr "Unten links"
 
-#: formaloo.php:1433 git/formaloo.php:1407 svn/trunk/formaloo.php:1407
+#: formaloo.php:1508 git/formaloo.php:1433 svn/trunk/formaloo.php:1433
 #: svn/tags/1.7.0.0/formaloo.php:1407 svn/tags/1.7.0.1/formaloo.php:1407
 msgid "Bottom Right"
 msgstr "Unten rechts"
 
-#: formaloo.php:1439 git/formaloo.php:1413 svn/trunk/formaloo.php:1413
+#: formaloo.php:1514 git/formaloo.php:1439 svn/trunk/formaloo.php:1439
 #: svn/tags/1.7.0.0/formaloo.php:1413 svn/tags/1.7.0.1/formaloo.php:1413
 msgid "NPS Choices Icon"
 msgstr "NPS-Auswahlsymbol"
 
-#: formaloo.php:1466 formaloo.php:1474 git/formaloo.php:1440
-#: git/formaloo.php:1448 svn/trunk/formaloo.php:1440
-#: svn/trunk/formaloo.php:1448 svn/tags/1.7.0.0/formaloo.php:1440
+#: formaloo.php:1541 formaloo.php:1549 git/formaloo.php:1466
+#: git/formaloo.php:1474 svn/trunk/formaloo.php:1466
+#: svn/trunk/formaloo.php:1474 svn/tags/1.7.0.0/formaloo.php:1440
 #: svn/tags/1.7.0.0/formaloo.php:1448 svn/tags/1.7.0.1/formaloo.php:1440
 #: svn/tags/1.7.0.1/formaloo.php:1448
 msgid "Question Title"
 msgstr "Fragetitel"
 
-#: formaloo.php:1479 formaloo.php:1487 git/formaloo.php:1453
-#: git/formaloo.php:1461 svn/trunk/formaloo.php:1453
-#: svn/trunk/formaloo.php:1461 svn/tags/1.7.0.0/formaloo.php:1453
+#: formaloo.php:1554 formaloo.php:1562 git/formaloo.php:1479
+#: git/formaloo.php:1487 svn/trunk/formaloo.php:1479
+#: svn/trunk/formaloo.php:1487 svn/tags/1.7.0.0/formaloo.php:1453
 #: svn/tags/1.7.0.0/formaloo.php:1461 svn/tags/1.7.0.1/formaloo.php:1453
 #: svn/tags/1.7.0.1/formaloo.php:1461
 msgid "TextBox Placeholder"
 msgstr "Platzhalter für Textfelder"
 
-#: formaloo.php:1492 formaloo.php:1500 git/formaloo.php:1466
-#: git/formaloo.php:1474 svn/trunk/formaloo.php:1466
-#: svn/trunk/formaloo.php:1474 svn/tags/1.7.0.0/formaloo.php:1466
+#: formaloo.php:1567 formaloo.php:1575 git/formaloo.php:1492
+#: git/formaloo.php:1500 svn/trunk/formaloo.php:1492
+#: svn/trunk/formaloo.php:1500 svn/tags/1.7.0.0/formaloo.php:1466
 #: svn/tags/1.7.0.0/formaloo.php:1474 svn/tags/1.7.0.1/formaloo.php:1466
 #: svn/tags/1.7.0.1/formaloo.php:1474
 msgid "Submit Button Text"
 msgstr "Senden Sie den Schaltflächentext"
 
-#: formaloo.php:1505 git/formaloo.php:1479 svn/trunk/formaloo.php:1479
+#: formaloo.php:1580 git/formaloo.php:1505 svn/trunk/formaloo.php:1505
 #: svn/tags/1.7.0.0/formaloo.php:1479 svn/tags/1.7.0.1/formaloo.php:1479
 msgid "Button Color"
 msgstr "Knopffarbe"
 
-#: formaloo.php:1513 formaloo.php:1521 git/formaloo.php:1487
-#: git/formaloo.php:1495 svn/trunk/formaloo.php:1487
-#: svn/trunk/formaloo.php:1495 svn/tags/1.7.0.0/formaloo.php:1487
+#: formaloo.php:1588 formaloo.php:1596 git/formaloo.php:1513
+#: git/formaloo.php:1521 svn/trunk/formaloo.php:1513
+#: svn/trunk/formaloo.php:1521 svn/tags/1.7.0.0/formaloo.php:1487
 #: svn/tags/1.7.0.0/formaloo.php:1495 svn/tags/1.7.0.1/formaloo.php:1487
 #: svn/tags/1.7.0.1/formaloo.php:1495
 msgid "Success Message After Submit"
 msgstr "Erfolgsmeldung nach dem Absenden"
 
-#: formaloo.php:1527 git/formaloo.php:1501 svn/trunk/formaloo.php:1501
+#: formaloo.php:1602 git/formaloo.php:1527 svn/trunk/formaloo.php:1527
 #: svn/tags/1.7.0.0/formaloo.php:1501 svn/tags/1.7.0.1/formaloo.php:1501
 msgid "Save Changes"
 msgstr "Änderungen speichern"
 
-#: formaloo.php:1733 git/formaloo.php:1706 svn/trunk/formaloo.php:1706
+#: formaloo.php:1810 git/formaloo.php:1733 svn/trunk/formaloo.php:1733
 #: svn/tags/1.7.0.0/formaloo.php:1706 svn/tags/1.7.0.1/formaloo.php:1706
 msgid "How to use your Feedback Widget"
 msgstr "So verwenden Sie Ihr Feedback-Widget"
@@ -760,17 +769,17 @@ msgstr "Volles Ergebnis"
 msgid "Add Form"
 msgstr "Formular hinzufügen"
 
-#: classic-editor.php:74
+#: classic-editor.php:71 git/classic-editor.php:71
+#: svn/trunk/classic-editor.php:71
 msgid "Select a form"
 msgstr "Wählen Sie ein Formular aus"
 
-#: classic-editor.php:176 git/classic-editor.php:176
-#: svn/trunk/classic-editor.php:176 svn/tags/1.7.0.0/classic-editor.php:176
+#: classic-editor.php:173 git/classic-editor.php:173
+#: svn/trunk/classic-editor.php:173 svn/tags/1.7.0.0/classic-editor.php:176
 #: svn/tags/1.7.0.1/classic-editor.php:176
 msgid "Insert shortcode"
 msgstr "Shortcode einfügen"
 
-#: git/formaloo.php:769 svn/trunk/formaloo.php:769
 #: svn/tags/1.7.0.0/formaloo.php:769 svn/tags/1.7.0.1/formaloo.php:769
 msgid "Create a new form"
 msgstr "Eine neue Form erstellen"
