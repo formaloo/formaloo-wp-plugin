@@ -1019,7 +1019,7 @@ class Formaloo_Main_Class {
 
 		<div class="wrap">
 
-            <form id="formaloo-templates-admin-form" class="postbox"></form>
+            <form id="formaloo-templates-admin-form"></form>
 
             <form id="formaloo-templates-form" class="postbox">
 

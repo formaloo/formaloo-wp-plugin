@@ -61,6 +61,12 @@ You can use Formaloo to create a payment form, donation form, registration form,
 
 Your forms will be autmatically GDPR & HIPAA compatible. Don't worry about anything, We've got you back!
 
+### Further Reading
+
+For more info on building smart forms using Formaloo plugin, check out the following:
+
+* [The Persian Review by HamyarWP](https://hamyarwp.com/formaloo/).
+
 ## Installation
 
 1. Install Formaloo Form Builder either via the WordPress.org plugin repository or by uploading the files to your server. 
