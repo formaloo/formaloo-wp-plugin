@@ -1647,12 +1647,6 @@ class Formaloo_Main_Class {
                         url: "<?php echo esc_url( FORMALOO_PROTOCOL . '://api.' . FORMALOO_ENDPOINT . '/v1/forms/templates/list' ); ?>",
                         type: 'GET',
                         dataType: 'json',
-                        /*
-                        headers: {
-                            'x-api-key': '<?php echo $data['api_key']; ?>',
-                            'Authorization': '<?php echo 'Token ' . $data['api_token']; ?>'
-                        },
-                        */
                         contentType: 'application/json; charset=utf-8',
                         success: function (result) {
                             $.each(result['data']['forms'], function(i, form) {
