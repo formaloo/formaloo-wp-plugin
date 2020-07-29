@@ -1321,8 +1321,6 @@ class Formaloo_Main_Class {
                     if ($not_ready):
                 ?>
                 
-                // window.location.href = "?page=formaloo-settings-page";
-
                 tb_show("<?php _e( 'To use this template, please login first', 'formaloo' ); ?>","#TB_inline?width=100vw&height=100vh&inlineId=formaloo-guest-template-login",null);
 
 
