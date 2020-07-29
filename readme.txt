@@ -69,9 +69,10 @@ For more info on building smart forms using Formaloo plugin, check out the follo
 2. Add your forms in posts, pages and even in HTML templates
 3. See your results instantly in your own website
 4. Use your forms anywhere with Wordpress's Shortcode, in Gutenberg or classic wordpress editor
-5. Create and edit feedback widgets and put it on your website
-6. Download your form results as an Excel Sheet quickly from the forms page
-7. Select an existing form of yours or just paste any Formaloo form URL to embed it on your website
+5. Preview and use our 100+ free templates
+6. Create and edit feedback widgets and put it on your website
+7. Download your form results as an Excel Sheet quickly from the forms page
+8. Select an existing form of yours or just paste any Formaloo form URL to embed it on your website
 
 
 == Frequently Asked Questions ==

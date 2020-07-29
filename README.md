@@ -97,17 +97,21 @@ For more info on building smart forms using Formaloo plugin, check out the follo
 
 <img src="screenshots/screenshot-4.jpg" alt="Screenshot 4" title="Screenshot 4" width="400" />
 
-5. Create and edit feedback widgets and put it on your website
+5. Preview and use our 100+ free templates
 
-<img src="screenshots/screenshot-5.gif" alt="Screenshot 5" title="Screenshot 5" width="400" />
+<img src="screenshots/screenshot-5.jpg" alt="Screenshot 5" title="Screenshot 5" width="400" />
 
-6. Download your form results as an Excel Sheet quickly from the forms page
+6. Create and edit feedback widgets and put it on your website
 
 <img src="screenshots/screenshot-6.gif" alt="Screenshot 6" title="Screenshot 6" width="400" />
 
-7. Select an existing form of yours or just paste any Formaloo form URL to embed it on your website
+7. Download your form results as an Excel Sheet quickly from the forms page
 
 <img src="screenshots/screenshot-7.gif" alt="Screenshot 7" title="Screenshot 7" width="400" />
+
+8. Select an existing form of yours or just paste any Formaloo form URL to embed it on your website
+
+<img src="screenshots/screenshot-8.gif" alt="Screenshot 8" title="Screenshot 8" width="400" />
 
 ## Frequently Asked Questions
 
