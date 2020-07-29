@@ -6,7 +6,29 @@ sudo: false
  
 php:
   - 5.2
+
+dist: precise
  
 script:
   # Run your tests here.
   - echo 'Tested'
+
+# before_deploy:
+# - mkdir build
+# - cp LICENSE build
+# - cp README.txt build
+# - cp remove-medium-cross-links.php build
+ 
+# deploy:
+#   - provider: wordpress-plugin
+#     edge:
+#       source: TypistTech/dpl
+#       branch: add-wordpress-plugin-deployment
+#     on:
+#       php: 7.1
+#       tags: true
+#       repo: TangRufus/tutsplus-dpl-demo
+#     slug: remove-medium-cross-links
+#     username: tangrufus
+#     password: $WORDPRESS_ORG_PASSWORD
+#     build_dir: build 
