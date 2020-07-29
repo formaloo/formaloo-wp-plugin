@@ -2,6 +2,12 @@
 <img src="https://user-images.githubusercontent.com/22890731/80283193-15f5df80-872b-11ea-8bcb-6fe7b2c0577c.png" alt="Formaloo Logo" title="Formaloo Logo" width="200" />
 
 [![Build Status](https://travis-ci.org/formaloo/formaloo-wp-plugin.svg)](https://travis-ci.org/formaloo/formaloo-wp-plugin)
+[![Plugin Version](https://img.shields.io/wordpress/plugin/v/formaloo-form-builder.svg)](https://wordpress.org/plugins/formaloo-form-builder/)
+[![Plugin Active Installs](https://img.shields.io/wordpress/plugin/installs/formaloo-form-builder.svg)](https://wordpress.org/plugins/formaloo-form-builder/)
+[![Plugin Downloads](https://img.shields.io/wordpress/plugin/dt/formaloo-form-builder.svg)](https://wordpress.org/plugins/formaloo-form-builder/)
+[![Plugin Rating](https://img.shields.io/wordpress/plugin/r/formaloo-form-builder.svg)](https://wordpress.org/plugins/formaloo-form-builder/)
+[![Wordpress Required Version](https://img.shields.io/wordpress/plugin/wp-version/formaloo-form-builder.svg?label=wordpress%20at%20least)](https://wordpress.org/plugins/formaloo-form-builder/)
+[![Wordpress Tested Version](https://img.shields.io/wordpress/plugin/tested/formaloo-form-builder.svg)](https://wordpress.org/plugins/formaloo-form-builder/)
 
 
 # Form Builder by Formaloo - Drag & Drop Form Builder for WordPress
