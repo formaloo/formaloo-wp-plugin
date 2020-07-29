@@ -1,9 +1,18 @@
-after_success: curl -L https://raw.githubusercontent.com/miya0001/travis2wpplugin/master/deploy.sh | bash
-matrix:
-  include:
-    - php: 5.2
-      dist: precise
-      env: WP_VERSION=latest WP_MULTISITE=0 WP_PULUGIN_DEPLOY=1
+dist: precise
+language: php
+php:
+- 5.2
+script:
+- php -l *.php
+branches:
+  only:
+  - master
+  - "/\\d\\.\\d\\.\\d/"
+deploy:
+  provider: script
+  script: deploy/deploy.sh
+  on:
+    tags: true
 env:
   global:
   - SVN_REPOSITORY=https://plugins.svn.wordpress.org/formaloo-form-builder
