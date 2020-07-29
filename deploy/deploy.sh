@@ -45,7 +45,7 @@ if [[ $TRAVIS_TAG =~ $semver_pattern ]]; then
   #  8.1 Copy trunk/ to tags/{tag}/
   svn cp trunk tags/$TRAVIS_TAG
   #  8.2 Remove readme.txt from plugin archive
-  svn remove --force tags/$TRAVIS_TAG/readme.txt
+  #  svn remove --force tags/$TRAVIS_TAG/readme.txt
 
   #  8.3 Set commit message
   SVN_COMMIT_MESSAGE="Release $TRAVIS_TAG"
