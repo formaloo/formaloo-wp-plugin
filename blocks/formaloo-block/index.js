@@ -36,9 +36,9 @@
 		 * This is the display title for your block, which can be translated with `i18n` functions.
 		 * The block inserter will show this name.
 		 */
-		title: __( 'The Formaloo Block', 'formaloo' ),
+		title: __( 'The Formaloo Block', 'formaloo-form-builder' ),
 
-		description: __('Use this block to show forms from Formaloo.','formaloo'),
+		description: __('Use this block to show forms from Formaloo.', 'formaloo-form-builder'),
 
 		/**
 		 * An icon property should be specified to make it easier to identify a block.
@@ -74,7 +74,7 @@
 			},
 			link_title: {
 				type: 'string',
-				default: __('Show Form','formaloo')
+				default: __('Show Form', 'formaloo-form-builder')
 			},
 			show_title: {
 				type: 'boolean',
@@ -172,32 +172,32 @@
 						null,
 						wp.element.createElement(
 							wp.components.PanelBody,
-							{ title: __('Form Settings', 'formaloo'), initialOpen: true },
+							{ title: __('Form Settings', 'formaloo-form-builder'), initialOpen: true },
 							wp.element.createElement( 
 								wp.components.PanelRow, 
 								null,
 								wp.element.createElement(
 									wp.components.SelectControl,
 									{
-										label: __('Show Type','formaloo'),
+										label: __('Show Type', 'formaloo-form-builder'),
 										value: props.attributes.show_type,
 										options: [
 											{
 												value: null,
-												label: __('Select a Show Type','formaloo'),
+												label: __('Select a Show Type', 'formaloo-form-builder'),
 												disabled: true
 											},
 											{
 												value: 'link',
-												label: __('Link','formaloo')
+												label: __('Link', 'formaloo-form-builder')
 											},
 											{
 												value: 'iframe',
-												label: __('iFrame','formaloo')
+												label: __('iFrame', 'formaloo-form-builder')
 											},
 											{
 												value: 'script',
-												label: __('Script','formaloo')
+												label: __('Script', 'formaloo-form-builder')
 											}
 										],
 										onChange: onChangeShowType
@@ -210,7 +210,7 @@
 								 wp.element.createElement(
 									wp.components.TextControl,
 									{
-										label: __('Link Title','formaloo'),
+										label: __('Link Title', 'formaloo-form-builder'),
 										value: props.attributes.link_title,
 										onChange: onChangeLinkTitle
 									}
@@ -222,7 +222,7 @@
 								wp.element.createElement(
 									wp.components.ToggleControl,
 									{
-										label: __('Show Logo','formaloo'),
+										label: __('Show Logo', 'formaloo-form-builder'),
 										checked: props.attributes.show_logo,
 										onChange: onChangeShowLogo
 									}
@@ -234,7 +234,7 @@
 								wp.element.createElement(
 									wp.components.ToggleControl,
 									{
-										label: __('Show Title','formaloo'),
+										label: __('Show Title', 'formaloo-form-builder'),
 										checked: props.attributes.show_title,
 										onChange: onChangeShowTitle
 									}
@@ -246,7 +246,7 @@
 								wp.element.createElement(
 									wp.components.ToggleControl,
 									{
-										label: __('Show Description','formaloo'),
+										label: __('Show Description', 'formaloo-form-builder'),
 										checked: props.attributes.show_descr,
 										onChange: onChangeShowDescription
 									}
@@ -265,7 +265,7 @@
 							wp.element.createElement(
 								wp.components.ToggleControl,
 								{
-									label: __('Select an Existing Form','formaloo'),
+									label: __('Select an Existing Form', 'formaloo-form-builder'),
 									checked: props.attributes.show_form_selector,
 									onChange: onChangeSelectFormAddress
 								}
@@ -275,18 +275,18 @@
 								{
 									className: 'formaloo-back-err'
 								},
-								__('To select an existing form, please login first at the plugin\'s Settings page','formaloo')
+								__('To select an existing form, please login first at the plugin\'s Settings page', 'formaloo-form-builder')
 							),
 							(!props.attributes.show_form_selector) && wp.element.createElement(wp.components.TextControl, {
-								label: __('Form URL','formaloo'),
-								placeholder: __('Enter the Form URL','formaloo'),
+								label: __('Form URL', 'formaloo-form-builder'),
+								placeholder: __('Enter the Form URL', 'formaloo-form-builder'),
 								onChange: onChangeURL,
 								value: props.attributes.url || ''
 							}),
 							(props.attributes.show_form_selector) && wp.element.createElement(
 								wp.components.SelectControl,
 								{
-									label: __('Choose one of your forms: ','formaloo'),
+									label: __('Choose one of your forms: ', 'formaloo-form-builder'),
 									value: props.attributes.selected_form_address,
 									options: formaloo_exchanger.forms_list['data']['forms'].map(form => {
 										return {
@@ -302,28 +302,28 @@
 								{
 									className: 'formaloo-back-info'
 								},
-								__('Please enter the form URL in the text field above e.g. https://formaloo.net/feedback','formaloo')
+								__('Please enter the form URL in the text field above e.g. https://formaloo.net/feedback', 'formaloo-form-builder')
 							),
 							(!props.attributes.show_form_selector) && is_url(props.attributes.url) && wp.element.createElement(
 								'p',
 								{
 									className: 'formaloo-back-success'
 								},
-								__('* You can change form view options on the inspector control','formaloo')
+								__('* You can change form view options on the inspector control', 'formaloo-form-builder')
 							),
 							(props.attributes.show_form_selector) && wp.element.createElement(
 								'p',
 								{
 									className: 'formaloo-back-success'
 								},
-								__('* You can change form view options on the inspector control','formaloo')
+								__('* You can change form view options on the inspector control', 'formaloo-form-builder')
 							),
 							(!props.attributes.show_form_selector) && !is_url(props.attributes.url) && (props.attributes.url) && wp.element.createElement(
 								'p',
 								{
 									className: 'formaloo-back-err'
 								},
-								__('Please enter a valid url','formaloo')
+								__('Please enter a valid url', 'formaloo-form-builder')
 							),
 						),
 					)

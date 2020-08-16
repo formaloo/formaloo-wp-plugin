@@ -2,10 +2,10 @@
 /**
  * Plugin Name:       Formaloo Form Builder
  * Description:       Easily embed Formaloo forms into your blog or WP pages.
- * Version:           1.7.1.1
+ * Version:           1.7.1.2
  * Author:            Formaloo team
  * Author URI:        https://formaloo.net/
- * Text Domain:       formaloo
+ * Text Domain:       formaloo-form-builder
  * Domain Path:       /languages
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
@@ -16,7 +16,7 @@
  * Plugin constants
  */
 if(!defined('FORMALOO_PLUGIN_VERSION'))
-	define('FORMALOO_PLUGIN_VERSION', '1.7.1.1');
+	define('FORMALOO_PLUGIN_VERSION', '1.7.1.2');
 if(!defined('FORMALOO_URL'))
 	define('FORMALOO_URL', plugin_dir_url( __FILE__ ));
 if(!defined('FORMALOO_PATH'))
@@ -102,8 +102,8 @@ class Formaloo_Main_Class {
     
 
     public static function loadTextDomain() {
-        load_plugin_textdomain('formaloo', false, dirname(plugin_basename(__FILE__ )) . '/languages/');
-        // wp_set_script_translations( 'blocks/formaloo-block/index.js', 'formaloo', dirname(plugin_basename(__FILE__ )) . '/languages/' );
+        load_plugin_textdomain('formaloo-form-builder', false, dirname(plugin_basename(__FILE__ )) . '/languages/');
+        // wp_set_script_translations( 'blocks/formaloo-block/index.js', 'formaloo-form-builder', dirname(plugin_basename(__FILE__ )) . '/languages/' );
     }
 
     public function formaloo_show_form_shortcode($atts) {
@@ -112,7 +112,7 @@ class Formaloo_Main_Class {
             'slug'              => 'slug',
             'address'           => 'address',
             'type'              => 'link',
-            'link_title'        => __('Show Form', 'formaloo'),
+            'link_title'        => __('Show Form', 'formaloo-form-builder'),
             'show_title'        => 'yes',
             'show_descr'        => 'yes',
             'show_logo'         => 'yes'
@@ -366,7 +366,7 @@ class Formaloo_Main_Class {
             'protocol' => FORMALOO_PROTOCOL,
             'endpoint_url' => FORMALOO_ENDPOINT,
             'forms_list' => $this->getForms($data['api_key'], $data['api_token']),
-            'async_excel_export_message' => __('Your excel file will be ready in a couple of minutes. Please refresh this page to see the result.','formaloo')
+            'async_excel_export_message' => __('Your excel file will be ready in a couple of minutes. Please refresh this page to see the result.', 'formaloo-form-builder')
         );
         
         wp_localize_script('formaloo-admin', 'formaloo_exchanger', $admin_options);
@@ -381,8 +381,8 @@ class Formaloo_Main_Class {
         $formalooIconBase64 = 'PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDIzLjEuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHZpZXdCb3g9IjAgMCAyMCAyMCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMjAgMjA7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPHBhdGggZD0iTTE0LjgsM0w2LjcsM2MtMS42LDAtMywxLjMtMywyLjlsMCw4LjFjMCwxLjYsMS4zLDMsMi45LDNsOC4xLDBjMS42LDAsMy0xLjMsMy0yLjlsMC04LjFDMTcuNyw0LjQsMTYuNCwzLDE0LjgsM3oKCSBNOC43LDEzLjJjMCwwLjQtMC4zLDAuNi0wLjYsMC42bC0wLjYsMGMtMC40LDAtMC42LTAuMy0wLjYtMC42bDAtMC42YzAtMC40LDAuMy0wLjYsMC42LTAuNmwwLjYsMGMwLjQsMCwwLjYsMC4zLDAuNiwwLjZMOC43LDEzLjIKCXogTTExLjcsMTAuNGMwLDAuMy0wLjMsMC42LTAuNiwwLjZsLTMuNywwYy0wLjMsMC0wLjYtMC4zLTAuNi0wLjZsMC0wLjhDNi45LDkuMyw3LjEsOSw3LjQsOWwzLjcsMGMwLjMsMCwwLjYsMC4zLDAuNiwwLjYKCUwxMS43LDEwLjR6IE0xNC42LDcuNWMwLDAuMy0wLjMsMC42LTAuNiwwLjZMNy41LDhDNy4xLDgsNi45LDcuOCw2LjksNy40bDAtMC43YzAtMC4zLDAuMy0wLjYsMC42LTAuNmw2LjUsMGMwLjMsMCwwLjYsMC4zLDAuNiwwLjYKCUwxNC42LDcuNXoiLz4KPC9zdmc+Cg==';
 
 		add_menu_page(
-			__( 'Formaloo', 'formaloo' ),
-			__( 'Formaloo', 'formaloo' ),
+			__( 'Formaloo', 'formaloo-form-builder' ),
+			__( 'Formaloo', 'formaloo-form-builder' ),
 			'manage_options',
 			'formaloo',
 			array($this, 'formsListPage'),
@@ -391,8 +391,8 @@ class Formaloo_Main_Class {
 
         add_submenu_page(
             'formaloo',
-            __( 'Templates', 'formaloo' ),
-            __( 'Templates', 'formaloo' ),
+            __( 'Templates', 'formaloo-form-builder' ),
+            __( 'Templates', 'formaloo-form-builder' ),
             'manage_options',
             'formaloo-templates-page',
             array($this, 'templatesPage')
@@ -400,8 +400,8 @@ class Formaloo_Main_Class {
 
         add_submenu_page(
             'formaloo',
-            __( 'Feedback Widget', 'formaloo' ),
-            __( 'Feedback Widget', 'formaloo' ),
+            __( 'Feedback Widget', 'formaloo-form-builder' ),
+            __( 'Feedback Widget', 'formaloo-form-builder' ),
             'manage_options',
             'formaloo-feedback-widget-page',
             array($this, 'feedbackWidgetPage')
@@ -409,8 +409,8 @@ class Formaloo_Main_Class {
         
         add_submenu_page(
             'formaloo',
-            __( 'Settings', 'formaloo' ),
-            __( 'Settings', 'formaloo' ),
+            __( 'Settings', 'formaloo-form-builder' ),
+            __( 'Settings', 'formaloo-form-builder' ),
             'manage_options',
             'formaloo-settings-page',
             array($this, 'settingsPage')
@@ -418,14 +418,14 @@ class Formaloo_Main_Class {
 
         add_submenu_page(
             'formaloo',
-            __( 'Results', 'formaloo' ),
+            __( 'Results', 'formaloo-form-builder' ),
             '',
             'manage_options',
             'formaloo-results-page',
             array($this, 'formResultsPage')
         );
 
-        $submenu['formaloo'][0][0] = __( 'My Forms', 'formaloo' );
+        $submenu['formaloo'][0][0] = __( 'My Forms', 'formaloo-form-builder' );
 
     }
 
@@ -488,7 +488,7 @@ class Formaloo_Main_Class {
         ?>
 
             <div class="notice notice-error is-dismissible inline">
-                <p><?php echo __('Invalid API Token or API Key! Please visit your','formaloo') . ' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/" target="_blank">'. __('Formaloo dashboard here','formaloo') .'</a>'. ' ' . __('to get a new one.','formaloo'); ?></p>
+                <p><?php echo __('Invalid API Token or API Key! Please visit your', 'formaloo-form-builder') . ' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/" target="_blank">'. __('Formaloo dashboard here', 'formaloo-form-builder') .'</a>'. ' ' . __('to get a new one.', 'formaloo-form-builder'); ?></p>
             </div>
 	
         <?php 
@@ -517,7 +517,7 @@ class Formaloo_Main_Class {
 	 */
     private function getStatusDiv($valid) {
 
-        return ($valid) ? '' : '<div class="inside formaloo-sign-up-wrapper"> <p><strong>'. __('Don\'t have a Formaloo account?', 'formaloo') .'</strong></p> <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/account/signUp/" target="_blank">'. __('Try one for Free!', 'formaloo') .'</a> </div>';
+        return ($valid) ? '' : '<div class="inside formaloo-sign-up-wrapper"> <p><strong>'. __('Don\'t have a Formaloo account?', 'formaloo-form-builder') .'</strong></p> <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/account/signUp/" target="_blank">'. __('Try one for Free!', 'formaloo-form-builder') .'</a> </div>';
 
     }
 
@@ -545,19 +545,19 @@ class Formaloo_Main_Class {
                     <tbody>
                         <tr>
                             <td scope="row">
-                                <label><?php _e( 'How to show', 'formaloo' ); ?></label>
+                                <label><?php _e( 'How to show', 'formaloo-form-builder' ); ?></label>
                             </td>
                             <td>
                                 <select name="formaloo_show_type"
                                         id="formaloo_show_type">
                                     <option value="link" <?php echo (isset($data['show_type']) && $data['show_type'] === 'link') ? 'selected' : ''; ?>>
-                                        <?php _e( 'Link', 'formaloo' ); ?>
+                                        <?php _e( 'Link', 'formaloo-form-builder' ); ?>
                                     </option>
                                     <option value="iframe" <?php echo (isset($data['show_type']) && $data['show_type'] === 'iframe') ? 'selected' : ''; ?>>
-                                        <?php _e( 'iFrame', 'formaloo' ); ?>
+                                        <?php _e( 'iFrame', 'formaloo-form-builder' ); ?>
                                     </option>
                                     <option value="script" <?php echo (!isset($data['show_type']) || (isset($data['show_type']) && $data['show_type'] === 'script')) ? 'selected' : ''; ?>>
-                                        <?php _e( 'Script', 'formaloo' ); ?>
+                                        <?php _e( 'Script', 'formaloo-form-builder' ); ?>
                                     </option>
                                 </select>
                             </td>
@@ -565,9 +565,9 @@ class Formaloo_Main_Class {
                         <tr id="link_title_row">
                             <td scope="row">
                                 <label>
-                                    <?php _e( 'Link title', 'formaloo' ); ?>
+                                    <?php _e( 'Link title', 'formaloo-form-builder' ); ?>
                                     <br>
-                                    <small><?php _e( '(Choose a title for the form link)', 'formaloo' ); ?></small>
+                                    <small><?php _e( '(Choose a title for the form link)', 'formaloo-form-builder' ); ?></small>
                                 </label>
                             </td>
                             <td>
@@ -575,64 +575,64 @@ class Formaloo_Main_Class {
                                         id="formaloo_link_title"
                                         type="text"
                                         class="regular-text"
-                                        value="<?php echo (isset($data['link_title'])) ? esc_attr__($data['link_title']) : __('Show Form','formaloo'); ?>"/>
+                                        value="<?php echo (isset($data['link_title'])) ? esc_attr__($data['link_title']) : __('Show Form', 'formaloo-form-builder'); ?>"/>
                             </td>
                         </tr>
                         <tr id="show_logo_row">
                             <td scope="row">
                                 <label>
-                                    <?php _e( 'Show logo', 'formaloo' ); ?>
+                                    <?php _e( 'Show logo', 'formaloo-form-builder' ); ?>
                                     <br>
-                                    <small><?php _e( '(Show the logo in the embedded form?)', 'formaloo' ); ?></small>
+                                    <small><?php _e( '(Show the logo in the embedded form?)', 'formaloo-form-builder' ); ?></small>
                                 </label>
                             </td>
                             <td>
-                            <input type="radio" name="formaloo_show_logo" id="formaloo_show_logo_yes" value="yes" checked /> <label for = "formaloo_show_logo"><?php _e('Yes','formaloo'); ?></label> <br>
-                            <input type="radio" name="formaloo_show_logo" id="formaloo_show_logo_no" value="no" /> <label for = "formaloo_show_logo"><?php _e('No','formaloo'); ?></label> 
+                            <input type="radio" name="formaloo_show_logo" id="formaloo_show_logo_yes" value="yes" checked /> <label for = "formaloo_show_logo"><?php _e('Yes', 'formaloo-form-builder'); ?></label> <br>
+                            <input type="radio" name="formaloo_show_logo" id="formaloo_show_logo_no" value="no" /> <label for = "formaloo_show_logo"><?php _e('No', 'formaloo-form-builder'); ?></label> 
                             </td>
                         </tr>
                         <tr id="show_title_row">
                             <td scope="row">
                                 <label>
-                                    <?php _e( 'Show title', 'formaloo' ); ?>
+                                    <?php _e( 'Show title', 'formaloo-form-builder' ); ?>
                                     <br>
-                                    <small><?php _e( '(Show the title in the embedded form?)', 'formaloo' ); ?></small>
+                                    <small><?php _e( '(Show the title in the embedded form?)', 'formaloo-form-builder' ); ?></small>
                                 </label>
                             </td>
                             <td>
-                            <input type="radio" name="formaloo_show_title" id="formaloo_show_title_yes" value="yes" checked /> <label for = "formaloo_show_title"><?php _e('Yes','formaloo'); ?></label> <br>
-                            <input type="radio" name="formaloo_show_title" id="formaloo_show_title_no" value="no" <?php // checked( 'no' == $data['show_title'] ); ?> /> <label for = "formaloo_show_title"><?php _e('No','formaloo'); ?></label> 
+                            <input type="radio" name="formaloo_show_title" id="formaloo_show_title_yes" value="yes" checked /> <label for = "formaloo_show_title"><?php _e('Yes', 'formaloo-form-builder'); ?></label> <br>
+                            <input type="radio" name="formaloo_show_title" id="formaloo_show_title_no" value="no" <?php // checked( 'no' == $data['show_title'] ); ?> /> <label for = "formaloo_show_title"><?php _e('No', 'formaloo-form-builder'); ?></label> 
                             </td>
                         </tr>
                         <tr id="show_descr_row">
                             <td scope="row">
                                 <label>
-                                    <?php _e( 'Show description', 'formaloo' ); ?>
+                                    <?php _e( 'Show description', 'formaloo-form-builder' ); ?>
                                     <br>
-                                    <small><?php _e( '(Show the description in the embedded form?)', 'formaloo' ); ?></small>
+                                    <small><?php _e( '(Show the description in the embedded form?)', 'formaloo-form-builder' ); ?></small>
                                 </label>
                             </td>
                             <td>
-                            <input type="radio" name="formaloo_show_descr" id="formaloo_show_descr_yes" value="yes" checked /> <label for = "formaloo_show_descr"><?php _e('Yes','formaloo'); ?></label> <br>
-                            <input type="radio" name="formaloo_show_descr" id="formaloo_show_descr_no" value="no" /> <label for = "formaloo_show_descr"><?php _e('No','formaloo'); ?></label> 
+                            <input type="radio" name="formaloo_show_descr" id="formaloo_show_descr_yes" value="yes" checked /> <label for = "formaloo_show_descr"><?php _e('Yes', 'formaloo-form-builder'); ?></label> <br>
+                            <input type="radio" name="formaloo_show_descr" id="formaloo_show_descr_no" value="no" /> <label for = "formaloo_show_descr"><?php _e('No', 'formaloo-form-builder'); ?></label> 
                             </td>
                         </tr>
                     </tbody>
                 </table>
                 <div class="formaloo_clipboard_wrapper formaloo_hidden">
-                    <input id="formaloo_shortcode_pre" type="text" class="regular-text" placeholder="<?php _e('Shortcode will appear here','formaloo'); ?>">
+                    <input id="formaloo_shortcode_pre" type="text" class="regular-text" placeholder="<?php _e('Shortcode will appear here', 'formaloo-form-builder'); ?>">
                     <button class="button button-primary formaloo_clipboard_btn" data-clipboard-target="#formaloo_shortcode_pre">
                         <img src="<?php echo FORMALOO_URL ?>/assets/images/clippy.svg" width="13" alt="Copy to clipboard">
                     </button>  
                 </div>
                 <p>
-                <?php _e('Copy the shortcode above then go to your post/page editor. If it is Gutenberg Editor, add a Shortcode block and paste the shortcode. If it is Classic Editor, choose the Text tab (instead of Visual tab) tab and paste the shortcode wherever you desire.' ,'formaloo') ?>
-                <a href="https://en.support.wordpress.com/shortcodes/" target="_blank"> <?php _e( 'More Info', 'formaloo' ); ?> </a>
+                <?php _e('Copy the shortcode above then go to your post/page editor. If it is Gutenberg Editor, add a Shortcode block and paste the shortcode. If it is Classic Editor, choose the Text tab (instead of Visual tab) tab and paste the shortcode wherever you desire.' , 'formaloo-form-builder') ?>
+                <a href="https://en.support.wordpress.com/shortcodes/" target="_blank"> <?php _e( 'More Info', 'formaloo-form-builder' ); ?> </a>
                 </p>
                 <?php if (!$not_ready): ?>
                     <div class="formaloo-shortcode-post-row">
                         <button class="button button-primary formaloo-admin-save my-10" type="submit">
-                            <?php _e( 'Get shortcode', 'formaloo' ); ?>
+                            <?php _e( 'Get shortcode', 'formaloo-form-builder' ); ?>
                         </button>
                     </div>
                 <?php endif; ?>
@@ -643,7 +643,7 @@ class Formaloo_Main_Class {
                         jQuery(".form-table").append('<input name="formaloo_form_slug" id="formaloo_form_slug" type="hidden" value="' + $slug + '" />');
                         jQuery(".form-table").append('<input name="formaloo_form_address" id="formaloo_form_address" type="hidden" value="' + $address + '" />');
                         jQuery('.formaloo-shortcode-post-row').find('a').remove();
-                        jQuery(".formaloo-shortcode-post-row").append('<a href="<?php echo FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT ?>/dashboard/my-forms/' + $slug + '/share" target="_blank"><?php _e( 'Additional Settings', 'formaloo' ); ?></a>');
+                        jQuery(".formaloo-shortcode-post-row").append('<a href="<?php echo FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT ?>/dashboard/my-forms/' + $slug + '/share" target="_blank"><?php _e( 'Additional Settings', 'formaloo-form-builder' ); ?></a>');
                     }
 
                     function showEditFormWith($protocol, $url, $slug) {
@@ -662,7 +662,7 @@ class Formaloo_Main_Class {
                             data: { 'active' : true, 'show_title' : true },
                             success: function (result) {
                                 var formSlug = result['data']['form']['slug'];
-                                tb_show('<?php _e('Create a form', 'formaloo'); ?>', '<?php echo FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT ?>/dashboard/my-forms/' + formSlug + '/edit/&TB_iframe=true&width=100vw&height=100vh');
+                                tb_show('<?php _e('Create a form', 'formaloo-form-builder'); ?>', '<?php echo FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT ?>/dashboard/my-forms/' + formSlug + '/edit/&TB_iframe=true&width=100vw&height=100vh');
 
                                 jQuery( 'body' ).on( 'thickbox:iframe:loaded', function ( event ) {
                                     resizeIframe();
@@ -718,7 +718,7 @@ class Formaloo_Main_Class {
                     <div class="formaloo-api-settings-top-wrapper">
                         <img src="<?php echo FORMALOO_URL ?>assets/images/Formaloo_Logo.png" alt="formaloo-logo">
                         <h1 class="formaloo-heading">
-                            <?php _e('My Forms', 'formaloo'); ?>
+                            <?php _e('My Forms', 'formaloo-form-builder'); ?>
                         </h1>
                     </div>
                 </div>
@@ -728,16 +728,16 @@ class Formaloo_Main_Class {
                     <?php if ($not_ready): ?>
                         <p>
                             <?php echo $this->getStatusIcon(!$not_ready) . __("Make sure you have a Formaloo account first, it's free! 👍","formaloo"); ?>
-                            <?php echo __('You can','formaloo') .' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/" target="_blank">'. __('create an account here','formaloo') .'</a>.'; ?>
+                            <?php echo __('You can', 'formaloo-form-builder') .' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/" target="_blank">'. __('create an account here', 'formaloo-form-builder') .'</a>.'; ?>
                             <br>
-                            <?php echo __('If so you can find your API Key & API Token from your','formaloo') .' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/profile/" target="_blank">'. __('profile page,','formaloo') .'</a> '. __('and enter it on the','formaloo') .' <a href="?page=formaloo-settings-page">'. __('settings page','formaloo') .'</a>.'; ?>
+                            <?php echo __('If so you can find your API Key & API Token from your', 'formaloo-form-builder') .' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/profile/" target="_blank">'. __('profile page,', 'formaloo-form-builder') .'</a> '. __('and enter it on the', 'formaloo-form-builder') .' <a href="?page=formaloo-settings-page">'. __('settings page', 'formaloo-form-builder') .'</a>.'; ?>
                         </p>
                     <?php else: ?>
                         <?php echo $this->getStatusIcon(!$not_ready); ?>
                         <?php 
                             $formaloo_first_name = $this->get_user_profile_name();
-                            $formaloo_user_name = empty($formaloo_first_name) ? __('User','formaloo') : $formaloo_first_name;
-                            echo __('Hello Dear','formaloo'). ' ' . $formaloo_user_name .'! '. __('You can edit or view your forms right here or you can access', 'formaloo') .' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/" target="_blank">'. __('your full dashboard here','formaloo') .'</a>.'; 
+                            $formaloo_user_name = empty($formaloo_first_name) ? __('User', 'formaloo-form-builder') : $formaloo_first_name;
+                            echo __('Hello Dear', 'formaloo-form-builder'). ' ' . $formaloo_user_name .'! '. __('You can edit or view your forms right here or you can access', 'formaloo-form-builder') .' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/" target="_blank">'. __('your full dashboard here', 'formaloo-form-builder') .'</a>.'; 
                         ?>
                     <?php endif; ?>
                 </div>
@@ -748,7 +748,7 @@ class Formaloo_Main_Class {
                     // if we don't even have a response from the API
                     if (empty($api_response)) : ?>
                         <p class="notice notice-error">
-                            <?php _e( 'An error happened on the WordPress side. Make sure your server allows remote calls.', 'formaloo' ); ?>
+                            <?php _e( 'An error happened on the WordPress side. Make sure your server allows remote calls.', 'formaloo-form-builder' ); ?>
                         </p>
 
                     <?php
@@ -774,17 +774,17 @@ class Formaloo_Main_Class {
                         <div class="form-group inside">
                             <h3 class="formaloo-heading">
                                 <span class="dashicons dashicons-feedback"></span>
-                                <?php _e('Your Forms', 'formaloo'); ?>
+                                <?php _e('Your Forms', 'formaloo-form-builder'); ?>
                             </h3>
                             <div class="formaloo-create-form-wrapper">
                                 <div class="formaloo-create-form">
-                                    <a href="#" class="button button-primary formaloo-create-new-form-link" onclick="createNewForm(event);"><span class="dashicons dashicons-plus"></span> <?php _e('Create a Blank Form', 'formaloo') ?></a>
+                                    <a href="#" class="button button-primary formaloo-create-new-form-link" onclick="createNewForm(event);"><span class="dashicons dashicons-plus"></span> <?php _e('Create a Blank Form', 'formaloo-form-builder') ?></a>
                                 </div>
                                 <div class="formaloo-create-form">
-                                    <a href="<?php echo admin_url( "admin.php?page=formaloo-templates-page" ) ?>" class="button button-primary formaloo-create-new-form-link"><span class="dashicons dashicons-welcome-add-page"></span> <?php _e('Select a Template', 'formaloo') ?></a>
+                                    <a href="<?php echo admin_url( "admin.php?page=formaloo-templates-page" ) ?>" class="button button-primary formaloo-create-new-form-link"><span class="dashicons dashicons-welcome-add-page"></span> <?php _e('Select a Template', 'formaloo-form-builder') ?></a>
                                 </div>
                                 <div class="formaloo-create-form">
-                                    <a href="<?php echo admin_url( "admin.php?page=formaloo-feedback-widget-page" ) ?>" class="button button-secondary formaloo-create-new-form-link"><span class="dashicons dashicons-star-half"></span> <?php _e('Create a feedback widget', 'formaloo'); ?></a>
+                                    <a href="<?php echo admin_url( "admin.php?page=formaloo-feedback-widget-page" ) ?>" class="button button-secondary formaloo-create-new-form-link"><span class="dashicons dashicons-star-half"></span> <?php _e('Create a feedback widget', 'formaloo-form-builder'); ?></a>
                                 </div>
                             </div>
                             <?php $this->list_table_page(); ?>
@@ -836,7 +836,7 @@ class Formaloo_Main_Class {
 
             </form>
 
-            <a href="<?php echo esc_url( $this->getSupportUrl() ); ?>" target="_blank"><?php _e( 'Need Support? Feel free to contact us', 'formaloo' ); ?></a>
+            <a href="<?php echo esc_url( $this->getSupportUrl() ); ?>" target="_blank"><?php _e( 'Need Support? Feel free to contact us', 'formaloo-form-builder' ); ?></a>
 		</div>
 
 		<?php
@@ -879,7 +879,7 @@ class Formaloo_Main_Class {
 
 	            <?php if (!empty($data['api_token']) && !empty($data['slug_for_results'])): ?>
                     <p class="notice notice-error">
-                            <?php _e( 'An error happened on the WordPress side.', 'formaloo' ); ?>
+                            <?php _e( 'An error happened on the WordPress side.', 'formaloo-form-builder' ); ?>
                     </p>
 
                 <?php
@@ -896,8 +896,8 @@ class Formaloo_Main_Class {
                     <div class="form-group inside results-table">
                         <h3 class="formaloo-heading">
                             <span class="dashicons dashicons-text-page"></span>
-                            <a href="<?php echo admin_url( "admin.php?page=formaloo" ) ?>"><?php _e('My Forms', 'formaloo'); ?></a> / 
-                            <?php _e('Your Form Results', 'formaloo'); ?>
+                            <a href="<?php echo admin_url( "admin.php?page=formaloo" ) ?>"><?php _e('My Forms', 'formaloo-form-builder'); ?></a> / 
+                            <?php _e('Your Form Results', 'formaloo-form-builder'); ?>
                         </h3>
                         <?php $this->results_table_page(esc_attr($_GET['results_slug'])); ?>
                     </div>
@@ -940,21 +940,21 @@ class Formaloo_Main_Class {
                     <div class="formaloo-api-settings-top-wrapper">
                         <img src="<?php echo FORMALOO_URL ?>assets/images/Formaloo_Logo.png" alt="formaloo-logo">
                         <h1 class="formaloo-heading">
-                            <?php _e('Setup Formaloo', 'formaloo'); ?>
+                            <?php _e('Setup Formaloo', 'formaloo-form-builder'); ?>
                         </h1>
                     </div>
 
                     <h3 class="formaloo-heading">
 		                <?php echo $this->getStatusIcon(!$not_ready); ?>
-		                <?php _e('Welcome to Formaloo!', 'formaloo'); ?>
+		                <?php _e('Welcome to Formaloo!', 'formaloo-form-builder'); ?>
                     </h3>
 
 	                <?php if ($not_ready): ?>
                         <p>
-                            <?php echo __('To get started, we\'ll need to access your Formaloo account with an','formaloo') .' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/profile/" target="_blank">'. __('API Key & API Token','formaloo') .'</a>. '. __('Paste your Formaloo API Key & API Token, and click','formaloo') .' <strong>'. __('Connect','formaloo') .'</strong> '. __('to continue','formaloo') .'.'; ?>
+                            <?php echo __('To get started, we\'ll need to access your Formaloo account with an', 'formaloo-form-builder') .' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/profile/" target="_blank">'. __('API Key & API Token', 'formaloo-form-builder') .'</a>. '. __('Paste your Formaloo API Key & API Token, and click', 'formaloo-form-builder') .' <strong>'. __('Connect', 'formaloo-form-builder') .'</strong> '. __('to continue', 'formaloo-form-builder') .'.'; ?>
                         </p>
                     <?php else: ?>
-                        <?php echo __('You can access your','formaloo') .' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/" target="_blank">'. __('Formaloo dashboard here','formaloo') .'</a>.'; ?>  
+                        <?php echo __('You can access your', 'formaloo-form-builder') .' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/" target="_blank">'. __('Formaloo dashboard here', 'formaloo-form-builder') .'</a>.'; ?>  
                     <?php endif; ?>
                     <?php echo $this->getStatusDiv(!$not_ready); ?>
 
@@ -962,7 +962,7 @@ class Formaloo_Main_Class {
                         <tbody>
                             <tr>
                                 <td scope="row">
-                                    <label><?php _e( 'API Key', 'formaloo' ); ?></label>
+                                    <label><?php _e( 'API Key', 'formaloo-form-builder' ); ?></label>
                                 </td>
                                 <td>
                                     <input name="formaloo_api_key"
@@ -974,7 +974,7 @@ class Formaloo_Main_Class {
                             </tr>
                             <tr>
                                 <td scope="row">
-                                    <label><?php _e( 'API Token', 'formaloo' ); ?></label>
+                                    <label><?php _e( 'API Token', 'formaloo-form-builder' ); ?></label>
                                 </td>
                                 <td>
                                     <input name="formaloo_api_token"
@@ -987,7 +987,7 @@ class Formaloo_Main_Class {
                             <tr id="formaloo-settings-submit-row">
                                 <td>
                                     <button class="button button-primary formaloo-admin-save formaloo-button-black" type="submit">
-                                        <?php ($not_ready) ? _e( 'Connect', 'formaloo' ) : _e( 'Save', 'formaloo' ) ?>
+                                        <?php ($not_ready) ? _e( 'Connect', 'formaloo-form-builder' ) : _e( 'Save', 'formaloo-form-builder' ) ?>
                                     </button>
                                 </td>
                             </tr>
@@ -997,7 +997,7 @@ class Formaloo_Main_Class {
 
             </form>
 
-            <a href="<?php echo esc_url( $this->getSupportUrl() ); ?>" target="_blank"><?php _e( 'Need Support? Feel free to contact us', 'formaloo' ); ?></a>
+            <a href="<?php echo esc_url( $this->getSupportUrl() ); ?>" target="_blank"><?php _e( 'Need Support? Feel free to contact us', 'formaloo-form-builder' ); ?></a>
 		</div>
 
 		<?php
@@ -1045,7 +1045,7 @@ class Formaloo_Main_Class {
                         <div class="form-group inside">
                             <?php if ($not_ready): ?>
                             <p id="formaloo-guest-template-login-descr">
-                                <?php echo __('To get started, we\'ll need to access your Formaloo account with an','formaloo') .' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/profile/" target="_blank">'. __('API Key & API Token','formaloo') .'</a>. '. __('Paste your Formaloo API Key & API Token, and click','formaloo') .' <strong>'. __('Connect','formaloo') .'</strong> '. __('to continue','formaloo') .'.'; ?>
+                                <?php echo __('To get started, we\'ll need to access your Formaloo account with an', 'formaloo-form-builder') .' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/profile/" target="_blank">'. __('API Key & API Token', 'formaloo-form-builder') .'</a>. '. __('Paste your Formaloo API Key & API Token, and click', 'formaloo-form-builder') .' <strong>'. __('Connect', 'formaloo-form-builder') .'</strong> '. __('to continue', 'formaloo-form-builder') .'.'; ?>
                             </p>
                             <?php endif; ?>
                             <?php echo $this->getStatusDiv(!$not_ready); ?>
@@ -1056,7 +1056,7 @@ class Formaloo_Main_Class {
                                 <tbody>
                                     <tr>
                                         <td scope="row">
-                                            <label><?php _e( 'API Key', 'formaloo' ); ?></label>
+                                            <label><?php _e( 'API Key', 'formaloo-form-builder' ); ?></label>
                                         </td>
                                         <td>
                                             <input name="formaloo_api_key"
@@ -1069,7 +1069,7 @@ class Formaloo_Main_Class {
                                     </tr>
                                     <tr>
                                         <td scope="row">
-                                            <label><?php _e( 'API Token', 'formaloo' ); ?></label>
+                                            <label><?php _e( 'API Token', 'formaloo-form-builder' ); ?></label>
                                         </td>
                                         <td>
                                             <input name="formaloo_api_token"
@@ -1082,7 +1082,7 @@ class Formaloo_Main_Class {
                                     </tr>
                                     <tr id="formaloo-settings-submit-row">
                                         <td>
-                                            <input class="button button-primary formaloo-admin-save formaloo-button-black" type="submit" form="formaloo-templates-admin-form" value="<?php ($not_ready) ? _e( 'Connect', 'formaloo' ) : _e( 'Save', 'formaloo' )?>">
+                                            <input class="button button-primary formaloo-admin-save formaloo-button-black" type="submit" form="formaloo-templates-admin-form" value="<?php ($not_ready) ? _e( 'Connect', 'formaloo-form-builder' ) : _e( 'Save', 'formaloo-form-builder' )?>">
                                             </input>
                                         </td>
                                     </tr>
@@ -1094,7 +1094,7 @@ class Formaloo_Main_Class {
                     <div class="formaloo-api-settings-top-wrapper">
                         <img src="<?php echo FORMALOO_URL ?>assets/images/Formaloo_Logo.png" alt="formaloo-logo">
                         <h1 class="formaloo-heading">
-                            <?php _e('Templates', 'formaloo'); ?>
+                            <?php _e('Templates', 'formaloo-form-builder'); ?>
                         </h1>
                     </div>
 
@@ -1105,13 +1105,13 @@ class Formaloo_Main_Class {
                     <div class="formaloo-templates-toolbar-wrapper">
                         <div class="alignleft actions">
                             <select id="formaloo-templates-category-selector-top">
-                                <option value="-1"><?php _e('All Categories', 'formaloo'); ?></option>
+                                <option value="-1"><?php _e('All Categories', 'formaloo-form-builder'); ?></option>
                             </select>
-                            <input type="submit" id="formaloo-templates-category-submit" class="button action" value="<?php _e('Apply', 'formaloo'); ?>">
+                            <input type="submit" id="formaloo-templates-category-submit" class="button action" value="<?php _e('Apply', 'formaloo-form-builder'); ?>">
                         </div>
                         <p class="search-box">
-                            <input type="search" id="formaloo-templates-search-text" placeholder="<?php _e('Search a template..', 'formaloo'); ?>">
-                            <input type="submit" id="formaloo-templates-search-submit" class="button" value="<?php _e('Search', 'formaloo'); ?>">
+                            <input type="search" id="formaloo-templates-search-text" placeholder="<?php _e('Search a template..', 'formaloo-form-builder'); ?>">
+                            <input type="submit" id="formaloo-templates-search-submit" class="button" value="<?php _e('Search', 'formaloo-form-builder'); ?>">
                         </p>
                     </div>
 
@@ -1119,13 +1119,13 @@ class Formaloo_Main_Class {
                     
                     <div id="formaloo-tempaltes-pagination-wrapper">
                         <div id="formaloo-templates-prev-page" class="button button-primary">
-                        <?php _e('Prev', 'formaloo'); ?>
+                        <?php _e('Prev', 'formaloo-form-builder'); ?>
                         </div>
                         <p id="formaloo-templates-current-page-number">
                             -
                         </p>
                         <div id="formaloo-templates-next-page"  class="button button-primary">
-                        <?php _e('Next', 'formaloo'); ?>
+                        <?php _e('Next', 'formaloo-form-builder'); ?>
                         </div>
                     </div>
                     
@@ -1133,7 +1133,7 @@ class Formaloo_Main_Class {
 
             </form>
 
-            <a href="<?php echo esc_url( $this->getSupportUrl() ); ?>" target="_blank"><?php _e( 'Need Support? Feel free to contact us', 'formaloo' ); ?></a>             
+            <a href="<?php echo esc_url( $this->getSupportUrl() ); ?>" target="_blank"><?php _e( 'Need Support? Feel free to contact us', 'formaloo-form-builder' ); ?></a>             
 		</div>
         
         <script>
@@ -1186,10 +1186,10 @@ class Formaloo_Main_Class {
                             $( '.formaloo-templates-grid-container' ).empty();
                             
                             if(result['data']['forms'].length == 0) {
-                                $( '.formaloo-templates-grid-container' ).append( $( '<div></div><div class="formaloo-templates-not-found-wrapper"><img src="<?php echo FORMALOO_URL ?>assets/images/feedback_widget.png" alt="Template not found" ><?php _e('Template not found', 'formaloo'); ?></div><div></div>' ) );
+                                $( '.formaloo-templates-grid-container' ).append( $( '<div></div><div class="formaloo-templates-not-found-wrapper"><img src="<?php echo FORMALOO_URL ?>assets/images/feedback_widget.png" alt="Template not found" ><?php _e('Template not found', 'formaloo-form-builder'); ?></div><div></div>' ) );
                             } else {
                                 $.each(result['data']['forms'], function(i, form) {
-                                    $( '.formaloo-templates-grid-container' ).append( $( '<div class="formaloo-templates-grid-item"><div class="formaloo-templates-grid-item-inner"><img src="' + form['logo'] + '" alt="' + form['title'] + '"><div class="formaloo-template-title">' + form['title'] + '</div><div class="formaloo-templates-hover-div"><a href="<?php echo FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT ?>/' + form['address'] + '?TB_iframe=true&width=100vw&height=100vh" title="<?php _e('Preview the template', 'formaloo'); ?>" target="_blank" class="button button-secondary formaloo-preview-template-link thickbox"><?php _e('Preview', 'formaloo') ?></a><a href="#" class="button button-primary" data-form-slug="' + form['slug'] + '" onclick="copyTemplate(event, this)"><?php _e('Use', 'formaloo'); ?></a></div></div></div>' ) );
+                                    $( '.formaloo-templates-grid-container' ).append( $( '<div class="formaloo-templates-grid-item"><div class="formaloo-templates-grid-item-inner"><img src="' + form['logo'] + '" alt="' + form['title'] + '"><div class="formaloo-template-title">' + form['title'] + '</div><div class="formaloo-templates-hover-div"><a href="<?php echo FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT ?>/' + form['address'] + '?TB_iframe=true&width=100vw&height=100vh" title="<?php _e('Preview the template', 'formaloo-form-builder'); ?>" target="_blank" class="button button-secondary formaloo-preview-template-link thickbox"><?php _e('Preview', 'formaloo-form-builder') ?></a><a href="#" class="button button-primary" data-form-slug="' + form['slug'] + '" onclick="copyTemplate(event, this)"><?php _e('Use', 'formaloo-form-builder'); ?></a></div></div></div>' ) );
                                 });
 
                                 jQuery( 'body' ).on( 'thickbox:iframe:loaded', function ( event ) {
@@ -1321,7 +1321,7 @@ class Formaloo_Main_Class {
                     if ($not_ready):
                 ?>
                 
-                tb_show("<?php _e( 'To use this template, please login first', 'formaloo' ); ?>","#TB_inline?width=100vw&height=100vh&inlineId=formaloo-guest-template-login",null);
+                tb_show("<?php _e( 'To use this template, please login first', 'formaloo-form-builder' ); ?>","#TB_inline?width=100vw&height=100vh&inlineId=formaloo-guest-template-login",null);
 
 
                 jQuery(document).on('submit', '#formaloo-templates-admin-form', function(e) {
@@ -1419,8 +1419,8 @@ class Formaloo_Main_Class {
                             <tbody>
                                 <tr>
                                     <td scope="row">
-                                        <label><strong><?php _e( 'As a Link', 'formaloo' ); ?></strong></label><br>
-                                        <small><?php _e( 'Share this URL with others to view the form directly', 'formaloo' ); ?></small>
+                                        <label><strong><?php _e( 'As a Link', 'formaloo-form-builder' ); ?></strong></label><br>
+                                        <small><?php _e( 'Share this URL with others to view the form directly', 'formaloo-form-builder' ); ?></small>
                                     </td>
                                     <td>
                                         <a href="" target="_blank" id="formaloo-feedback-widget"></a>
@@ -1428,8 +1428,8 @@ class Formaloo_Main_Class {
                                 </tr>
                                 <tr>
                                     <td scope="row">
-                                        <label><strong><?php _e( 'As a Script Tag', 'formaloo' ); ?></strong></label><br>
-                                        <small><?php _e( 'Using this method, the form will become a part of your website\'s markup. To use this, put the code snippet in your website footer:', 'formaloo' ); ?></small><br><br>
+                                        <label><strong><?php _e( 'As a Script Tag', 'formaloo-form-builder' ); ?></strong></label><br>
+                                        <small><?php _e( 'Using this method, the form will become a part of your website\'s markup. To use this, put the code snippet in your website footer:', 'formaloo-form-builder' ); ?></small><br><br>
                                         <a href="<?php echo FORMALOO_URL ?>assets/images/feedback_widget_helper.png" target="_blank"> <img src="<?php echo FORMALOO_URL ?>assets/images/feedback_widget_helper.png" id="formaloo-where-to-put-feedback-widget" alt="Feedback Widget Helper" /></a>
                                     </td>
                                     <td>
@@ -1448,7 +1448,7 @@ class Formaloo_Main_Class {
                     <div class="formaloo-api-settings-top-wrapper">
                         <img src="<?php echo FORMALOO_URL ?>assets/images/Formaloo_Logo.png" alt="formaloo-logo">
                         <h1 class="formaloo-heading">
-                            <?php _e('Feedback Widget Creator', 'formaloo'); ?>
+                            <?php _e('Feedback Widget Creator', 'formaloo-form-builder'); ?>
                         </h1>
                     </div>
 
@@ -1457,16 +1457,16 @@ class Formaloo_Main_Class {
                     <div class="formaloo-feedback-wdiget-top-info">
                         <img src="<?php echo FORMALOO_URL ?>assets/images/feedback_widget.png" alt="feedback-widget-design">
                         <h3 class="formaloo-heading">
-		                    <?php _e('Create a feedback widget for your website in less than 1 minute:', 'formaloo'); ?>
+		                    <?php _e('Create a feedback widget for your website in less than 1 minute:', 'formaloo-form-builder'); ?>
                         </h3>
                     </div>
 
 	                <?php if ($not_ready): ?>
                         <p>
-                            <?php echo __('To get started, we\'ll need to access your Formaloo account with an','formaloo') .' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/profile/" target="_blank">'. __('API Key & API Token','formaloo') .'</a>. '. __('Paste your Formaloo API Key & API Token, and click','formaloo') .' <strong>'. __('Connect','formaloo') .'</strong> '. __('to continue','formaloo') .'.'; ?>
+                            <?php echo __('To get started, we\'ll need to access your Formaloo account with an', 'formaloo-form-builder') .' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/profile/" target="_blank">'. __('API Key & API Token', 'formaloo-form-builder') .'</a>. '. __('Paste your Formaloo API Key & API Token, and click', 'formaloo-form-builder') .' <strong>'. __('Connect', 'formaloo-form-builder') .'</strong> '. __('to continue', 'formaloo-form-builder') .'.'; ?>
                         </p>
                     <?php else: ?>
-                        <?php // echo __('You can access your','formaloo') .' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/" target="_blank">'. __('Formaloo dashboard here','formaloo') .'</a>.'; ?>  
+                        <?php // echo __('You can access your', 'formaloo-form-builder') .' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/" target="_blank">'. __('Formaloo dashboard here', 'formaloo-form-builder') .'</a>.'; ?>  
                     <?php endif; ?>
                     <?php echo $this->getStatusDiv(!$not_ready); ?>
 
@@ -1479,7 +1479,7 @@ class Formaloo_Main_Class {
                         <tbody>
                             <tr>
                                 <td scope="row">
-                                    <label><strong><?php _e( 'Button Text', 'formaloo' ); ?></strong></label>
+                                    <label><strong><?php _e( 'Button Text', 'formaloo-form-builder' ); ?></strong></label>
                                 </td>
                                 <td>
                                     <input name="formaloo_feedback_widget_button_text"
@@ -1487,29 +1487,29 @@ class Formaloo_Main_Class {
                                            class="regular-text"
                                            type="text"
                                            value=""
-                                           placeholder="<?php _e( 'Button Text', 'formaloo' ); ?>"/>
+                                           placeholder="<?php _e( 'Button Text', 'formaloo-form-builder' ); ?>"/>
                                 </td>
                             </tr>
                             <tr id="formaloo_feedback_widget_position_row">
                                 <td scope="row">
                                     <label>
                                         <strong>
-                                            <?php _e( 'Widget Position on Screen', 'formaloo' ); ?>
+                                            <?php _e( 'Widget Position on Screen', 'formaloo-form-builder' ); ?>
                                         </strong>
                                     </label>
                                 </td>
                                 <td>
                                 <fieldset>
-                                    <input type="radio" name="formaloo_feedback_widget_position" id="formaloo_feedback_widget_position_left" value="left" checked /> <label for = "formaloo_feedback_widget_position"><?php _e('Left','formaloo'); ?></label><br>
-                                    <input type="radio" name="formaloo_feedback_widget_position" id="formaloo_feedback_widget_position_right" value="right" /> <label for = "formaloo_feedback_widget_position"><?php _e('Right','formaloo'); ?></label><br>
-                                    <input type="radio" name="formaloo_feedback_widget_position" id="formaloo_feedback_widget_position_bottom_left" value="bottom_left" /> <label for = "formaloo_feedback_widget_position"><?php _e('Bottom Left','formaloo'); ?></label><br>
-                                    <input type="radio" name="formaloo_feedback_widget_position" id="formaloo_feedback_widget_position_bottom_right" value="bottom_right" /> <label for = "formaloo_feedback_widget_position"><?php _e('Bottom Right','formaloo'); ?></label> 
+                                    <input type="radio" name="formaloo_feedback_widget_position" id="formaloo_feedback_widget_position_left" value="left" checked /> <label for = "formaloo_feedback_widget_position"><?php _e('Left', 'formaloo-form-builder'); ?></label><br>
+                                    <input type="radio" name="formaloo_feedback_widget_position" id="formaloo_feedback_widget_position_right" value="right" /> <label for = "formaloo_feedback_widget_position"><?php _e('Right', 'formaloo-form-builder'); ?></label><br>
+                                    <input type="radio" name="formaloo_feedback_widget_position" id="formaloo_feedback_widget_position_bottom_left" value="bottom_left" /> <label for = "formaloo_feedback_widget_position"><?php _e('Bottom Left', 'formaloo-form-builder'); ?></label><br>
+                                    <input type="radio" name="formaloo_feedback_widget_position" id="formaloo_feedback_widget_position_bottom_right" value="bottom_right" /> <label for = "formaloo_feedback_widget_position"><?php _e('Bottom Right', 'formaloo-form-builder'); ?></label> 
                                 </fieldset>
                                 </td>
                             </tr>
                             <tr>
                                 <td scope="row">
-                                    <label><strong><?php _e( 'NPS Choices Icon', 'formaloo' ); ?></strong></label>
+                                    <label><strong><?php _e( 'NPS Choices Icon', 'formaloo-form-builder' ); ?></strong></label>
                                 </td>
                                 <td>
                                 <fieldset class="formaloo_feedback_widget_choice_wrapper">
@@ -1536,7 +1536,7 @@ class Formaloo_Main_Class {
                             </tr>
                             <tr>
                                 <td scope="row">
-                                    <label><strong><?php _e( 'Question Title', 'formaloo' ); ?></strong></label>
+                                    <label><strong><?php _e( 'Question Title', 'formaloo-form-builder' ); ?></strong></label>
                                 </td>
                                 <td>
                                     <input name="formaloo_feedback_widget_question_text_title"
@@ -1544,12 +1544,12 @@ class Formaloo_Main_Class {
                                            class="regular-text"
                                            type="text"
                                            value=""
-                                           placeholder="<?php _e( 'Question Title', 'formaloo' ); ?>"/>
+                                           placeholder="<?php _e( 'Question Title', 'formaloo-form-builder' ); ?>"/>
                                 </td>
                             </tr>
                             <tr>
                                 <td scope="row">
-                                    <label><strong><?php _e( 'TextBox Placeholder', 'formaloo' ); ?></strong></label>
+                                    <label><strong><?php _e( 'TextBox Placeholder', 'formaloo-form-builder' ); ?></strong></label>
                                 </td>
                                 <td>
                                     <input name="formaloo_feedback_widget_textbox_placeholder"
@@ -1557,12 +1557,12 @@ class Formaloo_Main_Class {
                                            class="regular-text"
                                            type="text"
                                            value=""
-                                           placeholder="<?php _e( 'TextBox Placeholder', 'formaloo' ); ?>"/>
+                                           placeholder="<?php _e( 'TextBox Placeholder', 'formaloo-form-builder' ); ?>"/>
                                 </td>
                             </tr>
                             <tr>
                                 <td scope="row">
-                                    <label><strong><?php _e( 'Submit Button Text', 'formaloo' ); ?></strong></label>
+                                    <label><strong><?php _e( 'Submit Button Text', 'formaloo-form-builder' ); ?></strong></label>
                                 </td>
                                 <td>
                                     <input name="formaloo_feedback_widget_submit_button_text"
@@ -1570,12 +1570,12 @@ class Formaloo_Main_Class {
                                            class="regular-text"
                                            type="text"
                                            value=""
-                                           placeholder="<?php _e( 'Submit Button Text', 'formaloo' ); ?>"/>
+                                           placeholder="<?php _e( 'Submit Button Text', 'formaloo-form-builder' ); ?>"/>
                                 </td>
                             </tr>
                             <tr>
                                 <td scope="row">
-                                    <label><strong><?php _e( 'Button Color', 'formaloo' ); ?></strong></label>
+                                    <label><strong><?php _e( 'Button Color', 'formaloo-form-builder' ); ?></strong></label>
                                 </td>
                                 <td>
                                     <input type="text" value="#F95E2F" class="formaloo_feedback_widget_button_color" data-default-color="#F95E2F" />
@@ -1583,7 +1583,7 @@ class Formaloo_Main_Class {
                             </tr>
                             <tr>
                                 <td scope="row">
-                                    <label><strong><?php _e( 'Success Message After Submit', 'formaloo' ); ?></strong></label>
+                                    <label><strong><?php _e( 'Success Message After Submit', 'formaloo-form-builder' ); ?></strong></label>
                                 </td>
                                 <td>
                                     <input name="formaloo_feedback_widget_success_message_after_submit"
@@ -1591,13 +1591,13 @@ class Formaloo_Main_Class {
                                            class="regular-text"
                                            type="text"
                                            value=""
-                                           placeholder="<?php _e( 'Success Message After Submit', 'formaloo' ); ?>"/>
+                                           placeholder="<?php _e( 'Success Message After Submit', 'formaloo-form-builder' ); ?>"/>
                                 </td>
                             </tr>
                             <tr id="formaloo-feedback-widget-submit-row">
                                 <td>
                                     <p class="submit">
-                                        <input type="submit" name="submit" id="submit" class="button button-primary" value="<?php _e( 'Save Changes', 'formaloo' ); ?>">
+                                        <input type="submit" name="submit" id="submit" class="button button-primary" value="<?php _e( 'Save Changes', 'formaloo-form-builder' ); ?>">
                                     </p>    
                                 </td>
                             </tr>
@@ -1608,7 +1608,7 @@ class Formaloo_Main_Class {
 
             </form>
 
-            <a href="<?php echo esc_url( $this->getSupportUrl() ); ?>" target="_blank"><?php _e( 'Need Support? Feel free to contact us', 'formaloo' ); ?></a>
+            <a href="<?php echo esc_url( $this->getSupportUrl() ); ?>" target="_blank"><?php _e( 'Need Support? Feel free to contact us', 'formaloo-form-builder' ); ?></a>
                             
 		</div>
         
@@ -1799,7 +1799,7 @@ class Formaloo_Main_Class {
                     editField(editTextFieldUrl, textFielParams).then(function(data) {
                         editField(editNpsFieldUrl, npsFieldParams).then(function(data) {
                             editField(editFormUrl, formParams).then(function(data) {
-                            tb_show("<?php _e( 'How to use your Feedback Widget', 'formaloo' ); ?>","#TB_inline?width=100vw&height=100vh&inlineId=formaloo-feedback-widget-show-options",null);
+                            tb_show("<?php _e( 'How to use your Feedback Widget', 'formaloo-form-builder' ); ?>","#TB_inline?width=100vw&height=100vh&inlineId=formaloo-feedback-widget-show-options",null);
                             jQuery('.spinner').removeClass('is-active');
                             }).catch(function(err) {
                                 console.log(err);

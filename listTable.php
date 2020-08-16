@@ -53,11 +53,11 @@ class Formaloo_Forms_List_Table extends WP_List_Table {
     {
         $columns = array(
             // 'cb'            => '<input type="checkbox" />',
-            'title'         => __('Title', 'formaloo'),
-            'active'        => __('Active', 'formaloo'),
-            'submitCount'   => __('Submit Count', 'formaloo'),
-            'excel'         => __('Download Results', 'formaloo'),
-            'more'          => __('More Options', 'formaloo')
+            'title'         => __('Title', 'formaloo-form-builder'),
+            'active'        => __('Active', 'formaloo-form-builder'),
+            'submitCount'   => __('Submit Count', 'formaloo-form-builder'),
+            'excel'         => __('Download Results', 'formaloo-form-builder'),
+            'more'          => __('More Options', 'formaloo-form-builder')
         );
 
         return $columns;
@@ -103,17 +103,17 @@ class Formaloo_Forms_List_Table extends WP_List_Table {
 
             if ($form['last_export_file'] == NULL) {
                 if ($form['export_in_progress']) {
-                    $excel = '<button class="button formaloo-get-excel-link" disabled> <span class="dashicons dashicons-download"></span> '. __('Exporting..', 'formaloo') .' </button>';
+                    $excel = '<button class="button formaloo-get-excel-link" disabled> <span class="dashicons dashicons-download"></span> '. __('Exporting..', 'formaloo-form-builder') .' </button>';
                 } else {
-                    $excel = '<button class="button formaloo-get-excel-link" data-form-slug="'. $form['slug'] .'"> <span class="dashicons dashicons-download"></span> '. __('Download', 'formaloo') .' </button>';
+                    $excel = '<button class="button formaloo-get-excel-link" data-form-slug="'. $form['slug'] .'"> <span class="dashicons dashicons-download"></span> '. __('Download', 'formaloo-form-builder') .' </button>';
                 }
                 
             } else {
                 $date = date_create($form['last_export_time']);
                 if ($form['export_in_progress']) {
-                    $excel = '<div class="formaloo-get-excel-wrapper"><button class="button formaloo-get-excel-link" disabled> <span class="dashicons dashicons-download"></span> '. __('Exporting..', 'formaloo') .' </button><a href="'. $form['last_export_file'] .'"><p><span>'. __('Download', 'formaloo') . '</span>' . ' ' . __('Last Export','formaloo') .' ('. date_format($date,"Y/m/d") .')</p></a></div>';
+                    $excel = '<div class="formaloo-get-excel-wrapper"><button class="button formaloo-get-excel-link" disabled> <span class="dashicons dashicons-download"></span> '. __('Exporting..', 'formaloo-form-builder') .' </button><a href="'. $form['last_export_file'] .'"><p><span>'. __('Download', 'formaloo-form-builder') . '</span>' . ' ' . __('Last Export', 'formaloo-form-builder') .' ('. date_format($date,"Y/m/d") .')</p></a></div>';
                 } else {
-                    $excel = '<div class="formaloo-get-excel-wrapper"><div class="formaloo-get-excel-button-wrapper"><button class="button formaloo-get-excel-link" data-form-slug="'. $form['slug'] .'"> <span class="dashicons dashicons-download"></span> '. __('Download', 'formaloo') .' </button></div><a href="'. $form['last_export_file'] .'"><p><span>'. __('Download', 'formaloo') . '</span>' .  ' ' . __('Last Export','formaloo') .' ('. date_format($date,"Y/m/d") .')</p></a></div>';
+                    $excel = '<div class="formaloo-get-excel-wrapper"><div class="formaloo-get-excel-button-wrapper"><button class="button formaloo-get-excel-link" data-form-slug="'. $form['slug'] .'"> <span class="dashicons dashicons-download"></span> '. __('Download', 'formaloo-form-builder') .' </button></div><a href="'. $form['last_export_file'] .'"><p><span>'. __('Download', 'formaloo-form-builder') . '</span>' .  ' ' . __('Last Export', 'formaloo-form-builder') .' ('. date_format($date,"Y/m/d") .')</p></a></div>';
                 }
                 
             }
@@ -201,18 +201,18 @@ class Formaloo_Forms_List_Table extends WP_List_Table {
     }
 
     function column_title($item) {
-        $modalTitle = __('Set-up Form Settings', 'formaloo');
+        $modalTitle = __('Set-up Form Settings', 'formaloo-form-builder');
         
         $actions = array(
-                  'view'      => sprintf('<a href="%s://%s/%s" target="_blank">'. __('View','formaloo') .'</a>',FORMALOO_PROTOCOL,FORMALOO_ENDPOINT,$item['address'])
+                  'view'      => sprintf('<a href="%s://%s/%s" target="_blank">'. __('View', 'formaloo-form-builder') .'</a>',FORMALOO_PROTOCOL,FORMALOO_ENDPOINT,$item['address'])
               );
 
         if ($item['type'] != 'nps') {
-            $actions['shortcode'] = '<a href="#TB_inline?&width=100vw&height=100vh&inlineId=form-show-options" class="thickbox" title="'. $modalTitle .'" onclick = "getRowInfo(\''. $item['slug'] .'\',\''. $item['address'] .'\')">'. __('Get Shortcode', 'formaloo') .'</a>';
-            $actions['edit'] = '<a href="#TB_inline?&width=100vw&height=100vh&inlineId=form-show-edit" title="'. __('Edit Form','formaloo') .'" class="thickbox" onclick = "showEditFormWith(\''. FORMALOO_PROTOCOL .'\', \''. FORMALOO_ENDPOINT .'\', \''. $item['slug'] .'\')">'. __('Edit', 'formaloo') .'</a>';
+            $actions['shortcode'] = '<a href="#TB_inline?&width=100vw&height=100vh&inlineId=form-show-options" class="thickbox" title="'. $modalTitle .'" onclick = "getRowInfo(\''. $item['slug'] .'\',\''. $item['address'] .'\')">'. __('Get Shortcode', 'formaloo-form-builder') .'</a>';
+            $actions['edit'] = '<a href="#TB_inline?&width=100vw&height=100vh&inlineId=form-show-edit" title="'. __('Edit Form', 'formaloo-form-builder') .'" class="thickbox" onclick = "showEditFormWith(\''. FORMALOO_PROTOCOL .'\', \''. FORMALOO_ENDPOINT .'\', \''. $item['slug'] .'\')">'. __('Edit', 'formaloo-form-builder') .'</a>';
         } else {
-            $actions['edit'] = '<a href="?page=formaloo-feedback-widget-page&widget_slug='. $item['slug'] .'">'. __('Edit', 'formaloo') .'</a>';
-            $actions['use_widget'] = '<a href="?page=formaloo-feedback-widget-page&widget_slug='. $item['slug'] .'">'. __('Use Widget', 'formaloo') .'</a>';
+            $actions['edit'] = '<a href="?page=formaloo-feedback-widget-page&widget_slug='. $item['slug'] .'">'. __('Edit', 'formaloo-form-builder') .'</a>';
+            $actions['use_widget'] = '<a href="?page=formaloo-feedback-widget-page&widget_slug='. $item['slug'] .'">'. __('Use Widget', 'formaloo-form-builder') .'</a>';
 
         }
       

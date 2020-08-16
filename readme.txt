@@ -3,7 +3,7 @@ Contributors: Formaloo, idearun
 Tags: contact form, contact form plugin, forms, form builder, custom form, contact button, contact me, custom contact form, form manager, form, forms builder, forms creator, captcha, recaptcha, email form, web form, feedback form, payment form, survey form, donation form, email submit form, message form, mailchimp, mailchimp form, paypal, paypal form, stripe, stripe form, email subscription, contact form widget, user registration form, wordpress registration, wordpress login form, feedback
 Requires at least: 4.0
 Tested up to: 5.4.2
-Stable tag: 1.7.1.1
+Stable tag: 1.7.1.2
 Requires PHP: 5.2
 License: GNU General Public License v2.0 or later
 
@@ -166,4 +166,8 @@ See our <a href="https://api.formaloo.net/docs">API documentation</a> for more i
 - Added: You can now preview and use different form templates from Templates page
 - Updated: You can now download your last requested excel file asynchronously
 - Added: German and French Language Support
+- Minor bug fixes and improvements
+
+= 1.7.1.2 =
+- Fix Language Issues
 - Minor bug fixes and improvements

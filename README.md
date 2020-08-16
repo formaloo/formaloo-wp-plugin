@@ -16,7 +16,7 @@
 | ------------- |:-------------:|
 | Requires at least | 4.0 |
 | Tested up to | 5.4.2 |
-| Stable tag | 1.7.1.1 |
+| Stable tag | 1.7.1.2 |
 | Requires PHP | 5.2 |
 
 **Contributors:** Formaloo, idearun
@@ -204,4 +204,8 @@ See our <a href="https://api.formaloo.net/docs">API documentation</a> for more i
 - **Added:** You can now preview and use different form templates from Templates page
 - **Updated:** You can now download your last requested excel file asynchronously
 - **Added:** German and French Language Support
+- Minor bug fixes and improvements
+
+### 1.7.1.2
+- Fix Language Issues
 - Minor bug fixes and improvements
