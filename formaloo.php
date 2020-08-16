@@ -727,7 +727,7 @@ class Formaloo_Main_Class {
                     
                     <?php if ($not_ready): ?>
                         <p>
-                            <?php echo $this->getStatusIcon(!$not_ready) . __("Make sure you have a Formaloo account first, it's free! 👍","formaloo"); ?>
+                            <?php echo $this->getStatusIcon(!$not_ready) . __("Make sure you have a Formaloo account first, it's free! 👍","formaloo-form-builder"); ?>
                             <?php echo __('You can', 'formaloo-form-builder') .' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/" target="_blank">'. __('create an account here', 'formaloo-form-builder') .'</a>.'; ?>
                             <br>
                             <?php echo __('If so you can find your API Key & API Token from your', 'formaloo-form-builder') .' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/profile/" target="_blank">'. __('profile page,', 'formaloo-form-builder') .'</a> '. __('and enter it on the', 'formaloo-form-builder') .' <a href="?page=formaloo-settings-page">'. __('settings page', 'formaloo-form-builder') .'</a>.'; ?>

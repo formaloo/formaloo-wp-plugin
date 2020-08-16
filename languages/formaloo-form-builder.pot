@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Formaloo Form Builder\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-16 04:44+0000\n"
+"POT-Creation-Date: 2020-08-16 06:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -161,6 +161,10 @@ msgstr ""
 
 #: formaloo.php:665
 msgid "Create a form"
+msgstr ""
+
+#: formaloo.php:730
+msgid "Make sure you have a Formaloo account first, it's free! 👍"
 msgstr ""
 
 #: formaloo.php:731
