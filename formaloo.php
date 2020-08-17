@@ -2,11 +2,10 @@
 /**
  * Plugin Name:       Formaloo Form Builder
  * Description:       Easily embed Formaloo forms into your blog or WP pages.
- * Version:           1.7.1.3
+ * Version:           1.7.1.4
  * Author:            Formaloo team
  * Author URI:        https://formaloo.net/
  * Text Domain:       formaloo-form-builder
- * Domain Path:       /languages
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  */
@@ -16,7 +15,7 @@
  * Plugin constants
  */
 if(!defined('FORMALOO_PLUGIN_VERSION'))
-	define('FORMALOO_PLUGIN_VERSION', '1.7.1.3');
+	define('FORMALOO_PLUGIN_VERSION', '1.7.1.4');
 if(!defined('FORMALOO_URL'))
 	define('FORMALOO_URL', plugin_dir_url( __FILE__ ));
 if(!defined('FORMALOO_PATH'))
@@ -35,10 +34,7 @@ if(!defined('FORMALOO_PROTOCOL'))
 require_once plugin_dir_path( __FILE__ ) . '/blocks/formaloo-block.php';
 
 require_once('gutenberg.php');
-require_once('classic-editor.php');
-
-add_action('plugins_loaded', array('Formaloo_Main_Class', 'loadTextDomain'));
-
+require_once('classicEditor.php');
 
 /*
  * Main class
@@ -96,16 +92,8 @@ class Formaloo_Main_Class {
 
         add_action('admin_notices', array($this, 'formaloo_invalid_token_admin_notice'));
 
-        // add_action('admin_head', array($this,'formaloo_add_mce_button'));
-
     }
     
-
-    public static function loadTextDomain() {
-        load_plugin_textdomain('formaloo-form-builder', false, dirname(plugin_basename(__FILE__ )) . '/languages/');
-        // wp_set_script_translations( 'blocks/formaloo-block/index.js', 'formaloo-form-builder', dirname(plugin_basename(__FILE__ )) . '/languages/' );
-    }
-
     public function formaloo_show_form_shortcode($atts) {
         // extract the attributes into variables
         extract(shortcode_atts(array(
