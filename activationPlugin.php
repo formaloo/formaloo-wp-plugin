@@ -1,104 +1,181 @@
 <?php
 
 /**
- * Get the current time and set it as an option when the plugin is activated.
+ * Plugin review class.
+ * Prompts users to give a review of the plugin on WordPress.org after a period of usage.
  *
- * @return null
- */
-function formaloo_set_activation() {
-
-	/* Create transient data */
-	// set_transient( 'formaloo_admin_notice_activation', true, 5 );
-
-	$now = strtotime( "now" );
-	add_option( 'formaloo_activation_date', $now );
-
-}
-register_activation_hook( __FILE__, 'formaloo_set_activation' );
-
-/* Add admin notice */
-// add_action( 'admin_notices', 'formaloo_admin_notice_activation_notice' );
-
-/**
- * Check date on admin initiation and add to admin notice if it was over 10 days ago.
+ * Heavily based on code by Rhys Wynne
+ * https://winwar.co.uk/2014/10/ask-wordpress-plugin-reviews-week/
  *
- * @return null
+ * @version 1.0
+ * @copyright Copyright (c), Ryan Hellyer
+ * @author Ryan Hellyer <ryanhellyer@gmail.com>
  */
-function formaloo_check_installation_date() {
+if ( ! class_exists( 'DotOrg_Plugin_Review' ) ) :
+class DotOrg_Plugin_Review {
 
-	// Added Lines Start
-	$nobug = "";
-	$nobug = get_option('formaloo_no_bug');
+	/**
+	 * Private variables.
+	 *
+	 * These should be customised for each project.
+	 */
+	private $slug; // The plugin slug
+	private $name;  // The plugin name
+	private $time_limit; // The time limit at which notice is shown
 
-	if (!$nobug) {
+	/**
+	 * Variables.
+	 */
+	public $nobug_option;
 
-		$install_date = get_option( 'formaloo_activation_date' );
-		$past_date    = strtotime( '+7 days' );
+	/**
+	 * Fire the constructor up :)
+	 */
+	public function __construct( $args ) {
 
-		if ( $past_date >= $install_date ) {
+		$this->slug = $args['slug'];
+		$this->name = $args['name'];
+		if ( isset( $args['time_limit'] ) ) {
+			$this->time_limit  = $args['time_limit'];
+		} else {
+			$this->time_limit = WEEK_IN_SECONDS;
+		}
 
-			add_action( 'admin_notices', 'formaloo_display_admin_notice' );
+		$this->nobug_option = $this->slug . '-no-bug';
+
+		// Loading main functionality.
+		add_action( 'admin_init', array( $this, 'check_installation_date' ) );
+		add_action( 'admin_init', array( $this, 'set_no_bug' ), 5 );
+	}
+
+	/**
+	 * Seconds to words.
+	 */
+	public function seconds_to_words( $seconds ) {
+
+		// Get the years.
+		$years = ( intval( $seconds ) / YEAR_IN_SECONDS ) % 100;
+		if ( $years > 1 ) {
+			return sprintf( __( '%s years', $this->slug ), $years );
+		} elseif ( $years > 0) {
+			return __( 'a year', $this->slug );
+		}
+
+		// Get the weeks.
+		$weeks = ( intval( $seconds ) / WEEK_IN_SECONDS ) % 52;
+		if ( $weeks > 1 ) {
+			return sprintf( __( '%s weeks', $this->slug ), $weeks );
+		} elseif ( $weeks > 0) {
+			return __( 'a week', $this->slug );
+		}
+
+		// Get the days.
+		$days = ( intval( $seconds ) / DAY_IN_SECONDS ) % 7;
+		if ( $days > 1 ) {
+			return sprintf( __( '%s days', $this->slug ), $days );
+		} elseif ( $days > 0) {
+			return __( 'a day', $this->slug );
+		}
+
+		// Get the hours.
+		$hours = ( intval( $seconds ) / HOUR_IN_SECONDS ) % 24;
+		if ( $hours > 1 ) {
+			return sprintf( __( '%s hours', $this->slug ), $hours );
+		} elseif ( $hours > 0) {
+			return __( 'an hour', $this->slug );
+		}
+
+		// Get the minutes.
+		$minutes = ( intval( $seconds ) / MINUTE_IN_SECONDS ) % 60;
+		if ( $minutes > 1 ) {
+			return sprintf( __( '%s minutes', $this->slug ), $minutes );
+		} elseif ( $minutes > 0) {
+			return __( 'a minute', $this->slug );
+		}
+
+		// Get the seconds.
+		$seconds = intval( $seconds ) % 60;
+		if ( $seconds > 1 ) {
+			return sprintf( __( '%s seconds', $this->slug ), $seconds );
+		} elseif ( $seconds > 0) {
+			return __( 'a second', $this->slug );
+		}
+
+		return;
+	}
+
+	/**
+	 * Check date on admin initiation and add to admin notice if it was more than the time limit.
+	 */
+	public function check_installation_date() {
+
+		if ( true != get_site_option( $this->nobug_option ) ) {
+
+			// If not installation date set, then add it.
+			$install_date = get_site_option( $this->slug . '-activation-date' );
+			if ( '' == $install_date ) {
+				add_site_option( $this->slug . '-activation-date', time() );
+			}
+
+			// If difference between install date and now is greater than time limit, then display notice.
+			if ( ( time() - $install_date ) >  $this->time_limit  ) {
+				add_action( 'admin_notices', array( $this, 'display_admin_notice' ) );
+			}
 
 		}
 
 	}
-}
-add_action( 'admin_init', 'formaloo_check_installation_date' );
 
+	/**
+	 * Display Admin Notice, asking for a review.
+	 */
+	public function display_admin_notice() {
 
-/**
- * Display Admin Notice, asking for a review
- *
- * @return null
- */
-function formaloo_display_admin_notice() {
+		$screen = get_current_screen(); 
+		if ( isset( $screen->base ) && 'plugins' == $screen->base ) {
 
-	$reviewurl = 'https://wordpress.org/plugins/formaloo-form-builder/#reviews';
+			$no_bug_url = wp_nonce_url( admin_url( '?' . $this->nobug_option . '=true' ), 'review-nonce' );
+			$time = $this->seconds_to_words( time() - get_site_option( $this->slug . '-activation-date' ) );
 
-	$nobugurl = get_admin_url() . '?formaloonobug=1';
+			echo '
+			<div class="updated">
+				<p>' . sprintf( __( 'You have been using the %s plugin for %s now, do you like it? If so, please leave us a review with your feedback!', 'spam-destroyer' ), $this->name, $time ) . '
+					<br /><br />
+					<a onclick="location.href=\'' . esc_url( $no_bug_url ) . '\';" class="button button-primary" href="' . esc_url( 'https://wordpress.org/support/view/plugin-reviews/' . $this->slug . '#postform' ) . '" target="_blank">' . __( 'Leave A Review', 'spam-destroyer' ) . '</a>
+					   
+					<a href="' . esc_url( $no_bug_url ) . '">' . __( 'No thanks.', 'spam-destroyer' ) . '</a>
+				</p>
+			</div>';
 
-	echo '<div class="updated"><p>';
-	printf( __( "You have been using our plugin for a week now, do you like it? If so, please leave us a review with your feedback! <br /><br /> <a href='%s' target='_blank'>Leave A Review</a>/<a href='%s'>Leave Me Alone</a>" ), $reviewurl, $nobugurl );
-	echo "</p></div>";
-}
-
-
-/**
- * Set the plugin to no longer bug users if user asks not to be.
- *
- * @return null
- */
-function formaloo_set_no_bug() {
-
-	$nobug = "";
-
-	if ( isset( $_GET['formaloonobug'] ) ) {
-		$nobug = esc_attr( $_GET['formaloonobug'] );
-	}
-
-	if ( 1 == $nobug ) {
-
-		add_option( 'formaloo_no_bug', TRUE );
+		}
 
 	}
 
-} add_action( 'admin_init', 'formaloo_set_no_bug', 5 );
+	/**
+	 * Set the plugin to no longer bug users if user asks not to be.
+	 */
+	public function set_no_bug() {
 
+		// Bail out if not on correct page.
+		if (
+			! isset( $_GET['_wpnonce'] )
+			||
+			(
+				! wp_verify_nonce( $_GET['_wpnonce'], 'review-nonce' )
+				||
+				! is_admin()
+				||
+				! isset( $_GET[$this->nobug_option] )
+				||
+				! current_user_can( 'manage_options' )
+			)
+		) {
+			return;
+		}
 
-/**
- * Admin Notice on Activation.
- * @since 0.1.0
- */
-function formaloo_admin_notice_activation_notice(){
+		add_site_option( $this->nobug_option, true );
 
-	/* Check transient, if available display notice */
-	if( get_transient( 'formaloo_admin_notice_activation' ) ){
-			?>
-			<div class="updated notice is-dismissible">
-			<p><?php echo __('Thank you for using the Formaloo plugin!', 'formaloo-form-builder') ?> <a href="<?php echo admin_url( "admin.php?page=formaloo-settings-page" ) ?>"><strong><?php echo __('Get Started by visiting the Settings Page', 'formaloo-form-builder') ?></strong></a>.</p>
-			</div>
-			<?php
-			/* Delete transient, only display this notice once. */
-			delete_transient( 'formaloo_admin_notice_activation' );
 	}
+
 }
+endif;
