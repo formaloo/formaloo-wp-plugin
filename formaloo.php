@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Formaloo Form Builder
  * Description:       Easily embed Formaloo forms into your blog or WP pages.
- * Version:           1.7.1.4
+ * Version:           1.7.1.5
  * Author:            Formaloo team
  * Author URI:        https://formaloo.net/
  * Text Domain:       formaloo-form-builder
@@ -15,7 +15,7 @@
  * Plugin constants
  */
 if(!defined('FORMALOO_PLUGIN_VERSION'))
-	define('FORMALOO_PLUGIN_VERSION', '1.7.1.4');
+	define('FORMALOO_PLUGIN_VERSION', '1.7.1.5');
 if(!defined('FORMALOO_URL'))
 	define('FORMALOO_URL', plugin_dir_url( __FILE__ ));
 if(!defined('FORMALOO_PATH'))
@@ -1894,8 +1894,7 @@ require_once('listTable.php');
 require_once('resultsTable.php');
 
 /* Register activation hook. */
-register_activation_hook( __FILE__, 'formaloo_admin_notice_activation_hook' );
-require_once('showActivationNotice.php');
+require_once('activationPlugin.php');
 
 /*
  * Starts our plugin class, easy!

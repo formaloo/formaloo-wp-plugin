@@ -16,7 +16,7 @@
 | ------------- |:-------------:|
 | Requires at least | 4.6 |
 | Tested up to | 5.5.0 |
-| Stable tag | 1.7.1.4 |
+| Stable tag | 1.7.1.5 |
 | Requires PHP | 5.2 |
 
 **Contributors:** Formaloo, idearun
@@ -206,6 +206,6 @@ See our <a href="https://api.formaloo.net/docs">API documentation</a> for more i
 - **Added:** German and French Language Support
 - Minor bug fixes and improvements
 
-### 1.7.1.4
+### 1.7.1.5
 - Fix Language Issues
 - Minor bug fixes and improvements
