@@ -179,3 +179,9 @@ class DotOrg_Plugin_Review {
 
 }
 endif;
+
+new DotOrg_Plugin_Review( array(
+	'slug'        => 'formaloo-form-builder',  // The plugin slug
+	'name'        => 'Form Builder by Formaloo', // The plugin name
+	'time_limit'  => WEEK_IN_SECONDS,     // The time limit at which notice is shown
+) );
