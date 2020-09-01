@@ -11,8 +11,8 @@
  * @copyright Copyright (c), Ryan Hellyer
  * @author Ryan Hellyer <ryanhellyer@gmail.com>
  */
-if ( ! class_exists( 'DotOrg_Plugin_Review' ) ) :
-class DotOrg_Plugin_Review {
+if ( ! class_exists( 'Formaloo_Plugin_Review' ) ) :
+class Formaloo_Plugin_Review {
 
 	/**
 	 * Private variables.
@@ -115,6 +115,7 @@ class DotOrg_Plugin_Review {
 			$install_date = get_site_option( $this->slug . '-activation-date' );
 			if ( '' == $install_date ) {
 				add_site_option( $this->slug . '-activation-date', time() );
+				$install_date = get_site_option( $this->slug . '-activation-date' );
 			}
 
 			// If difference between install date and now is greater than time limit, then display notice.
@@ -179,9 +180,3 @@ class DotOrg_Plugin_Review {
 
 }
 endif;
-
-new DotOrg_Plugin_Review( array(
-	'slug'        => 'formaloo-form-builder',  // The plugin slug
-	'name'        => 'Form Builder by Formaloo', // The plugin name
-	'time_limit'  => WEEK_IN_SECONDS,     // The time limit at which notice is shown
-) );

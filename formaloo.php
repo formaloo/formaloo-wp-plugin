@@ -35,7 +35,6 @@ require_once plugin_dir_path( __FILE__ ) . '/blocks/formaloo-block.php';
 
 require_once('gutenberg.php');
 require_once('classicEditor.php');
-require_once('activationPlugin.php');
 
 /*
  * Main class
@@ -1897,6 +1896,15 @@ require_once('resultsTable.php');
 /* Register activation hook. */
 register_activation_hook( __FILE__, 'formaloo_admin_notice_activation_hook' );
 require_once('showActivationNotice.php');
+
+require_once('activationPlugin.php');
+
+new Formaloo_Plugin_Review( array(
+	'slug'        => 'formaloo-form-builder',  // The plugin slug
+	'name'        => 'Form Builder by Formaloo', // The plugin name
+	'time_limit'  => WEEK_IN_SECONDS,     // The time limit at which notice is shown
+) );
+
 /*
  * Starts our plugin class, easy!
  */
