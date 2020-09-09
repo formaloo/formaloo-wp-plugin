@@ -85,6 +85,8 @@ class Formaloo_Main_Class {
         add_action('wp_ajax_store_admin_data',  array($this,'storeAdminData'));
         add_action('wp_ajax_get_formaloo_shortcode',  array($this,'getFormalooShortcode'));
         add_action('admin_enqueue_scripts',     array($this,'addAdminScripts'));
+        add_action('wp_print_scripts', array($this,'formalooClipboadPrintScripts'));
+
 
         add_shortcode('formaloo', array($this, 'formaloo_show_form_shortcode'));
 
@@ -321,7 +323,42 @@ class Formaloo_Main_Class {
 
 		die();
 
-	}
+    }
+
+    // inline scripts WP >= 4.5
+    function formalooClipboardInlineScript() {
+        
+        $wp_version = get_bloginfo('version');
+        
+        if (version_compare($wp_version, '4.5', '>=')) {
+            
+            wp_add_inline_script( 'clipboard', 'new ClipboardJS(".formaloo_clipboard_btn");' );
+            wp_add_inline_script( 'clipboard', 'new ClipboardJS(".formaloo_widget_clipboard_btn");' );     
+            
+        }
+        
+    }
+
+
+    // inline scripts WP < 4.5
+    function formalooClipboadPrintScripts() { 
+        
+        $wp_version = get_bloginfo('version');
+        
+        if (version_compare($wp_version, '4.5', '<')) {
+            
+            ?>
+            
+            <script>
+                new ClipboardJS(".formaloo_clipboard_btn");
+                new ClipboardJS(".formaloo_widget_clipboard_btn");
+            </script>
+            
+            <?php
+            
+        }
+        
+    }
 
 	/**
 	 * Adds Admin Scripts for the Ajax call
@@ -334,8 +371,8 @@ class Formaloo_Main_Class {
         wp_enqueue_script('thickbox');
 
         wp_enqueue_script( 'clipboard');
-        wp_add_inline_script( 'clipboard', 'new ClipboardJS(".formaloo_clipboard_btn");' );
-        wp_add_inline_script( 'clipboard', 'new ClipboardJS(".formaloo_widget_clipboard_btn");' );     
+        
+        $this->formalooClipboardInlineScript();
 
 	    wp_enqueue_style('formaloo-admin', FORMALOO_URL. 'assets/css/admin.css', false, FORMALOO_PLUGIN_VERSION);
         wp_enqueue_script('formaloo-admin', FORMALOO_URL. 'assets/js/admin.js', array('wp-color-picker'), FORMALOO_PLUGIN_VERSION);
