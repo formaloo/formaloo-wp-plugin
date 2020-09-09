@@ -80,11 +80,11 @@ class Formaloo_Main_Class {
 	 */
 	public function __construct() {
         // Admin page calls
-
         add_action('admin_menu',                array($this,'addAdminMenu'));
         add_action('wp_ajax_store_admin_data',  array($this,'storeAdminData'));
         add_action('wp_ajax_get_formaloo_shortcode',  array($this,'getFormalooShortcode'));
         add_action('admin_enqueue_scripts',     array($this,'addAdminScripts'));
+
         add_action('wp_print_scripts', array($this,'formalooClipboadPrintScripts'));
 
 
@@ -338,7 +338,6 @@ class Formaloo_Main_Class {
         }
         
     }
-
 
     // inline scripts WP < 4.5
     function formalooClipboadPrintScripts() { 
