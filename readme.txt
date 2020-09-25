@@ -1,9 +1,9 @@
 === Form Builder by Formaloo - Drag & Drop Form Builder for WordPress ===
 Contributors: Formaloo, idearun
-Tags: contact form, contact form plugin, forms, form builder, custom form, contact button, contact me, custom contact form, form manager, form, forms builder, forms creator, captcha, recaptcha, email form, web form, feedback form, payment form, survey form, donation form, email submit form, message form, mailchimp, mailchimp form, paypal, paypal form, stripe, stripe form, email subscription, contact form widget, user registration form, wordpress registration, wordpress login form, feedback
+Tags: contact form, contact form plugin, forms, form builder, custom form, contact button, contact me, custom contact form, form manager, form, forms builder, forms creator, captcha, recaptcha, email form, web form, feedback form, payment form, survey form, donation form, email submit form, message form, mailchimp, mailchimp form, paypal, paypal form, stripe, stripe form, email subscription, contact form widget, user registration form, WordPress registration, WordPress login form, feedback
 Requires at least: 4.6
-Tested up to: 5.5.0
-Stable tag: 1.7.1.5
+Tested up to: 5.5.1
+Stable tag: 1.7.1.6
 Requires PHP: 5.2
 License: GNU General Public License v2.0 or later
 
@@ -15,7 +15,7 @@ Expect much more from your forms: The best WordPress SmartForm builder plugin. D
 
 "Smart forms made simple: The smart & visual way to understand your customers"
 
-First, you don’t need to code. Second, you have the free cloud storage you need! And third, it’s completely FREE!. It’s fully responsive and can be used on any website, web service and mobile apps as well.
+First, you don’t need to code. Second, you have the free cloud storage you need! And third, it’s completely FREE!. It’s fully responsive and can be used on any website, web service, and mobile apps as well.
 
 Our fully automatic, all‑in‑one Data Collection & Analysis Platform has the tools you need to grow—no coding or design skills required. Drive loyalty and growth at every stage of your customer lifecycle with Formaloo. Formaloo is the Forms & CRM for the next generations: No hassle, no fuss. Free, super Smart & ridiculously simple.
 
@@ -25,7 +25,7 @@ Don’t worry about anything! You won’t exceed anything in Formaloo. Just set 
 
 = Pre-built Form Templates =
 
-Building any forms in WordPress can be hard, but with Formaloo, you can create any from from 100+ templates with just one click!
+Building any forms in WordPress can be hard, but with Formaloo, you can create any form from 100+ templates with just one click!
 
 = Mobile Ready, SEO Friendly and Optimized for Speed =
 
@@ -47,13 +47,14 @@ Start accepting online payments with Formaloo and get instant reports.
 
 You can use Formaloo to create a payment form, donation form, registration form, online booking form, and more.
 
-= GDPR & HIPAA Compliance =
+= Help You Meet GDPR & HIPAA Compliance Requirements =
 
-Your forms will be autmatically GDPR & HIPAA compatible. Don't worry about anything, We've got you back!
+We help you meet GDPR & HIPAA compliance requirements with your forms. Don't worry, We've got you back!
+[Read More](https://en.formaloo.com/gdpr/).
 
 = Further Reading =
 
-For more info on building smart forms using Formaloo plugin, check out the following:
+For more info on building smart forms using the Formaloo plugin, check out the following:
 
 * [The Persian Review by HamyarWP](https://hamyarwp.com/formaloo/).
 
@@ -68,7 +69,7 @@ For more info on building smart forms using Formaloo plugin, check out the follo
 1. Formaloo Drag & Drop Online Form Builder
 2. Add your forms in posts, pages and even in HTML templates
 3. See your results instantly in your own website
-4. Use your forms anywhere with Wordpress's Shortcode, in Gutenberg or classic wordpress editor
+4. Use your forms anywhere with WordPress's Shortcode, in Gutenberg or classic WordPress editor
 5. Preview and use our 100+ free templates
 6. Create and edit feedback widgets and put it on your website
 7. Download your form results as an Excel Sheet quickly from the forms page
@@ -108,7 +109,7 @@ To see a full list, visit our <a href="https://formaloo.net" rel="friend">websit
 
 = Which Form Fields Does Formaloo support? =
 
-Formaloo is super flexibe and it's designed to be both simple and powerful.
+Formaloo is super flexible and it's designed to be both simple and powerful.
 
 Formlaoo supports all of these fields:
 
@@ -124,7 +125,7 @@ Formlaoo supports all of these fields:
 * Address Field
 * Date / Time Field
 * File Upload - Great for File Upload Form
-* Page Break Field - Great for Multi Page Contact Form with Progress Bar.
+* Page Break Field - Great for Multi-Page Contact Form with Progress Bar.
 * Section Divider - Great for Long Contact Forms
 * Star Rating - Great for Survey Forms and Polls
 * Net Promoter Score (NPS Field) - Great for Professional Feedbacks
@@ -136,13 +137,13 @@ Yes, Formaloo is the most flexible form builder that offers payment options. You
 
 = Can I export my forms & submits? =
 
-Yes, you can export each of your form anytime you want with one click! It gives you all of your data at one place.
+Yes, you can export each of your forms anytime you want with one click! It gives you all of your data in one place.
 
 New: You can now sync your data with your Google Drive! You can connect your forms to your own Google Drive and edit it in your Google Sheet. This option is very popular for sharing the results with your team.
 
-= Can I integrate Formaloo with my CRM, e-commerce software, Email Marketing Service or Analytics tools?  =
+= Can I integrate Formaloo with my CRM, e-commerce software, Email Marketing Service, or Analytics tools?  =
 
-Yes, Formaloo supoort 50+ most popular tools such as Mailchimp, Google tag manager & Analytics, Microsoft Dynamics, WooCommerce, etc. and with Formaloo API & samples, you can add your own integrations very easily.
+Yes, Formaloo supports 50+ most popular tools such as Mailchimp, Google tag manager & Analytics, Microsoft Dynamics, WooCommerce, etc. and with Formaloo API & samples, you can add your own integrations very easily.
 
 See our <a href="https://api.formaloo.net/docs">API documentation</a> for more information.
 
@@ -168,6 +169,6 @@ See our <a href="https://api.formaloo.net/docs">API documentation</a> for more i
 - Added: German and French Language Support
 - Minor bug fixes and improvements
 
-= 1.7.1.5 =
+= 1.7.1.6 =
 - Fix Language Issues
 - Minor bug fixes and improvements
