@@ -3,7 +3,7 @@ Contributors: Formaloo, idearun
 Tags: contact form, contact form plugin, forms, form builder, custom form, contact button, contact me, custom contact form, form manager, form, forms builder, forms creator, captcha, recaptcha, email form, web form, feedback form, payment form, survey form, donation form, email submit form, message form, mailchimp, mailchimp form, paypal, paypal form, stripe, stripe form, email subscription, contact form widget, user registration form, WordPress registration, WordPress login form, feedback
 Requires at least: 4.6
 Tested up to: 5.5.1
-Stable tag: 1.7.1.6
+Stable tag: 1.7.1.7
 Requires PHP: 5.2
 License: GNU General Public License v2.0 or later
 
@@ -49,8 +49,13 @@ You can use Formaloo to create a payment form, donation form, registration form,
 
 = Help You Meet GDPR & HIPAA Compliance Requirements =
 
-We help you meet GDPR & HIPAA compliance requirements with your forms. Don't worry, We've got you back!
+Formaloo will help you to have technical requirements necessary for becoming GDPR ready & HIPAA compliance (There are a lot more steps to become 100% GDPR ready in your organization, but Formaloo will help you meet technical requirements that is needed for both GDPR & HIPPA guidelines)
 [Read More](https://en.formaloo.com/gdpr/).
+
+= 3x Faster and More Secure =
+
+Formaloo optimized code and integrations will replace messy and bloated old forms. With Formaloo your website will load faster and your forms will be 100% SEO friendly.
+Worry about losing or leaking of your data? We’ve got your back! Formaloo uses distributed, normalized cloud structure with state of the art security to protect you data at the enterprise level.
 
 = Further Reading =
 
@@ -149,17 +154,8 @@ See our <a href="https://api.formaloo.net/docs">API documentation</a> for more i
 
 == Changelog ==
 
-= 1.1.0.4 =
-- Added: Export & Sync your forms with your own Google Drive (Google Sheet)
-- Added: Multi-langugage support added
-- Added: RTL langugages support added
-- Fixed: Loadtime increased by 300% 
-- Fixed: Gutenberg compatibility improved
-
-= 1.5.1.2 =
-- Added: Create & Edit Feedback Widgets for your Website
-- Added: Select an existing form of your Formaloo account in the Gutenberg block in addition to pasting any Formaloo form URL
-- Added: Spanish Language Support
+= 1.7.1.7 =
+- Fix Language Issues
 - Minor bug fixes and improvements
 
 = 1.7.1.1 =
@@ -169,6 +165,15 @@ See our <a href="https://api.formaloo.net/docs">API documentation</a> for more i
 - Added: German and French Language Support
 - Minor bug fixes and improvements
 
-= 1.7.1.6 =
-- Fix Language Issues
+= 1.5.1.2 =
+- Added: Create & Edit Feedback Widgets for your Website
+- Added: Select an existing form of your Formaloo account in the Gutenberg block in addition to pasting any Formaloo form URL
+- Added: Spanish Language Support
 - Minor bug fixes and improvements
+
+= 1.1.0.4 =
+- Added: Export & Sync your forms with your own Google Drive (Google Sheet)
+- Added: Multi-langugage support added
+- Added: RTL langugages support added
+- Fixed: Loadtime increased by 300% 
+- Fixed: Gutenberg compatibility improved
