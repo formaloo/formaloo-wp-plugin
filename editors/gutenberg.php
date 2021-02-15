@@ -1,5 +1,9 @@
 <?php 
 
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly
+}
+
 function formaloo_gutenberg_block_callback($attr) {
     
   if ($attr['show_form_selector']) {

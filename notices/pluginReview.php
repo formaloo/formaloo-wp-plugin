@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Plugin review class.
  * Prompts users to give a review of the plugin on WordPress.org after a period of usage.
@@ -11,6 +10,11 @@
  * @copyright Copyright (c), Ryan Hellyer
  * @author Ryan Hellyer <ryanhellyer@gmail.com>
  */
+
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly
+}
+
 if ( ! class_exists( 'Formaloo_Plugin_Review' ) ) :
 class Formaloo_Plugin_Review {
 

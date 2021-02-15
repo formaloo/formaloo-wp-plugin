@@ -1,10 +1,14 @@
 <?php
-
 /**
  * Functionality related to the admin TinyMCE editor.
  *
  * @since 1.0.0
  */
+
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly
+}
+
 class Formaloo_Admin_Editor {
 
 	/**

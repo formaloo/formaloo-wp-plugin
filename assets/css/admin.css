@@ -124,11 +124,11 @@
 #formaloo-settings-submit-row {
   display: flex;
 }
-#formaloo-feedback-widget-submit-row {
+#formaloo-feedback-widget-submit-row, #formaloo-cashback-submit-row {
   display: flex;
   align-items: center;
 }
-#formaloo-feedback-widget-submit-row .spinner {
+#formaloo-feedback-widget-submit-row .spinner, , #formaloo-cashback-submit-row .spinner {
   margin: 0;
 }
 .formaloo-feedback-wdiget-top-info img {
@@ -154,7 +154,7 @@
   height: 35px;
   object-fit: contain;
 }
-#formaloo-feedback-widget-form .form-group {
+#formaloo-feedback-widget-form .form-group, #formaloo-cashback-form .form-group {
   position: relative;
 }
 #formaloo-feedback-widget-script-textarea {
@@ -166,7 +166,7 @@
 .results-table .formaloo-heading a {
   color: black;
 }
-.formaloo-feedback-widget-notice {
+.formaloo-feedback-widget-notice, .formaloo-cashback-notice {
   margin: 20px 0 !important;
   padding: 10px;
 }
@@ -328,4 +328,32 @@
 }
 #formaloo-feedback-widget-submit-row .submit {
   padding: 0;
+}
+/* Cashback Page */
+.formaloo-cashback-top-info img {
+  width: 400px;
+  padding: 20px 0;
+}
+.formaloo-cashback-top-info {
+  /* padding-left: 10px; */
+}
+.formaloo-cashback-table {
+  width: 100%;
+}
+.formaloo-cashback-table tbody {
+  display: grid;
+}
+.formaloo-cashback-table td {
+  white-space: nowrap;
+}
+.formaloo-cashback-table td:last-child {
+  width:100%;
+}
+.formaloo-woocommerce-connect-button {
+  color: white !important;
+  border-color: #96588a !important;
+  background: #96588a !important;
+}
+.formaloo-caption-text {
+  color: gray;
 }

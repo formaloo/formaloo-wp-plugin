@@ -2,6 +2,11 @@
 /**
  * Create a new table class that will extend the WP_List_Table
  */
+
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly
+}
+
 class Formaloo_Forms_List_Table extends WP_List_Table {
 
     private $formData = array();

@@ -15,8 +15,8 @@
 | Requirement        | Version          
 | ------------- |:-------------:|
 | Requires at least | 4.6 |
-| Tested up to | 5.5.1 |
-| Stable tag | 1.7.1.7 |
+| Tested up to | 5.6.1 |
+| Stable tag | 2.0.0.0 |
 | Requires PHP | 5.2 |
 
 **Contributors:** Formaloo, idearun

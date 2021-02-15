@@ -1,9 +1,13 @@
 <?php
-
 /**
  * Runs only when the plugin is activated.
  * @since 0.1.0
  */
+
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly
+}
+
 function formaloo_admin_notice_activation_hook() {
 
     /* Create transient data */
