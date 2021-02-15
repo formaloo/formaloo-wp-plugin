@@ -51,6 +51,7 @@ require_once('pages/cashbackPage.php');
 require_once('pages/settingsPage.php');
 
 require_once('woocommerce/customers.php');
+require_once('woocommerce/orders.php');
 
 // WP_List_Table is not loaded automatically so we need to load it in our application
 if( ! class_exists( 'WP_List_Table' ) ) {
@@ -468,8 +469,8 @@ class Formaloo_Main_Class {
         if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
             add_submenu_page(
                 'formaloo',
-                __( 'Cashback for WooCommerce', 'formaloo-form-builder' ),
-                __( 'Cashback for WooCommerce', 'formaloo-form-builder' ),
+                __( 'Cashback for WooCommerce (New)', 'formaloo-form-builder' ),
+                __( 'Cashback for WooCommerce (New)', 'formaloo-form-builder' ),
                 'manage_options',
                 'formaloo-cashback-page',
                 array(new Formaloo_Cashback_Page(), 'cashbackPage')

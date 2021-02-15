@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-class WC_Customers extends Formaloo_Cashback_Page {
+class Formaloo_WC_Customers extends Formaloo_Cashback_Page {
 
 	/**
 	 * Get all customers
@@ -222,24 +222,7 @@ class WC_Customers extends Formaloo_Cashback_Page {
 
 		return $query;
 	}
-
-	/**
-	 * Modify the WP_User_Query to support filtering on the date the customer was created
-	 *
-	 * @since 2.1
-	 * @param WP_User_Query $query
-	 */
-	public function modify_user_query( $query ) {
-
-		if ( $this->created_at_min ) {
-			$query->query_where .= sprintf( " AND user_registered >= STR_TO_DATE( '%s', '%%Y-%%m-%%d %%H:%%i:%%s' )", esc_sql( $this->created_at_min ) );
-		}
-
-		if ( $this->created_at_max ) {
-			$query->query_where .= sprintf( " AND user_registered <= STR_TO_DATE( '%s', '%%Y-%%m-%%d %%H:%%i:%%s' )", esc_sql( $this->created_at_max ) );
-		}
-	}
-
+	
 	/**
 	 * Wrapper for @see get_avatar() which doesn't simply return
 	 * the URL so we need to pluck it from the HTML img tag

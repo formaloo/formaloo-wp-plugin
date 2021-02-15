@@ -88,9 +88,9 @@
                             <tbody id="formaloo-woocommerce-connected">
                                 <tr>
                                     <td>
-                                        <p>
+                                        <h4>
                                             <?php _e( 'Choose Your Cashback Range:', 'formaloo-form-builder' ); ?>
-                                        </p>
+                                        </h4>
                                     </td>
                                 </tr>
                                 <tr>
@@ -134,6 +134,13 @@
                                             <input type="submit" name="submit" id="submit" class="button button-primary" value="<?php _e( 'Calculate', 'formaloo-form-builder' ); ?>">
                                         </p>    
                                     </td>
+                                    <!--
+                                    <td>
+                                        <p class="submit">
+                                            <a class="button"><?php //_e( 'Sync', 'formaloo-form-builder' ); ?></a>
+                                        </p>
+                                    </td>
+                                    -->
                                     <td>
                                         <a href="#" target="_blank"><?php _e( 'How we calculate cashback?', 'formaloo-form-builder' ); ?></a>
                                     </td>
@@ -142,9 +149,21 @@
                             </tbody>
 
                             <?php
-                                $wc = new WC_Customers();
-                                $custoemrs = $wc->get_customers();
-                                print_r($custoemrs);
+                                $wc_customers = new Formaloo_WC_Customers();
+                                $customers = $wc_customers->get_customers();
+                                $customers_json = json_encode($customers, JSON_PRETTY_PRINT);
+                                print_r($customers_json);
+                                echo '<br/>';
+                                print_r("----------");
+                                echo '<br/>';
+                                $query = new WC_Order_Query( array(
+                                    'limit' => 10,
+                                    'orderby' => 'date',
+                                    'order' => 'DESC',
+                                    'return' => 'ids',
+                                ) );
+                                $orders = $query->get_orders();
+                                print_r($orders)
                             ?>
 
                         </table>

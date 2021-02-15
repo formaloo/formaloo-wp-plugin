@@ -357,3 +357,9 @@
 .formaloo-caption-text {
   color: gray;
 }
+#formaloo-cashback-submit-row .submit {
+  padding: 0;
+}
+#formaloo-woocommerce-connected h4 {
+  margin: 0;
+}
