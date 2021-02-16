@@ -73,11 +73,12 @@ jQuery(document).ready(function() {
                 'Authorization': 'Token ' + formaloo_exchanger.api_token
             },
             success: function(result) {
+                console.log(result);
                 if (result['data']['form']['async_export']) {
                     jQuery('.formaloo-excel-export-notice').remove();
                     jQuery('#my-forms-header').append("<div class='notice notice-info is-dismissible formaloo-excel-export-notice'> <p>" + formaloo_exchanger.async_excel_export_message + "</p> </div>");
                 } else {
-                    window.open(result['data']['form']['excel_file'], "_self");
+                    window.open(formaloo_exchanger.protocol + '://' + formaloo_exchanger.endpoint_url + result['data']['form']['excel_file'], "_self");
                 }
                 jQuery('.spinner').remove();
             },

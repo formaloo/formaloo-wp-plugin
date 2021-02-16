@@ -532,7 +532,7 @@ class Formaloo_Main_Class {
         
         $data = array();
         
-        $api_url = FORMALOO_PROTOCOL. '://api.'. FORMALOO_ENDPOINT .'/v1/forms/list/?page='. $pageNum;
+        $api_url = FORMALOO_PROTOCOL. '://api.'. FORMALOO_ENDPOINT .'/v2/forms/list/?page='. $pageNum;
 
         $response = wp_remote_get( $api_url ,
         array( 'timeout' => 10,

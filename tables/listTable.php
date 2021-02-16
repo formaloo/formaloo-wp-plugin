@@ -100,12 +100,6 @@ class Formaloo_Forms_List_Table extends WP_List_Table {
         
         foreach($data['data']['forms'] as $form) {
             
-            if (!$form['export_in_progress']) {
-                $excel = 'test';
-            } else {
-                
-            }
-
             if ($form['last_export_file'] == NULL) {
                 if ($form['export_in_progress']) {
                     $excel = '<button class="button formaloo-get-excel-link" disabled> <span class="dashicons dashicons-download"></span> '. __('Exporting..', 'formaloo-form-builder') .' </button>';
@@ -115,10 +109,12 @@ class Formaloo_Forms_List_Table extends WP_List_Table {
                 
             } else {
                 $date = date_create($form['last_export_time']);
+                $excel_url = FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT . $form['last_export_file'];
+
                 if ($form['export_in_progress']) {
-                    $excel = '<div class="formaloo-get-excel-wrapper"><button class="button formaloo-get-excel-link" disabled> <span class="dashicons dashicons-download"></span> '. __('Exporting..', 'formaloo-form-builder') .' </button><a href="'. $form['last_export_file'] .'"><p><span>'. __('Download', 'formaloo-form-builder') . '</span>' . ' ' . __('Last Export', 'formaloo-form-builder') .' ('. date_format($date,"Y/m/d") .')</p></a></div>';
+                    $excel = '<div class="formaloo-get-excel-wrapper"><button class="button formaloo-get-excel-link" disabled> <span class="dashicons dashicons-download"></span> '. __('Exporting..', 'formaloo-form-builder') .' </button><a href="'. $excel_url .'"><p><span>'. __('Download', 'formaloo-form-builder') . '</span>' . ' ' . __('Last Export', 'formaloo-form-builder') .' ('. date_format($date,"Y/m/d") .')</p></a></div>';
                 } else {
-                    $excel = '<div class="formaloo-get-excel-wrapper"><div class="formaloo-get-excel-button-wrapper"><button class="button formaloo-get-excel-link" data-form-slug="'. $form['slug'] .'"> <span class="dashicons dashicons-download"></span> '. __('Download', 'formaloo-form-builder') .' </button></div><a href="'. $form['last_export_file'] .'"><p><span>'. __('Download', 'formaloo-form-builder') . '</span>' .  ' ' . __('Last Export', 'formaloo-form-builder') .' ('. date_format($date,"Y/m/d") .')</p></a></div>';
+                    $excel = '<div class="formaloo-get-excel-wrapper"><div class="formaloo-get-excel-button-wrapper"><button class="button formaloo-get-excel-link" data-form-slug="'. $form['slug'] .'"> <span class="dashicons dashicons-download"></span> '. __('Download', 'formaloo-form-builder') .' </button></div><a href="'. $excel_url .'"><p><span>'. __('Download', 'formaloo-form-builder') . '</span>' .  ' ' . __('Last Export', 'formaloo-form-builder') .' ('. date_format($date,"Y/m/d") .')</p></a></div>';
                 }
                 
             }
@@ -134,6 +130,7 @@ class Formaloo_Forms_List_Table extends WP_List_Table {
                 'more'         => '<div class="formaloo-column-more-wrapper"><a href="'. FORMALOO_PROTOCOL .'://'. FORMALOO_ENDPOINT .'/dashboard/my-forms/'. $form['slug'] .'/edit" target="_blank" class="button formaloo-edit-link"><span class="dashicons dashicons-edit"></span></a> <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT . '/dashboard/my-forms/' . $form['slug'] . '/share" target="_blank" class="button formaloo-edit-link"><span class="dashicons dashicons-share"></span></a></div>',
                 'type'         => $form['form_type'],
             );
+
             $index++;
         }
 
@@ -151,7 +148,6 @@ class Formaloo_Forms_List_Table extends WP_List_Table {
     public function column_default( $item, $column_name )
     {
         switch( $column_name ) {
-            // case 'cb':
             case 'title':
             case 'active':
             case 'submitCount':
@@ -171,7 +167,7 @@ class Formaloo_Forms_List_Table extends WP_List_Table {
      */
     private function sort_data( $a, $b ) {
         // Set defaults
-        $columns = ['title','active','submitCount','excel', 'more'];
+        $columns = ['title','active','submitCount','excel', 'more', 'none'];
         $orders = ['asc', 'desc'];
 
         $orderBy = $columns[0];
@@ -195,7 +191,7 @@ class Formaloo_Forms_List_Table extends WP_List_Table {
             $order = $orders[0];
         }
 
-        $result = strnatcmp( $a[sanitize_text_field( $_GET['orderby'] )], $b[sanitize_text_field( $_GET['orderby'] )] );
+        $result = strnatcmp( $a[sanitize_text_field( $_GET['order'] )], $b[sanitize_text_field( $_GET['order'] )] );
 
         if($order === 'asc')
         {

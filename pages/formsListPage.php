@@ -273,9 +273,15 @@
                                 jQuery(document).ready(function($){
 
                                     var created_from_template = false;
-                                    <?php if (esc_attr($_GET['created_from_template']) == true): ?>
+                                    <?php
+                                        if (!empty($_GET['created_from_template'])):
+                                            if (esc_attr($_GET['created_from_template']) == true):
+                                     ?>
                                         created_from_template = true;
-                                    <?php endif; ?>
+                                    <?php 
+                                            endif;
+                                        endif;
+                                    ?>
 
                                     if (created_from_template == true) {
                                         blink($('table').find('tbody').find('tr:first'), 3, 300, '#FFE7E1');
