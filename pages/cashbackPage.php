@@ -42,7 +42,8 @@
                             </h1>
                         </div>
 
-                        <p class="notice notice-error formaloo-cashback-notice"></p> 
+                        <p class="notice notice-error formaloo-cashback-notice formaloo-cashback-error-notice"></p> 
+                        <p class="notice notice-success formaloo-cashback-notice formaloo-cashback-success-notice is-dismissible"></p> 
 
                         <div class="formaloo-cashback-top-info">
                             <img src="<?php echo FORMALOO_URL ?>assets/images/woo-commerce-cashback.png" alt="formaloo-logo">
@@ -148,24 +149,6 @@
                                 </tr>
                             </tbody>
 
-                            <?php
-                                $wc_customers = new Formaloo_WC_Customers();
-                                $customers = $wc_customers->get_customers();
-                                $customers_json = json_encode($customers, JSON_PRETTY_PRINT);
-                                print_r($customers_json);
-                                echo '<br/>';
-                                print_r("----------");
-                                echo '<br/>';
-                                $query = new WC_Order_Query( array(
-                                    'limit' => 10,
-                                    'orderby' => 'date',
-                                    'order' => 'DESC',
-                                    'return' => 'ids',
-                                ) );
-                                $orders = $query->get_orders();
-                                print_r($orders)
-                            ?>
-
                         </table>
                         
                     </div>
@@ -179,40 +162,155 @@
             <script>
                 jQuery(document).ready(function($){
 
-                    $('.formaloo-cashback-notice').hide();
+                    $('.formaloo-cashback-success-notice').hide();
+                    $('.formaloo-cashback-error-notice').hide();
                     $('#formaloo-woocommerce-not-connected').hide();
                     hideLoadingGif();
 
-                    fetch("https://api.formaloo.com/v1.0/businesses/", {
-                    "method": "GET",
-                    "headers": {
-                        "Accept": "application/json",
-                        "x-api-key": "7b853d4a443f5899c8aff06a674980c27ac488e6",
-                        "Authorization": "Bearer {access-token}"
-                    }
-                    })
-                    .then(response => {
-                    console.log(response);
-                    })
-                    .catch(err => {
-                    console.error(err);
-                    });
+                    // var activeBusiness = '';
+
+                    // $.ajax({
+                    //     url: "https://api.staging.formaloo.com/v1.0/businesses/",
+                    //     type: 'GET',
+                    //     dataType: 'json',
+                    //     headers: {
+                    //         'x-api-key': '9cabf77d58dd1a716dd5f9513db04c73a7ff76c9',
+                    //         'authorization': 'JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Im15YXBwLTAwMSJ9.eyJ0b2tlbiI6ImF1dGgiLCJzaWQiOiIyYzgxOTFiZS1hNzQzLTQ3ZTMtODg0MC01MGE1YmE2NzA0ZTgiLCJ1aWQiOjM0LCJlbWFpbCI6InRhZGVoMTlAZ21haWwuY29tIiwiZmlyc3RfbmFtZSI6IlRhZGVoIiwibGFzdF9uYW1lIjoiQWxleGFuaSIsInBob25lX251bWJlciI6IjA5MzU1MzEyOTUyIiwidXNlcm5hbWUiOiJ0YWRlaDE5QGdtYWlsLmNvbSIsInZlcmlmaWVkX2VtYWlsIjpmYWxzZSwidmVyaWZpZWRfcGhvbmUiOnRydWUsImxhc3RfdXBkYXRlIjoiMjAyMC0wNS0xMlQxODo0NzowNi45MzNaIiwiZ3JvdXBzIjoiIiwiaXNzIjoiaWNhcyIsImF1ZCI6WyJpY2FzIiwiY3JtIiwiZm9ybXoiLCJpbnZvaWNlIiwicHJvamVjdGFudCIsImFjdGlvbnMiXSwiZXhwIjoxNjE2MDU1NjU5LCJpYXQiOjE2MTM0NjM2NTl9.04ZrpgDCEBGfp0No_A5gqk83XlZ3AQqZtYEz1ORtHwZDWYc-FjEggmDB5L3RUh576MHBDouHxU7_MWk48CtK_QPHuv5kucauaD0iLLZYVQubaqCagwYqkdHuZ5uIVAAK8e0FsG9SX6xa5At_rBOw2u95Hd6Cm2MVVwtAl6feiJ02YPXQZkv4_Ms7eAIoGQSGy2LrwF6Sh9KLpFfpy6Pz_2nj5nEAV9iCtNgklmq-DIpP-kFEggTcu_vUXisIhKV1XxTEsxfyTsjPD_YLsINSyvK3lRVb9w_jkMWxSVohJ5HOxHHNKSrAtok-4ruPYnyl7zt7fwWoD9IYEmY7WdnmAw'
+                    //     },
+                    //     contentType: 'application/json; charset=utf-8',
+                    //     success: function (result) {
+                    //         activeBusiness = result['data']['businesss'][0]['slug'];
+                    //     },
+                    //     error: function (error) {
+                    //         disableCashbackTable();
+                    //         var errorText = error['responseJSON']['errors']['general_errors'][0];
+                    //         showGeneralErrors(errorText);
+                    //         hideLoadingGif();
+                    //     }
+                    // });
 
                     $('#formaloo-cashback-form').on('submit', function(e){
                         e.preventDefault();
-
-                        console.log("test!"); 
-
+                        showLoadingGif();
+                        syncCustomers();
+                        syncOrders();
                     });
+
+                    function syncCustomers() {
+                        <?php
+                            $wc_customers = new Formaloo_WC_Customers();
+                            $customers = $wc_customers->get_customers();
+                            $customers_json = json_encode($customers, JSON_PRETTY_PRINT);
+                            echo "var customersJson = {$customers_json};";
+                        ?>
+
+                        // MARK: remove active business
+                        $.ajax({
+                            url: "https://api.staging.formaloo.com/v1.0/customers/batch/?active_business=bcmqr9Qb",
+                            type: 'POST',
+                            dataType: 'json',
+                            headers: {
+                                'x-api-key': '9cabf77d58dd1a716dd5f9513db04c73a7ff76c9',
+                                'authorization': 'JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Im15YXBwLTAwMSJ9.eyJ0b2tlbiI6ImF1dGgiLCJzaWQiOiIyYzgxOTFiZS1hNzQzLTQ3ZTMtODg0MC01MGE1YmE2NzA0ZTgiLCJ1aWQiOjM0LCJlbWFpbCI6InRhZGVoMTlAZ21haWwuY29tIiwiZmlyc3RfbmFtZSI6IlRhZGVoIiwibGFzdF9uYW1lIjoiQWxleGFuaSIsInBob25lX251bWJlciI6IjA5MzU1MzEyOTUyIiwidXNlcm5hbWUiOiJ0YWRlaDE5QGdtYWlsLmNvbSIsInZlcmlmaWVkX2VtYWlsIjpmYWxzZSwidmVyaWZpZWRfcGhvbmUiOnRydWUsImxhc3RfdXBkYXRlIjoiMjAyMC0wNS0xMlQxODo0NzowNi45MzNaIiwiZ3JvdXBzIjoiIiwiaXNzIjoiaWNhcyIsImF1ZCI6WyJpY2FzIiwiY3JtIiwiZm9ybXoiLCJpbnZvaWNlIiwicHJvamVjdGFudCIsImFjdGlvbnMiXSwiZXhwIjoxNjE2MDU1NjU5LCJpYXQiOjE2MTM0NjM2NTl9.04ZrpgDCEBGfp0No_A5gqk83XlZ3AQqZtYEz1ORtHwZDWYc-FjEggmDB5L3RUh576MHBDouHxU7_MWk48CtK_QPHuv5kucauaD0iLLZYVQubaqCagwYqkdHuZ5uIVAAK8e0FsG9SX6xa5At_rBOw2u95Hd6Cm2MVVwtAl6feiJ02YPXQZkv4_Ms7eAIoGQSGy2LrwF6Sh9KLpFfpy6Pz_2nj5nEAV9iCtNgklmq-DIpP-kFEggTcu_vUXisIhKV1XxTEsxfyTsjPD_YLsINSyvK3lRVb9w_jkMWxSVohJ5HOxHHNKSrAtok-4ruPYnyl7zt7fwWoD9IYEmY7WdnmAw'
+                            },
+                            contentType: 'application/json; charset=utf-8',
+                            data: JSON.stringify(customersJson),
+                            success: function (result) {
+                                if (result['status'] == 201) {
+                                    showSuccessMessage('Customers have been imported successfully.');
+                                }
+                                hideLoadingGif();
+                            },
+                            error: function (error) {
+                                disableCashbackTable();
+                                var errorText = error['responseJSON']['errors']['general_errors'][0];
+                                showGeneralErrors(errorText);
+                                hideLoadingGif();
+                            }
+                        });
+
+                    }
+
+                    function syncOrders() {
+                        
+                        <?php
+                            $orders = wc_get_orders( array('numberposts' => -1) );
+
+                            $orders_arr = array();
+
+                            foreach( $orders as $order ){
+                                
+                                $user_id = $order->get_user_id();
+                                $customer = new WC_Customer( $user_id );
+                                $user_email   = $customer->get_email();
+
+                                $orders_arr[] = array(
+                                    'action' => 'order',
+                                    'customer' => array(
+                                        'email' => $user_email
+                                    ),
+                                    'activity_data' => array(
+                                        'order_status' => $order->get_status(), 
+                                        'order_total' => $order->get_total(),
+                                        'order_total_discount' => $order->get_total_discount(),
+                                        'order_shipping_method' => $order->get_shipping_method(),
+                                        'order_currency' => $order->get_currency()
+                                    )
+                                );                                
+                            }
+
+                            $orders_json = json_encode($orders_arr);
+
+                            echo "var orders = {$orders_json};";
+                        ?>
+
+                        orders.forEach(function(entry) {
+                            console.log(JSON.stringify(entry));
+                            // MARK: remove active business
+                            $.ajax({
+                                url: "https://api.staging.formaloo.com/v1.0/activities?active_business=bcmqr9Qb",
+                                type: 'POST',
+                                dataType: 'json',
+                                headers: {
+                                    'x-api-key': '9cabf77d58dd1a716dd5f9513db04c73a7ff76c9',
+                                    'authorization': 'JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Im15YXBwLTAwMSJ9.eyJ0b2tlbiI6ImF1dGgiLCJzaWQiOiIyYzgxOTFiZS1hNzQzLTQ3ZTMtODg0MC01MGE1YmE2NzA0ZTgiLCJ1aWQiOjM0LCJlbWFpbCI6InRhZGVoMTlAZ21haWwuY29tIiwiZmlyc3RfbmFtZSI6IlRhZGVoIiwibGFzdF9uYW1lIjoiQWxleGFuaSIsInBob25lX251bWJlciI6IjA5MzU1MzEyOTUyIiwidXNlcm5hbWUiOiJ0YWRlaDE5QGdtYWlsLmNvbSIsInZlcmlmaWVkX2VtYWlsIjpmYWxzZSwidmVyaWZpZWRfcGhvbmUiOnRydWUsImxhc3RfdXBkYXRlIjoiMjAyMC0wNS0xMlQxODo0NzowNi45MzNaIiwiZ3JvdXBzIjoiIiwiaXNzIjoiaWNhcyIsImF1ZCI6WyJpY2FzIiwiY3JtIiwiZm9ybXoiLCJpbnZvaWNlIiwicHJvamVjdGFudCIsImFjdGlvbnMiXSwiZXhwIjoxNjE2MDU1NjU5LCJpYXQiOjE2MTM0NjM2NTl9.04ZrpgDCEBGfp0No_A5gqk83XlZ3AQqZtYEz1ORtHwZDWYc-FjEggmDB5L3RUh576MHBDouHxU7_MWk48CtK_QPHuv5kucauaD0iLLZYVQubaqCagwYqkdHuZ5uIVAAK8e0FsG9SX6xa5At_rBOw2u95Hd6Cm2MVVwtAl6feiJ02YPXQZkv4_Ms7eAIoGQSGy2LrwF6Sh9KLpFfpy6Pz_2nj5nEAV9iCtNgklmq-DIpP-kFEggTcu_vUXisIhKV1XxTEsxfyTsjPD_YLsINSyvK3lRVb9w_jkMWxSVohJ5HOxHHNKSrAtok-4ruPYnyl7zt7fwWoD9IYEmY7WdnmAw'
+                                },
+                                contentType: 'application/json; charset=utf-8',
+                                data: JSON.stringify(entry),
+                                success: function (result) {
+                                    console.log(result);
+                                    if (result['status'] == 201) {
+                                        // showSuccessMessage('Customers have been imported successfully.');
+                                    }
+                                },
+                                error: function (error) {
+                                    console.log(error);
+                                    disableCashbackTable();
+                                    var errorText = error['responseJSON']['errors']['general_errors'][0];
+                                    showGeneralErrors(errorText);
+                                }
+                            });
+                        });
+
+                    }
 
                     function disableCashbackTable() {
                         $(".formaloo-cashback-settings-table").addClass("formaloo-cashback-disabled-table");
                         $(".formaloo-cashback-settings-table :input").attr("disabled", true);
                     }
 
+                    function showSuccessMessage(successText) {
+                        $('.formaloo-cashback-success-notice').show();
+                        $('.formaloo-cashback-success-notice').text(successText);
+                    }
+
                     function showGeneralErrors(errorText) {
-                        $('.formaloo-cashback-notice').show();
-                        $('.formaloo-cashback-notice').text(errorText);
+                        $('.formaloo-cashback-error-notice').show();
+                        $('.formaloo-cashback-error-notice').text(errorText);
+                    }
+
+                    function showLoadingGif() {
+                        $('.formaloo-loading-gif-wrapper').show();
                     }
 
                     function hideLoadingGif() {
