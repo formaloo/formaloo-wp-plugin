@@ -175,7 +175,7 @@
                     //     dataType: 'json',
                     //     headers: {
                     //         'x-api-key': '9cabf77d58dd1a716dd5f9513db04c73a7ff76c9',
-                    //         'authorization': 'JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Im15YXBwLTAwMSJ9.eyJ0b2tlbiI6ImF1dGgiLCJzaWQiOiIyYzgxOTFiZS1hNzQzLTQ3ZTMtODg0MC01MGE1YmE2NzA0ZTgiLCJ1aWQiOjM0LCJlbWFpbCI6InRhZGVoMTlAZ21haWwuY29tIiwiZmlyc3RfbmFtZSI6IlRhZGVoIiwibGFzdF9uYW1lIjoiQWxleGFuaSIsInBob25lX251bWJlciI6IjA5MzU1MzEyOTUyIiwidXNlcm5hbWUiOiJ0YWRlaDE5QGdtYWlsLmNvbSIsInZlcmlmaWVkX2VtYWlsIjpmYWxzZSwidmVyaWZpZWRfcGhvbmUiOnRydWUsImxhc3RfdXBkYXRlIjoiMjAyMC0wNS0xMlQxODo0NzowNi45MzNaIiwiZ3JvdXBzIjoiIiwiaXNzIjoiaWNhcyIsImF1ZCI6WyJpY2FzIiwiY3JtIiwiZm9ybXoiLCJpbnZvaWNlIiwicHJvamVjdGFudCIsImFjdGlvbnMiXSwiZXhwIjoxNjE2MDU1NjU5LCJpYXQiOjE2MTM0NjM2NTl9.04ZrpgDCEBGfp0No_A5gqk83XlZ3AQqZtYEz1ORtHwZDWYc-FjEggmDB5L3RUh576MHBDouHxU7_MWk48CtK_QPHuv5kucauaD0iLLZYVQubaqCagwYqkdHuZ5uIVAAK8e0FsG9SX6xa5At_rBOw2u95Hd6Cm2MVVwtAl6feiJ02YPXQZkv4_Ms7eAIoGQSGy2LrwF6Sh9KLpFfpy6Pz_2nj5nEAV9iCtNgklmq-DIpP-kFEggTcu_vUXisIhKV1XxTEsxfyTsjPD_YLsINSyvK3lRVb9w_jkMWxSVohJ5HOxHHNKSrAtok-4ruPYnyl7zt7fwWoD9IYEmY7WdnmAw'
+                    //         'authorization': ''
                     //     },
                     //     contentType: 'application/json; charset=utf-8',
                     //     success: function (result) {
@@ -211,7 +211,7 @@
                             dataType: 'json',
                             headers: {
                                 'x-api-key': '9cabf77d58dd1a716dd5f9513db04c73a7ff76c9',
-                                'authorization': 'JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Im15YXBwLTAwMSJ9.eyJ0b2tlbiI6ImF1dGgiLCJzaWQiOiIyYzgxOTFiZS1hNzQzLTQ3ZTMtODg0MC01MGE1YmE2NzA0ZTgiLCJ1aWQiOjM0LCJlbWFpbCI6InRhZGVoMTlAZ21haWwuY29tIiwiZmlyc3RfbmFtZSI6IlRhZGVoIiwibGFzdF9uYW1lIjoiQWxleGFuaSIsInBob25lX251bWJlciI6IjA5MzU1MzEyOTUyIiwidXNlcm5hbWUiOiJ0YWRlaDE5QGdtYWlsLmNvbSIsInZlcmlmaWVkX2VtYWlsIjpmYWxzZSwidmVyaWZpZWRfcGhvbmUiOnRydWUsImxhc3RfdXBkYXRlIjoiMjAyMC0wNS0xMlQxODo0NzowNi45MzNaIiwiZ3JvdXBzIjoiIiwiaXNzIjoiaWNhcyIsImF1ZCI6WyJpY2FzIiwiY3JtIiwiZm9ybXoiLCJpbnZvaWNlIiwicHJvamVjdGFudCIsImFjdGlvbnMiXSwiZXhwIjoxNjE2MDU1NjU5LCJpYXQiOjE2MTM0NjM2NTl9.04ZrpgDCEBGfp0No_A5gqk83XlZ3AQqZtYEz1ORtHwZDWYc-FjEggmDB5L3RUh576MHBDouHxU7_MWk48CtK_QPHuv5kucauaD0iLLZYVQubaqCagwYqkdHuZ5uIVAAK8e0FsG9SX6xa5At_rBOw2u95Hd6Cm2MVVwtAl6feiJ02YPXQZkv4_Ms7eAIoGQSGy2LrwF6Sh9KLpFfpy6Pz_2nj5nEAV9iCtNgklmq-DIpP-kFEggTcu_vUXisIhKV1XxTEsxfyTsjPD_YLsINSyvK3lRVb9w_jkMWxSVohJ5HOxHHNKSrAtok-4ruPYnyl7zt7fwWoD9IYEmY7WdnmAw'
+                                'authorization': ''
                             },
                             contentType: 'application/json; charset=utf-8',
                             data: JSON.stringify(customersJson),
@@ -273,7 +273,7 @@
                                 dataType: 'json',
                                 headers: {
                                     'x-api-key': '9cabf77d58dd1a716dd5f9513db04c73a7ff76c9',
-                                    'authorization': 'JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Im15YXBwLTAwMSJ9.eyJ0b2tlbiI6ImF1dGgiLCJzaWQiOiIyYzgxOTFiZS1hNzQzLTQ3ZTMtODg0MC01MGE1YmE2NzA0ZTgiLCJ1aWQiOjM0LCJlbWFpbCI6InRhZGVoMTlAZ21haWwuY29tIiwiZmlyc3RfbmFtZSI6IlRhZGVoIiwibGFzdF9uYW1lIjoiQWxleGFuaSIsInBob25lX251bWJlciI6IjA5MzU1MzEyOTUyIiwidXNlcm5hbWUiOiJ0YWRlaDE5QGdtYWlsLmNvbSIsInZlcmlmaWVkX2VtYWlsIjpmYWxzZSwidmVyaWZpZWRfcGhvbmUiOnRydWUsImxhc3RfdXBkYXRlIjoiMjAyMC0wNS0xMlQxODo0NzowNi45MzNaIiwiZ3JvdXBzIjoiIiwiaXNzIjoiaWNhcyIsImF1ZCI6WyJpY2FzIiwiY3JtIiwiZm9ybXoiLCJpbnZvaWNlIiwicHJvamVjdGFudCIsImFjdGlvbnMiXSwiZXhwIjoxNjE2MDU1NjU5LCJpYXQiOjE2MTM0NjM2NTl9.04ZrpgDCEBGfp0No_A5gqk83XlZ3AQqZtYEz1ORtHwZDWYc-FjEggmDB5L3RUh576MHBDouHxU7_MWk48CtK_QPHuv5kucauaD0iLLZYVQubaqCagwYqkdHuZ5uIVAAK8e0FsG9SX6xa5At_rBOw2u95Hd6Cm2MVVwtAl6feiJ02YPXQZkv4_Ms7eAIoGQSGy2LrwF6Sh9KLpFfpy6Pz_2nj5nEAV9iCtNgklmq-DIpP-kFEggTcu_vUXisIhKV1XxTEsxfyTsjPD_YLsINSyvK3lRVb9w_jkMWxSVohJ5HOxHHNKSrAtok-4ruPYnyl7zt7fwWoD9IYEmY7WdnmAw'
+                                    'authorization': ''
                                 },
                                 contentType: 'application/json; charset=utf-8',
                                 data: JSON.stringify(entry),
