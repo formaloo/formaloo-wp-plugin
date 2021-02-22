@@ -158,6 +158,8 @@
                 <a href="<?php echo esc_url( $this->getSupportUrl() ); ?>" target="_blank"><?php _e( 'Need Support? Feel free to contact us', 'formaloo-form-builder' ); ?></a>
                                 
             </div>
+
+            <script src="<?php echo FORMALOO_URL ?>assets/js/handleTokenExpiration.js"></script>
             
             <script>
                 jQuery(document).ready(function($){
@@ -167,28 +169,6 @@
                     $('#formaloo-woocommerce-not-connected').hide();
                     hideLoadingGif();
 
-                    // var activeBusiness = '';
-
-                    // $.ajax({
-                    //     url: "https://api.staging.formaloo.com/v1.0/businesses/",
-                    //     type: 'GET',
-                    //     dataType: 'json',
-                    //     headers: {
-                    //         'x-api-key': '9cabf77d58dd1a716dd5f9513db04c73a7ff76c9',
-                    //         'authorization': ''
-                    //     },
-                    //     contentType: 'application/json; charset=utf-8',
-                    //     success: function (result) {
-                    //         activeBusiness = result['data']['businesss'][0]['slug'];
-                    //     },
-                    //     error: function (error) {
-                    //         disableCashbackTable();
-                    //         var errorText = error['responseJSON']['errors']['general_errors'][0];
-                    //         showGeneralErrors(errorText);
-                    //         hideLoadingGif();
-                    //     }
-                    // });
-
                     $('#formaloo-cashback-form').on('submit', function(e){
                         e.preventDefault();
                         showLoadingGif();
@@ -197,21 +177,15 @@
                     });
 
                     function syncCustomers() {
-                        <?php
-                            $wc_customers = new Formaloo_WC_Customers();
-                            $customers = $wc_customers->get_customers();
-                            $customers_json = json_encode($customers, JSON_PRETTY_PRINT);
-                            echo "var customersJson = {$customers_json};";
-                        ?>
 
                         // MARK: remove active business
                         $.ajax({
-                            url: "https://api.staging.formaloo.com/v1.0/customers/batch/?active_business=bcmqr9Qb",
+                            url: '',
                             type: 'POST',
                             dataType: 'json',
                             headers: {
-                                'x-api-key': '9cabf77d58dd1a716dd5f9513db04c73a7ff76c9',
-                                'authorization': ''
+                                'x-api-key': '<?php echo $data['api_key']; ?>',
+                                'Authorization': '<?php echo 'Token ' . $data['api_token']; ?>'
                             },
                             contentType: 'application/json; charset=utf-8',
                             data: JSON.stringify(customersJson),
@@ -222,6 +196,7 @@
                                 hideLoadingGif();
                             },
                             error: function (error) {
+                                console.log(error);
                                 disableCashbackTable();
                                 var errorText = error['responseJSON']['errors']['general_errors'][0];
                                 showGeneralErrors(errorText);
@@ -233,61 +208,27 @@
 
                     function syncOrders() {
                         
-                        <?php
-                            $orders = wc_get_orders( array('numberposts' => -1) );
-
-                            $orders_arr = array();
-
-                            foreach( $orders as $order ){
-                                
-                                $user_id = $order->get_user_id();
-                                $customer = new WC_Customer( $user_id );
-                                $user_email   = $customer->get_email();
-
-                                $orders_arr[] = array(
-                                    'action' => 'order',
-                                    'customer' => array(
-                                        'email' => $user_email
-                                    ),
-                                    'activity_data' => array(
-                                        'order_status' => $order->get_status(), 
-                                        'order_total' => $order->get_total(),
-                                        'order_total_discount' => $order->get_total_discount(),
-                                        'order_shipping_method' => $order->get_shipping_method(),
-                                        'order_currency' => $order->get_currency()
-                                    )
-                                );                                
-                            }
-
-                            $orders_json = json_encode($orders_arr);
-
-                            echo "var orders = {$orders_json};";
-                        ?>
-
                         orders.forEach(function(entry) {
-                            console.log(JSON.stringify(entry));
                             // MARK: remove active business
                             $.ajax({
-                                url: "https://api.staging.formaloo.com/v1.0/activities?active_business=bcmqr9Qb",
+                                url: '',
                                 type: 'POST',
                                 dataType: 'json',
-                                headers: {
-                                    'x-api-key': '9cabf77d58dd1a716dd5f9513db04c73a7ff76c9',
-                                    'authorization': ''
-                                },
                                 contentType: 'application/json; charset=utf-8',
                                 data: JSON.stringify(entry),
                                 success: function (result) {
-                                    console.log(result);
                                     if (result['status'] == 201) {
-                                        // showSuccessMessage('Customers have been imported successfully.');
+                                        showSuccessMessage('Orders have been imported successfully.');
                                     }
                                 },
                                 error: function (error) {
-                                    console.log(error);
-                                    disableCashbackTable();
-                                    var errorText = error['responseJSON']['errors']['general_errors'][0];
-                                    showGeneralErrors(errorText);
+                                    if (error['status'] != 401) {
+                                        disableCashbackTable();
+                                        var errorText = error['responseJSON']['errors']['general_errors'][0];
+                                        showGeneralErrors(errorText);
+                                    } else {
+                                        handleTokenExpiration(error);
+                                    }
                                 }
                             });
                         });

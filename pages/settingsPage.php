@@ -9,7 +9,7 @@
 
             $data = $this->getData();
 
-            $not_ready = (empty($data['api_token']) || empty($data['api_key']));
+            $not_ready = (empty($data['api_secret']) || empty($data['api_key']));
 
             ?>
 
@@ -41,7 +41,7 @@
 
                         <?php if ($not_ready): ?>
                             <p>
-                                <?php echo __('To get started, we\'ll need to access your Formaloo account with an', 'formaloo-form-builder') .' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/profile/" target="_blank">'. __('API Key & API Token', 'formaloo-form-builder') .'</a>. '. __('Paste your Formaloo API Key & API Token, and click', 'formaloo-form-builder') .' <strong>'. __('Connect', 'formaloo-form-builder') .'</strong> '. __('to continue', 'formaloo-form-builder') .'.'; ?>
+                                <?php echo __('To get started, we\'ll need to access your Formaloo account with an', 'formaloo-form-builder') .' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/profile/" target="_blank">'. __('API Key & API Secret', 'formaloo-form-builder') .'</a>. '. __('Paste your Formaloo API Key & API Secret, and click', 'formaloo-form-builder') .' <strong>'. __('Connect', 'formaloo-form-builder') .'</strong> '. __('to continue', 'formaloo-form-builder') .'.'; ?>
                             </p>
                         <?php else: ?>
                             <?php echo __('You can access your', 'formaloo-form-builder') .' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/" target="_blank">'. __('Formaloo dashboard here', 'formaloo-form-builder') .'</a>.'; ?>  
@@ -64,14 +64,21 @@
                                 </tr>
                                 <tr>
                                     <td scope="row">
-                                        <label><?php _e( 'API Token', 'formaloo-form-builder' ); ?></label>
+                                        <label><?php _e( 'API Secret', 'formaloo-form-builder' ); ?></label>
                                     </td>
+                                    <td>
+                                        <input name="formaloo_api_secret"
+                                            id="formaloo_api_secret"
+                                            class="regular-text"
+                                            type="text"
+                                            value="<?php echo (isset($data['api_secret'])) ? $data['api_secret'] : ''; ?>"/>
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td>
                                         <input name="formaloo_api_token"
                                             id="formaloo_api_token"
-                                            class="regular-text"
-                                            type="text"
-                                            value="<?php echo (isset($data['api_token'])) ? $data['api_token'] : ''; ?>"/>
+                                            type="hidden"/>
                                     </td>
                                 </tr>
                                 <tr id="formaloo-settings-submit-row">

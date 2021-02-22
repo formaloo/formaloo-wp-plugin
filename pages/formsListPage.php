@@ -8,7 +8,7 @@
         public function formsListPage() {
 
             $data = $this->getData();
-            $api_response = $this->getForms($data['api_key'], $data['api_token']);
+            $api_response = $this->getForms();
             $not_ready = (empty($data['api_token']) || empty($data['api_key']) || empty($api_response) || isset($api_response['error']) || $api_response['status'] != 200);
 
             ?>
@@ -115,7 +115,10 @@
                             </button>
                         </div>
                     <?php endif; ?>
-                    </form>             
+                    </form>          
+                    
+                    <script src="<?php echo FORMALOO_URL ?>assets/js/handleTokenExpiration.js"></script>
+
                     <script>
                         function getRowInfo($slug, $address) {
                             jQuery('.formaloo_clipboard_wrapper').addClass('formaloo_hidden');
@@ -136,7 +139,7 @@
                                 type: 'POST',
                                 headers: {
                                     'x-api-key': '<?php echo $data['api_key']; ?>',
-                                    'Authorization': '<?php echo 'Token ' . $data['api_token']; ?>'
+                                    'Authorization': '<?php echo 'JWT ' . $data['api_token']; ?>'
                                 },
                                 data: { 'active' : true, 'show_title' : true },
                                 success: function (result) {
@@ -152,7 +155,8 @@
                                     });
                                 },
                                 error: function (error) {
-                                    // handle create new form error
+                                    // MARK: Handle create new form error
+                                    handleTokenExpiration(error);
                                 }
                             });
                         }

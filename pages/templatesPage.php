@@ -1,5 +1,6 @@
 <?php
     class Formaloo_Templates_Page extends Formaloo_Main_Class {
+
         /**
          * Outputs the Formaloo Templates
          *
@@ -65,15 +66,22 @@
                                         </tr>
                                         <tr>
                                             <td scope="row">
-                                                <label><?php _e( 'API Token', 'formaloo-form-builder' ); ?></label>
+                                                <label><?php _e( 'API Secret', 'formaloo-form-builder' ); ?></label>
                                             </td>
                                             <td>
-                                                <input name="formaloo_api_token"
-                                                    id="formaloo_api_token"
+                                                <input name="formaloo_api_secret"
+                                                    id="formaloo_api_secret"
                                                     class="regular-text"
                                                     type="text"
                                                     form="formaloo-templates-admin-form"
-                                                    value="<?php echo (isset($data['api_token'])) ? $data['api_token'] : ''; ?>"/>
+                                                    value="<?php echo (isset($data['api_secret'])) ? $data['api_secret'] : ''; ?>"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input name="formaloo_api_token"
+                                                    id="formaloo_api_token"
+                                                    type="hidden"/>
                                             </td>
                                         </tr>
                                         <tr id="formaloo-settings-submit-row">
@@ -131,6 +139,8 @@
 
                 <a href="<?php echo esc_url( $this->getSupportUrl() ); ?>" target="_blank"><?php _e( 'Need Support? Feel free to contact us', 'formaloo-form-builder' ); ?></a>             
             </div>
+
+            <script src="<?php echo FORMALOO_URL ?>assets/js/handleTokenExpiration.js"></script>
             
             <script>
                 jQuery(document).ready(function($){
@@ -329,16 +339,38 @@
                         jQuery(this).append('<input type="hidden" form="formaloo-templates-admin-form" name="action" value="store_admin_data" />');
                         jQuery(this).append('<input type="hidden" form="formaloo-templates-admin-form" name="security" value="' + formaloo_exchanger._nonce + '" />');
 
-                        // We make our call
+                        const apiKey = document.getElementById('formaloo_api_key').value;
+                        const secretKey = document.getElementById('formaloo_api_secret').value
+                        
                         jQuery.ajax({
-                            url: formaloo_exchanger.ajax_url,
-                            type: 'post',
-                            data: jQuery(this).serialize(),
-                            success: function(response) {
+                            url: "https://staging.icas.formaloo.com/v1/oauth2/authorization-token/",
+                            type: 'POST',
+                            dataType: 'json',
+                            headers: {
+                                'x-api-key': apiKey,
+                                'Authorization': 'Basic ' + secretKey
+                            },
+                            contentType: 'application/x-www-form-urlencoded',
+                            data: {'grant_type': 'client_credentials'},
+                            success: function (result) {
+                                document.getElementById('formaloo_api_token').value = result['authorization_token'];
+                                jQuery.ajax({
+                                    url: formaloo_exchanger.ajax_url,
+                                    type: 'post',
+                                    data: jQuery('#formaloo-templates-admin-form').serialize(),
+                                    success: function(response) {
+                                        setTimeout(function() {
+                                            jQuery('.spinner').removeClass('is-active');
+                                            window.location.href = "?page=formaloo";
+                                            }, 1000);
+                                    }
+                                });
+                            },
+                            error: function (error) {
                                 setTimeout(function() {
                                     jQuery('.spinner').removeClass('is-active');
-                                    window.location.href = "?page=formaloo-templates-page";
-                                    }, 1000);
+                                    window.location.href = "?page=formaloo";
+                                }, 1000);
                             }
                         });
 
@@ -351,7 +383,7 @@
                         type: 'POST',
                         headers: {
                             'x-api-key': '<?php echo $data['api_key']; ?>',
-                            'Authorization': '<?php echo 'Token ' . $data['api_token']; ?>'
+                            'Authorization': '<?php echo 'JWT ' . $data['api_token']; ?>'
                         },
                         data: { 'copied_form' : formSlug },
                         success: function (result) {
@@ -359,9 +391,13 @@
                             window.location.href = "?page=formaloo&created_from_template=true";
                         },
                         error: function (error) {
-                            var errorText = error['responseJSON']['errors']['general_errors'][0];
-                            showGeneralErrors(errorText);
-                            hideLoadingGif();
+                            if (error['status'] != 401) {
+                                var errorText = error['responseJSON']['errors']['general_errors'][0];
+                                showGeneralErrors(errorText);
+                                hideLoadingGif();
+                            } else {
+                                handleTokenExpiration(error);
+                            }
                         }
                     });
 

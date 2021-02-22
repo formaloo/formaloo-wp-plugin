@@ -232,6 +232,8 @@
                 <a href="<?php echo esc_url( $this->getSupportUrl() ); ?>" target="_blank"><?php _e( 'Need Support? Feel free to contact us', 'formaloo-form-builder' ); ?></a>
                                 
             </div>
+
+            <script src="<?php echo FORMALOO_URL ?>assets/js/handleTokenExpiration.js"></script>
             
             <script>
                 jQuery(document).ready(function($){
@@ -291,17 +293,22 @@
                             type: 'POST',
                             headers: {
                                 'x-api-key': '<?php echo $data['api_key']; ?>',
-                                'Authorization': '<?php echo 'Token ' . $data['api_token']; ?>'
+                                'Authorization': '<?php echo 'JWT ' . $data['api_token']; ?>'
                             },
                             data: { 'copied_form' : slug },
                             success: function (result) {
                                 setupFormSettings(result['data']['form']);
                             },
                             error: function (error) {
-                                disableFeedbackWidgetTable();
-                                var errorText = error['responseJSON']['errors']['general_errors'][0];
-                                showGeneralErrors(errorText);
-                                hideLoadingGif();
+                                if (error['status'] != 401) {
+                                    disableFeedbackWidgetTable();
+                                    var errorText = error['responseJSON']['errors']['general_errors'][0];
+                                    showGeneralErrors(errorText);
+                                    hideLoadingGif();
+                                } else {
+                                    handleTokenExpiration(error);
+                                }
+                                
                             }
                         });
                     }
@@ -313,17 +320,22 @@
                             dataType: 'json',
                             headers: {
                                 'x-api-key': '<?php echo $data['api_key']; ?>',
-                                'Authorization': '<?php echo 'Token ' . $data['api_token']; ?>'
+                                'Authorization': '<?php echo 'JWT ' . $data['api_token']; ?>'
                             },
                             contentType: 'application/json; charset=utf-8',
                             success: function (result) {
                                 setupFormSettings(result['data']['form']);
                             },
                             error: function (error) {
-                                disableFeedbackWidgetTable();
-                                var errorText = error['responseJSON']['errors']['general_errors'][0];
-                                showGeneralErrors(errorText);
-                                hideLoadingGif();
+                                if (error['status'] != 401) {
+                                    disableFeedbackWidgetTable();
+                                    var errorText = error['responseJSON']['errors']['general_errors'][0];
+                                    showGeneralErrors(errorText);
+                                    hideLoadingGif();
+                                } else {
+                                    handleTokenExpiration(error);
+                                }
+                                
                             }
                         });
                     }
@@ -444,14 +456,18 @@
                                 type: 'PATCH',
                                 headers: {
                                     'x-api-key': '<?php echo $data['api_key']; ?>',
-                                    'Authorization': '<?php echo 'Token ' . $data['api_token']; ?>'
+                                    'Authorization': '<?php echo 'JWT ' . $data['api_token']; ?>'
                                 },
                                 data: params,
                                 success: function (result) {
                                     resolve(result);
                                 },
                                 error: function (error) {
-                                    reject(error)
+                                    if (error['status'] != 401) {
+                                        reject(error)
+                                    } else {
+                                        handleTokenExpiration(error);
+                                    }
                                 }
                             });
                         });

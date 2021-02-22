@@ -167,7 +167,7 @@ class Formaloo_Forms_List_Table extends WP_List_Table {
      */
     private function sort_data( $a, $b ) {
         // Set defaults
-        $columns = ['title','active','submitCount','excel', 'more', 'none'];
+        $columns = ['ID', 'title','active','submitCount','excel', 'more'];
         $orders = ['asc', 'desc'];
 
         $orderBy = $columns[0];
@@ -191,10 +191,10 @@ class Formaloo_Forms_List_Table extends WP_List_Table {
             $order = $orders[0];
         }
 
-        $result = strnatcmp( $a[sanitize_text_field( $_GET['order'] )], $b[sanitize_text_field( $_GET['order'] )] );
+        // $result = strnatcmp( $a[sanitize_text_field( $_GET['order'] )], $b[sanitize_text_field( $_GET['order'] )] );
+        $result = strnatcmp( $a[$orderBy], $b[$orderBy] );
 
-        if($order === 'asc')
-        {
+        if($order === 'asc') {
             return $result;
         }
 
@@ -207,7 +207,7 @@ class Formaloo_Forms_List_Table extends WP_List_Table {
         $actions = array(
                   'view'      => sprintf('<a href="%s://%s/%s" target="_blank">'. __('View', 'formaloo-form-builder') .'</a>',FORMALOO_PROTOCOL,FORMALOO_ENDPOINT,$item['address'])
               );
-
+        
         if ($item['type'] != 'nps') {
             $actions['shortcode'] = '<a href="#TB_inline?&width=100vw&height=100vh&inlineId=form-show-options" class="thickbox" title="'. $modalTitle .'" onclick = "getRowInfo(\''. $item['slug'] .'\',\''. $item['address'] .'\')">'. __('Get Shortcode', 'formaloo-form-builder') .'</a>';
             $actions['edit'] = '<a href="#TB_inline?&width=100vw&height=100vh&inlineId=form-show-edit" title="'. __('Edit Form', 'formaloo-form-builder') .'" class="thickbox" onclick = "showEditFormWith(\''. FORMALOO_PROTOCOL .'\', \''. FORMALOO_ENDPOINT .'\', \''. $item['slug'] .'\')">'. __('Edit', 'formaloo-form-builder') .'</a>';

@@ -99,7 +99,7 @@ class Formaloo_Results_List_Table extends WP_List_Table {
     private function sort_data( $a, $b ) {
 
         // Set defaults
-        $columns = ['date_created','full_results'];
+        $columns = ['ID', 'date_created','full_results'];
         $orders = ['asc', 'desc'];
 
         $orderBy = $columns[0];
@@ -123,10 +123,9 @@ class Formaloo_Results_List_Table extends WP_List_Table {
             $order = $orders[0];
         }
 
-        $result = strnatcmp( $a[$orderby], $b[$orderby] );
+        $result = strnatcmp( $a[$orderBy], $b[$orderBy] );
 
-        if($order === 'asc')
-        {
+        if($order === 'asc') {
             return $result;
         }
 
@@ -187,7 +186,9 @@ class Formaloo_Results_List_Table extends WP_List_Table {
         for ($i=0; $i < count($top_fields); $i++ ) {
           if(($i+1) <= $noOfTopFields) { 
               $columns[] = $top_fields[$i]['slug'];
-              $columnFieldTypes[] = $top_fields[$i]['type'];
+              if (isset($top_fields[$i]['type'])) {
+                $columnFieldTypes[] = $top_fields[$i]['type'];
+              }
           }
         }
 
@@ -200,19 +201,23 @@ class Formaloo_Results_List_Table extends WP_List_Table {
         foreach ($columns as $keys => $values) {
             $i++;
             if ($values == $column_name) {
-                if ($columnFieldTypes[$i] == 'matrix') {
-                    $matrixValue = '';
-                    $numItems = count($item[ $column_name ]);
-                    $j = 0;
-                    foreach($item[ $column_name ] as $keys => $values) {
-                        $j++;
-                        if($j === $numItems) {
-                            $matrixValue .= $keys . ': ' . $values;
-                        } else {
-                            $matrixValue .= $keys . ': ' . $values . ' - ';
+                if (isset($columnFieldTypes[$i])) {
+                    if ($columnFieldTypes[$i] == 'matrix') {
+                        $matrixValue = '';
+                        $numItems = count($item[ $column_name ]);
+                        $j = 0;
+                        foreach($item[ $column_name ] as $keys => $values) {
+                            $j++;
+                            if($j === $numItems) {
+                                $matrixValue .= $keys . ': ' . $values;
+                            } else {
+                                $matrixValue .= $keys . ': ' . $values . ' - ';
+                            }
                         }
+                        return empty($item[ $column_name ]) ? '-' : $matrixValue;
+                    } else {
+                        return empty($item[ $column_name ]) ? '-' : $item[ $column_name ];
                     }
-                    return empty($item[ $column_name ]) ? '-' : $matrixValue;
                 } else {
                     return empty($item[ $column_name ]) ? '-' : $item[ $column_name ];
                 }
