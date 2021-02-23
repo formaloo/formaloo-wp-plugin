@@ -1,4 +1,3 @@
-
 <?php
     class Formaloo_Form_Results_Page extends Formaloo_Main_Class {
         /**
@@ -7,7 +6,7 @@
          * @return void
          */
         public function formResultsPage() {
-                // $data = $this->getData();
+                $data = $this->getData();
                 $not_ready = (empty($data['api_token']) || empty($data['api_key']));
 
                 ?>

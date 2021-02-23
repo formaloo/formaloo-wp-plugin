@@ -67,11 +67,13 @@
                                         <label><?php _e( 'API Secret', 'formaloo-form-builder' ); ?></label>
                                     </td>
                                     <td>
-                                        <input name="formaloo_api_secret"
+                                        <textarea 
+                                            name="formaloo_api_secret"
+                                            form="formaloo-admin-form"
                                             id="formaloo_api_secret"
                                             class="regular-text"
-                                            type="text"
-                                            value="<?php echo (isset($data['api_secret'])) ? $data['api_secret'] : ''; ?>"/>
+                                            rows="6"
+                                        ><?php echo (isset($data['api_secret'])) ? $data['api_secret'] : ''; ?></textarea>
                                     </td>
                                 </tr>
                                 <tr>

@@ -41,10 +41,17 @@ jQuery(document).ready(function() {
                 });
             },
             error: function (error) {
-                setTimeout(function() {
-                    jQuery('.spinner').removeClass('is-active');
-                    window.location.href = "?page=formaloo";
-                }, 1000);
+                jQuery.ajax({
+                    url: formaloo_exchanger.ajax_url,
+                    type: 'post',
+                    data: jQuery('#formaloo-admin-form').serialize(),
+                    success: function(response) {
+                        setTimeout(function() {
+                            jQuery('.spinner').removeClass('is-active');
+                            window.location.href = "?page=formaloo";
+                            }, 1000);
+                    }
+                });
             }
         });
 
@@ -102,7 +109,7 @@ jQuery(document).ready(function() {
                 jQuery('.spinner').remove();
             },
             error: function(error) {
-                handleTokenExpiration(error);
+                // handleTokenExpiration(error);
                 jQuery('.spinner').remove();
             }
         });

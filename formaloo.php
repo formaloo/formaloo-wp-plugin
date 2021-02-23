@@ -14,10 +14,6 @@
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-    exit; // Exit if accessed directly
-}
-
 /*
  * Plugin constants
  */
@@ -52,6 +48,7 @@ require_once('pages/settingsPage.php');
 
 require_once('woocommerce/customers.php');
 require_once('woocommerce/orders.php');
+require_once('woocommerce/sync.php');
 
 // WP_List_Table is not loaded automatically so we need to load it in our application
 if( ! class_exists( 'WP_List_Table' ) ) {
@@ -62,8 +59,8 @@ require_once('tables/listTable.php');
 require_once('tables/resultsTable.php');
 
 /* Register activation hook. */
-require_once('activation/activationClass.php');
-define( 'PLUGIN_WITH_CLASSES__FILE__', __FILE__ );
+register_activation_hook( __FILE__, 'formaloo_activation_hook' );
+require_once('notices/activationNotice.php');
 
 require_once('notices/pluginReview.php');
 
@@ -113,11 +110,6 @@ class Formaloo_Main_Class {
         add_filter( 'submenu_file', array($this, 'formaloo_wp_admin_submenu_filter'));
 
         add_action('admin_notices', array($this, 'formaloo_invalid_token_admin_notice'));
-        add_action('admin_notices', array( 'Formaloo_Activation_Class', 'formaloo_admin_notice_activation_notice' ) );
-
-        register_activation_hook( PLUGIN_WITH_CLASSES__FILE__, array( 'Formaloo_Activation_Class', 'start_activation' ) );
-
-        add_action( 'sync_customers_and_orders', array($this, 'do_this_twicedaily'));
 
     }
     
@@ -133,7 +125,6 @@ class Formaloo_Main_Class {
             return FORMALOO_PROTOCOL . '://en.formaloo.com/contact/';
         }
     }
-
 
     public function formaloo_show_form_shortcode($atts) {
         // extract the attributes into variables
@@ -233,7 +224,7 @@ class Formaloo_Main_Class {
                                         'Authorization'=> 'JWT ' . $api_token ) 
         ));
 
-        if (wp_remote_retrieve_response_code($response) == 401) {
+        if (wp_remote_retrieve_response_code($response) == 401 && !empty($api_secret) && !empty($api_key)) {
             // $url = FORMALOO_PROTOCOL. '://accounts.'. FORMALOO_ENDPOINT .'/v1/oauth2/authorization-token/';
             $url = 'https://staging.icas.formaloo.com/v1/oauth2/authorization-token/';
             $renewAuthTokenResponse = wp_remote_post( $url, array(
@@ -246,7 +237,7 @@ class Formaloo_Main_Class {
             $renewAuthTokenResult = json_decode($renewAuthTokenResponse['body'], true);
             $data['api_token'] = $renewAuthTokenResult['authorization_token'];
             update_option($this->option_name, $data);
-            results_table_page($slug);
+            $this->results_table_page($slug);
         }
   
         if (is_array($response) && !is_wp_error($response)) {
@@ -276,7 +267,7 @@ class Formaloo_Main_Class {
                                         'Authorization'=> 'JWT ' . $api_token ) 
         ));
 
-        if (wp_remote_retrieve_response_code($response) == 401) {
+        if (wp_remote_retrieve_response_code($response) == 401 && !empty($api_secret) && !empty($api_key)) {
             // $url = FORMALOO_PROTOCOL. '://accounts.'. FORMALOO_ENDPOINT .'/v1/oauth2/authorization-token/';
             $url = 'https://staging.icas.formaloo.com/v1/oauth2/authorization-token/';
             $renewAuthTokenResponse = wp_remote_post( $url, array(
@@ -289,7 +280,7 @@ class Formaloo_Main_Class {
             $renewAuthTokenResult = json_decode($renewAuthTokenResponse['body'], true);
             $data['api_token'] = $renewAuthTokenResult['authorization_token'];
             update_option($this->option_name, $data);
-            get_user_profile_name();
+            $this->get_user_profile_name();
         }
   
         if (is_array($response) && !is_wp_error($response)) {
@@ -598,7 +589,7 @@ class Formaloo_Main_Class {
                                         'Authorization'=> 'JWT ' . $api_token ) 
         ));
 
-        if (wp_remote_retrieve_response_code($response) == 401) {
+        if (wp_remote_retrieve_response_code($response) == 401 && !empty($api_secret) && !empty($api_key)) {
             // $url = FORMALOO_PROTOCOL. '://accounts.'. FORMALOO_ENDPOINT .'/v1/oauth2/authorization-token/';
             $url = 'https://staging.icas.formaloo.com/v1/oauth2/authorization-token/';
             $renewAuthTokenResponse = wp_remote_post( $url, array(
@@ -611,7 +602,7 @@ class Formaloo_Main_Class {
             $renewAuthTokenResult = json_decode($renewAuthTokenResponse['body'], true);
             $data['api_token'] = $renewAuthTokenResult['authorization_token'];
             update_option($this->option_name, $data);
-            getForms($pageNum);
+            $this->getForms($pageNum);
         }
 
 	    if (is_array($response) && !is_wp_error($response)) {
@@ -636,7 +627,7 @@ class Formaloo_Main_Class {
                 <p><?php echo __('Invalid API Token or API Key! Please visit your', 'formaloo-form-builder') . ' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/" target="_blank">'. __('Formaloo dashboard here', 'formaloo-form-builder') .'</a>'. ' ' . __('to get a new one.', 'formaloo-form-builder'); ?></p>
             </div>
 	
-        <?php 
+        <?php
         }
     }
 

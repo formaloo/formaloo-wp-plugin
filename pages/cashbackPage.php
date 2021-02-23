@@ -124,6 +124,7 @@
                                 </tr>
                                 <tr>
                                     <td>
+                                        <p class="formaloo-cashback-error-text"></p>
                                         <p class="formaloo-caption-text">
                                             <?php _e( 'I want to give my customers between $x to $y cashback at most.', 'formaloo-form-builder' ); ?>
                                         </p>
@@ -150,13 +151,13 @@
                             </tbody>
 
                         </table>
-                        
+
                     </div>
 
                 </form>
 
                 <a href="<?php echo esc_url( $this->getSupportUrl() ); ?>" target="_blank"><?php _e( 'Need Support? Feel free to contact us', 'formaloo-form-builder' ); ?></a>
-                                
+    
             </div>
 
             <script src="<?php echo FORMALOO_URL ?>assets/js/handleTokenExpiration.js"></script>
@@ -164,6 +165,7 @@
             <script>
                 jQuery(document).ready(function($){
 
+                    $('.formaloo-cashback-error-text').hide();
                     $('.formaloo-cashback-success-notice').hide();
                     $('.formaloo-cashback-error-notice').hide();
                     $('#formaloo-woocommerce-not-connected').hide();
@@ -172,68 +174,15 @@
                     $('#formaloo-cashback-form').on('submit', function(e){
                         e.preventDefault();
                         showLoadingGif();
-                        syncCustomers();
-                        syncOrders();
+                        $('.formaloo-cashback-error-text').hide();
+                        const lowRangeValue = $('#formaloo_cashback_low_range_percentage').val();
+                        const highRangeValue = $('#formaloo_cashback_high_range_percentage').val();
+                        if (lowRangeValue > highRangeValue || highRangeValue > 10)  {
+                           $('.formaloo-cashback-error-text').show();
+                           $('.formaloo-cashback-error-text').text('Please enter a valid range and a high range value less than $10');
+                        }
+                        hideLoadingGif();
                     });
-
-                    function syncCustomers() {
-
-                        // MARK: remove active business
-                        $.ajax({
-                            url: '',
-                            type: 'POST',
-                            dataType: 'json',
-                            headers: {
-                                'x-api-key': '<?php echo $data['api_key']; ?>',
-                                'Authorization': '<?php echo 'Token ' . $data['api_token']; ?>'
-                            },
-                            contentType: 'application/json; charset=utf-8',
-                            data: JSON.stringify(customersJson),
-                            success: function (result) {
-                                if (result['status'] == 201) {
-                                    showSuccessMessage('Customers have been imported successfully.');
-                                }
-                                hideLoadingGif();
-                            },
-                            error: function (error) {
-                                console.log(error);
-                                disableCashbackTable();
-                                var errorText = error['responseJSON']['errors']['general_errors'][0];
-                                showGeneralErrors(errorText);
-                                hideLoadingGif();
-                            }
-                        });
-
-                    }
-
-                    function syncOrders() {
-                        
-                        orders.forEach(function(entry) {
-                            // MARK: remove active business
-                            $.ajax({
-                                url: '',
-                                type: 'POST',
-                                dataType: 'json',
-                                contentType: 'application/json; charset=utf-8',
-                                data: JSON.stringify(entry),
-                                success: function (result) {
-                                    if (result['status'] == 201) {
-                                        showSuccessMessage('Orders have been imported successfully.');
-                                    }
-                                },
-                                error: function (error) {
-                                    if (error['status'] != 401) {
-                                        disableCashbackTable();
-                                        var errorText = error['responseJSON']['errors']['general_errors'][0];
-                                        showGeneralErrors(errorText);
-                                    } else {
-                                        handleTokenExpiration(error);
-                                    }
-                                }
-                            });
-                        });
-
-                    }
 
                     function disableCashbackTable() {
                         $(".formaloo-cashback-settings-table").addClass("formaloo-cashback-disabled-table");

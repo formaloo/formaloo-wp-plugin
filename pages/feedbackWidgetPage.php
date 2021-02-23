@@ -300,15 +300,11 @@
                                 setupFormSettings(result['data']['form']);
                             },
                             error: function (error) {
-                                if (error['status'] != 401) {
-                                    disableFeedbackWidgetTable();
-                                    var errorText = error['responseJSON']['errors']['general_errors'][0];
-                                    showGeneralErrors(errorText);
-                                    hideLoadingGif();
-                                } else {
-                                    handleTokenExpiration(error);
-                                }
-                                
+                                disableFeedbackWidgetTable();
+                                var errorText = error['responseJSON']['errors']['general_errors'][0];
+                                showGeneralErrors(errorText);
+                                hideLoadingGif();
+                                handleTokenExpiration(error);
                             }
                         });
                     }
@@ -327,14 +323,11 @@
                                 setupFormSettings(result['data']['form']);
                             },
                             error: function (error) {
-                                if (error['status'] != 401) {
-                                    disableFeedbackWidgetTable();
-                                    var errorText = error['responseJSON']['errors']['general_errors'][0];
-                                    showGeneralErrors(errorText);
-                                    hideLoadingGif();
-                                } else {
-                                    handleTokenExpiration(error);
-                                }
+                                disableFeedbackWidgetTable();
+                                var errorText = error['responseJSON']['errors']['general_errors'][0];
+                                showGeneralErrors(errorText);
+                                hideLoadingGif();
+                                handleTokenExpiration(error);
                                 
                             }
                         });
@@ -463,11 +456,8 @@
                                     resolve(result);
                                 },
                                 error: function (error) {
-                                    if (error['status'] != 401) {
-                                        reject(error)
-                                    } else {
-                                        handleTokenExpiration(error);
-                                    }
+                                    reject(error);
+                                    handleTokenExpiration(error);
                                 }
                             });
                         });

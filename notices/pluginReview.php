@@ -11,10 +11,6 @@
  * @author Ryan Hellyer <ryanhellyer@gmail.com>
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-    exit; // Exit if accessed directly
-}
-
 if ( ! class_exists( 'Formaloo_Plugin_Review' ) ) :
 class Formaloo_Plugin_Review {
 

@@ -156,7 +156,6 @@
                                 },
                                 error: function (error) {
                                     // MARK: Handle create new form error
-                                    handleTokenExpiration(error);
                                 }
                             });
                         }

@@ -391,13 +391,10 @@
                             window.location.href = "?page=formaloo&created_from_template=true";
                         },
                         error: function (error) {
-                            if (error['status'] != 401) {
-                                var errorText = error['responseJSON']['errors']['general_errors'][0];
-                                showGeneralErrors(errorText);
-                                hideLoadingGif();
-                            } else {
-                                handleTokenExpiration(error);
-                            }
+                            var errorText = error['responseJSON']['errors']['general_errors'][0];
+                            showGeneralErrors(errorText);
+                            hideLoadingGif();
+                            handleTokenExpiration(error);
                         }
                     });
 
