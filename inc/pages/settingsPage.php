@@ -55,11 +55,13 @@
                                         <label><?php _e( 'API Key', 'formaloo-form-builder' ); ?></label>
                                     </td>
                                     <td>
-                                        <input name="formaloo_api_key"
+                                        <textarea 
+                                            name="formaloo_api_key"
+                                            form="formaloo-admin-form"
                                             id="formaloo_api_key"
                                             class="regular-text"
-                                            type="text"
-                                            value="<?php echo (isset($data['api_key'])) ? $data['api_key'] : ''; ?>"/>
+                                            rows="5"
+                                        ><?php echo (isset($data['api_key'])) ? $data['api_key'] : ''; ?></textarea>
                                     </td>
                                 </tr>
                                 <tr>

@@ -170,7 +170,7 @@
   margin: 20px 0 !important;
   padding: 10px;
 }
-.formaloo-feedback-widget-disabled-table {
+.formaloo-feedback-widget-disabled-table, .formaloo-cashback-disabled-table {
   background: whitesmoke;
 }
 #formaloo-where-to-put-feedback-widget {
@@ -366,6 +366,6 @@
 #formaloo-woocommerce-connected h4 {
   margin: 0;
 }
-textarea[name=formaloo_api_secret] {
+textarea[name=formaloo_api_secret], textarea[name=formaloo_api_key] {
   resize: none;
 }

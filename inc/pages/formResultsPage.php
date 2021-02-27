@@ -61,7 +61,10 @@
                                     <a href="<?php echo admin_url( "admin.php?page=formaloo" ) ?>"><?php _e('My Forms', 'formaloo-form-builder'); ?></a> / 
                                     <?php _e('Your Form Results', 'formaloo-form-builder'); ?>
                                 </h3>
-                                <?php $this->results_table_page(esc_attr($_GET['results_slug'])); ?>
+                                <?php 
+                                    $resultsPageClass = new Formaloo_Results_Page();
+                                    $resultsPageClass->resultsTablePage(esc_attr($_GET['results_slug'])); 
+                                ?>
                             </div>
 
                         <?php endif; ?>

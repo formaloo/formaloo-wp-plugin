@@ -38,7 +38,7 @@
                         <div class="formaloo-api-settings-top-wrapper">
                             <img src="<?php echo FORMALOO_URL ?>assets/images/Formaloo_Logo.png" alt="formaloo-logo">
                             <h1 class="formaloo-heading">
-                                <?php _e('Cashback Calculator for WooCommerce', 'formaloo-form-builder'); ?>
+                                <?php _e('Cashback Calculator for WooCommerce (Coming Soon)', 'formaloo-form-builder'); ?>
                             </h1>
                         </div>
 
@@ -55,6 +55,8 @@
                             </p>
                         </div>
 
+                        <hr>
+
                         <?php if ($not_ready): ?>
                             <p>
                                 <?php echo __('To get started, we\'ll need to access your Formaloo account with an', 'formaloo-form-builder') .' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/profile/" target="_blank">'. __('API Key & API Token', 'formaloo-form-builder') .'</a>. '. __('Paste your Formaloo API Key & API Token, and click', 'formaloo-form-builder') .' <strong>'. __('Connect', 'formaloo-form-builder') .'</strong> '. __('to continue', 'formaloo-form-builder') .'.'; ?>
@@ -68,8 +70,6 @@
                         <input type="hidden" id="formaloo_feedback_widget_form_address" name="formaloo_feedback_widget_form_address" value="">
                         <input type="hidden" id="formaloo_feedback_widget_nps_field_slug" name="formaloo_feedback_widget_nps_field_slug" value="">
                         <input type="hidden" id="formaloo_feedback_widget_text_field_slug" name="formaloo_feedback_widget_text_field_slug" value=""> -->
-
-                        <hr>
 
                         <table class="formaloo-cashback-table form-table">
                             <tbody id="formaloo-woocommerce-not-connected">
@@ -136,13 +136,6 @@
                                             <input type="submit" name="submit" id="submit" class="button button-primary" value="<?php _e( 'Calculate', 'formaloo-form-builder' ); ?>">
                                         </p>    
                                     </td>
-                                    <!--
-                                    <td>
-                                        <p class="submit">
-                                            <a class="button"><?php //_e( 'Sync', 'formaloo-form-builder' ); ?></a>
-                                        </p>
-                                    </td>
-                                    -->
                                     <td>
                                         <a href="#" target="_blank"><?php _e( 'How we calculate cashback?', 'formaloo-form-builder' ); ?></a>
                                     </td>
@@ -171,6 +164,8 @@
                     $('#formaloo-woocommerce-not-connected').hide();
                     hideLoadingGif();
 
+                    disableCashbackTable();
+
                     $('#formaloo-cashback-form').on('submit', function(e){
                         e.preventDefault();
                         showLoadingGif();
@@ -185,8 +180,8 @@
                     });
 
                     function disableCashbackTable() {
-                        $(".formaloo-cashback-settings-table").addClass("formaloo-cashback-disabled-table");
-                        $(".formaloo-cashback-settings-table :input").attr("disabled", true);
+                        $(".formaloo-cashback-table").addClass("formaloo-cashback-disabled-table");
+                        $(".formaloo-cashback-table :input").attr("disabled", true);
                     }
 
                     function showSuccessMessage(successText) {

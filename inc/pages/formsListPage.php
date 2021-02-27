@@ -1,5 +1,44 @@
 <?php
     class Formaloo_Forms_List_Page extends Formaloo_Main_Class {
+
+        public function getUserProfileName() {
+            $result = array();
+            $data = $this->getData();
+            $api_token = $data['api_token'];
+            $api_key = $data['api_key'];
+            $api_secret = $data['api_secret'];
+            
+            $api_url = FORMALOO_PROTOCOL. '://api.'. FORMALOO_ENDPOINT .'/v2/profiles/profile/me/';
+      
+            $response = wp_remote_get( $api_url ,
+                array( 'timeout' => 10,
+                        'headers' => array( 'x-api-key' => $api_key,
+                                            'Authorization'=> 'JWT ' . $api_token ) 
+            ));
+    
+            if (wp_remote_retrieve_response_code($response) == 401 && !empty($api_secret) && !empty($api_key)) {
+                // $url = FORMALOO_PROTOCOL. '://accounts.'. FORMALOO_ENDPOINT .'/v1/oauth2/authorization-token/';
+                $url = 'https://staging.icas.formaloo.com/v1/oauth2/authorization-token/';
+                $renewAuthTokenResponse = wp_remote_post( $url, array(
+                    'body'    => array(
+                        'grant_type'   => 'client_credentials'
+                    ),
+                    'headers' => array( 'x-api-key' => $api_key,
+                                        'Authorization'=> 'Basic ' . $api_secret ) 
+                ) );
+                $renewAuthTokenResult = json_decode($renewAuthTokenResponse['body'], true);
+                $data['api_token'] = $renewAuthTokenResult['authorization_token'];
+                update_option($this->option_name, $data);
+                $this->getUserProfileName();
+            }
+      
+            if (is_array($response) && !is_wp_error($response)) {
+              $result = json_decode($response['body'], true);
+            }
+    
+            return $result['data']['profile']['first_name'];
+        }
+
         /**
          * Outputs the Admin Dashboard layout containing the form with all its options
          *
@@ -217,7 +256,7 @@
                         <?php else: ?>
                             <?php echo $this->getStatusIcon(!$not_ready); ?>
                             <?php 
-                                $formaloo_first_name = $this->get_user_profile_name();
+                                $formaloo_first_name = $this->getUserProfileName();
                                 $formaloo_user_name = empty($formaloo_first_name) ? __('User', 'formaloo-form-builder') : $formaloo_first_name;
                                 echo __('Hello Dear', 'formaloo-form-builder'). ' ' . $formaloo_user_name .'! '. __('You can edit or view your forms right here or you can access', 'formaloo-form-builder') .' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/" target="_blank">'. __('your full dashboard here', 'formaloo-form-builder') .'</a>.'; 
                             ?>

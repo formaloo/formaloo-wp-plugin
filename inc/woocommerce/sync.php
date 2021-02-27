@@ -15,7 +15,7 @@
             $customers = $wc_customers->get_customers();
             $customers_json = json_encode($customers);
     
-            $url = esc_url( FORMALOO_PROTOCOL . '://api.' . FORMALOO_ENDPOINT . '/v1.0/customers/batch/?active_business=bcmqr9Qb' );
+            $url = esc_url( FORMALOO_PROTOCOL . '://api.' . FORMALOO_ENDPOINT . '/v1.0/customers/batch/' );
     
             $data = $this->getData();
             $api_token = $data['api_token'];
@@ -31,6 +31,9 @@
             ));
             $result = json_decode($response['body'], true);
             
+            // $date = date('Y-m-d H:i:s');
+            // file_put_contents(__DIR__.'/my_loggg1.txt', ' // ' . $result['status'] . ' // ' . $date . ' // ');
+
             if ($result['status'] == 201) {
                 
             }
@@ -41,7 +44,7 @@
             $orders = $wc_orders->get_orders();
             $orders_json = json_encode($orders);
     
-            $url = esc_url( FORMALOO_PROTOCOL . '://api.' . FORMALOO_ENDPOINT . '/v1.0/activities/batch/?active_business=bcmqr9Qb' );
+            $url = esc_url( FORMALOO_PROTOCOL . '://api.' . FORMALOO_ENDPOINT . '/v1.0/activities/batch/' );
     
             $data = $this->getData();
             $api_token = $data['api_token'];
@@ -57,6 +60,9 @@
             ));
             $result = json_decode($response['body'], true);
             
+            // $date = date('Y-m-d H:i:s');
+            // file_put_contents(__DIR__.'/my_loggg2.txt', ' // ' . $result['status'] . ' // ' . $date . ' // ');
+
             if ($result['status'] == 201) {
                 
             }
