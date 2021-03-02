@@ -59,18 +59,22 @@ class Formaloo_WC_Customers extends Formaloo_Cashback_Page {
 					" );
 
 		$customer_data = array(
-			// 'created_at'       => $customer->user_registered,
 			'email'            => $customer->user_email,
 			'full_name'        => $customer->first_name . ' ' . $customer->last_name,
 			'phone_number'	   => $customer->billing_phone,
+			'tags' => array(
+				array(
+					'title' => $customer->roles[0]
+				)
+			),
 			'customer_data' => array(
 				'username'         => $customer->user_login,
-				'role'             => $customer->roles[0],
-				'last_order_id'    => is_object( $last_order ) ? $last_order->id : null,
-				'last_order_date'  => is_object( $last_order ) ? $last_order->post_date_gmt : null,
+				// 'last_order_id'    => is_object( $last_order ) ? $last_order->id : null,
+				// 'last_order_date'  => is_object( $last_order ) ? $last_order->post_date_gmt : null,
 				'orders_count'     => wc_get_customer_order_count( $customer->ID ),
 				'total_spent'      => wc_format_decimal( wc_get_customer_total_spent( $customer->ID ), 2 ),
 				'avatar_url'       => $this->get_avatar_url( $customer->customer_email ),
+				'user_registered'  => $customer->user_registered,
 				'billing_address'  => array(
 					'first_name' => $customer->billing_first_name,
 					'last_name'  => $customer->billing_last_name,

@@ -105,13 +105,13 @@ class Formaloo_Main_Class {
 	public function __construct() {
         add_action('admin_menu',                array($this,'addAdminMenu'));
         add_action('wp_ajax_store_admin_data',  array($this,'storeAdminData'));
-        add_action('wp_ajax_get_formaloo_shortcode',  array('Formaloo_Shortcode_Handler','getFormalooShortcode'));
+        add_action('wp_ajax_get_formaloo_shortcode',  array($this,'getFormalooShortcode'));
         add_action('wp_ajax_update_auth_token',  array($this,'updateAuthToken'));      
         add_action('admin_enqueue_scripts',     array($this,'addAdminScripts'));
         add_action('wp_print_scripts', array($this,'formalooClipboadPrintScripts'));
         add_action('admin_notices', array('Formaloo_Admin_Notice', 'showInvalidTokenAdminNotice'));
 
-        add_shortcode('formaloo', array('Formaloo_Shortcode_Handler', 'showFormalooShortcode'));
+        add_shortcode('formaloo', array($this, 'showFormalooShortcode'));
 
         add_filter( 'submenu_file', array($this, 'formaloo_wp_admin_submenu_filter'));
 
@@ -209,7 +209,7 @@ class Formaloo_Main_Class {
         return $submenu_file;
     }
 
-    	/**
+    /**
 	 * Returns the saved options data as an array
      *
      * @return array
@@ -279,9 +279,9 @@ class Formaloo_Main_Class {
 		$admin_options = array(
 			'ajax_url' => admin_url( 'admin-ajax.php' ),
             '_nonce'   => wp_create_nonce( $this->_nonce ),
-            'api_token' => $data['api_token'],
-            'api_key' => $data['api_key'],
-            'api_secret' => $data['api_secret'],
+            'api_token' => isset($data['api_token']) ? $data['api_token'] : '',
+            'api_key' => isset($data['api_key']) ? $data['api_key'] : '',
+            'api_secret' => isset($data['api_secret']) ? $data['api_secret'] : '',
             'protocol' => FORMALOO_PROTOCOL,
             'endpoint_url' => FORMALOO_ENDPOINT,
             'forms_list' => $this->getForms(),
@@ -364,9 +364,9 @@ class Formaloo_Main_Class {
         
         $result = array();
         $data = $this->getData();
-        $api_token = $data['api_token'];
-        $api_key = $data['api_key'];
-        $api_secret = $data['api_secret'];
+        $api_token = isset($data['api_token']) ? $data['api_token'] : '';
+        $api_key = isset($data['api_key']) ? $data['api_key'] : '';
+        $api_secret = isset($data['api_secret']) ? $data['api_secret'] : '';
         
         $api_url = FORMALOO_PROTOCOL. '://api.'. FORMALOO_ENDPOINT .'/v2/forms/list/?page='. $pageNum;
 
@@ -377,8 +377,8 @@ class Formaloo_Main_Class {
         ));
 
         if (wp_remote_retrieve_response_code($response) == 401 && !empty($api_secret) && !empty($api_key)) {
-            // $url = FORMALOO_PROTOCOL. '://accounts.'. FORMALOO_ENDPOINT .'/v1/oauth2/authorization-token/';
-            $url = 'https://staging.icas.formaloo.com/v1/oauth2/authorization-token/';
+            $url = FORMALOO_PROTOCOL. '://accounts.'. FORMALOO_ENDPOINT .'/v1/oauth2/authorization-token/';
+            // $url = 'https://staging.icas.formaloo.com/v1/oauth2/authorization-token/';
             $renewAuthTokenResponse = wp_remote_post( $url, array(
                 'body'    => array(
                     'grant_type'   => 'client_credentials'
@@ -386,10 +386,13 @@ class Formaloo_Main_Class {
                 'headers' => array( 'x-api-key' => $api_key,
                                     'Authorization'=> 'Basic ' . $api_secret ) 
             ) );
-            $renewAuthTokenResult = json_decode($renewAuthTokenResponse['body'], true);
-            $data['api_token'] = $renewAuthTokenResult['authorization_token'];
-            update_option($this->option_name, $data);
-            $this->getForms($pageNum);
+            if (!is_wp_error($renewAuthTokenResponse)) {
+                $renewAuthTokenResult = json_decode($renewAuthTokenResponse['body'], true);
+                $data['api_token'] = $renewAuthTokenResult['authorization_token'];
+                update_option($this->option_name, $data);
+                $this->getForms($pageNum);
+            }
+            
         }
 
 	    if (is_array($response) && !is_wp_error($response)) {
@@ -465,3 +468,12 @@ new Formaloo_Plugin_Review( array(
  * Starts our plugin class, easy!
  */
 new Formaloo_Main_Class();
+
+// Set a link to the settings page in the WordPress plugins page
+function formaloo_settings_link($links) { 
+    $settings_link = '<a href="admin.php?page=formaloo-settings-page">' . __( 'Settings', 'formaloo-form-builder' ) . '</a>'; 
+    array_unshift($links, $settings_link); 
+    return $links; 
+}
+$plugin = plugin_basename(__FILE__); 
+add_filter('plugin_action_links_'. $plugin, 'formaloo_settings_link' );

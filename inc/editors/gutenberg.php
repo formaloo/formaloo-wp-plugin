@@ -34,10 +34,12 @@ function formaloo_gutenberg_block_callback($attr) {
             'headers' => array( 'x-api-key' => $api_key,
                                 'Authorization'=> 'Basic ' . $api_secret ) 
         ) );
-        $renewAuthTokenResult = json_decode($renewAuthTokenResponse['body'], true);
-        $data['api_token'] = $renewAuthTokenResult['authorization_token'];
-        update_option('formaloo_data', $data);
-        $this->formaloo_gutenberg_block_callback($attr);
+        if (!is_wp_error($renewAuthTokenResponse)) {
+            $renewAuthTokenResult = json_decode($renewAuthTokenResponse['body'], true);
+            $data['api_token'] = $renewAuthTokenResult['authorization_token'];
+            update_option('formaloo_data', $data);
+            $this->formaloo_gutenberg_block_callback($attr);
+        }
     }
 
     if( is_wp_error( $request ) ) {

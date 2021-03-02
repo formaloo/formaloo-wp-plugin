@@ -26,10 +26,12 @@
                     'headers' => array( 'x-api-key' => $api_key,
                                         'Authorization'=> 'Basic ' . $api_secret ) 
                 ) );
-                $renewAuthTokenResult = json_decode($renewAuthTokenResponse['body'], true);
-                $data['api_token'] = $renewAuthTokenResult['authorization_token'];
-                update_option($this->option_name, $data);
-                $this->getUserProfileName();
+                if (!is_wp_error($renewAuthTokenResponse)) {
+                    $renewAuthTokenResult = json_decode($renewAuthTokenResponse['body'], true);
+                    $data['api_token'] = $renewAuthTokenResult['authorization_token'];
+                    update_option($this->option_name, $data);
+                    $this->getUserProfileName();
+                }
             }
       
             if (is_array($response) && !is_wp_error($response)) {
