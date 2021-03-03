@@ -25,8 +25,8 @@ function formaloo_gutenberg_block_callback($attr) {
     ));
 
     if (wp_remote_retrieve_response_code($response) == 401 && !empty($api_secret) && !empty($api_key)) {
-        // $url = FORMALOO_PROTOCOL. '://accounts.'. FORMALOO_ENDPOINT .'/v1/oauth2/authorization-token/';
-        $url = 'https://staging.icas.formaloo.com/v1/oauth2/authorization-token/';
+        $url = FORMALOO_PROTOCOL. '://accounts.'. FORMALOO_ENDPOINT .'/v1/oauth2/authorization-token/';
+        // $url = 'https://staging.icas.formaloo.com/v1/oauth2/authorization-token/';
         $renewAuthTokenResponse = wp_remote_post( $url, array(
             'body'    => array(
                 'grant_type'   => 'client_credentials'

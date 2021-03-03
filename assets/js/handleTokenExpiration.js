@@ -1,7 +1,7 @@
 function handleTokenExpiration(error) {
     if (error['status'] == 401) {
-        const url = 'https://staging.icas.formaloo.com/v1/oauth2/authorization-token/';
-        // formaloo_exchanger.protocol + '://accounts.' + formaloo_exchanger.endpoint_url + '/v1/oauth2/authorization-token/'
+        const url = formaloo_exchanger.protocol + '://accounts.' + formaloo_exchanger.endpoint_url + '/v1/oauth2/authorization-token/';
+
         jQuery.ajax({
             url: url,
             type: 'POST',
