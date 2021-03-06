@@ -267,7 +267,7 @@
                     function loadTemplates() {
                         
                         $.ajax({
-                            url: "<?php echo esc_url( FORMALOO_PROTOCOL . '://api.' . FORMALOO_ENDPOINT . '/v1/forms/templates/list' ); ?>",
+                            url: "<?php echo esc_url( FORMALOO_PROTOCOL . '://api.' . FORMALOO_ENDPOINT . '/v1/forms/templates/list/?pagination=0' ); ?>",
                             type: 'GET',
                             dataType: 'json',
                             contentType: 'application/json; charset=utf-8',
@@ -407,7 +407,6 @@
                             showGeneralErrors(err.message);
                             jQuery('.spinner').removeClass('is-active');
                         }
-
 
                         var npsFieldParams = { "form": formSlug, "slug" : npsFieldSlug, "title" : questionTitle, "thumbnail_type": selectedIcon};
                         var textFielParams = { "form": formSlug, "slug" : textFieldSlug, "title" : textBoxPlaceHolder};

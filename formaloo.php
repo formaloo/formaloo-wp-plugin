@@ -472,25 +472,6 @@ class Formaloo_Main_Class {
                                         'Authorization'=> 'JWT ' . $api_token ) 
         ));
 
-        if (wp_remote_retrieve_response_code($response) == 401 && !empty($api_secret) && !empty($api_key)) {
-            $url = FORMALOO_PROTOCOL. '://accounts.'. FORMALOO_ENDPOINT .'/v1/oauth2/authorization-token/';
-            // $url = 'https://staging.icas.formaloo.com/v1/oauth2/authorization-token/';
-            $renewAuthTokenResponse = wp_remote_post( $url, array(
-                'body'    => array(
-                    'grant_type'   => 'client_credentials'
-                ),
-                'headers' => array( 'x-api-key' => $api_key,
-                                    'Authorization'=> 'Basic ' . $api_secret ) 
-            ) );
-            if (!is_wp_error($renewAuthTokenResponse)) {
-                $renewAuthTokenResult = json_decode($renewAuthTokenResponse['body'], true);
-                $data['api_token'] = $renewAuthTokenResult['authorization_token'];
-                update_option($this->option_name, $data);
-                $this->getForms($pageNum);
-            }
-            
-        }
-
 	    if (is_array($response) && !is_wp_error($response)) {
             $result = json_decode($response['body'], true);
         }

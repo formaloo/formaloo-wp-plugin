@@ -141,6 +141,37 @@
                                     </td>
                                     <td></td>
                                 </tr>
+                                <tr>
+                                    <td>
+                                        <hr><br>
+                                        <h4>
+                                            <?php _e( 'WooCommerce + Formaloo CDP Sync Status', 'formaloo-form-builder' ); ?>
+                                        </h4>
+                                        <br>
+                                        <p>
+                                            <?php echo __( 'We\'ll sync your customers and orders list with your Formaloo CDP account which you can seen in your', 'formaloo-form-builder') . ' ' . '<a href="'. FORMALOO_PROTOCOL . '://' . 'cdp.' . FORMALOO_ENDPOINT .'/" target="_blank">'. __('Formaloo CDP dashboard here', 'formaloo-form-builder') .'</a>.'; ?>
+                                        </p>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>
+                                            <?php _e( 'Customers Import Status', 'formaloo-form-builder' ); ?>
+                                        </strong>
+                                    <td>
+                                    <td id="formaloo-customers-import-status"></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>
+                                            <?php _e( 'Orders Import Status', 'formaloo-form-builder' ); ?>
+                                        </strong>
+                                    <td>
+                                    <td id="formaloo-orders-import-status"></td>
+                                    <td></td>
+                                </tr>
                             </tbody>
 
                         </table>
@@ -164,7 +195,7 @@
                     $('#formaloo-woocommerce-not-connected').hide();
                     hideLoadingGif();
 
-                    disableCashbackTable();
+                    // disableCashbackTable();
 
                     $('#formaloo-cashback-form').on('submit', function(e){
                         e.preventDefault();
@@ -178,6 +209,67 @@
                         }
                         hideLoadingGif();
                     });
+
+                    checkBatchImportStatus(true, "<?php echo $data['last_customers_batch_import_slug']; ?>");
+                    checkBatchImportStatus(false, "<?php echo $data['last_orders_batch_import_slug']; ?>");
+
+                    function checkBatchImportStatus(checkingCustomersImport, slug){
+
+                        var endpointParam = checkingCustomersImport ? "customers" : "activities";
+                        var resultParseItem = checkingCustomersImport ? "customer_batch" : "activity_batch";
+
+                        $.ajax({
+                            url: "<?php echo esc_url( FORMALOO_PROTOCOL . '://api.' . FORMALOO_ENDPOINT . '/v1.0/' ); ?>"+endpointParam+"/batch/"+slug+"/",
+                            type: 'GET',
+                            dataType: 'json',
+                            headers: {
+                                'x-api-key': '<?php echo $data['api_key']; ?>',
+                                'Authorization': '<?php echo 'JWT ' . $data['api_token']; ?>'
+                            },
+                            contentType: 'application/json; charset=utf-8',
+                            success: function (result) {
+                                batchImportStatusHandler(checkingCustomersImport, result['data'][resultParseItem]['status']);
+                            },
+                            error: function (error) {
+                                var errorText = error['responseJSON']['errors']['general_errors'][0];
+                                showGeneralErrors(errorText);                                
+                            }
+                        });
+                    }
+
+                    function batchImportStatusHandler(checkingCustomersImport, status) {
+                        var dashicon = '';
+                        var divId = checkingCustomersImport ? "formaloo-customers-import-status" : "formaloo-orders-import-status";
+                        var syncDate = checkingCustomersImport ? '<?php echo $data['last_customers_sync_date']; ?>' : '<?php echo $data['last_orders_sync_date']; ?>'
+
+                        switch(status) {
+                            case 'queued':
+                            case 'in_progress':
+                                dashicon = '<span class="dashicons dashicons-clock"></span>';
+                                break;
+                            case 'imported':
+                                dashicon = '<span class="dashicons dashicons-yes-alt" style="color: yellowgreen;"></span>';
+                                break;
+                            case 'failed':
+                                dashicon = '<span class="dashicons dashicons-no" style="color: crimson;"></span>';
+                                break;
+                            default:
+                                // code block
+                        }
+
+                        document.getElementById(divId).innerHTML = dashicon + ' ' + titleCase(status) + ' <?php _e( 'on', 'formaloo-form-builder' ); ?> ' + syncDate;
+                    }
+
+                    function titleCase(s) { 
+                        return s.replace(/([a-z])([A-Z])/g, function (allMatches, firstMatch, secondMatch) {
+                                            return firstMatch + " " + secondMatch;
+                                    })
+                                    .toLowerCase()
+                                    .replace(/([ -_]|^)(.)/g, function (allMatches, firstMatch, secondMatch) {
+                                            return (firstMatch ? " " : "") + secondMatch.toUpperCase();
+                                        }
+                                    ); 
+                    }
 
                     function disableCashbackTable() {
                         $(".formaloo-cashback-table").addClass("formaloo-cashback-disabled-table");
