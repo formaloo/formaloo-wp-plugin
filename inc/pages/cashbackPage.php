@@ -55,7 +55,7 @@
                             </p>
                         </div>
 
-                        <hr>
+                        <!-- <hr> -->
 
                         <?php if ($not_ready): ?>
                             <p>
@@ -144,10 +144,9 @@
                                 <tr>
                                     <td>
                                         <hr><br>
-                                        <h4>
+                                        <h3>
                                             <?php _e( 'WooCommerce + Formaloo CDP Sync Status', 'formaloo-form-builder' ); ?>
-                                        </h4>
-                                        <br>
+                                        </h3>
                                         <p>
                                             <?php echo __( 'We\'ll sync your customers and orders list with your Formaloo CDP account which you can seen in your', 'formaloo-form-builder') . ' ' . '<a href="'. FORMALOO_PROTOCOL . '://' . 'cdp.' . FORMALOO_ENDPOINT .'/" target="_blank">'. __('Formaloo CDP dashboard here', 'formaloo-form-builder') .'</a>.'; ?>
                                         </p>
@@ -203,9 +202,9 @@
                         $('.formaloo-cashback-error-text').hide();
                         const lowRangeValue = $('#formaloo_cashback_low_range_percentage').val();
                         const highRangeValue = $('#formaloo_cashback_high_range_percentage').val();
-                        if (lowRangeValue > highRangeValue || highRangeValue > 10)  {
+                        if (lowRangeValue > highRangeValue || lowRangeValue < 0 || highRangeValue < 0)  {
                            $('.formaloo-cashback-error-text').show();
-                           $('.formaloo-cashback-error-text').text('Please enter a valid range and a high range value less than $10');
+                           $('.formaloo-cashback-error-text').text('Please enter a valid range.');
                         }
                         hideLoadingGif();
                     });
@@ -245,6 +244,7 @@
                         switch(status) {
                             case 'queued':
                             case 'in_progress':
+                            case 'new':
                                 dashicon = '<span class="dashicons dashicons-clock"></span>';
                                 break;
                             case 'imported':
