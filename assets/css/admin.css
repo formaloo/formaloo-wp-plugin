@@ -28,8 +28,8 @@
   white-space: -o-pre-wrap;
   word-wrap: break-word;
 }
-.formaloo_hidden {
-  display: none;
+.formaloo-hidden {
+  display: none !important;
   visibility: hidden;
 }
 #TB_window {
@@ -97,9 +97,11 @@
   margin: 0 10px 0 0;
 }
 .formaloo-api-settings-table {
+  display: grid;
+}
+.formaloo-api-settings-keys-body {
   background: #FFE7E1;
   border-radius: 8px;
-  display: flex;
   margin: 20px 0 !important;
 }
 .formaloo-api-settings-top-wrapper {
@@ -368,4 +370,7 @@
 }
 textarea[name=formaloo_api_secret], textarea[name=formaloo_api_key] {
   resize: none;
+}
+.formaloo-cdp-sync-wrapper {
+  display: grid;
 }

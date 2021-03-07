@@ -49,7 +49,7 @@
                         <?php echo $this->getStatusDiv(!$not_ready); ?>
 
                         <table class="form-table formaloo-api-settings-table">
-                            <tbody>
+                            <tbody class="formaloo-api-settings-keys-body">
                                 <tr>
                                     <td scope="row">
                                         <label><?php _e( 'API Key', 'formaloo-form-builder' ); ?></label>
@@ -93,6 +93,39 @@
                                     </td>
                                 </tr>
                             </tbody>
+                            <?php if (!$not_ready): ?>
+                                <tbody class="formaloo-cdp-sync-wrapper">
+                                <tr>
+                                    <td>
+                                        <h3>
+                                            <?php _e( 'WooCommerce + Formaloo CDP Sync Status', 'formaloo-form-builder' ); ?>
+                                        </h3>
+                                        <p>
+                                            <?php echo __( 'We\'ll sync your customers and orders list hourly with your Formaloo CDP account which you can see in your', 'formaloo-form-builder') . ' ' . '<a href="'. FORMALOO_PROTOCOL . '://' . 'cdp.' . FORMALOO_ENDPOINT .'/" target="_blank">'. __('Formaloo CDP dashboard here', 'formaloo-form-builder') .'</a>.'; ?>
+                                        </p>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>
+                                            <?php _e( 'Customers Import Status', 'formaloo-form-builder' ); ?>
+                                        </strong>
+                                    <td>
+                                    <td id="formaloo-customers-import-status"></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>
+                                            <?php _e( 'Orders Import Status', 'formaloo-form-builder' ); ?>
+                                        </strong>
+                                    <td>
+                                    <td id="formaloo-orders-import-status"></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                            <?php endif; ?>
                         </table>
                     </div>
 
@@ -100,6 +133,133 @@
 
                 <a href="<?php echo esc_url( $this->getSupportUrl() ); ?>" target="_blank"><?php _e( 'Need Support? Feel free to contact us', 'formaloo-form-builder' ); ?></a>
             </div>
+
+            <script>
+                jQuery(document).ready(function($){
+
+                    $('#formaloo-admin-form').on('submit', function(e){
+
+                        e.preventDefault();
+
+                        // We inject some extra fields required for the security
+                        $('#formaloo-settings-submit-row').append('<td><span class="spinner is-active"></span></td>');
+                        $(this).append('<input type="hidden" name="action" value="store_admin_data" />');
+                        $(this).append('<input type="hidden" name="security" value="' + formaloo_exchanger._nonce + '" />');
+
+                        const apiKey = document.getElementById('formaloo_api_key').value;
+                        const secretKey = document.getElementById('formaloo_api_secret').value
+                        const url = formaloo_exchanger.protocol + '://accounts.' + formaloo_exchanger.endpoint_url + '/v1/oauth2/authorization-token/';
+
+                        $.ajax({
+                            url: url,
+                            type: 'POST',
+                            dataType: 'json',
+                            headers: {
+                                'x-api-key': apiKey,
+                                'Authorization': 'Basic ' + secretKey
+                            },
+                            contentType: 'application/x-www-form-urlencoded',
+                            data: {'grant_type': 'client_credentials'},
+                            success: function (result) {
+                                document.getElementById('formaloo_api_token').value = result['authorization_token'];
+                                $.ajax({
+                                    url: formaloo_exchanger.ajax_url,
+                                    type: 'post',
+                                    data: $('#formaloo-admin-form').serialize(),
+                                    success: function(response) {
+                                        setTimeout(function() {
+                                            $('.spinner').removeClass('is-active');
+                                            // window.location.href = "?page=formaloo";
+                                            location.reload();
+                                            }, 1000);
+                                    }
+                                });
+                            },
+                            error: function (error) {
+                                $.ajax({
+                                    url: formaloo_exchanger.ajax_url,
+                                    type: 'post',
+                                    data: $('#formaloo-admin-form').serialize(),
+                                    success: function(response) {
+                                        setTimeout(function() {
+                                            $('.spinner').removeClass('is-active');
+                                            // window.location.href = "?page=formaloo";
+                                            location.reload();
+                                            }, 1000);
+                                    }
+                                });
+                            }
+                        });
+
+                    });
+                    
+                    checkBatchImportStatus(true, "<?php echo $data['last_customers_batch_import_slug']; ?>");
+                    checkBatchImportStatus(false, "<?php echo $data['last_orders_batch_import_slug']; ?>");
+
+                    function checkBatchImportStatus(checkingCustomersImport, slug){
+
+                        var endpointParam = checkingCustomersImport ? "customers" : "activities";
+                        var resultParseItem = checkingCustomersImport ? "customer_batch" : "activity_batch";
+
+                        $.ajax({
+                            url: "<?php echo esc_url( FORMALOO_PROTOCOL . '://api.' . FORMALOO_ENDPOINT . '/v1.0/' ); ?>"+endpointParam+"/batch/"+slug+"/",
+                            type: 'GET',
+                            dataType: 'json',
+                            headers: {
+                                'x-api-key': '<?php echo $data['api_key']; ?>',
+                                'Authorization': '<?php echo 'JWT ' . $data['api_token']; ?>'
+                            },
+                            contentType: 'application/json; charset=utf-8',
+                            success: function (result) {
+                                batchImportStatusHandler(checkingCustomersImport, result['data'][resultParseItem]['status']);
+                            },
+                            error: function (error) {
+                                var errorText = error['responseJSON']['errors']['general_errors'][0];
+                                showGeneralErrors(errorText);
+                                disableCashbackTable();
+                            }
+                        });
+                    }
+
+                    function batchImportStatusHandler(checkingCustomersImport, status) {
+                        var dashicon = '';
+                        var divId = checkingCustomersImport ? "formaloo-customers-import-status" : "formaloo-orders-import-status";
+                        var syncDate = checkingCustomersImport ? '<?php echo $data['last_customers_sync_date']; ?>' : '<?php echo $data['last_orders_sync_date']; ?>'
+
+                        switch(status) {
+                            case 'new':
+                                dashicon = '<span class="dashicons dashicons-marker" style="color: yellow;"></span>';
+                            case 'queued':
+                            case 'in_progress':
+                                dashicon = '<span class="dashicons dashicons-clock"></span>';
+                                break;
+                            case 'imported':
+                                dashicon = '<span class="dashicons dashicons-yes-alt" style="color: yellowgreen;"></span>';
+                                break;
+                            case 'failed':
+                                dashicon = '<span class="dashicons dashicons-no" style="color: crimson;"></span>';
+                                break;
+                            default:
+                                // code block
+                        }
+
+                        document.getElementById(divId).innerHTML = dashicon + ' ' + titleCase(status) + ' <?php _e( 'on', 'formaloo-form-builder' ); ?> ' + syncDate;
+                    }
+
+                    function titleCase(s) { 
+                        return s.replace(/([a-z])([A-Z])/g, function (allMatches, firstMatch, secondMatch) {
+                                            return firstMatch + " " + secondMatch;
+                                    })
+                                    .toLowerCase()
+                                    .replace(/([ -_]|^)(.)/g, function (allMatches, firstMatch, secondMatch) {
+                                            return (firstMatch ? " " : "") + secondMatch.toUpperCase();
+                                        }
+                                    ); 
+                    }
+                });
+
+
+            </script>
 
             <?php
 

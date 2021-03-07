@@ -3,60 +3,6 @@
  */
 jQuery(document).ready(function() {
 
-    jQuery(document).on('submit', '#formaloo-admin-form', function(e) {
-
-        e.preventDefault();
-
-        // We inject some extra fields required for the security
-        jQuery('#formaloo-settings-submit-row').append('<td><span class="spinner is-active"></span></td>');
-        jQuery(this).append('<input type="hidden" name="action" value="store_admin_data" />');
-        jQuery(this).append('<input type="hidden" name="security" value="' + formaloo_exchanger._nonce + '" />');
-
-        const apiKey = document.getElementById('formaloo_api_key').value;
-        const secretKey = document.getElementById('formaloo_api_secret').value
-        const url = formaloo_exchanger.protocol + '://accounts.' + formaloo_exchanger.endpoint_url + '/v1/oauth2/authorization-token/';
-        
-        jQuery.ajax({
-            url: url,
-            type: 'POST',
-            dataType: 'json',
-            headers: {
-                'x-api-key': apiKey,
-                'Authorization': 'Basic ' + secretKey
-            },
-            contentType: 'application/x-www-form-urlencoded',
-            data: {'grant_type': 'client_credentials'},
-            success: function (result) {
-                document.getElementById('formaloo_api_token').value = result['authorization_token'];
-                jQuery.ajax({
-                    url: formaloo_exchanger.ajax_url,
-                    type: 'post',
-                    data: jQuery('#formaloo-admin-form').serialize(),
-                    success: function(response) {
-                        setTimeout(function() {
-                            jQuery('.spinner').removeClass('is-active');
-                            window.location.href = "?page=formaloo";
-                            }, 1000);
-                    }
-                });
-            },
-            error: function (error) {
-                jQuery.ajax({
-                    url: formaloo_exchanger.ajax_url,
-                    type: 'post',
-                    data: jQuery('#formaloo-admin-form').serialize(),
-                    success: function(response) {
-                        setTimeout(function() {
-                            jQuery('.spinner').removeClass('is-active');
-                            window.location.href = "?page=formaloo";
-                            }, 1000);
-                    }
-                });
-            }
-        });
-
-    });
-
     jQuery('#formaloo-customize-form :input').change(function() {
         handleShortcodeFormChange(jQuery(this).parents('#formaloo-customize-form'));
      });
@@ -78,7 +24,7 @@ jQuery(document).ready(function() {
             type: 'post',
             data: jQuery(toForm).serialize(),
             success: function(response) {
-                jQuery('.formaloo_clipboard_wrapper').removeClass('formaloo_hidden');
+                jQuery('.formaloo_clipboard_wrapper').removeClass('formaloo-hidden');
                 jQuery('input#formaloo_shortcode_pre').val(response.data.output);
             }
         });

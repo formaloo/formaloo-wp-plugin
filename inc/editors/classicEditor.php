@@ -161,7 +161,7 @@ class Formaloo_Admin_Editor {
                         </tr>
                     </tbody>
                 </table>
-                <div class="formaloo_clipboard_wrapper formaloo_hidden">
+                <div class="formaloo_clipboard_wrapper formaloo-hidden">
                     <input id="formaloo_shortcode_pre" type="text" class="regular-text" placeholder="<?php _e('Shortcode will appear here', 'formaloo-form-builder'); ?>">
                     <button class="button button-primary formaloo_clipboard_btn" data-clipboard-target="#formaloo_shortcode_pre">
                         <img src="<?php echo FORMALOO_URL ?>/assets/images/clippy.svg" width="13" alt="Copy to clipboard">
@@ -210,7 +210,7 @@ class Formaloo_Admin_Editor {
                     });
 
                     function getRowInfo($slug, $address) {
-                        jQuery('.formaloo_clipboard_wrapper').addClass('formaloo_hidden');
+                        jQuery('.formaloo_clipboard_wrapper').addClass('formaloo-hidden');
                         jQuery(".form-table").append('<input name="formaloo_form_slug" id="formaloo_form_slug" type="hidden" value="' + $slug + '" />');
                         jQuery(".form-table").append('<input name="formaloo_form_address" id="formaloo_form_address" type="hidden" value="' + $address + '" />');
                         jQuery('.formaloo-shortcode-post-row').find('a').remove();
@@ -218,7 +218,7 @@ class Formaloo_Admin_Editor {
                     }
 
                     jQuery("#formaloo_show_type").change(function() {
-                        jQuery('.formaloo_clipboard_wrapper').addClass('formaloo_hidden');
+                        jQuery('.formaloo_clipboard_wrapper').addClass('formaloo-hidden');
                         if (jQuery(this).val() == "link") {
                             toggleRows(link = true);
                         } else if (jQuery(this).val() == "script") {

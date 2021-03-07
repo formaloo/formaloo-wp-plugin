@@ -50,9 +50,9 @@
                             <h3 class="formaloo-heading">
                                 <?php _e('Do you want to prepare cashback for your loyal customers?', 'formaloo-form-builder'); ?>
                             </h3>
-                            <p>
+                            <!-- <p>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin gravida nisl ligula. Mauris rhoncus vitae orci ut ornare. Aenean interdum lacus sit amet dolor pellentesque malesuada sit amet ut dui. Nulla facilisi. Nullam in leo ac est efficitur pulvinar.
-                            </p>
+                            </p> -->
                         </div>
 
                         <!-- <hr> -->
@@ -72,20 +72,6 @@
                         <input type="hidden" id="formaloo_feedback_widget_text_field_slug" name="formaloo_feedback_widget_text_field_slug" value=""> -->
 
                         <table class="formaloo-cashback-table form-table">
-                            <tbody id="formaloo-woocommerce-not-connected">
-                                <tr>
-                                    <td>
-                                        <p>
-                                            <?php _e( 'Connect Your WooCommerce Account:', 'formaloo-form-builder' ); ?>
-                                        </p> 
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <input type="submit" name="submit" id="submit" class="button formaloo-woocommerce-connect-button" value="<?php _e( 'Connect', 'formaloo-form-builder' ); ?>">
-                                    </td>
-                                </tr>
-                            </tbody>
                             <tbody id="formaloo-woocommerce-connected">
                                 <tr>
                                     <td>
@@ -136,11 +122,13 @@
                                             <input type="submit" name="submit" id="submit" class="button button-primary" value="<?php _e( 'Calculate', 'formaloo-form-builder' ); ?>">
                                         </p>    
                                     </td>
-                                    <td>
+                                    <!-- <td>
                                         <a href="#" target="_blank"><?php _e( 'How we calculate cashback?', 'formaloo-form-builder' ); ?></a>
-                                    </td>
+                                    </td> -->
                                     <td></td>
                                 </tr>
+                                </tbody>
+                                <tbody class="formaloo-cdp-sync-wrapper">
                                 <tr>
                                     <td>
                                         <hr><br>
@@ -148,7 +136,7 @@
                                             <?php _e( 'WooCommerce + Formaloo CDP Sync Status', 'formaloo-form-builder' ); ?>
                                         </h3>
                                         <p>
-                                            <?php echo __( 'We\'ll sync your customers and orders list with your Formaloo CDP account which you can seen in your', 'formaloo-form-builder') . ' ' . '<a href="'. FORMALOO_PROTOCOL . '://' . 'cdp.' . FORMALOO_ENDPOINT .'/" target="_blank">'. __('Formaloo CDP dashboard here', 'formaloo-form-builder') .'</a>.'; ?>
+                                            <?php echo __( 'We\'ll sync your customers and orders list hourly with your Formaloo CDP account which you can see in your', 'formaloo-form-builder') . ' ' . '<a href="'. FORMALOO_PROTOCOL . '://' . 'cdp.' . FORMALOO_ENDPOINT .'/" target="_blank">'. __('Formaloo CDP dashboard here', 'formaloo-form-builder') .'</a>.'; ?>
                                         </p>
                                     </td>
                                     <td></td>
@@ -231,7 +219,8 @@
                             },
                             error: function (error) {
                                 var errorText = error['responseJSON']['errors']['general_errors'][0];
-                                showGeneralErrors(errorText);                                
+                                showGeneralErrors(errorText);
+                                disableCashbackTable();
                             }
                         });
                     }
@@ -242,9 +231,10 @@
                         var syncDate = checkingCustomersImport ? '<?php echo $data['last_customers_sync_date']; ?>' : '<?php echo $data['last_orders_sync_date']; ?>'
 
                         switch(status) {
+                            case 'new':
+                                dashicon = '<span class="dashicons dashicons-marker" style="color: yellow;"></span>';
                             case 'queued':
                             case 'in_progress':
-                            case 'new':
                                 dashicon = '<span class="dashicons dashicons-clock"></span>';
                                 break;
                             case 'imported':
@@ -274,6 +264,7 @@
                     function disableCashbackTable() {
                         $(".formaloo-cashback-table").addClass("formaloo-cashback-disabled-table");
                         $(".formaloo-cashback-table :input").attr("disabled", true);
+                        $(".formaloo-cdp-sync-wrapper").addClass("formaloo-hidden");
                     }
 
                     function showSuccessMessage(successText) {
