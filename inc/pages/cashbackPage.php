@@ -130,6 +130,7 @@
                                     <td></td>
                                 </tr>
                                 </tbody>
+                                <?php if (!$not_ready): ?>
                                 <tbody class="formaloo-cdp-sync-wrapper">
                                 <tr>
                                     <td>
@@ -163,7 +164,7 @@
                                 </tr>
                             </tbody>
                             <tbody id="formaloo-show-sync-errors-log"></tbody>
-
+                            <?php endif; ?>
                         </table>
 
                     </div>
@@ -200,8 +201,12 @@
                         hideLoadingGif();
                     });
 
+                    <?php if (!$not_ready): ?>
+
                     checkBatchImportStatus(true, "<?php echo isset($data['last_customers_batch_import_slug']) ? $data['last_customers_batch_import_slug'] : ''; ?>");
                     checkBatchImportStatus(false, "<?php echo isset($data['last_orders_batch_import_slug']) ? $data['last_orders_batch_import_slug'] : ''; ?>");
+
+                    <?php endif; ?>
 
                     function checkBatchImportStatus(checkingCustomersImport, slug){
 

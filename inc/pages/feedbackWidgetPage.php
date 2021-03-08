@@ -292,8 +292,8 @@
                             url: "<?php echo esc_url( FORMALOO_PROTOCOL . '://api.' . FORMALOO_ENDPOINT . '/v1/forms/form/copy/' ); ?>",
                             type: 'POST',
                             headers: {
-                                'x-api-key': '<?php echo $data['api_key']; ?>',
-                                'Authorization': '<?php echo 'JWT ' . $data['api_token']; ?>'
+                                'x-api-key': '<?php echo isset($data['api_key']) ? $data['api_key'] : ''; ?>',
+                                'Authorization': '<?php echo 'JWT ' . (isset($data['api_token']) ? $data['api_token'] : ''); ?>'
                             },
                             data: { 'copied_form' : slug },
                             success: function (result) {
@@ -304,7 +304,7 @@
                                 var errorText = error['responseJSON']['errors']['general_errors'][0];
                                 showGeneralErrors(errorText);
                                 hideLoadingGif();
-                                handleTokenExpiration(error);
+                                // handleTokenExpiration(error);
                             }
                         });
                     }
@@ -315,8 +315,8 @@
                             type: 'GET',
                             dataType: 'json',
                             headers: {
-                                'x-api-key': '<?php echo $data['api_key']; ?>',
-                                'Authorization': '<?php echo 'JWT ' . $data['api_token']; ?>'
+                                'x-api-key': '<?php echo isset($data['api_key']) ? $data['api_key'] : ''; ?>',
+                                'Authorization': '<?php echo 'JWT ' . (isset($data['api_token']) ? $data['api_token'] : ''); ?>'
                             },
                             contentType: 'application/json; charset=utf-8',
                             success: function (result) {
@@ -327,7 +327,7 @@
                                 var errorText = error['responseJSON']['errors']['general_errors'][0];
                                 showGeneralErrors(errorText);
                                 hideLoadingGif();
-                                handleTokenExpiration(error);
+                                // handleTokenExpiration(error);
                                 
                             }
                         });
@@ -447,8 +447,8 @@
                                 url: urlString,
                                 type: 'PATCH',
                                 headers: {
-                                    'x-api-key': '<?php echo $data['api_key']; ?>',
-                                    'Authorization': '<?php echo 'JWT ' . $data['api_token']; ?>'
+                                    'x-api-key': '<?php echo isset($data['api_key']) ? $data['api_key'] : ''; ?>',
+                                    'Authorization': '<?php echo 'JWT ' . (isset($data['api_token']) ? $data['api_token'] : ''); ?>'
                                 },
                                 data: params,
                                 success: function (result) {
@@ -456,7 +456,7 @@
                                 },
                                 error: function (error) {
                                     reject(error);
-                                    handleTokenExpiration(error);
+                                    // handleTokenExpiration(error);
                                 }
                             });
                         });
