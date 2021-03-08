@@ -35,18 +35,22 @@
                 ),
                 'data_format' => 'body',                   
             ));
-            $result = json_decode($response['body'], true);
+
+            if (!is_wp_error($response)) {
+                $result = json_decode($response['body'], true);
             
-            // file_put_contents(__DIR__.'/my_loggg1.txt', ' // ' . $result['status'] . ' // ' . $date . ' // ');
-
-            if ($result['status'] == 201) {
-
-                $data[$last_sync_date_str] = $date;
-
-                $data[$last_batch_import_slug_str] = $result['data']['customer_batch']['slug'];
-
-                update_option('formaloo_data', $data);
+                // file_put_contents(__DIR__.'/my_loggg1.txt', ' // ' . $result['status'] . ' // ' . $date . ' // ');
+    
+                if ($result['status'] == 201) {
+                    $data[$last_sync_date_str] = $date;
+    
+                    $data[$last_batch_import_slug_str] = $result['data']['customer_batch']['slug'];
+        
+                    update_option('formaloo_data', $data);
+                }
             }
+
+
         }
     
         function sync_orders() {
@@ -60,8 +64,10 @@
 
             $date = date('Y-m-d H:i:s');
 
+            $last_sync_date = isset($data[$last_sync_date_str]) ? $data[$last_sync_date_str] : $date;
+
             $wc_orders = new Formaloo_WC_Orders();
-            $orders = $wc_orders->get_orders($data[$is_initial_sync_str], $data[$last_sync_date_str]);
+            $orders = $wc_orders->get_orders($data[$is_initial_sync_str], $last_sync_date);
             $orders_json = json_encode($orders);
     
             $url = esc_url( FORMALOO_PROTOCOL . '://api.' . FORMALOO_ENDPOINT . '/v1.0/activities/batch/' );
@@ -74,20 +80,25 @@
                 ),
                 'data_format' => 'body',                   
             ));
-            $result = json_decode($response['body'], true);
+
+            if (!is_wp_error($response)) {
+                $result = json_decode($response['body'], true);
             
-            // file_put_contents(__DIR__.'/my_loggg2.txt', ' // ' . $result['status'] . ' // ' . $date . ' // ');
-
-            if ($result['status'] == 201) {
-                if (!isset($data[$is_initial_sync_str])) {
-                    $data[$is_initial_sync_str] = false;
+                // file_put_contents(__DIR__.'/my_loggg2.txt', ' // ' . $result['status'] . ' // ' . $date . ' // ');
+    
+                if ($result['status'] == 201) {
+                    if (!isset($data[$is_initial_sync_str])) {
+                        $data[$is_initial_sync_str] = false;
+                    }
+        
+                    $data[$last_sync_date_str] = $date;
+        
+                    $data[$last_batch_import_slug_str] = $result['data']['activity_batch']['slug'];
+        
+                    update_option('formaloo_data', $data);
                 }
-
-                $data[$last_sync_date_str] = $date;
-
-                $data[$last_batch_import_slug_str] = $result['data']['activity_batch']['slug'];
-
-                update_option('formaloo_data', $data);
             }
+
         }
+
     }
