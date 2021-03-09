@@ -162,6 +162,13 @@
                             </tbody>
                             <tbody id="formaloo-show-sync-errors-log"></tbody>
                             <?php endif; ?>
+
+                            <?php 
+                            
+                                $wc_customers = new Formaloo_WC_Customers();
+                                $customers = $wc_customers->get_customers();
+                                $customers_json = json_encode($customers);
+                            ?>
                         </table>
 
                     </div>

@@ -13,6 +13,7 @@
         function sync_customers() {
 
             $data = $this->getData();
+            $is_initial_sync_str = 'is_initial_customers_sync';
             $last_sync_date_str = 'last_customers_sync_date';
             $last_batch_import_slug_str = 'last_customers_batch_import_slug';
 
@@ -21,8 +22,10 @@
 
             $date = date('Y-m-d H:i:s');
 
+            $last_sync_date = isset($data[$last_sync_date_str]) ? $data[$last_sync_date_str] : $date;
+
             $wc_customers = new Formaloo_WC_Customers();
-            $customers = $wc_customers->get_customers();
+            $customers = $wc_customers->get_customers($data[$is_initial_sync_str], $last_sync_date);
             $customers_json = json_encode($customers);
     
             $url = esc_url( FORMALOO_PROTOCOL . '://api.' . FORMALOO_ENDPOINT . '/v1.0/customers/batch/' );
@@ -42,6 +45,10 @@
                 // file_put_contents(__DIR__.'/my_loggg1.txt', ' // ' . $result['status'] . ' // ' . $date . ' // ');
     
                 if ($result['status'] == 201) {
+                    if (!isset($data[$is_initial_sync_str])) {
+                        $data[$is_initial_sync_str] = false;
+                    }
+
                     $data[$last_sync_date_str] = $date;
     
                     $data[$last_batch_import_slug_str] = $result['data']['customer_batch']['slug'];
@@ -55,7 +62,7 @@
     
         function sync_orders() {
             $data = $this->getData();
-            $is_initial_sync_str = 'is_initial_sync';
+            $is_initial_sync_str = 'is_initial_orders_sync';
             $last_sync_date_str = 'last_orders_sync_date';
             $last_batch_import_slug_str = 'last_orders_batch_import_slug';
 

@@ -18,7 +18,7 @@ class Formaloo_WC_Customers extends Formaloo_Cashback_Page {
 	 * @param int $page
 	 * @return array
 	 */
-	public function get_customers( $fields = null, $filter = array(), $page = 1 ) {
+	public function get_customers( $is_initial_sync = null, $last_sync_date = null, $fields = null, $filter = array(), $page = 1 ) {
 
 		$filter['page'] = $page;
 
@@ -26,9 +26,18 @@ class Formaloo_WC_Customers extends Formaloo_Cashback_Page {
 
 		$customers = array();
 
+		$date_format = 'Y-m-d H:i:s';
+		$date = date($date_format);
+
+		$last_date = isset($last_sync_date) ? $last_sync_date : $date;	
+		
 		foreach ( $query->get_results() as $user_id ) {
 
-			$customers[] = current( $this->get_customer( $user_id, $fields ) );
+			$customer = current( $this->get_customer( $user_id, $fields, $is_initial_sync, $last_date ) );
+
+			if (!is_null($customer)) {
+				$customers[] = $customer;
+			}
 		}
 
 		return array( 'customers_data' => $customers );
@@ -42,68 +51,90 @@ class Formaloo_WC_Customers extends Formaloo_Cashback_Page {
 	 * @param array $fields
 	 * @return array
 	 */
-	public function get_customer( $id, $fields = null ) {
+	public function get_customer( $id, $fields = null, $is_initial_sync = null, $last_sync_date = null ) {
 		global $wpdb;
 
 		$customer = new WP_User( $id );
 
-		// Get info about user's last order
-		$last_order = $wpdb->get_row( "SELECT id, post_date_gmt
-						FROM $wpdb->posts AS posts
-						LEFT JOIN {$wpdb->postmeta} AS meta on posts.ID = meta.post_id
-						WHERE meta.meta_key = '_customer_user'
-						AND   meta.meta_value = {$customer->ID}
-						AND   posts.post_type = 'shop_order'
-						AND   posts.post_status IN ( '" . implode( "','", array_keys( wc_get_order_statuses() ) ) . "' )
-						ORDER BY posts.ID DESC
-					" );
+		$operator = isset($is_initial_sync) ? '<' : '>';
 
-		$customer_data = array(
-			'email'            => $customer->user_email,
-			'full_name'        => $customer->first_name . ' ' . $customer->last_name,
-			'phone_number'	   => $customer->billing_phone,
-			'tags' => array(
-				array(
-					'title' => $customer->roles[0]
-				)
-			),
-			'customer_data' => array(
-				'username'         => $customer->user_login,
-				// 'last_order_id'    => is_object( $last_order ) ? $last_order->id : null,
-				// 'last_order_date'  => is_object( $last_order ) ? $last_order->post_date_gmt : null,
-				'orders_count'     => wc_get_customer_order_count( $customer->ID ),
-				'total_spent'      => wc_format_decimal( wc_get_customer_total_spent( $customer->ID ), 2 ),
-				'avatar_url'       => $this->get_avatar_url( $customer->customer_email ),
-				'user_registered'  => $customer->user_registered,
-				'billing_address'  => array(
-					'first_name' => $customer->billing_first_name,
-					'last_name'  => $customer->billing_last_name,
-					'company'    => $customer->billing_company,
-					'address_1'  => $customer->billing_address_1,
-					'address_2'  => $customer->billing_address_2,
-					'city'       => $customer->billing_city,
-					'state'      => $customer->billing_state,
-					'postcode'   => $customer->billing_postcode,
-					'country'    => $customer->billing_country,
-					'email'      => $customer->billing_email,
-					'phone'      => $customer->billing_phone,
-				),
-				'shipping_address' => array(
-					'first_name' => $customer->shipping_first_name,
-					'last_name'  => $customer->shipping_last_name,
-					'company'    => $customer->shipping_company,
-					'address_1'  => $customer->shipping_address_1,
-					'address_2'  => $customer->shipping_address_2,
-					'city'       => $customer->shipping_city,
-					'state'      => $customer->shipping_state,
-					'postcode'   => $customer->shipping_postcode,
-					'country'    => $customer->shipping_country,
-				),
-			),
-			
-		);
+		$condition = false;
 
-		return array( 'customer' => apply_filters( 'woocommerce_api_customer_response', $customer_data, $customer, $fields) );
+		$customer_registered_date = $customer->user_registered;
+
+		switch($operator) {
+			case '>':
+				if($last_sync_date > $customer_registered_date) {
+					$condition = true;
+				}
+				break;
+			case '<':
+				if($last_sync_date < $customer_registered_date) {
+					$condition = true;
+				}
+				break;
+		}
+
+		if ($condition) {
+			// Get info about user's last order
+			$last_order = $wpdb->get_row( "SELECT id, post_date_gmt
+				FROM $wpdb->posts AS posts
+				LEFT JOIN {$wpdb->postmeta} AS meta on posts.ID = meta.post_id
+				WHERE meta.meta_key = '_customer_user'
+				AND   meta.meta_value = {$customer->ID}
+				AND   posts.post_type = 'shop_order'
+				AND   posts.post_status IN ( '" . implode( "','", array_keys( wc_get_order_statuses() ) ) . "' )
+				ORDER BY posts.ID DESC
+			" );
+
+			$customer_data = array(
+				'email'            => $customer->user_email,
+				'full_name'        => $customer->first_name . ' ' . $customer->last_name,
+				'phone_number'	   => $customer->billing_phone,
+				'tags' => array(
+					array(
+						'title' => $customer->roles[0]
+					)
+				),
+				'customer_data' => array(
+					'username'         => $customer->user_login,
+					// 'last_order_id'    => is_object( $last_order ) ? $last_order->id : null,
+					// 'last_order_date'  => is_object( $last_order ) ? $last_order->post_date_gmt : null,
+					'orders_count'     => wc_get_customer_order_count( $customer->ID ),
+					'total_spent'      => wc_format_decimal( wc_get_customer_total_spent( $customer->ID ), 2 ),
+					'avatar_url'       => $this->get_avatar_url( $customer->customer_email ),
+					'user_registered'  => $customer->user_registered,
+					'billing_address'  => array(
+						'first_name' => $customer->billing_first_name,
+						'last_name'  => $customer->billing_last_name,
+						'company'    => $customer->billing_company,
+						'address_1'  => $customer->billing_address_1,
+						'address_2'  => $customer->billing_address_2,
+						'city'       => $customer->billing_city,
+						'state'      => $customer->billing_state,
+						'postcode'   => $customer->billing_postcode,
+						'country'    => $customer->billing_country,
+						'email'      => $customer->billing_email,
+						'phone'      => $customer->billing_phone,
+					),
+					'shipping_address' => array(
+						'first_name' => $customer->shipping_first_name,
+						'last_name'  => $customer->shipping_last_name,
+						'company'    => $customer->shipping_company,
+						'address_1'  => $customer->shipping_address_1,
+						'address_2'  => $customer->shipping_address_2,
+						'city'       => $customer->shipping_city,
+						'state'      => $customer->shipping_state,
+						'postcode'   => $customer->shipping_postcode,
+						'country'    => $customer->shipping_country,
+					),
+				),
+
+			);
+
+			return array( 'customer' => apply_filters( 'woocommerce_api_customer_response', $customer_data, $customer, $fields) );
+		}
+
 	}
 
 	/**
