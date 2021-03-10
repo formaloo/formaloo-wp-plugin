@@ -44,7 +44,7 @@
 
                         <?php if ($not_ready): ?>
                             <p>
-                                <?php echo __('To get started, we\'ll need to access your Formaloo account with an API Key & Secret Key which you can', 'formaloo-form-builder') .' <a class="button button-primary" href="'. FORMALOO_PROTOCOL . '://cdp.' . FORMALOO_ENDPOINT .'/AOgfeyi0/integrations/sjTR9Pyk/" target="_blank">'. __('Get them here', 'formaloo-form-builder') .'</a>. '. '<br>' . __('Paste your Formaloo API Key & API Secret, and click', 'formaloo-form-builder') .' <strong>'. __('Connect', 'formaloo-form-builder') .'</strong> '. __('to continue', 'formaloo-form-builder') .'.'; ?>
+                                <?php echo __('To get started, we\'ll need to access your Formaloo account with an API Key & Secret Key which you can', 'formaloo-form-builder') .' <a class="button button-primary" href="'. FORMALOO_PROTOCOL . '://cdp.' . FORMALOO_ENDPOINT .'/redirect/current-organization/integrations/wordpress" target="_blank">'. __('Get them here', 'formaloo-form-builder') .'</a>. '. '<br>' . __('Paste your Formaloo API Key & API Secret, and click', 'formaloo-form-builder') .' <strong>'. __('Connect', 'formaloo-form-builder') .'</strong> '. __('to continue', 'formaloo-form-builder') .'.'; ?>
                             </p>
                         <?php else: ?>
                             <?php echo __('You can access your', 'formaloo-form-builder') .' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/" target="_blank">'. __('Formaloo dashboard here', 'formaloo-form-builder') .'</a>.'; ?>  
@@ -114,7 +114,7 @@
                                             <strong>
                                                 <?php _e( 'Customers Import Status', 'formaloo-form-builder' ); ?>
                                             </strong>
-                                        <td>
+                                        </td>
                                         <td id="formaloo-customers-import-status"></td>
                                         <td></td>
                                     </tr>
@@ -123,7 +123,7 @@
                                             <strong>
                                                 <?php _e( 'Orders Import Status', 'formaloo-form-builder' ); ?>
                                             </strong>
-                                        <td>
+                                        </td>
                                         <td id="formaloo-orders-import-status"></td>
                                         <td></td>
                                     </tr>
@@ -255,7 +255,41 @@
                                 dashicon = '<span class="dashicons dashicons-clock"></span>';
                         }
 
-                        document.getElementById(divId).innerHTML = dashicon + ' ' + titleCase(status) + ' <?php _e( 'on', 'formaloo-form-builder' ); ?> ' + syncDate;
+                        document.getElementById(divId).innerHTML = dashicon + ' ' + titleCase(status) + ' ' + getTimeAgo(syncDate);
+
+                    }
+
+                    function getTimeAgo(date) {
+
+                        const MINUTE = 60,
+                            HOUR = MINUTE * 60,
+                            DAY = HOUR * 24,
+                            WEEK = DAY * 7,
+                            MONTH = DAY * 30,
+                            YEAR = DAY * 365
+
+                        const secondsAgo = Math.round((+new Date() - new Date(date)) / 1000)
+                        let divisor = null
+                        let unit = null
+
+                        if (secondsAgo < MINUTE) {
+                            return secondsAgo + " seconds ago"
+                        } else if (secondsAgo < HOUR) {
+                            [divisor, unit] = [MINUTE, 'minute']
+                        } else if (secondsAgo < DAY) {
+                            [divisor, unit] = [HOUR, 'hour']
+                        } else if (secondsAgo < WEEK) {
+                            [divisor, unit] = [DAY, 'day']
+                        } else if (secondsAgo < MONTH) {
+                            [divisor, unit] = [WEEK, 'week']
+                        } else if (secondsAgo < YEAR) {
+                            [divisor, unit] = [MONTH, 'month']
+                        } else if (secondsAgo > YEAR) {
+                            [divisor, unit] = [YEAR, 'year']
+                        }
+
+                        const count = Math.floor(secondsAgo / divisor)
+                        return  `${count} ${unit}${(count > 1)?'s':''} ago`
                     }
 
                     function showSyncErrorsLog(checkingCustomersImport, errors) {

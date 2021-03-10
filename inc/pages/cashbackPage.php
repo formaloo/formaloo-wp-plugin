@@ -79,7 +79,7 @@
                                         </h4>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr id="formaloo-cashback-range-tr">
                                     <td>
                                         <label><strong>$</strong></label>
                                     </td>
@@ -146,7 +146,7 @@
                                         <strong>
                                             <?php _e( 'Customers Import Status', 'formaloo-form-builder' ); ?>
                                         </strong>
-                                    <td>
+                                    </td>
                                     <td id="formaloo-customers-import-status"></td>
                                     <td></td>
                                 </tr>
@@ -155,7 +155,7 @@
                                         <strong>
                                             <?php _e( 'Orders Import Status', 'formaloo-form-builder' ); ?>
                                         </strong>
-                                    <td>
+                                    </td>
                                     <td id="formaloo-orders-import-status"></td>
                                     <td></td>
                                 </tr>
@@ -163,12 +163,6 @@
                             <tbody id="formaloo-show-sync-errors-log"></tbody>
                             <?php endif; ?>
 
-                            <?php 
-                            
-                                $wc_customers = new Formaloo_WC_Customers();
-                                $customers = $wc_customers->get_customers();
-                                $customers_json = json_encode($customers);
-                            ?>
                         </table>
 
                     </div>
@@ -198,10 +192,20 @@
                         $('.formaloo-cashback-error-text').hide();
                         const lowRangeValue = $('#formaloo_cashback_low_range_percentage').val();
                         const highRangeValue = $('#formaloo_cashback_high_range_percentage').val();
-                        if (lowRangeValue > highRangeValue || lowRangeValue < 0 || highRangeValue < 0)  {
-                           $('.formaloo-cashback-error-text').show();
-                           $('.formaloo-cashback-error-text').text('Please enter a valid range.');
+                        
+                        if (lowRangeValue < 0 || highRangeValue < 0) {
+                            $('.formaloo-cashback-error-text').show();
+                            $('.formaloo-cashback-error-text').text("<?php _e('Please don\'t enter any negative value.', 'formaloo-form-builder'); ?>");
+                        } else if (lowRangeValue == 0 || highRangeValue == 0) {
+                            $('.formaloo-cashback-error-text').show();
+                            $('.formaloo-cashback-error-text').text("<?php _e('Please enter values higher than 0.', 'formaloo-form-builder'); ?>");
+                        } else if (lowRangeValue > highRangeValue) {
+                            $('.formaloo-cashback-error-text').show();
+                            $('.formaloo-cashback-error-text').text("<?php _e('Low range value shouldn\'t be bigger than high range value.', 'formaloo-form-builder'); ?>");
+                        } else {
+                            // Success!
                         }
+
                         hideLoadingGif();
                     });
 
@@ -266,9 +270,41 @@
                                 dashicon = '<span class="dashicons dashicons-clock"></span>';
                         }
 
-                        document.getElementById(divId).innerHTML = dashicon + ' ' + titleCase(status) + ' <?php _e( 'on', 'formaloo-form-builder' ); ?> ' + syncDate;
+                        document.getElementById(divId).innerHTML = dashicon + ' ' + titleCase(status) + ' ' + getTimeAgo(syncDate);
                     }
 
+                    function getTimeAgo(date) {
+
+                        const MINUTE = 60,
+                            HOUR = MINUTE * 60,
+                            DAY = HOUR * 24,
+                            WEEK = DAY * 7,
+                            MONTH = DAY * 30,
+                            YEAR = DAY * 365
+
+                        const secondsAgo = Math.round((+new Date() - new Date(date)) / 1000)
+                        let divisor = null
+                        let unit = null
+
+                        if (secondsAgo < MINUTE) {
+                            return secondsAgo + " seconds ago"
+                        } else if (secondsAgo < HOUR) {
+                            [divisor, unit] = [MINUTE, 'minute']
+                        } else if (secondsAgo < DAY) {
+                            [divisor, unit] = [HOUR, 'hour']
+                        } else if (secondsAgo < WEEK) {
+                            [divisor, unit] = [DAY, 'day']
+                        } else if (secondsAgo < MONTH) {
+                            [divisor, unit] = [WEEK, 'week']
+                        } else if (secondsAgo < YEAR) {
+                            [divisor, unit] = [MONTH, 'month']
+                        } else if (secondsAgo > YEAR) {
+                            [divisor, unit] = [YEAR, 'year']
+                        }
+
+                        const count = Math.floor(secondsAgo / divisor)
+                        return  `${count} ${unit}${(count > 1)?'s':''} ago`
+                    }
 
                     function showSyncErrorsLog(checkingCustomersImport, errors) {
 

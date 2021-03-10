@@ -340,16 +340,20 @@
   /* padding-left: 10px; */
 }
 .formaloo-cashback-table {
-  width: 100%;
-}
-.formaloo-cashback-table tbody {
   display: grid;
 }
+/* .formaloo-cashback-table tbody {
+  display: grid;
+} */
 .formaloo-cashback-table td {
-  white-space: nowrap;
+  /* white-space: nowrap; */
+  /* width: 100%; */
 }
-.formaloo-cashback-table td:last-child {
+/* .formaloo-cashback-table td:last-child {
   width:100%;
+} */
+#formaloo-cashback-range-tr {
+  display: inline-block;
 }
 .formaloo-woocommerce-connect-button {
   color: white !important;
