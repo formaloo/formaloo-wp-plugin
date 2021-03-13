@@ -37,6 +37,8 @@
                             </h1>
                         </div>
 
+                        <p class="notice notice-error formaloo-settings-page-notice"></p> 
+
                         <h3 class="formaloo-heading">
                             <?php echo $this->getStatusIcon(!$not_ready); ?>
                             <?php _e('Welcome to Formaloo!', 'formaloo-form-builder'); ?>
@@ -141,14 +143,18 @@
             <script>
                 jQuery(document).ready(function($){
 
-                    $('#formaloo-admin-form').on('submit', function(e){
+                    $('.formaloo-settings-page-notice').hide();
 
+                    $('#formaloo-admin-form').on('submit', function(e){
                         e.preventDefault();
+
+                        $('.formaloo-settings-page-notice').hide();
 
                         // We inject some extra fields required for the security
                         $('#formaloo-settings-submit-row').append('<td><span class="spinner is-active"></span></td>');
                         $(this).append('<input type="hidden" name="action" value="store_admin_data" />');
                         $(this).append('<input type="hidden" name="security" value="' + formaloo_exchanger._nonce + '" />');
+                        $(this).append('<input type="hidden" name="formaloo_api_token_save_date" value="' + '<?php echo time(); ?>' + '" />');
 
                         const apiKey = document.getElementById('formaloo_api_key').value;
                         const secretKey = document.getElementById('formaloo_api_secret').value
@@ -165,8 +171,9 @@
                             contentType: 'application/x-www-form-urlencoded',
                             data: {'grant_type': 'client_credentials'},
                             success: function (result) {
+
                                 document.getElementById('formaloo_api_token').value = result['authorization_token'];
-                                <?php //Formaloo_Activation_Class::syncHourly(); ?>
+
                                 $.ajax({
                                     url: formaloo_exchanger.ajax_url,
                                     type: 'post',
@@ -200,8 +207,8 @@
                     
                     <?php if (!$not_ready): ?>
 
-                    checkBatchImportStatus(true, "<?php echo isset($data['last_customers_batch_import_slug']) ? $data['last_customers_batch_import_slug'] : ''; ?>");
-                    checkBatchImportStatus(false, "<?php echo isset($data['last_orders_batch_import_slug']) ? $data['last_orders_batch_import_slug'] : ''; ?>");
+                        checkBatchImportStatus(true, "<?php echo isset($data['last_customers_batch_import_slug']) ? $data['last_customers_batch_import_slug'] : ''; ?>");
+                        checkBatchImportStatus(false, "<?php echo isset($data['last_orders_batch_import_slug']) ? $data['last_orders_batch_import_slug'] : ''; ?>");
                     
                     <?php endif; ?>
 
@@ -228,6 +235,7 @@
                             },
                             error: function (error) {
                                 var errorText = error['responseJSON']['errors']['general_errors'][0];
+                                // showGeneralErrors(errorText);
                                 batchImportStatusHandler(checkingCustomersImport, 'queued');
                             }
                         });
@@ -236,7 +244,7 @@
                     function batchImportStatusHandler(checkingCustomersImport, status) {
                         var dashicon = '';
                         var divId = checkingCustomersImport ? "formaloo-customers-import-status" : "formaloo-orders-import-status";
-                        var syncDate = checkingCustomersImport ? '<?php echo isset($data['last_customers_sync_date']) ? $data['last_customers_sync_date'] : date('Y-m-d H:i:s'); ?>' : '<?php echo isset($data['last_orders_sync_date']) ? $data['last_orders_sync_date'] : date('Y-m-d H:i:s'); ?>'
+                        var syncDate = checkingCustomersImport ? '<?php echo isset($data['last_customers_sync_date']) ? $data['last_customers_sync_date'] : date('Y-m-d H:i:s'); ?>' : '<?php echo isset($data['last_orders_sync_date']) ? $data['last_orders_sync_date'] : date('Y-m-d H:i:s'); ?>';
 
                         switch(status) {
                             case 'new':
@@ -268,11 +276,12 @@
                             MONTH = DAY * 30,
                             YEAR = DAY * 365
 
-                        const secondsAgo = Math.round((+new Date() - new Date(date)) / 1000)
+                        const secondsAgo = Math.round((+new Date('<?php echo date('Y-m-d H:i:s'); ?>') - new Date(date)) / 1000)
                         let divisor = null
                         let unit = null
 
                         if (secondsAgo < MINUTE) {
+                            // if (secondsAgo == 0)
                             return secondsAgo + " seconds ago"
                         } else if (secondsAgo < HOUR) {
                             [divisor, unit] = [MINUTE, 'minute']
@@ -342,6 +351,12 @@
                                         }
                                     ); 
                     }
+
+                    function showGeneralErrors(errorText) {
+                        $('.formaloo-settings-page-notice').show();
+                        $('.formaloo-settings-page-notice').text(errorText);
+                    }
+
                 });
 
 

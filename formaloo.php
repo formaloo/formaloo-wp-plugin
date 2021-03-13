@@ -61,6 +61,8 @@ if( ! class_exists( 'WP_List_Table' ) ) {
 require_once('inc/tables/listTable.php');
 require_once('inc/tables/resultsTable.php');
 
+require_once('inc/auth/refreshAuthToken.php');
+
 /* Register activation hook. */
 register_activation_hook( __FILE__, array('Formaloo_Activation_Class', 'formalooActivationHook') );
 require_once('inc/notices/activationNotice.php');

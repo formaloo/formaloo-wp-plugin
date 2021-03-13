@@ -211,8 +211,8 @@
 
                     <?php if (!$not_ready): ?>
 
-                    checkBatchImportStatus(true, "<?php echo isset($data['last_customers_batch_import_slug']) ? $data['last_customers_batch_import_slug'] : ''; ?>");
-                    checkBatchImportStatus(false, "<?php echo isset($data['last_orders_batch_import_slug']) ? $data['last_orders_batch_import_slug'] : ''; ?>");
+                        checkBatchImportStatus(true, "<?php echo isset($data['last_customers_batch_import_slug']) ? $data['last_customers_batch_import_slug'] : ''; ?>");
+                        checkBatchImportStatus(false, "<?php echo isset($data['last_orders_batch_import_slug']) ? $data['last_orders_batch_import_slug'] : ''; ?>");
 
                     <?php else: ?>
 
@@ -243,7 +243,8 @@
                             },
                             error: function (error) {
                                 var errorText = error['responseJSON']['errors']['general_errors'][0];
-                                batchImportStatusHandler(checkingCustomersImport, 'queued');
+                                showGeneralErrors(errorText);
+                                batchImportStatusHandler(checkingCustomersImport, 'failed');
                             }
                         });
                     }
@@ -251,7 +252,7 @@
                     function batchImportStatusHandler(checkingCustomersImport, status) {
                         var dashicon = '';
                         var divId = checkingCustomersImport ? "formaloo-customers-import-status" : "formaloo-orders-import-status";
-                        var syncDate = checkingCustomersImport ? '<?php echo isset($data['last_customers_sync_date']) ? $data['last_customers_sync_date'] : date('Y-m-d H:i:s'); ?>' : '<?php echo isset($data['last_orders_sync_date']) ? $data['last_orders_sync_date'] : date('Y-m-d H:i:s'); ?>'
+                        var syncDate = checkingCustomersImport ? '<?php echo isset($data['last_customers_sync_date']) ? $data['last_customers_sync_date'] : date('Y-m-d H:i:s'); ?>' : '<?php echo isset($data['last_orders_sync_date']) ? $data['last_orders_sync_date'] : date('Y-m-d H:i:s'); ?>';
 
                         switch(status) {
                             case 'new':
@@ -282,7 +283,7 @@
                             MONTH = DAY * 30,
                             YEAR = DAY * 365
 
-                        const secondsAgo = Math.round((+new Date() - new Date(date)) / 1000)
+                        const secondsAgo = Math.round((+new Date('<?php echo date('Y-m-d H:i:s'); ?>') - new Date(date)) / 1000)
                         let divisor = null
                         let unit = null
 
@@ -344,7 +345,7 @@
                         divContainer.innerHTML = "";
                         divContainer.appendChild(table);
 
-                        }
+                    }
 
                     function titleCase(s) { 
                         return s.replace(/([a-z])([A-Z])/g, function (allMatches, firstMatch, secondMatch) {

@@ -4,14 +4,33 @@
  * @since 0.1.0
  */
 
-add_action('formaloo_sync_woocommerce', array('Formaloo_Activation_Class', 'syncHourly')); 
+/**
+ * Adds a custom cron schedule for every 5 minutes.
+ *
+ * @param array $schedules An array of non-default cron schedules.
+ * @return array Filtered array of non-default cron schedules.
+ */
+function formaloo_custom_cron_schedule( $schedules ) {
+    $schedules[ 'every_5_minutes' ] = array( 'interval' => 5 * MINUTE_IN_SECONDS, 'display' => __( 'Every 5 minutes', 'devhub' ) );
+    return $schedules;
+}
+
+add_filter( 'cron_schedules', 'formaloo_custom_cron_schedule' );
+
+add_action('formaloo_sync_woocommerce', array('Formaloo_Activation_Class', 'syncHourly'));
+add_action('formaloo_refresh_auth_token', array('Formaloo_Activation_Class', 'refreshAuthToken'));
 
 class Formaloo_Activation_Class extends Formaloo_Main_Class {
 
     static function formalooActivationHook() {
         /* Create transient data */
         set_transient( 'formaloo_admin_notice_activation', true, 0 );
-        wp_schedule_event( time(), 'hourly', 'formaloo_sync_woocommerce' );
+        if ( ! wp_next_scheduled( 'formaloo_sync_woocommerce' ) ) {
+            wp_schedule_event( time(), 'hourly', 'formaloo_sync_woocommerce' );
+        }
+        if ( ! wp_next_scheduled( 'formaloo_refresh_auth_token' ) ) {
+            wp_schedule_event( time(), 'every_5_minutes', 'formaloo_refresh_auth_token' );
+        }
     }
     
     /**
@@ -39,6 +58,10 @@ class Formaloo_Activation_Class extends Formaloo_Main_Class {
             $wc_sync->sync_customers();
             $wc_sync->sync_orders();
         }
+    }
+
+    static function refreshAuthToken() {
+        new TokenAuthenticator();
     }
     
  }

@@ -41,9 +41,7 @@
 
             if (!is_wp_error($response)) {
                 $result = json_decode($response['body'], true);
-            
-                // file_put_contents(__DIR__.'/my_loggg1.txt', ' // ' . $result['status'] . ' // ' . $date . ' // ');
-    
+                
                 if ($result['status'] == 201) {
                     if (!isset($data[$is_initial_sync_str])) {
                         $data[$is_initial_sync_str] = false;
@@ -90,9 +88,7 @@
 
             if (!is_wp_error($response)) {
                 $result = json_decode($response['body'], true);
-            
-                // file_put_contents(__DIR__.'/my_loggg2.txt', ' // ' . $result['status'] . ' // ' . $date . ' // ');
-    
+                
                 if ($result['status'] == 201) {
                     if (!isset($data[$is_initial_sync_str])) {
                         $data[$is_initial_sync_str] = false;

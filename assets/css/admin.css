@@ -168,7 +168,7 @@
 .results-table .formaloo-heading a {
   color: black;
 }
-.formaloo-feedback-widget-notice, .formaloo-cashback-notice {
+.formaloo-feedback-widget-notice, .formaloo-cashback-notice, .formaloo-settings-page-notice {
   margin: 20px 0 !important;
   padding: 10px;
 }
