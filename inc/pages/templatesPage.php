@@ -42,7 +42,7 @@
                             <div class="form-group inside">
                                 <?php if ($not_ready): ?>
                                 <p id="formaloo-guest-template-login-descr">
-                                    <?php echo __('To get started, we\'ll need to access your Formaloo account with an', 'formaloo-form-builder') .' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/profile/" target="_blank">'. __('API Key & API Token', 'formaloo-form-builder') .'</a>. '. __('Paste your Formaloo API Key & API Token, and click', 'formaloo-form-builder') .' <strong>'. __('Connect', 'formaloo-form-builder') .'</strong> '. __('to continue', 'formaloo-form-builder') .'.'; ?>
+                                    <?php echo __('To get started, we\'ll need to access your Formaloo account with an API Key & Secret Key which you can', 'formaloo-form-builder') .' <a class="button button-primary" href="'. FORMALOO_PROTOCOL . '://cdp.' . FORMALOO_ENDPOINT .'/redirect/current-organization/integrations/wordpress" target="_blank">'. __('Get them here', 'formaloo-form-builder') .'</a>. '. '<br>' . __('Paste your Formaloo API Key & API Secret, and click', 'formaloo-form-builder') .' <strong>'. __('Connect', 'formaloo-form-builder') .'</strong> '. __('to continue', 'formaloo-form-builder') .'.'; ?>
                                 </p>
                                 <?php endif; ?>
                                 <?php echo $this->getStatusDiv(!$not_ready); ?>
@@ -140,8 +140,6 @@
                 <a href="<?php echo esc_url( $this->getSupportUrl() ); ?>" target="_blank"><?php _e( 'Need Support? Feel free to contact us', 'formaloo-form-builder' ); ?></a>             
             </div>
 
-            <script src="<?php echo FORMALOO_URL ?>assets/js/handleTokenExpiration.js"></script>
-            
             <script>
                 jQuery(document).ready(function($){
 
@@ -395,7 +393,6 @@
                             var errorText = error['responseJSON']['errors']['general_errors'][0];
                             showGeneralErrors(errorText);
                             hideLoadingGif();
-                            // handleTokenExpiration(error);
                         }
                     });
 

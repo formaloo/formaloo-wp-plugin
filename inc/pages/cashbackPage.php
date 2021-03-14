@@ -172,8 +172,6 @@
                 <a href="<?php echo esc_url( $this->getSupportUrl() ); ?>" target="_blank"><?php _e( 'Need Support? Feel free to contact us', 'formaloo-form-builder' ); ?></a>
     
             </div>
-
-            <script src="<?php echo FORMALOO_URL ?>assets/js/handleTokenExpiration.js"></script>
             
             <script>
                 jQuery(document).ready(function($){
@@ -288,7 +286,11 @@
                         let unit = null
 
                         if (secondsAgo < MINUTE) {
-                            return secondsAgo + " seconds ago"
+                            if (secondsAgo == 0) {
+                                return "just now"
+                            } else {
+                                return secondsAgo + " seconds ago"
+                            }
                         } else if (secondsAgo < HOUR) {
                             [divisor, unit] = [MINUTE, 'minute']
                         } else if (secondsAgo < DAY) {

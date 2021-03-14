@@ -13,7 +13,7 @@ class Formaloo_Admin_Notice extends Formaloo_Main_Class {
         ?>
 
             <div class="notice notice-error is-dismissible inline">
-                <p><?php echo __('Invalid API Token or API Key! Please visit your', 'formaloo-form-builder') . ' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/" target="_blank">'. __('Formaloo dashboard here', 'formaloo-form-builder') .'</a>'. ' ' . __('to get a new one.', 'formaloo-form-builder'); ?></p>
+                <p><?php echo __('Invalid API Key or Secret Key! Please visit', 'formaloo-form-builder') . ' <a href="'. FORMALOO_PROTOCOL . '://cdp.' . FORMALOO_ENDPOINT .'/redirect/current-organization/integrations/wordpress" target="_blank">'. __('here', 'formaloo-form-builder') .'</a>'. ' ' . __('to get a new one.', 'formaloo-form-builder'); ?></p>
             </div>
 
         <?php

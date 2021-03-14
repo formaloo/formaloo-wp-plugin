@@ -55,7 +55,6 @@ jQuery(document).ready(function() {
                 jQuery('.spinner').remove();
             },
             error: function(error) {
-                // handleTokenExpiration(error);
                 jQuery('.spinner').remove();
             }
         });

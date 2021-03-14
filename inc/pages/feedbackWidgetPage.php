@@ -83,13 +83,10 @@
                         </div>
 
                         <?php if ($not_ready): ?>
-                            <p>
-                                <?php echo __('To get started, we\'ll need to access your Formaloo account with an', 'formaloo-form-builder') .' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/profile/" target="_blank">'. __('API Key & API Token', 'formaloo-form-builder') .'</a>. '. __('Paste your Formaloo API Key & API Token, and click', 'formaloo-form-builder') .' <strong>'. __('Connect', 'formaloo-form-builder') .'</strong> '. __('to continue', 'formaloo-form-builder') .'.'; ?>
-                            </p>
+                            <p><?php echo __('You didn\'t activate the plugin.', 'formaloo-form-builder') ?> <a href="<?php echo admin_url( "admin.php?page=formaloo-settings-page" ) ?>"><strong><?php echo __('Get Started by visiting the Settings Page', 'formaloo-form-builder') ?></strong></a>.</p>
                         <?php else: ?>
                             <?php // echo __('You can access your', 'formaloo-form-builder') .' <a href="'. FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT .'/dashboard/" target="_blank">'. __('Formaloo dashboard here', 'formaloo-form-builder') .'</a>.'; ?>  
                         <?php endif; ?>
-                        <?php echo $this->getStatusDiv(!$not_ready); ?>
 
                         <input type="hidden" id="formaloo_feedback_widget_form_slug" name="formaloo_feedback_widget_form_slug" value="">
                         <input type="hidden" id="formaloo_feedback_widget_form_address" name="formaloo_feedback_widget_form_address" value="">
@@ -232,8 +229,6 @@
                 <a href="<?php echo esc_url( $this->getSupportUrl() ); ?>" target="_blank"><?php _e( 'Need Support? Feel free to contact us', 'formaloo-form-builder' ); ?></a>
                                 
             </div>
-
-            <script src="<?php echo FORMALOO_URL ?>assets/js/handleTokenExpiration.js"></script>
             
             <script>
                 jQuery(document).ready(function($){
@@ -304,7 +299,6 @@
                                 var errorText = error['responseJSON']['errors']['general_errors'][0];
                                 showGeneralErrors(errorText);
                                 hideLoadingGif();
-                                // handleTokenExpiration(error);
                             }
                         });
                     }
@@ -326,9 +320,7 @@
                                 disableFeedbackWidgetTable();
                                 var errorText = error['responseJSON']['errors']['general_errors'][0];
                                 showGeneralErrors(errorText);
-                                hideLoadingGif();
-                                // handleTokenExpiration(error);
-                                
+                                hideLoadingGif();                                
                             }
                         });
                     }
@@ -456,7 +448,6 @@
                                 },
                                 error: function (error) {
                                     reject(error);
-                                    // handleTokenExpiration(error);
                                 }
                             });
                         });

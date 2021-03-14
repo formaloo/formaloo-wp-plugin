@@ -17,7 +17,9 @@ class TokenAuthenticator extends Formaloo_Main_Class {
         if (($timeA+$fiveMinutes) <= $timeB) {
             $refreshed_api_token = $this->getNewAuthToken($api_key, $api_secret);
             if ($refreshed_api_token != '') {
+                 file_put_contents(__DIR__.'/my_loggg.txt', ' // ' . date('m/d/Y H:i:s', time()) . ' // ');
                  $data['api_token'] = $refreshed_api_token;
+                 $data['api_token_save_date'] = time();
                  update_option('formaloo_data', $data);
             }
         }

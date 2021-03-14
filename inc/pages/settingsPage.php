@@ -281,8 +281,11 @@
                         let unit = null
 
                         if (secondsAgo < MINUTE) {
-                            // if (secondsAgo == 0)
-                            return secondsAgo + " seconds ago"
+                            if (secondsAgo == 0) {
+                                return "just now"
+                            } else {
+                                return secondsAgo + " seconds ago"
+                            }
                         } else if (secondsAgo < HOUR) {
                             [divisor, unit] = [MINUTE, 'minute']
                         } else if (secondsAgo < DAY) {
