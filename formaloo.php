@@ -25,7 +25,7 @@ if(!defined('FORMALOO_PATH'))
 	define('FORMALOO_PATH', plugin_dir_path( __FILE__ ));
 if(!defined('FORMALOO_ENDPOINT')) {
     if (get_locale() == 'fa_IR') {
-        define('FORMALOO_ENDPOINT', 'formaloo.com');
+        define('FORMALOO_ENDPOINT', 'staging.formaloo.com');
     } else {
         define('FORMALOO_ENDPOINT', 'formaloo.net');
     }

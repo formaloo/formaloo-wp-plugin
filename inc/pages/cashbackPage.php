@@ -45,7 +45,10 @@
                         </div>
 
                         <p class="notice notice-error formaloo-cashback-notice formaloo-cashback-error-notice"></p> 
-                        <p class="notice notice-success formaloo-cashback-notice formaloo-cashback-success-notice is-dismissible"></p> 
+
+                        <p class="notice notice-success is-dismissible formaloo-cashback-notice formaloo-cashback-success-notice"> 
+	                        <?php _e('Cashback value range updated successfully.', 'formaloo-form-builder'); ?>
+                        </p>
 
                         <div class="formaloo-cashback-top-info">
                             <img src="<?php echo FORMALOO_URL ?>assets/images/woo-commerce-cashback.png" alt="formaloo-logo">
@@ -55,8 +58,6 @@
                             
                         </div>
 
-                        <!-- <hr> -->
-
                         <?php if ($not_ready): ?>
                             <p><?php echo __('You didn\'t activate the plugin.', 'formaloo-form-builder') ?> <a href="<?php echo admin_url( "admin.php?page=formaloo-settings-page" ) ?>"><strong><?php echo __('Get Started by visiting the Settings Page', 'formaloo-form-builder') ?></strong></a>.</p>
                         <?php else: ?>
@@ -64,11 +65,6 @@
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin gravida nisl ligula. Mauris rhoncus vitae orci ut ornare. Aenean interdum lacus sit amet dolor pellentesque malesuada sit amet ut dui. Nulla facilisi. Nullam in leo ac est efficitur pulvinar.
                             </p> -->
                         <?php endif; ?>
-
-                        <!-- <input type="hidden" id="formaloo_feedback_widget_form_slug" name="formaloo_feedback_widget_form_slug" value="">
-                        <input type="hidden" id="formaloo_feedback_widget_form_address" name="formaloo_feedback_widget_form_address" value="">
-                        <input type="hidden" id="formaloo_feedback_widget_nps_field_slug" name="formaloo_feedback_widget_nps_field_slug" value="">
-                        <input type="hidden" id="formaloo_feedback_widget_text_field_slug" name="formaloo_feedback_widget_text_field_slug" value=""> -->
 
                         <table class="formaloo-cashback-table form-table">
                             <tbody id="formaloo-woocommerce-connected">
@@ -89,7 +85,10 @@
                                             class="small"
                                             type="number"
                                             value=""
-                                            placeholder="0"/>
+                                            placeholder="0"
+                                            step="0.01"
+                                            min=0
+                                        />
                                     </td>
                                     <td>
                                         <label><strong><?php _e( 'to', 'formaloo-form-builder' ); ?></strong></label>
@@ -103,7 +102,10 @@
                                             class="small"
                                             type="number"
                                             value=""
-                                            placeholder="0"/>
+                                            placeholder="0"
+                                            step="0.01"
+                                            min=0
+                                        />
                                     </td>
                                     <td></td>
                                 </tr>
@@ -182,7 +184,33 @@
                     $('#formaloo-woocommerce-not-connected').hide();
                     hideLoadingGif();
 
-                    // disableCashbackTable();
+                    loadGamificationSettings();
+
+                    function loadGamificationSettings(){
+                        showLoadingGif();
+                        // "<?php //echo esc_url( FORMALOO_PROTOCOL . '://api.' . FORMALOO_ENDPOINT . '/v2/gamification-settings/' ); ?>"
+                        $.ajax({
+                            url: "https://staging.actions.formaloo.com/v2/gamification-settings/",
+                            type: 'GET',
+                            dataType: 'json',
+                            headers: {
+                                'x-api-key': '<?php echo isset($data['api_key']) ? $data['api_key'] : ''; ?>',
+                                'Authorization': '<?php echo 'JWT ' . (isset($data['api_token']) ? $data['api_token'] : ''); ?>'
+                            },
+                            contentType: 'application/json; charset=utf-8',
+                            success: function (result) {
+                                $('#formaloo_cashback_low_range_percentage').val(result['data']['gamification_settings']['cash_back_minimum']);
+                                $('#formaloo_cashback_high_range_percentage').val(result['data']['gamification_settings']['cash_back_maximum']);
+                                hideLoadingGif();
+                            },
+                            error: function (error) {
+                                disableCashbackTable();
+                                var errorText = error['responseJSON']['errors']['general_errors'][0];
+                                showGeneralErrors(errorText);
+                                hideLoadingGif();                                
+                            }
+                        });
+                    }
 
                     $('#formaloo-cashback-form').on('submit', function(e){
                         e.preventDefault();
@@ -191,21 +219,45 @@
                         const lowRangeValue = $('#formaloo_cashback_low_range_percentage').val();
                         const highRangeValue = $('#formaloo_cashback_high_range_percentage').val();
                         
-                        if (lowRangeValue < 0 || highRangeValue < 0) {
-                            $('.formaloo-cashback-error-text').show();
-                            $('.formaloo-cashback-error-text').text("<?php _e('Please don\'t enter any negative value.', 'formaloo-form-builder'); ?>");
-                        } else if (lowRangeValue == 0 || highRangeValue == 0) {
-                            $('.formaloo-cashback-error-text').show();
-                            $('.formaloo-cashback-error-text').text("<?php _e('Please enter values higher than 0.', 'formaloo-form-builder'); ?>");
-                        } else if (lowRangeValue > highRangeValue) {
+                        if (lowRangeValue > highRangeValue) {
                             $('.formaloo-cashback-error-text').show();
                             $('.formaloo-cashback-error-text').text("<?php _e('Low range value shouldn\'t be bigger than high range value.', 'formaloo-form-builder'); ?>");
+                            hideLoadingGif();
                         } else {
-                            // Success!
+                            editGamificationSettings(lowRangeValue, highRangeValue).then(function(data) {
+                                showSuccessMessage();
+                                hideLoadingGif();
+                            }).catch(function(error) {
+                                var errorText = error['responseJSON']['errors']['general_errors'][0];
+                                showGeneralErrors(errorText);
+                                hideLoadingGif();
+                            })
                         }
 
-                        hideLoadingGif();
                     });
+
+                    function editGamificationSettings(lowRangeValue, highRangeValue) {
+
+                        var params = { "cash_back_minimum": lowRangeValue, "cash_back_maximum" : highRangeValue};
+
+                        return new Promise(function(resolve, reject) {
+                            $.ajax({
+                                url: "https://staging.actions.formaloo.com/v2/gamification-settings/",
+                                type: 'PATCH',
+                                headers: {
+                                    'x-api-key': '<?php echo isset($data['api_key']) ? $data['api_key'] : ''; ?>',
+                                    'Authorization': '<?php echo 'JWT ' . (isset($data['api_token']) ? $data['api_token'] : ''); ?>'
+                                },
+                                data: params,
+                                success: function (result) {
+                                    resolve(result);
+                                },
+                                error: function (error) {
+                                    reject(error);
+                                }
+                            });
+                        });
+                    }
 
                     <?php if (!$not_ready): ?>
 
@@ -368,7 +420,6 @@
 
                     function showSuccessMessage(successText) {
                         $('.formaloo-cashback-success-notice').show();
-                        $('.formaloo-cashback-success-notice').text(successText);
                     }
 
                     function showGeneralErrors(errorText) {
