@@ -419,16 +419,13 @@
                                 tb_show("<?php _e( 'How to use your Feedback Widget', 'formaloo-form-builder' ); ?>","#TB_inline?width=100vw&height=100vh&inlineId=formaloo-feedback-widget-show-options",null);
                                 jQuery('.spinner').removeClass('is-active');
                                 }).catch(function(err) {
-                                    console.log(err);
                                     jQuery('.spinner').removeClass('is-active');
                                 })
                             }).catch(function(err) {
-                                console.log(err);
                                 jQuery('.spinner').removeClass('is-active');
                             })
                             
                         }).catch(function(err) {
-                            console.log(err);
                             jQuery('.spinner').removeClass('is-active');
                         })
                     });
