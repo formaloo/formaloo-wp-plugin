@@ -122,20 +122,24 @@
                         </tbody>
                     </table>
                     <div class="formaloo_clipboard_wrapper formaloo-hidden">
-                        <input id="formaloo_shortcode_pre" type="text" class="regular-text" placeholder="<?php _e('Shortcode will appear here', 'formaloo-form-builder'); ?>">
-                        <button class="button button-primary formaloo_clipboard_btn" data-clipboard-target="#formaloo_shortcode_pre">
-                            <img src="<?php echo FORMALOO_URL ?>/assets/images/clippy.svg" width="13" alt="Copy to clipboard">
-                        </button>  
+                        <div class="formaloo_clipboard_wrapper_inner">
+                            <input id="formaloo_shortcode_pre" type="text" class="regular-text" placeholder="<?php _e('Shortcode will appear here', 'formaloo-form-builder'); ?>">
+                            <button class="button button-primary formaloo_clipboard_btn" data-clipboard-target="#formaloo_shortcode_pre">
+                                <img src="<?php echo FORMALOO_URL ?>/assets/images/clippy.svg" width="13" alt="Copy to clipboard">
+                            </button> 
+                        </div>
+                        <p>
+                            <?php _e('Copy the shortcode above then go to your post/page editor. If it is Gutenberg Editor, add a Shortcode block and paste the shortcode. If it is Classic Editor, choose the Text tab (instead of Visual tab) tab and paste the shortcode wherever you desire.' , 'formaloo-form-builder') ?>
+                            <a href="https://en.support.wordpress.com/shortcodes/" target="_blank"> <?php _e( 'More Info', 'formaloo-form-builder' ); ?> </a>
+                        </p>
                     </div>
-                    <p>
-                    <?php _e('Copy the shortcode above then go to your post/page editor. If it is Gutenberg Editor, add a Shortcode block and paste the shortcode. If it is Classic Editor, choose the Text tab (instead of Visual tab) tab and paste the shortcode wherever you desire.' , 'formaloo-form-builder') ?>
-                    <a href="https://en.support.wordpress.com/shortcodes/" target="_blank"> <?php _e( 'More Info', 'formaloo-form-builder' ); ?> </a>
-                    </p>
                     <?php if (!$not_ready): ?>
                         <div class="formaloo-shortcode-post-row">
-                            <button class="button button-primary formaloo-admin-save my-10" type="submit">
-                                <?php _e( 'Get shortcode', 'formaloo-form-builder' ); ?>
-                            </button>
+                            <div class="formaloo-shortcode-post-row-inner">
+                                <button class="button button-primary formaloo-admin-save my-10" type="submit">
+                                    <?php _e( 'Get shortcode', 'formaloo-form-builder' ); ?>
+                                </button>
+                            </div>
                         </div>
                     <?php endif; ?>
                     </form>          

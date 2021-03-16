@@ -181,7 +181,6 @@ class Formaloo_Admin_Editor {
                 </form>  
                 <script>
 
-
                     jQuery("#formaloo-form-shortcode-options").hide();
                     jQuery(".formaloo-shortcode-post-row").hide();
 

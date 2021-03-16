@@ -19,6 +19,8 @@ jQuery(document).ready(function() {
         jQuery(toForm).append('<input type="hidden" name="action" value="get_formaloo_shortcode" />');
         jQuery(toForm).append('<input type="hidden" name="security" value="' + formaloo_exchanger._nonce + '" />');
 
+        jQuery('.formaloo-shortcode-post-row-inner').append('<span class="spinner is-active"></span>');
+
         jQuery.ajax({
             url: formaloo_exchanger.ajax_url,
             type: 'post',
@@ -26,6 +28,10 @@ jQuery(document).ready(function() {
             success: function(response) {
                 jQuery('.formaloo_clipboard_wrapper').removeClass('formaloo-hidden');
                 jQuery('input#formaloo_shortcode_pre').val(response.data.output);
+                jQuery('.spinner').remove();
+            },
+            error: function(error) {
+                jQuery('.spinner').remove();
             }
         });
     }
@@ -47,6 +53,7 @@ jQuery(document).ready(function() {
             },
             success: function(result) {
                 if (result['data']['form']['async_export']) {
+                    window.scrollTo({top: 0, behavior: 'smooth'});
                     jQuery('.formaloo-excel-export-notice').remove();
                     jQuery('#my-forms-header').append("<div class='notice notice-info is-dismissible formaloo-excel-export-notice'> <p>" + formaloo_exchanger.async_excel_export_message + "</p> </div>");
                 } else {

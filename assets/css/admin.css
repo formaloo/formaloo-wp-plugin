@@ -14,7 +14,7 @@
   background: #007cba!important;
   border-color: #007cba!important;
 }
-.formaloo_clipboard_wrapper {
+.formaloo_clipboard_wrapper_inner {
   display: flex;
   margin-top: 1em;
 }
@@ -388,4 +388,8 @@ textarea[name=formaloo_api_secret], textarea[name=formaloo_api_key] {
 }
 #formaloo-show-sync-errors-log th {
   font-weight:bold;
+}
+.formaloo-shortcode-post-row-inner {
+  display: flex;
+  align-items: center;
 }

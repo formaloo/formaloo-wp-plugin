@@ -40,7 +40,7 @@
                         <div class="formaloo-api-settings-top-wrapper">
                             <img src="<?php echo FORMALOO_URL ?>assets/images/Formaloo_Logo.png" alt="formaloo-logo">
                             <h1 class="formaloo-heading">
-                                <?php _e('Cashback Calculator for WooCommerce (Coming Soon)', 'formaloo-form-builder'); ?>
+                                <?php _e('Cashback Calculator for WooCommerce', 'formaloo-form-builder'); ?>
                             </h1>
                         </div>
 
@@ -88,6 +88,7 @@
                                             placeholder="0"
                                             step="0.01"
                                             min=0
+                                            required
                                         />
                                     </td>
                                     <td>
@@ -105,6 +106,7 @@
                                             placeholder="0"
                                             step="0.01"
                                             min=0
+                                            required
                                         />
                                     </td>
                                     <td></td>
@@ -188,9 +190,8 @@
 
                     function loadGamificationSettings(){
                         showLoadingGif();
-                        // "<?php //echo esc_url( FORMALOO_PROTOCOL . '://api.' . FORMALOO_ENDPOINT . '/v2/gamification-settings/' ); ?>"
                         $.ajax({
-                            url: "https://staging.actions.formaloo.com/v2/gamification-settings/",
+                            url: "<?php echo esc_url( FORMALOO_PROTOCOL . '://api.' . FORMALOO_ENDPOINT . '/v1.0/gamification-settings/' ); ?>",
                             type: 'GET',
                             dataType: 'json',
                             headers: {
@@ -242,7 +243,7 @@
 
                         return new Promise(function(resolve, reject) {
                             $.ajax({
-                                url: "https://staging.actions.formaloo.com/v2/gamification-settings/",
+                                url: "<?php echo esc_url( FORMALOO_PROTOCOL . '://api.' . FORMALOO_ENDPOINT . '/v1.0/gamification-settings/' ); ?>",
                                 type: 'PATCH',
                                 headers: {
                                     'x-api-key': '<?php echo isset($data['api_key']) ? $data['api_key'] : ''; ?>',
