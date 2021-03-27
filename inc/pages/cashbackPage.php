@@ -53,17 +53,19 @@
                         <div class="formaloo-cashback-top-info">
                             <img src="<?php echo FORMALOO_URL ?>assets/images/woo-commerce-cashback.png" alt="formaloo-logo">
                             <h3 class="formaloo-heading">
-                                <?php _e('Do you want to prepare cashback for your loyal customers?', 'formaloo-form-builder'); ?>
+                                <?php _e('Do you want to provide cashback for your loyal customers?', 'formaloo-form-builder'); ?>
                             </h3>
                             
                         </div>
 
                         <?php if ($not_ready): ?>
-                            <p><?php echo __('You didn\'t activate the plugin.', 'formaloo-form-builder') ?> <a href="<?php echo admin_url( "admin.php?page=formaloo-settings-page" ) ?>"><strong><?php echo __('Get Started by visiting the Settings Page', 'formaloo-form-builder') ?></strong></a>.</p>
+                            <p><?php echo __('You didn\'t activate the plugin.', 'formaloo-form-builder'); ?> <a href="<?php echo admin_url( "admin.php?page=formaloo-settings-page" ) ?>"><strong><?php echo __('Get Started by visiting the Settings Page', 'formaloo-form-builder') ?></strong></a>.</p>
                         <?php else: ?>
-                           <!-- <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin gravida nisl ligula. Mauris rhoncus vitae orci ut ornare. Aenean interdum lacus sit amet dolor pellentesque malesuada sit amet ut dui. Nulla facilisi. Nullam in leo ac est efficitur pulvinar.
-                            </p> -->
+                           <p>
+                                <?php echo __('The days of blind and one-shoe-fit-all marketing campaigns are over. Blind discount codes will destroy your profit margin and decrease your customers’ loyalty.','formaloo-form-builder'); ?><br>
+                                <?php echo __('With Formaloo Customer Analytics, you can determine your customers’ health score. Based on analyzing the patterns of each and every one of your customers, Formaloo Customer Analytics provides you with the exact right amount of cashback which you should provide for each customer to grow customer loyalty & engagement, without losing your profits.','formaloo-form-builder'); ?><br>
+                                <?php echo __('In summary, with Formaloo Customer Analytics, your customers will order more, more frequently.','formaloo-form-builder'); ?>
+                            </p>
                         <?php endif; ?>
 
                         <table class="formaloo-cashback-table form-table">
@@ -126,7 +128,7 @@
                                         </p>    
                                     </td>
                                     <!-- <td>
-                                        <a href="#" target="_blank"><?php _e( 'How we calculate cashback?', 'formaloo-form-builder' ); ?></a>
+                                        <a href="#" target="_blank"><?php //_e( 'How we calculate cashback?', 'formaloo-form-builder' ); ?></a>
                                     </td> -->
                                     <td></td>
                                 </tr>
