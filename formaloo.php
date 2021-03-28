@@ -446,7 +446,7 @@ class Formaloo_Main_Class {
             </script>
             
             <?php
-            
+
         }
     }
 
@@ -544,7 +544,7 @@ new Formaloo_Plugin_Review( array(
 ) );
 
 /*
- * Starts our plugin class, easy!
+ * Starts our plugin class
  */
 new Formaloo_Main_Class();
 
