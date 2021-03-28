@@ -3,7 +3,7 @@ language: php
 php:
 - 5.2
 before_script:
-- if find . -name "*.php" ! -path "./vendor/*" -exec php -l {} 2>&1 \; | grep "syntax error, unexpected"; then exit 1; fi
+  - '! find . -type f -name "*.php" -exec php -d error_reporting=32767 -l {} \; 2>&1 >&- | grep "^"'
 script:
 - php -l *.php
 branches:

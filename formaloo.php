@@ -544,7 +544,7 @@ new Formaloo_Plugin_Review( array(
 ) );
 
 /*
- * Starts our plugin class
+ * Starts our plugin class, easy!
  */
 new Formaloo_Main_Class();
 
