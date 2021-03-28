@@ -4,7 +4,7 @@ Tags: customer, analytics, contact form, contact form plugin, forms, form builde
 Requires at least: 4.6
 Tested up to: 5.7.0
 Stable tag: 2.0.0.0
-Requires PHP: 5.2
+Requires PHP: 5.6
 License: GNU General Public License v2.0 or later
 
 Expect much more from your forms: The best WordPress SmartForm builder plugin. Drag & Drop online form builder that helps you create both powerful & beautiful forms with just a few clicks.
