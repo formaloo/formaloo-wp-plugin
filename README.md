@@ -16,7 +16,7 @@
 | ------------- |:-------------:|
 | Requires at least | 4.6 |
 | Tested up to | 5.7.0 |
-| Stable tag | 2.0.0.0 |
+| Stable tag | 2.0.0.1 |
 | Requires PHP | 5.6 |
 
 **Contributors:** Formaloo, idearun
@@ -221,7 +221,7 @@ See our <a href="https://en.formaloo.com/developers/">API documentation</a> for 
 
 ## Changelog
 
-## 2.0.0.0
+## 2.0.0.1
 - **NEW:** Full WooCommerce Integration added!
 - Key bug fixes and major improvements
 

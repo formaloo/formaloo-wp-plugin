@@ -11,7 +11,12 @@
 
             $not_ready = (empty($data['api_token']) || empty($data['api_key']));
 
-            Formaloo_Activation_Class::syncHourly();
+            /**
+             * Check if WooCommerce is active
+             **/
+            if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+                Formaloo_Activation_Class::syncHourly();
+            }
 
             ?>
 
@@ -133,7 +138,7 @@
                                     <td></td>
                                 </tr>
                                 </tbody>
-                                <?php if (!$not_ready): ?>
+                                <?php if (!$not_ready && in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) )): ?>
                                 <tbody class="formaloo-cdp-sync-wrapper">
                                 <tr>
                                     <td>
@@ -262,10 +267,19 @@
                         });
                     }
 
-                    <?php if (!$not_ready): ?>
+                    <?php if (!$not_ready && in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) )): ?>
 
-                        checkBatchImportStatus(true, "<?php echo isset($data['last_customers_batch_import_slug']) ? $data['last_customers_batch_import_slug'] : ''; ?>");
-                        checkBatchImportStatus(false, "<?php echo isset($data['last_orders_batch_import_slug']) ? $data['last_orders_batch_import_slug'] : ''; ?>");
+                        <?php if (isset($data['last_customers_batch_import_slug'])): ?>
+                            checkBatchImportStatus(true, "<?php echo isset($data['last_customers_batch_import_slug']) ? $data['last_customers_batch_import_slug'] : ''; ?>");
+                        <?php else: ?>
+                            batchImportStatusHandler(true, 'failed');
+                        <?php endif; ?>
+
+                        <?php if (isset($data['last_orders_batch_import_slug'])): ?>
+                            checkBatchImportStatus(false, "<?php echo isset($data['last_orders_batch_import_slug']) ? $data['last_orders_batch_import_slug'] : ''; ?>");
+                        <?php else: ?>
+                            batchImportStatusHandler(false, 'failed');
+                        <?php endif; ?>
 
                     <?php else: ?>
 
