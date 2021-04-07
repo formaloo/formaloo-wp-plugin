@@ -26,11 +26,12 @@ class Formaloo_WC_Orders extends Formaloo_Cashback_Page {
 
 		$last_date = isset($last_sync_date) ? $last_sync_date : $date;	
 
+		// if is_initial_sync is set then it's not the first sync
+		$operator = isset($is_initial_sync) ? '<' : '>';
+
 		foreach( $orders as $order ){
 			
 			$order_date = $order->get_date_created()->format($date_format);
-			// if is_initial_sync is set then it's not the first sync
-			$operator = isset($is_initial_sync) ? '<' : '>';
 
 			$condition = false;
 

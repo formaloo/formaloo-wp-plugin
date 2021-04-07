@@ -25,7 +25,7 @@ if(!defined('FORMALOO_PATH'))
 	define('FORMALOO_PATH', plugin_dir_path( __FILE__ ));
 if(!defined('FORMALOO_ENDPOINT')) {
     if (get_locale() == 'fa_IR') {
-        define('FORMALOO_ENDPOINT', 'formaloo.com');
+        define('FORMALOO_ENDPOINT', 'staging.formaloo.com');
     } else {
         define('FORMALOO_ENDPOINT', 'formaloo.net');
     }
@@ -247,6 +247,13 @@ class Formaloo_Main_Class {
 
         }
 
+        // $data['is_initial_orders_sync'] = true;
+        // $data['is_initial_customers_sync'] = true;
+        // unset($data['last_orders_sync_date']);
+        // unset($data['last_customers_sync_date']);
+        // unset($data['last_orders_batch_import_slug']);
+        // unset($data['last_customers_batch_import_slug']);
+
         update_option($this->option_name, $data);
 
 		die();
@@ -467,7 +474,7 @@ class Formaloo_Main_Class {
         $api_secret = isset($data['api_secret']) ? $data['api_secret'] : '';
         
         $api_url = FORMALOO_PROTOCOL. '://api.'. FORMALOO_ENDPOINT .'/v2/forms/list/?page='. $pageNum;
-
+        
         $response = wp_remote_get( $api_url ,
             array( 'timeout' => 10,
                     'headers' => array( 'x-api-key' => $api_key,

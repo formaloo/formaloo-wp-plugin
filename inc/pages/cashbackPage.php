@@ -338,7 +338,31 @@
                                 dashicon = '<span class="dashicons dashicons-clock"></span>';
                         }
 
-                        document.getElementById(divId).innerHTML = dashicon + ' ' + titleCase(status) + ' ' + getTimeAgo(syncDate);
+                        <?php
+                            $orders = wc_get_orders( array('numberposts' => -1) );
+                            $orders_total_count = count($orders);
+
+                            $users_query = new WP_User_Query(
+                                array(
+                                    'fields'  => array( 'user_registered' ),
+                                    'role'    => 'customer',
+                                )
+                            );
+                            $customers = $users_query->get_results();
+                            $customers_total_count = count( $customers );
+                        ?>
+
+                        var count = '';
+
+                        if (status == 'imported') {
+                            if (checkingCustomersImport) {
+                                count = "<?php echo $customers_total_count; ?> customers "; 
+                            } else {
+                                count = "<?php echo $orders_total_count; ?> orders "; 
+                            }
+                        }
+
+                        document.getElementById(divId).innerHTML = dashicon + ' ' + titleCase(status) + ' ' + count + getTimeAgo(syncDate);
                     }
 
                     function getTimeAgo(date) {

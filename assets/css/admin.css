@@ -130,14 +130,17 @@
   display: flex;
   align-items: center;
 }
-#formaloo-feedback-widget-submit-row .spinner, , #formaloo-cashback-submit-row .spinner {
+#formaloo-feedback-widget-submit-row .spinner, #formaloo-cashback-submit-row .spinner {
   margin: 0;
 }
 .formaloo-feedback-wdiget-top-info img {
   width: 150px;
   padding-top: 10px;
 }
-.formaloo_feedback_widget_choice_icon {
+.formaloo_feedback_widget_templates_wrapper {
+  display: flex;
+}
+.formaloo_feedback_widget_choice_icon, .formaloo_feedback_widget_template {
   display: inline-block;
   padding: 20px;
   background: rgba(0,0,0,.05);
@@ -145,16 +148,29 @@
   border: 2px solid transparent;
   cursor: pointer;
 }
-.formaloo_feedback_widget_choice_selected {
+.formaloo_feedback_widget_template {
+  width: 120px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.formaloo_feedback_widget_choice_selected, .formaloo_feedback_widget_template_selected {
   border: 2px solid #FFA500;
 }
-.formaloo_feedback_widget_choice_icon img {
+.formaloo_feedback_widget_choice_icon img, .formaloo_feedback_widget_template img {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 35px;
   height: 35px;
   object-fit: contain;
+  margin-bottom: 5px;
+}
+.formaloo_feedback_widget_template img {
+  width: 50px;
+  height: 50px;
 }
 #formaloo-feedback-widget-form .form-group, #formaloo-cashback-form .form-group {
   position: relative;

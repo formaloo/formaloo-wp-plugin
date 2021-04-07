@@ -20,7 +20,8 @@
 
 .formaloo-api-settings-top-wrapper h1,
 .formaloo-heading,
-.form-group.inside {
+.form-group.inside,
+.formaloo-cdp-sync-wrapper h3 {
 	font-family: Shabnam !important;
 }
 .formaloo-column-more-wrapper a:first-child {
@@ -43,4 +44,8 @@
 }
 #formaloo-guest-template-login-descr {
   text-align: right;
+}
+.formaloo_feedback_widget_template {
+  margin-right: 0!important;
+  margin-left: 10px;
 }

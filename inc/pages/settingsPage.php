@@ -162,8 +162,8 @@
 
                         const apiKey = document.getElementById('formaloo_api_key').value;
                         const secretKey = document.getElementById('formaloo_api_secret').value
-                        const url = formaloo_exchanger.protocol + '://accounts.' + formaloo_exchanger.endpoint_url + '/v1/oauth2/authorization-token/';
-
+                        // const url = formaloo_exchanger.protocol + '://accounts.' + formaloo_exchanger.endpoint_url + '/v1/oauth2/authorization-token/';
+                        const url = 'https://staging.icas.formaloo.com' + '/v1/oauth2/authorization-token/';
                         $.ajax({
                             url: url,
                             type: 'POST',
@@ -214,13 +214,13 @@
                         <?php if (isset($data['last_customers_batch_import_slug'])): ?>
                             checkBatchImportStatus(true, "<?php echo isset($data['last_customers_batch_import_slug']) ? $data['last_customers_batch_import_slug'] : ''; ?>");
                         <?php else: ?>
-                            batchImportStatusHandler(true, 'failed');
+                            batchImportStatusHandler(true, 'queued');
                         <?php endif; ?>
 
                         <?php if (isset($data['last_orders_batch_import_slug'])): ?>
                             checkBatchImportStatus(false, "<?php echo isset($data['last_orders_batch_import_slug']) ? $data['last_orders_batch_import_slug'] : ''; ?>");
                         <?php else: ?>
-                            batchImportStatusHandler(false, 'failed');
+                            batchImportStatusHandler(false, 'queued');
                         <?php endif; ?>
                     
                     <?php endif; ?>
@@ -276,8 +276,31 @@
                                 dashicon = '<span class="dashicons dashicons-clock"></span>';
                         }
 
-                        document.getElementById(divId).innerHTML = dashicon + ' ' + titleCase(status) + ' ' + getTimeAgo(syncDate);
+                        <?php
+                            $orders = wc_get_orders( array('numberposts' => -1) );
+                            $orders_total_count = count($orders);
 
+                            $users_query = new WP_User_Query(
+                                array(
+                                    'fields'  => array( 'user_registered' ),
+                                    'role'    => 'customer',
+                                )
+                            );
+                            $customers = $users_query->get_results();
+                            $customers_total_count = count( $customers );
+                        ?>
+
+                        var count = '';
+
+                        if (status == 'imported') {
+                            if (checkingCustomersImport) {
+                                count = "<?php echo $customers_total_count; ?> customers "; 
+                            } else {
+                                count = "<?php echo $orders_total_count; ?> orders "; 
+                            }
+                        }
+
+                        document.getElementById(divId).innerHTML = dashicon + ' ' + titleCase(status) + ' ' + count + getTimeAgo(syncDate);
                     }
 
                     function getTimeAgo(date) {
