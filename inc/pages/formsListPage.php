@@ -38,8 +38,7 @@
 
             <div class="wrap">
 
-                <div id="form-show-edit" style="display:none;">
-                </div>
+                <div id="form-show-edit" style="display:none;"></div>
 
                 <div id="form-show-options" style="display:none;">
                     <form id="formaloo-customize-form">

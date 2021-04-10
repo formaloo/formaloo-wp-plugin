@@ -27,43 +27,45 @@
                         */
                         ?>
                         
-                        <!-- <div class="formaloo-loading-gif-wrapper">
+                        <div class="formaloo-loading-gif-wrapper">
                             <div class="formaloo-loader-wrapper">
                                 <div class="formaloo-borders formaloo-first"></div>
                                 <div class="formaloo-borders formaloo-middle"></div>
                                 <div class="formaloo-borders formaloo-last"></div>
                             </div>
-                        </div> -->
+                        </div>
 
+                        <div id="form-show-edit" style="display:none;"></div>
                         <div id="formaloo-feedback-widget-show-options" style="display:none;">
-                            <table class="form-table formaloo-feedback-widget-show-options-table">
-                                <tbody>
-                                    <tr>
-                                        <td scope="row">
-                                            <label><strong><?php _e( 'As a Link', 'formaloo-form-builder' ); ?></strong></label><br>
-                                            <small><?php _e( 'Share this URL with others to view the form directly', 'formaloo-form-builder' ); ?></small>
-                                        </td>
-                                        <td>
-                                            <a href="" target="_blank" id="formaloo-feedback-widget"></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td scope="row">
-                                            <label><strong><?php _e( 'As a Script Tag', 'formaloo-form-builder' ); ?></strong></label><br>
-                                            <small><?php _e( 'Using this method, the form will become a part of your website\'s markup. To use this, put the code snippet in your website footer:', 'formaloo-form-builder' ); ?></small><br><br>
-                                            <a href="<?php echo FORMALOO_URL ?>assets/images/feedback_widget_helper.png" target="_blank"> <img src="<?php echo FORMALOO_URL ?>assets/images/feedback_widget_helper.png" id="formaloo-where-to-put-feedback-widget" alt="Feedback Widget Helper" /></a>
-                                        </td>
-                                        <td>
-                                        <div class="formaloo_clipboard_wrapper">
-                                            <textarea id="formaloo-feedback-widget-script-textarea"></textarea>
-                                            <button class="button button-primary formaloo_clipboard_btn" data-clipboard-target="#formaloo-feedback-widget-script-textarea">
-                                                <img src="<?php echo FORMALOO_URL ?>/assets/images/clippy.svg" width="13" alt="Copy to clipboard">
-                                            </button>  
-                                        </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+
+                        <table class="form-table formaloo-feedback-widget-show-options-table">
+                            <tbody>
+                                <tr>
+                                    <td scope="row">
+                                        <label><strong><?php _e( 'As a Link', 'formaloo-form-builder' ); ?></strong></label><br>
+                                        <small><?php _e( 'Share this URL with others to view the form directly', 'formaloo-form-builder' ); ?></small>
+                                    </td>
+                                    <td>
+                                        <a href="" target="_blank" id="formaloo-feedback-widget"></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">
+                                        <label><strong><?php _e( 'As a Script Tag', 'formaloo-form-builder' ); ?></strong></label><br>
+                                        <small><?php _e( 'Using this method, the form will become a part of your website\'s markup. To use this, put the code snippet in your website footer:', 'formaloo-form-builder' ); ?></small><br><br>
+                                        <a href="<?php echo FORMALOO_URL ?>assets/images/feedback_widget_helper.png" target="_blank"> <img src="<?php echo FORMALOO_URL ?>assets/images/feedback_widget_helper.png" id="formaloo-where-to-put-feedback-widget" alt="Feedback Widget Helper" /></a>
+                                    </td>
+                                    <td>
+                                    <div class="formaloo_clipboard_wrapper">
+                                        <textarea id="formaloo-feedback-widget-script-textarea"></textarea>
+                                        <button class="button button-primary formaloo_clipboard_btn" data-clipboard-target="#formaloo-feedback-widget-script-textarea">
+                                            <img src="<?php echo FORMALOO_URL ?>/assets/images/clippy.svg" width="13" alt="Copy to clipboard">
+                                        </button>  
+                                    </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                         </div>
 
                         <div class="formaloo-api-settings-top-wrapper">
@@ -90,19 +92,17 @@
 
                         <input type="hidden" id="formaloo_feedback_widget_form_slug" name="formaloo_feedback_widget_form_slug" value="">
                         <input type="hidden" id="formaloo_feedback_widget_form_address" name="formaloo_feedback_widget_form_address" value="">
-                        <input type="hidden" id="formaloo_feedback_widget_nps_field_slug" name="formaloo_feedback_widget_nps_field_slug" value="">
-                        <input type="hidden" id="formaloo_feedback_widget_text_field_slug" name="formaloo_feedback_widget_text_field_slug" value="">
+                        <input type="hidden" id="formaloo_feedback_widget_theme_config" name="formaloo_feedback_widget_theme_config" value="">
 
                         <table class="form-table formaloo-feedback-widget-settings-table">
                             <tbody id="formaloo_feedback_widget_templates_tbody">
-                            <tr>
-                                <td scope="row">
+                                <tr>
+                                    <td scope="row">
                                         <label><strong><?php _e( 'Choose the NPS Template:', 'formaloo-form-builder' ); ?></strong></label>
                                     </td>
                                     <td>
-                                    <fieldset class="formaloo_feedback_widget_templates_wrapper">
-                                        
-                                    </fieldset>
+                                        <fieldset class="formaloo_feedback_widget_templates_wrapper">
+                                        </fieldset>
                                     </td>
                                 </tr>
                             </tbody>
@@ -130,7 +130,7 @@
                                     </td>
                                     <td>
                                     <fieldset id="formaloo_feedback_widget_type_fieldset">
-                                        <input type="radio" name="formaloo_feedback_widget_type" id="formaloo_feedback_widget_type_" value="drawer" checked /> <label for = "formaloo_feedback_widget_type"><?php _e('Drawer', 'formaloo-form-builder'); ?></label><br>
+                                        <input type="radio" name="formaloo_feedback_widget_type" id="formaloo_feedback_widget_type_drawer" value="drawer" checked /> <label for = "formaloo_feedback_widget_type"><?php _e('Drawer', 'formaloo-form-builder'); ?></label><br>
                                         <input type="radio" name="formaloo_feedback_widget_type" id="formaloo_feedback_widget_type_side-widget" value="side-widget" /> <label for = "formaloo_feedback_widget_type"><?php _e('Side Widget', 'formaloo-form-builder'); ?></label><br>
                                         <input type="radio" name="formaloo_feedback_widget_type" id="formaloo_feedback_widget_type_single-step" value="single-step" /> <label for = "formaloo_feedback_widget_type"><?php _e('Single Step', 'formaloo-form-builder'); ?></label><br>
                                     </fieldset>
@@ -161,65 +161,11 @@
                                     <fieldset>
                                         <input type="radio" name="formaloo_feedback_widget_position" id="formaloo_feedback_widget_position_left" value="left" checked /> <label for = "formaloo_feedback_widget_position"><?php _e('Left', 'formaloo-form-builder'); ?></label><br>
                                         <input type="radio" name="formaloo_feedback_widget_position" id="formaloo_feedback_widget_position_right" value="right" /> <label for = "formaloo_feedback_widget_position"><?php _e('Right', 'formaloo-form-builder'); ?></label><br>
-                                        <input type="radio" name="formaloo_feedback_widget_position" id="formaloo_feedback_widget_position_bottom_left" value="bottom_left" /> <label for = "formaloo_feedback_widget_position"><?php _e('Bottom Left', 'formaloo-form-builder'); ?></label><br>
-                                        <input type="radio" name="formaloo_feedback_widget_position" id="formaloo_feedback_widget_position_bottom_right" value="bottom_right" /> <label for = "formaloo_feedback_widget_position"><?php _e('Bottom Right', 'formaloo-form-builder'); ?></label> 
+                                        <input type="radio" name="formaloo_feedback_widget_position" id="formaloo_feedback_widget_position_left-bottom" value="left-bottom" /> <label for = "formaloo_feedback_widget_position"><?php _e('Bottom Left', 'formaloo-form-builder'); ?></label><br>
+                                        <input type="radio" name="formaloo_feedback_widget_position" id="formaloo_feedback_widget_position_right-bottom" value="right-bottom" /> <label for = "formaloo_feedback_widget_position"><?php _e('Bottom Right', 'formaloo-form-builder'); ?></label> 
                                     </fieldset>
                                     </td>
                                 </tr>
-                                <!--<tr>
-                                    <td scope="row">
-                                        <label><strong><?php //_e( 'NPS Choices Icon', 'formaloo-form-builder' ); ?></strong></label>
-                                    </td>
-                                    <td>
-                                    <fieldset class="formaloo_feedback_widget_choice_wrapper">
-                                        <div class="formaloo_feedback_widget_choice_icon formaloo_feedback_widget_choice_selected" id="heart">
-                                            <img src="<?php //echo FORMALOO_URL ?>assets/images/widget_icons/fillHeart.png" alt="Heart Icon">
-                                        </div>
-                                        <div class="formaloo_feedback_widget_choice_icon" id="star">
-                                            <img src="<?php //echo FORMALOO_URL ?>assets/images/widget_icons/fillStar.svg" alt="Star Icon">
-                                        </div>
-                                        <div class="formaloo_feedback_widget_choice_icon" id="funny_face">
-                                            <img src="<?php //echo FORMALOO_URL ?>assets/images/widget_icons/FSmile.svg" alt="Funny Face Icon">
-                                        </div>
-                                        <div class="formaloo_feedback_widget_choice_icon" id="monster">
-                                            <img src="<?php //echo FORMALOO_URL ?>assets/images/widget_icons/MSmile.svg" alt="Monster Icon">
-                                        </div>
-                                        <div class="formaloo_feedback_widget_choice_icon" id="flat_face">
-                                            <img src="<?php //echo FORMALOO_URL ?>assets/images/widget_icons/FLLove.svg" alt="Flat Face Icon">
-                                        </div>
-                                        <div class="formaloo_feedback_widget_choice_icon" id="outlined">
-                                            <img src="<?php //echo FORMALOO_URL ?>assets/images/widget_icons/OSmile.svg" alt="Outlined Icon">
-                                        </div>
-                                    </fieldset>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td scope="row">
-                                        <label><strong><?php //_e( 'Question Title', 'formaloo-form-builder' ); ?></strong></label>
-                                    </td>
-                                    <td>
-                                        <input name="formaloo_feedback_widget_question_text_title"
-                                            id="formaloo_feedback_widget_question_text_title"
-                                            class="regular-text"
-                                            type="text"
-                                            value=""
-                                            placeholder="<?php //_e( 'Question Title', 'formaloo-form-builder' ); ?>"/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td scope="row">
-                                        <label><strong><?php //_e( 'TextBox Placeholder', 'formaloo-form-builder' ); ?></strong></label>
-                                    </td>
-                                    <td>
-                                        <input name="formaloo_feedback_widget_textbox_placeholder"
-                                            id="formaloo_feedback_widget_textbox_placeholder"
-                                            class="regular-text"
-                                            type="text"
-                                            value=""
-                                            placeholder="<?php //_e( 'TextBox Placeholder', 'formaloo-form-builder' ); ?>"/>
-                                    </td>
-                                </tr>
-                                -->
                                 <tr>
                                     <td scope="row">
                                         <label><strong><?php _e( 'Submit Button Text', 'formaloo-form-builder' ); ?></strong></label>
@@ -260,6 +206,12 @@
                                             <input type="submit" name="submit" id="submit" class="button button-primary" value="<?php _e( 'Save Changes', 'formaloo-form-builder' ); ?>">
                                         </p>    
                                     </td>
+                                    <td>
+                                        <span class="spinner"></span>
+                                    </td>
+                                    <td id="formaloo-feedback-widget-edit-fields-btn-wrapper">
+                                        <a href="#TB_inline?width=100vw&height=100vh&inlineId=form-show-edit" title="<?php __('Edit Fields', 'formaloo-form-builder') ?>" class="thickbox" onclick="showEditFormWith();"><?php _e( 'Edit Fields', 'formaloo-form-builder' ); ?></a>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -273,19 +225,31 @@
             </div>
             
             <script>
+                function showEditFormWith() {
+                    var formSlug = jQuery('#formaloo_feedback_widget_form_slug').val();
+                    jQuery("#form-show-edit").append('<iframe id="edit-form-iframe" width="100%" height="100%" src="<?php echo esc_url( FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT . '/dashboard/my-forms/' ); ?>'+formSlug+'/edit/" frameborder="0" onload="resizeIframe();">');
+                }
+
+                function resizeIframe() {
+                    var TB_WIDTH = jQuery(document).width();
+                    jQuery("#TB_window").animate({
+                        width: TB_WIDTH + 'px',
+                        height: '100vh'
+                    });
+                    jQuery("iframe").animate({
+                        width: '100%',
+                        height: '100vh'
+                    });
+                }
+
                 jQuery(document).ready(function($){
 
                     $('.formaloo-feedback-widget-notice').hide();
 
-                    // $('.formaloo_feedback_widget_choice_icon').on("click",function(){
-                    //     $(".formaloo_feedback_widget_choice_selected").removeClass("formaloo_feedback_widget_choice_selected");
-                    //     $(this).addClass("formaloo_feedback_widget_choice_selected");
-                    //     jQuery("#formaloo_feedback_widget_choice_icon_type").val($(this).find("div").attr("data-value"));
-                    // });
-
                     $('.formaloo_feedback_widget_templates_wrapper').on('click', '.formaloo_feedback_widget_template', function(){
                         $(".formaloo_feedback_widget_template_selected").removeClass("formaloo_feedback_widget_template_selected");
                         $(this).addClass("formaloo_feedback_widget_template_selected");
+                        copyTemplate($(this).attr("id"));
                     });
 
                     toggleFeedbackWidgetPositionRow($('#formaloo_feedback_widget_type_fieldset input[type="radio"]').val());
@@ -315,8 +279,10 @@
                     var widgetSlugToEdit = "<?php echo $widgetSlugToEdit; ?>";
 
                     if (widgetSlugToEdit.length > 0) {
+                        $('#formaloo_feedback_widget_templates_tbody').hide();
                         loadExistingWidget(widgetSlugToEdit);
                     } else {
+                        $('#formaloo_feedback_widget_templates_tbody').show();
                         loadTemplates();
                     }
                     
@@ -332,12 +298,10 @@
                             success: function (result) {
                                 $.each(result['data']['forms'], function(i, form) {
                                     if (form['form_type'] == 'nps') {
-                                        console.log(templateIndex);
                                         if (templateIndex == 0) {
-                                            // copyTemplate(form['slug']);   
+                                            copyTemplate(form['slug']);   
                                         }    
-                                        console.log(form);                              
-                                        $(".formaloo_feedback_widget_templates_wrapper").append('<div class="formaloo_feedback_widget_template '+ ((templateIndex == 0) ? ' formaloo_feedback_widget_template_selected' : '') +'" id="formaloo_feedback_widget_'+ form['slug'] +'"><img src="' +  ((form['logo'] == null) ? "<?php echo FORMALOO_URL ?>assets/images/logo_placeholder.png" : form['logo']) + '" alt="' + form['title'] + '"><b>'+form['title']+'</b></div>');
+                                        $(".formaloo_feedback_widget_templates_wrapper").append('<div class="formaloo_feedback_widget_template '+ ((templateIndex == 0) ? ' formaloo_feedback_widget_template_selected' : '') +'" id="'+ form['slug'] +'"><img src="' +  ((form['logo'] == null) ? "<?php echo FORMALOO_URL ?>assets/images/logo_placeholder.png" : form['logo']) + '" alt="' + form['title'] + '"><b>'+form['title']+'</b></div>');
                                         templateIndex += 1;
                                     }
                                 });
@@ -404,23 +368,21 @@
                         $('#formaloo_feedback_widget_button_text').val(form['title']);
                         $('#formaloo_feedback_widget_submit_button_text').val(form['button_text']);
                         $('#formaloo_feedback_widget_success_message_after_submit').val(form['success_message']);
-                        
-                        $.each(form['fields_list'], function(i, field) {
-                            if (field['type'] == 'long_text' || field['type'] == 'short_text') {
-                                $('#formaloo_feedback_widget_text_field_slug').val(field['slug']);
-                                $('#formaloo_feedback_widget_textbox_placeholder').val(field['title']);
-                            } else {
-                                $('#formaloo_feedback_widget_nps_field_slug').val(field['slug']);
-                                $('#formaloo_feedback_widget_question_text_title').val(field['title']);
-                                $(".formaloo_feedback_widget_choice_selected").removeClass("formaloo_feedback_widget_choice_selected");
-                                $('#' + field['thumbnail_type']).addClass("formaloo_feedback_widget_choice_selected");
-                            }
-                        });
-                        
-                        var formConfig = form['config'];
 
-                        if (formConfig != null) {
-                            $('#formaloo_feedback_widget_position_' + formConfig).attr('checked', 'checked');                    }
+                        var themeConfig = form['theme_config'];
+
+                        $('#formaloo_feedback_widget_theme_config').val(JSON.stringify(themeConfig));
+
+                        if (themeConfig != null) {
+                            var widgetSettings = themeConfig['widget_settings'];
+
+                            $('#formaloo_feedback_widget_type_' + widgetSettings['type']).attr('checked', 'checked');
+                            toggleFeedbackWidgetPositionRow(widgetSettings['type']);
+                            $('#formaloo_feedback_widget_once_per_user').prop('checked', widgetSettings['once_per_user']);
+                            if (widgetSettings['type'] != 'drawer') {
+                                $('#formaloo_feedback_widget_position_' + widgetSettings['position']).attr('checked', 'checked');
+                            }
+                        }
 
                         var buttonColors = JSON.parse(form['button_color']);
                         var r = buttonColors['r'];
@@ -441,66 +403,55 @@
 
                         $('.formaloo-feedback-widget-notice').hide();
 
-                        jQuery('#formaloo-feedback-widget-submit-row').append('<td><span class="spinner is-active"></span></td>');
+                        jQuery('.spinner').addClass('is-active');
 
                         var formSlug = $('#formaloo_feedback_widget_form_slug').val();
                         var formAddress = $('#formaloo_feedback_widget_form_address').val();
-                        var npsFieldSlug = $('#formaloo_feedback_widget_nps_field_slug').val();
-                        var textFieldSlug = $('#formaloo_feedback_widget_text_field_slug').val();
+                        var themeConfig = $('#formaloo_feedback_widget_theme_config').val();
                         var buttonText = $('#formaloo_feedback_widget_button_text').val();
-                        var buttonPosition = $('#formaloo_feedback_widget_position').val();
-                        var selectedIcon = $(".formaloo_feedback_widget_choice_selected").attr('id');
-                        var selectedPosition = "";
-                        var textBoxPlaceHolder = $('#formaloo_feedback_widget_textbox_placeholder').val();
-                        var questionTitle = $('#formaloo_feedback_widget_question_text_title').val();
                         var submitButtonText = $('#formaloo_feedback_widget_submit_button_text').val();
                         var buttonColor = $('.formaloo_feedback_widget_button_color').val();
                         var successMessage = $('#formaloo_feedback_widget_success_message_after_submit').val();
 
-                        $.each($("input[type='radio']").filter(":checked"), function () {
-                            selectedPosition = $(this).val();
-                        });
-
-
                         try {
                             hexToRgbA(buttonColor);
-                        }
-                        catch(err) {
+                        } catch(err) {
                             showGeneralErrors(err.message);
                             jQuery('.spinner').removeClass('is-active');
                         }
 
-                        var npsFieldParams = { "form": formSlug, "slug" : npsFieldSlug, "title" : questionTitle, "thumbnail_type": selectedIcon};
-                        var textFielParams = { "form": formSlug, "slug" : textFieldSlug, "title" : textBoxPlaceHolder};
-                        var formParams = { "slug": formSlug, "title" : buttonText, "button_color" : hexToRgbA(buttonColor), "config" : selectedPosition, "form_type" : "nps", "success_message": successMessage, "button_text": submitButtonText};
-
-                        var editTextFieldUrl = "<?php echo FORMALOO_PROTOCOL . '://api.' . FORMALOO_ENDPOINT . '/v2/fields/field/'; ?>"+textFieldSlug+"/";
-                        var editNpsFieldUrl = "<?php echo FORMALOO_PROTOCOL . '://api.' . FORMALOO_ENDPOINT . '/v2/fields/field/'; ?>"+npsFieldSlug+"/";
+                        var formParams = { "slug": formSlug, "title" : buttonText, "button_color" : hexToRgbA(buttonColor), "form_type" : "nps", "success_message": successMessage, "button_text": submitButtonText};
                         var editFormUrl = "<?php echo FORMALOO_PROTOCOL . '://api.' . FORMALOO_ENDPOINT . '/v2/forms/form/'; ?>"+formSlug+"/";
                         var formUrl =  "<?php echo FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT; ?>" + "/" + formAddress;
                         $('#formaloo-feedback-widget').attr("href",formUrl);
                         $('#formaloo-feedback-widget').text(formUrl);
-                        var scriptText = '<div id="formz-wrapper" data-formz-slug="' + formSlug + '"></div>' + '<script src="' + '<?php echo FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT . '/istatic/js/main.js'; ?>' + '\"><\/script>';
-                        $('#formaloo-feedback-widget-script-textarea').val(scriptText);
+
+                        var newThemeConfig = JSON.parse($('#formaloo_feedback_widget_theme_config').val());
+                        var oncePerUser = $("#formaloo_feedback_widget_once_per_user").is( ":checked" );
+                        var widgetType = $("input[name='formaloo_feedback_widget_type']:checked").val();
+                        var widgetPosition = $("input[name='formaloo_feedback_widget_position']:checked").val();
+                        var widgetDirection = ('<?php echo get_locale(); ?>' == 'fa_IR') ? 'rtl' : 'ltr';
+                        var widgetBaseUrl = 'https://staging.widget.formaloo.com';
+                        newThemeConfig['widget_settings']['once_per_user'] = oncePerUser;
+                        newThemeConfig['widget_settings']['type'] = widgetType;
+                        newThemeConfig['widget_settings']['position'] = widgetPosition;
                         
-                        editField(editTextFieldUrl, textFielParams).then(function(data) {
-                            editField(editNpsFieldUrl, npsFieldParams).then(function(data) {
-                                editField(editFormUrl, formParams).then(function(data) {
-                                tb_show("<?php _e( 'How to use your Feedback Widget', 'formaloo-form-builder' ); ?>","#TB_inline?width=100vw&height=100vh&inlineId=formaloo-feedback-widget-show-options",null);
-                                jQuery('.spinner').removeClass('is-active');
-                                }).catch(function(err) {
-                                    jQuery('.spinner').removeClass('is-active');
-                                })
-                            }).catch(function(err) {
-                                jQuery('.spinner').removeClass('is-active');
-                            })
-                            
+                        formParams['theme_config'] = JSON.stringify(newThemeConfig);
+
+                        var scriptText = `<!-- Formaloo Widget --><div data-widget-form="formaloo-widget" data-prop-slug="${formSlug}" data-prop-type="${widgetType}" dir="${widgetDirection}"><script type="text/props">{"position": "${widgetPosition}","once_per_user": ${oncePerUser}}<\/script></div><script async src="${widgetBaseUrl}/bundle.js"><\/script><!-- End Formaloo Widget -->`;
+
+                        $('#formaloo-feedback-widget-script-textarea').val(scriptText);
+
+                        editForm(editFormUrl, formParams).then(function(data) {
+                            tb_show("<?php _e( 'How to use your Feedback Widget', 'formaloo-form-builder' ); ?>","#TB_inline?width=100vw&height=100vh&inlineId=formaloo-feedback-widget-show-options",null);
+                            jQuery('.spinner').removeClass('is-active');
                         }).catch(function(err) {
                             jQuery('.spinner').removeClass('is-active');
                         })
+
                     });
 
-                    function editField(urlString, params) {
+                    function editForm(urlString, params) {
                         return new Promise(function(resolve, reject) {
                             $.ajax({
                                 url: urlString,
