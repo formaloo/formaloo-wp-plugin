@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Formaloo Form Maker & Customer Analytics for WordPress & WooCommerce
  * Description:       Easily embed Formaloo forms into your blog or WP pages.
- * Version:           2.0.0.1
+ * Version:           2.1.0.0
  * Author:            Formaloo team
  * Author URI:        https://en.formaloo.com/
  * Text Domain:       formaloo-form-builder
@@ -18,14 +18,14 @@
  * Plugin constants
  */
 if(!defined('FORMALOO_PLUGIN_VERSION'))
-	define('FORMALOO_PLUGIN_VERSION', '2.0.0.1');
+	define('FORMALOO_PLUGIN_VERSION', '2.1.0.0');
 if(!defined('FORMALOO_URL'))
 	define('FORMALOO_URL', plugin_dir_url( __FILE__ ));
 if(!defined('FORMALOO_PATH'))
 	define('FORMALOO_PATH', plugin_dir_path( __FILE__ ));
 if(!defined('FORMALOO_ENDPOINT')) {
     if (get_locale() == 'fa_IR') {
-        define('FORMALOO_ENDPOINT', 'staging.formaloo.com');
+        define('FORMALOO_ENDPOINT', 'formaloo.com');
     } else {
         define('FORMALOO_ENDPOINT', 'formaloo.net');
     }

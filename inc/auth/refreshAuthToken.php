@@ -27,8 +27,8 @@ class TokenAuthenticator extends Formaloo_Main_Class {
     }
 
     function getNewAuthToken($api_key, $api_secret) {
-        // $url = FORMALOO_PROTOCOL.'://accounts.'.FORMALOO_ENDPOINT.'/v1/oauth2/authorization-token/';
-        $url = 'https://staging.icas.formaloo.com'.'/v1/oauth2/authorization-token/';
+        $url = FORMALOO_PROTOCOL.'://accounts.'.FORMALOO_ENDPOINT.'/v1/oauth2/authorization-token/';
+        // $url = 'https://staging.icas.formaloo.com'.'/v1/oauth2/authorization-token/';
 
         $renewAuthTokenResponse = wp_remote_post($url,
                                                 array('body' => array('grant_type' => 'client_credentials'),

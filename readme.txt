@@ -3,7 +3,7 @@ Contributors: Formaloo, idearun
 Tags: customer, analytics, contact form, contact form plugin, forms, form builder, custom form, contact button, contact me, custom contact form, form manager, form, forms builder, forms creator, captcha, recaptcha, email form, web form, feedback form, payment form, survey form, donation form, email submit form, message form, mailchimp, mailchimp form, paypal, paypal form, stripe, stripe form, email subscription, contact form widget, user registration form, WordPress registration, WordPress login form, feedback, customers, profit, discount, marketing
 Requires at least: 4.6
 Tested up to: 5.7.0
-Stable tag: 2.0.0.1
+Stable tag: 2.1.0.0
 Requires PHP: 5.6
 License: GNU General Public License v2.0 or later
 
@@ -178,6 +178,11 @@ Yes, Formaloo supports 50+ most popular tools such as Mailchimp, Google tag mana
 See our <a href="https://en.formaloo.com/developers/">API documentation</a> for more information.
 
 == Changelog ==
+
+= 2.1.0.0 =
+- Feedback Widget v2 is here: You can now create brand new widget types with different fields for your website!
+- Improved WooCommerce Integration
+- Minor bug fixes and improvements
 
 = 2.0.0.1 =
 - NEW: Full WooCommerce Integration added!

@@ -431,14 +431,14 @@
                         var widgetType = $("input[name='formaloo_feedback_widget_type']:checked").val();
                         var widgetPosition = $("input[name='formaloo_feedback_widget_position']:checked").val();
                         var widgetDirection = ('<?php echo get_locale(); ?>' == 'fa_IR') ? 'rtl' : 'ltr';
-                        var widgetBaseUrl = 'https://staging.widget.formaloo.com';
+                        var widgetScriptUrl = '<?php echo esc_url( FORMALOO_PROTOCOL . '://widget.' . FORMALOO_ENDPOINT . '/script.js' ); ?>';
                         newThemeConfig['widget_settings']['once_per_user'] = oncePerUser;
                         newThemeConfig['widget_settings']['type'] = widgetType;
                         newThemeConfig['widget_settings']['position'] = widgetPosition;
                         
                         formParams['theme_config'] = JSON.stringify(newThemeConfig);
 
-                        var scriptText = `<!-- Formaloo Widget --><div data-widget-form="formaloo-widget" data-prop-slug="${formSlug}" data-prop-type="${widgetType}" dir="${widgetDirection}"><script type="text/props">{"position": "${widgetPosition}","once_per_user": ${oncePerUser}}<\/script></div><script async src="${widgetBaseUrl}/bundle.js"><\/script><!-- End Formaloo Widget -->`;
+                        var scriptText = `<!-- Formaloo Widget --><div data-widget-form="formaloo-widget" data-prop-slug="${formSlug}" data-prop-type="${widgetType}" dir="${widgetDirection}" style="font-size:14px;line-height:normal;"><script type="text/props">{"position": "${widgetPosition}","once_per_user": ${oncePerUser}}<\/script></div><script async src="${widgetScriptUrl}"><\/script><!-- End Formaloo Widget -->`;
 
                         $('#formaloo-feedback-widget-script-textarea').val(scriptText);
 
