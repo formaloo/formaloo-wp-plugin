@@ -246,13 +246,14 @@ class Formaloo_Main_Class {
             $data[$field] = esc_attr__($value);
 
         }
-
-        // $data['is_initial_orders_sync'] = true;
-        // $data['is_initial_customers_sync'] = true;
-        // unset($data['last_orders_sync_date']);
-        // unset($data['last_customers_sync_date']);
-        // unset($data['last_orders_batch_import_slug']);
-        // unset($data['last_customers_batch_import_slug']);
+        
+        // Reset WC Sync Options
+        unset($data['is_initial_orders_sync']);
+        unset($data['is_initial_customers_sync']);
+        unset($data['last_orders_sync_date']);
+        unset($data['last_customers_sync_date']);
+        unset($data['last_orders_batch_import_slug']);
+        unset($data['last_customers_batch_import_slug']);
 
         update_option($this->option_name, $data);
 
