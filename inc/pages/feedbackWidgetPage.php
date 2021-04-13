@@ -100,7 +100,7 @@
                                     <td scope="row">
                                         <label><strong><?php _e( 'Choose the NPS Template:', 'formaloo-form-builder' ); ?></strong></label>
                                     </td>
-                                    <td>
+                                    <td id="formaloo_feedback_widget_templates_td">
                                         <fieldset class="formaloo_feedback_widget_templates_wrapper">
                                         </fieldset>
                                     </td>

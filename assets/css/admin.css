@@ -140,8 +140,18 @@
   width: 150px;
   padding-top: 10px;
 }
+.formaloo-feedback-widget-settings-table {
+  table-layout: fixed;
+  width: 100%;
+}
+.formaloo-feedback-widget-settings-table td[scope=row] {
+  width: 25%;
+}
 .formaloo_feedback_widget_templates_wrapper {
   display: flex;
+}
+#formaloo_feedback_widget_templates_td {
+  overflow: auto;
 }
 .formaloo_feedback_widget_choice_icon, .formaloo_feedback_widget_template {
   display: inline-block;
@@ -169,11 +179,11 @@
   width: 35px;
   height: 35px;
   object-fit: contain;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 .formaloo_feedback_widget_template img {
-  width: 50px;
-  height: 50px;
+  width: 100px;
+  height: 70px;
 }
 #formaloo-feedback-widget-form .form-group, #formaloo-cashback-form .form-group {
   position: relative;
