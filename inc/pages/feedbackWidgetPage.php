@@ -42,8 +42,8 @@
                             <tbody>
                                 <tr>
                                     <td scope="row">
-                                        <label><strong><?php _e( 'As a Link', 'formaloo-form-builder' ); ?></strong></label><br>
-                                        <small><?php _e( 'Share this URL with others to view the form directly', 'formaloo-form-builder' ); ?></small>
+                                        <label><strong><?php _e( 'Preview', 'formaloo-form-builder' ); ?></strong></label><br>
+                                        <small><?php _e( 'You can preview the generated widget using this link', 'formaloo-form-builder' ); ?></small>
                                     </td>
                                     <td>
                                         <a href="" target="_blank" id="formaloo-feedback-widget"></a>
@@ -62,6 +62,15 @@
                                             <img src="<?php echo FORMALOO_URL ?>/assets/images/clippy.svg" width="13" alt="Copy to clipboard">
                                         </button>  
                                     </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">
+                                        <label><strong><?php _e( 'As a Gutenberg HTML block', 'formaloo-form-builder' ); ?></strong></label><br>
+                                        <small><?php _e( 'You can also put the above script in an HTML block of the Gutenberg editor of your visual post or page using this GIF instruction (click to zoom):', 'formaloo-form-builder' ); ?></small>
+                                    </td>
+                                    <td>
+                                        <a href="<?php echo FORMALOO_URL ?>assets/images/feedback-widget-gutenberg.gif" target="_blank"> <img src="<?php echo FORMALOO_URL ?>assets/images/feedback-widget-gutenberg.gif" id="formaloo-where-to-put-feedback-widget" alt="Feedback Widget Helper (Gutenberg)" /></a>
                                     </td>
                                 </tr>
                             </tbody>
@@ -422,23 +431,24 @@
 
                         var formParams = { "slug": formSlug, "title" : buttonText, "button_color" : hexToRgbA(buttonColor), "form_type" : "nps", "success_message": successMessage, "button_text": submitButtonText};
                         var editFormUrl = "<?php echo FORMALOO_PROTOCOL . '://api.' . FORMALOO_ENDPOINT . '/v2/forms/form/'; ?>"+formSlug+"/";
-                        var formUrl =  "<?php echo FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT; ?>" + "/" + formAddress;
-                        $('#formaloo-feedback-widget').attr("href",formUrl);
-                        $('#formaloo-feedback-widget').text(formUrl);
 
                         var newThemeConfig = JSON.parse($('#formaloo_feedback_widget_theme_config').val());
                         var oncePerUser = $("#formaloo_feedback_widget_once_per_user").is( ":checked" );
                         var widgetType = $("input[name='formaloo_feedback_widget_type']:checked").val();
                         var widgetPosition = $("input[name='formaloo_feedback_widget_position']:checked").val();
                         var widgetDirection = ('<?php echo get_locale(); ?>' == 'fa_IR') ? 'rtl' : 'ltr';
-                        var widgetScriptUrl = '<?php echo esc_url( FORMALOO_PROTOCOL . '://widget.' . FORMALOO_ENDPOINT . '/script.js' ); ?>';
+                        var widgetBaseUrl = '<?php echo esc_url( FORMALOO_PROTOCOL . '://widget.' . FORMALOO_ENDPOINT ); ?>';
                         newThemeConfig['widget_settings']['once_per_user'] = oncePerUser;
                         newThemeConfig['widget_settings']['type'] = widgetType;
                         newThemeConfig['widget_settings']['position'] = widgetPosition;
                         
                         formParams['theme_config'] = JSON.stringify(newThemeConfig);
 
-                        var scriptText = `<!-- Formaloo Widget --><div data-widget-form="formaloo-widget" data-prop-slug="${formSlug}" data-prop-type="${widgetType}" dir="${widgetDirection}" style="font-size:14px;line-height:normal;"><script type="text/props">{"position": "${widgetPosition}","once_per_user": ${oncePerUser}}<\/script></div><script async src="${widgetScriptUrl}"><\/script><!-- End Formaloo Widget -->`;
+                        var scriptText = `<!-- Formaloo Widget --><div data-widget-form="formaloo-widget" data-prop-slug="${formSlug}" data-prop-type="${widgetType}" dir="${widgetDirection}" style="font-size:14px;line-height:normal;"><script type="text/props">{"position": "${widgetPosition}","once_per_user": ${oncePerUser}}<\/script></div><script async src="${widgetBaseUrl}/script.js"><\/script><!-- End Formaloo Widget -->`;
+
+                        var formPreviewUrl = '<?php echo esc_url( FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT ); ?>' + '/' + formAddress;
+                        $('#formaloo-feedback-widget').attr("href",formPreviewUrl);
+                        $('#formaloo-feedback-widget').text(formPreviewUrl);
 
                         $('#formaloo-feedback-widget-script-textarea').val(scriptText);
 

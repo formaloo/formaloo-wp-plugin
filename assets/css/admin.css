@@ -188,11 +188,16 @@
 #formaloo-feedback-widget-form .form-group, #formaloo-cashback-form .form-group {
   position: relative;
 }
+.formaloo-feedback-widget-show-options-table {
+  table-layout: fixed;
+}
 #formaloo-feedback-widget-script-textarea {
   resize: none;
   overflow: hidden;
   height: 150px;
   margin-right: 10px;
+  width: 100%;
+  direction: ltr;
 }
 .results-table .formaloo-heading a {
   color: black;
@@ -365,22 +370,9 @@
   width: 400px;
   padding: 20px 0;
 }
-.formaloo-cashback-top-info {
-  /* padding-left: 10px; */
-}
 .formaloo-cashback-table {
   display: grid;
 }
-/* .formaloo-cashback-table tbody {
-  display: grid;
-} */
-/* .formaloo-cashback-table td { */
-  /* white-space: nowrap; */
-  /* width: 100%; */
-/* } */
-/* .formaloo-cashback-table td:last-child {
-  width:100%;
-} */
 #formaloo-cashback-range-tr {
   display: inline-block;
 }
@@ -407,7 +399,6 @@ textarea[name=formaloo_api_secret], textarea[name=formaloo_api_key] {
 .formaloo-cdp-sync-wrapper {
   display: grid;
 }
-
 #formaloo-show-sync-errors-log table, #formaloo-show-sync-errors-log th, #formaloo-show-sync-errors-log td {
   border: solid 1px #DDD;
   border-collapse: collapse;

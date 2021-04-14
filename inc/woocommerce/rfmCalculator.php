@@ -47,22 +47,16 @@
             $output_tag_title = '';
 
             if ($recency == 5 && $frequency == 5 && $monetary == 5) {
-                // The Best Customers
-                $output_tag_title = 'Core';
+                $output_tag_title = 'Champion';
             } elseif ($frequency == 5) {
-                // Your Most Loyal Customers
-                $output_tag_title = 'Loyal';
+                $output_tag_title = 'Loyal Buyer';
             } elseif($monetary == 5) {
-                // Your Highest Paying Customers
                 $output_tag_title = 'Whales';
             } elseif($frequency == 5 && ($monetary == 3 || $monetary == 2)) {
-                // Faithful customers
                 $output_tag_title = 'Promising';
             } elseif($recency == 5 && $frequency == 2) {
-                // Your Newest Customers
                 $output_tag_title = 'Rookies';
             } elseif($recency == 2 && $frequency == 2) {
-                // Once Loyal, Now Gone
                 $output_tag_title = 'Slipping';
             } else {
                 // ??

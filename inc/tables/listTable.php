@@ -109,7 +109,7 @@ class Formaloo_Forms_List_Table extends WP_List_Table {
                 
             } else {
                 $date = date_create($form['last_export_time']);
-                $excel_url = FORMALOO_PROTOCOL . '://' . FORMALOO_ENDPOINT . $form['last_export_file'];
+                $excel_url = $form['last_export_file'];
 
                 if ($form['export_in_progress']) {
                     $excel = '<div class="formaloo-get-excel-wrapper"><button class="button formaloo-get-excel-link" disabled> <span class="dashicons dashicons-download"></span> '. __('Exporting..', 'formaloo-form-builder') .' </button><a href="'. $excel_url .'"><p><span>'. __('Download', 'formaloo-form-builder') . '</span>' . ' ' . __('Last Export', 'formaloo-form-builder') .' ('. date_format($date,"Y/m/d") .')</p></a></div>';
