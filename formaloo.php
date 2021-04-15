@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Formaloo Form Maker & Customer Analytics for WordPress & WooCommerce
  * Description:       Easily embed Formaloo forms into your blog or WP pages.
- * Version:           2.1.1.0
+ * Version:           2.1.1.1
  * Author:            Formaloo team
  * Author URI:        https://en.formaloo.com/
  * Text Domain:       formaloo-form-builder
@@ -18,7 +18,7 @@
  * Plugin constants
  */
 if(!defined('FORMALOO_PLUGIN_VERSION'))
-	define('FORMALOO_PLUGIN_VERSION', '2.1.1.0');
+	define('FORMALOO_PLUGIN_VERSION', '2.1.1.1');
 if(!defined('FORMALOO_URL'))
 	define('FORMALOO_URL', plugin_dir_url( __FILE__ ));
 if(!defined('FORMALOO_PATH'))
@@ -248,12 +248,24 @@ class Formaloo_Main_Class {
         }
         
         // Reset WC Sync Options
-        unset($data['is_initial_orders_sync']);
-        unset($data['is_initial_customers_sync']);
-        unset($data['last_orders_sync_date']);
-        unset($data['last_customers_sync_date']);
-        unset($data['last_orders_batch_import_slug']);
-        unset($data['last_customers_batch_import_slug']);
+        if(isset($data['is_initial_orders_sync'])) {
+            unset($data['is_initial_orders_sync']);
+        }
+        if(isset($data['is_initial_customers_sync'])) {
+            unset($data['is_initial_customers_sync']);
+        }
+        if(isset($data['last_orders_sync_date'])) {
+            unset($data['last_orders_sync_date']);
+        }
+        if(isset($data['last_customers_sync_date'])) {
+            unset($data['last_customers_sync_date']);
+        }
+        if(isset($data['last_orders_batch_import_slug'])) {
+            unset($data['last_orders_batch_import_slug']);
+        }
+        if(isset($data['last_customers_batch_import_slug'])) {
+            unset($data['last_customers_batch_import_slug']);
+        }
 
         update_option($this->option_name, $data);
 
