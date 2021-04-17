@@ -277,26 +277,28 @@
                         }
 
                         <?php
-                            $orders = wc_get_orders( array('numberposts' => -1) );
-                            $orders_total_count = count($orders);
+                            if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+                                $orders = wc_get_orders( array('numberposts' => -1) );
+                                $orders_total_count = count($orders);
 
-                            $users_query = new WP_User_Query(
-                                array(
-                                    'fields'  => array( 'user_registered' ),
-                                    'role'    => 'customer',
-                                )
-                            );
-                            $customers = $users_query->get_results();
-                            $customers_total_count = count( $customers );
+                                $users_query = new WP_User_Query(
+                                    array(
+                                        'fields'  => array( 'user_registered' ),
+                                        'role'    => 'customer',
+                                    )
+                                );
+                                $customers = $users_query->get_results();
+                                $customers_total_count = count( $customers );
+                            }
                         ?>
 
                         var count = '';
 
                         if (status == 'imported') {
                             if (checkingCustomersImport) {
-                                count = "<?php echo $customers_total_count; ?> customers "; 
+                                count = "<?php echo $customers_total_count ?? 0; ?> customers "; 
                             } else {
-                                count = "<?php echo $orders_total_count; ?> orders "; 
+                                count = "<?php echo $orders_total_count ?? 0; ?> orders "; 
                             }
                         }
 
