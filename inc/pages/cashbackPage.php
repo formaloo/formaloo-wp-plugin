@@ -358,9 +358,9 @@
 
                         if (status == 'imported') {
                             if (checkingCustomersImport) {
-                                count = "<?php echo $customers_total_count ?? 0; ?> customers "; 
+                                count = "<?php echo isset($customers_total_count) ? $customers_total_count : 0; ?> customers "; 
                             } else {
-                                count = "<?php echo $orders_total_count ?? 0; ?> orders "; 
+                                count = "<?php echo isset($orders_total_count) ? $orders_total_count : 0; ?> orders "; 
                             }
                         }
 
