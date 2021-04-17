@@ -232,6 +232,9 @@ class Formaloo_Main_Class {
 
         $data = $this->getData();
 
+        $pattern = '/\s*/m';
+        $replace = '';
+
 		foreach ($_POST as $field=>$value) {
 
 		    if (substr($field, 0, 9) !== "formaloo_")
@@ -243,7 +246,9 @@ class Formaloo_Main_Class {
 		    // We remove the formaloo_ prefix to clean things up
             $field = substr($field, 9);
 
-            $data[$field] = esc_attr__($value);
+            $removedLinebaksAndWhitespace = preg_replace($pattern, $replace, $value);
+
+            $data[$field] = esc_attr__($removedLinebaksAndWhitespace);
 
         }
         

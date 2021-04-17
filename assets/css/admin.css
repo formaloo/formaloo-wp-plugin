@@ -412,3 +412,9 @@ textarea[name=formaloo_api_secret], textarea[name=formaloo_api_key] {
   display: flex;
   align-items: center;
 }
+.formaloo-is-disabled {
+  color: currentColor;
+  cursor: not-allowed;
+  opacity: 0.5;
+  text-decoration: none;
+}

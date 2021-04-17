@@ -255,11 +255,13 @@
 
                     $('.formaloo-feedback-widget-notice').hide();
 
-                    $('.formaloo_feedback_widget_templates_wrapper').on('click', '.formaloo_feedback_widget_template', function(){
-                        $(".formaloo_feedback_widget_template_selected").removeClass("formaloo_feedback_widget_template_selected");
-                        $(this).addClass("formaloo_feedback_widget_template_selected");
-                        copyTemplate($(this).attr("id"));
-                    });
+                    <?php if (!$not_ready): ?>
+                        $('.formaloo_feedback_widget_templates_wrapper').on('click', '.formaloo_feedback_widget_template', function(){
+                            $(".formaloo_feedback_widget_template_selected").removeClass("formaloo_feedback_widget_template_selected");
+                            $(this).addClass("formaloo_feedback_widget_template_selected");
+                            copyTemplate($(this).attr("id"));
+                        });
+                    <?php endif; ?>
 
                     toggleFeedbackWidgetPositionRow($('#formaloo_feedback_widget_type_fieldset input[type="radio"]').val());
 
@@ -506,6 +508,7 @@
                     function disableFeedbackWidgetTable() {
                         $(".formaloo-feedback-widget-settings-table").addClass("formaloo-feedback-widget-disabled-table");
                         $(".formaloo-feedback-widget-settings-table :input").attr("disabled", true);
+                        $("#formaloo-feedback-widget-edit-fields-btn-wrapper a").hide();
                     }
 
                     function showGeneralErrors(errorText) {
