@@ -57,6 +57,8 @@ class Formaloo_Activation_Class extends Formaloo_Main_Class {
             $wc_sync = new Formaloo_Woocommerce_Sync();
             $wc_sync->sync_customers();
             $wc_sync->sync_orders();
+            $rfm_calculator = new Formaloo_RFM_Calculator();
+            $rfm_calculator->update_customers();
         }
     }
 

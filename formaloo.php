@@ -52,6 +52,7 @@ require_once('inc/pages/settingsPage.php');
 require_once('inc/woocommerce/customers.php');
 require_once('inc/woocommerce/orders.php');
 require_once('inc/woocommerce/sync.php');
+require_once('inc/woocommerce/rfmCalculator.php');
 
 // WP_List_Table is not loaded automatically so we need to load it in our application
 if( ! class_exists( 'WP_List_Table' ) ) {
