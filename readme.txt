@@ -3,7 +3,7 @@ Contributors: Formaloo, idearun
 Tags: customer, analytics, contact form, contact form plugin, forms, form builder, custom form, contact button, contact me, custom contact form, form manager, form, forms builder, forms creator, captcha, recaptcha, email form, web form, feedback form, payment form, survey form, donation form, email submit form, message form, mailchimp, mailchimp form, paypal, paypal form, stripe, stripe form, email subscription, contact form widget, user registration form, WordPress registration, WordPress login form, feedback, customers, profit, discount, marketing
 Requires at least: 4.6
 Tested up to: 5.7.0
-Stable tag: 2.1.1.4
+Stable tag: 2.1.2.0
 Requires PHP: 5.6
 License: GNU General Public License v2.0 or later
 
@@ -179,7 +179,8 @@ See our <a href="https://en.formaloo.com/developers/">API documentation</a> for 
 
 == Changelog ==
 
-= 2.1.1.4 =
+= 2.1.2.0 =
+- RFM-based Tag Calculation added for customers! Tags can be seen via the Customers tab on your CDP dashboard
 - Feedback Widget v2 is here: You can now create brand new widget types with different fields for your website!
 - Improved WooCommerce Integration
 - Minor bug fixes and improvements

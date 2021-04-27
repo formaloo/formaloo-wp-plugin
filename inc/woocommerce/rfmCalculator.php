@@ -200,22 +200,19 @@
             $url = esc_url( FORMALOO_PROTOCOL . '://api.' . FORMALOO_ENDPOINT . '/v1.0/customers/batch/' );
 
             $customers_batch = $this->create_customers_batch();
-    
-            // $response = wp_remote_post( $url, array(
-            //     'body'    => $customers_batch,
-            //     'headers' => array( 'x-api-key' => $api_key,
-            //                         'Authorization'=> 'JWT ' . $api_token,
-            //                         'Content-Type' => 'application/json; charset=utf-8'
-            //     ),
-            //     'data_format' => 'body',                   
-            // ));
+                
+            $response = wp_remote_post( $url, array(
+                'body'    => $customers_batch,
+                'headers' => array( 'x-api-key' => $api_key,
+                                    'Authorization'=> 'JWT ' . $api_token,
+                                    'Content-Type' => 'application/json; charset=utf-8'
+                ),
+                'data_format' => 'body',                   
+            ));
 
-            // print_r($response, TRUE);
-
-            // // REMEMBER: Do something if request is successful.
-            // if (!is_wp_error($response) && ($response['response']['code'] === 200 || $response['response']['code'] === 201)) {
-            //     return $response['body'];
-            // }
+            if (!is_wp_error($response) && ($response['response']['code'] === 200 || $response['response']['code'] === 201)) {
+                // TBC
+            }
         }
 
         function get_interval_in_month($from, $to) {
