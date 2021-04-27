@@ -105,7 +105,10 @@
 
             $output_tag_title = '';
             $rfm_score = $this->calculate_rfm_score($customer);
-            [$recency, $frequency, $monetary] = array_map('intval', explode(' ', $rfm_score));
+            $exploded = array_map('intval', explode(' ', $rfm_score));
+            $recency = $exploded[0];
+            $frequency = $exploded[1];
+            $monetary = $exploded[2];
             $gamification_data = $customer['gamification_data'];
             $months_registered = $this->get_interval_in_month($customer['created_at'], date('c'));
             $at_risk = $this->is_customer_at_risk($customer);
@@ -169,7 +172,7 @@
                 $updated_tags = [];
       
                 foreach($customer['tags'] as $tag) {
-                   if (!in_array($tag['title'], $this->tags, True)) {
+                   if (!in_array($tag['title'], $this->tags)) {
                        $updated_tags[] = [
                             'title' => $tag['title'],
                        ];
