@@ -16,7 +16,6 @@ function formaloo_gutenberg_block_callback($attr) {
     $data = get_option('formaloo_data', array());
     $api_token = $data['api_token'];
     $api_key = $data['api_key'];
-    $api_secret = $data['api_secret'];
 
     $request = wp_remote_get( $apiUrl ,
     array( 'timeout' => 10,

@@ -36,7 +36,7 @@
 		 * This is the display title for your block, which can be translated with `i18n` functions.
 		 * The block inserter will show this name.
 		 */
-		title: __( 'The Formaloo Block', 'formaloo-form-builder' ),
+		title: __( 'Forms', 'formaloo-form-builder' ),
 
 		description: __('Use this block to show forms from Formaloo.', 'formaloo-form-builder'),
 
@@ -66,7 +66,7 @@
 			},
 			show_type: {
 				type: 'string',
-				default: "script"
+				default: "iframe"
 			},
 			selected_form_address: {
 				type: 'string',
@@ -162,6 +162,31 @@
 					return false;
 				}
 			}
+
+			var options = [
+				{
+					value: null,
+					label: __('Select a Show Type', 'formaloo-form-builder'),
+					disabled: true
+				},
+				{
+					value: 'link',
+					label: __('Link', 'formaloo-form-builder')
+				},
+				{
+					value: 'iframe',
+					label: __('iFrame', 'formaloo-form-builder')
+				},
+			];
+
+			if (formaloo_exchanger.forms_list['status'] == '200') {
+				options.push(
+					{
+						value: 'script',
+						label: __('Script', 'formaloo-form-builder')
+					}
+				)
+			}
 				
 			return (
 				wp.element.createElement(
@@ -181,25 +206,7 @@
 									{
 										label: __('Show Type', 'formaloo-form-builder'),
 										value: props.attributes.show_type,
-										options: [
-											{
-												value: null,
-												label: __('Select a Show Type', 'formaloo-form-builder'),
-												disabled: true
-											},
-											{
-												value: 'link',
-												label: __('Link', 'formaloo-form-builder')
-											},
-											{
-												value: 'iframe',
-												label: __('iFrame', 'formaloo-form-builder')
-											},
-											{
-												value: 'script',
-												label: __('Script', 'formaloo-form-builder')
-											}
-										],
+										options: options,
 										onChange: onChangeShowType
 									}
 								),

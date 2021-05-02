@@ -61,7 +61,7 @@ function formaloo_block_block_init() {
 				),
 				'show_type' => array (
 						'type' => 'string',
-						'default' => 'script',
+						'default' => 'iframe',
 				),
 				'selected_form_address' => array( 
 					'type' => 'string',
