@@ -399,14 +399,8 @@ textarea[name=formaloo_api_secret], textarea[name=formaloo_api_key] {
 .formaloo-cdp-sync-wrapper {
   display: grid;
 }
-#formaloo-show-sync-errors-log table, #formaloo-show-sync-errors-log th, #formaloo-show-sync-errors-log td {
-  border: solid 1px #DDD;
-  border-collapse: collapse;
-  padding: 2px 3px;
-  text-align: center;
-}
-#formaloo-show-sync-errors-log th {
-  font-weight:bold;
+#formaloo-show-customers-sync-errors-log, #formaloo-show-orders-sync-errors-log {
+  margin-top: 10px;
 }
 .formaloo-shortcode-post-row-inner {
   display: flex;

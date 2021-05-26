@@ -16,6 +16,7 @@
             $is_initial_sync_str = 'is_initial_customers_sync';
             $last_sync_date_str = 'last_customers_sync_date';
             $last_batch_import_slug_str = 'last_customers_batch_import_slug';
+            $last_batch_count = 'last_customers_batch_count';
 
             $api_token = $data['api_token'];
             $api_key = $data['api_key'];
@@ -50,6 +51,8 @@
                     $data[$last_sync_date_str] = $date;
     
                     $data[$last_batch_import_slug_str] = $result['data']['customer_batch']['slug'];
+
+                    $data[$last_batch_count] = count($customers['customers_data']);
         
                     update_option('formaloo_data', $data);
                 }
@@ -63,6 +66,7 @@
             $is_initial_sync_str = 'is_initial_orders_sync';
             $last_sync_date_str = 'last_orders_sync_date';
             $last_batch_import_slug_str = 'last_orders_batch_import_slug';
+            $last_batch_count = 'last_orders_batch_count';
 
             $api_token = $data['api_token'];
             $api_key = $data['api_key'];
@@ -97,11 +101,45 @@
                     $data[$last_sync_date_str] = $date;
         
                     $data[$last_batch_import_slug_str] = $result['data']['activity_batch']['slug'];
-        
+
+                    $data[$last_batch_count] = count($orders['activities_data']);
+
                     update_option('formaloo_data', $data);
                 }
             }
 
+        }
+
+        function enable_calculate_rfm() {
+            $data = $this->getData();
+
+            $api_token = $data['api_token'];
+            $api_key = $data['api_key'];
+
+            $url = esc_url( FORMALOO_PROTOCOL . '://api.' . FORMALOO_ENDPOINT . '/v1.0/businesses/active_business/' );
+    
+            $body = array('calculate_rfm' => True);
+
+            $response = wp_remote_request( $url, array(
+                'method'     => 'PATCH',
+                'body'      => json_encode($body),
+                'headers' => array( 'x-api-key' => $api_key,
+                                    'Authorization' => 'JWT ' . $api_token,
+                                    'Content-Type' => 'application/json; charset=utf-8'
+                ),
+                'data_format' => 'body',                   
+            ));
+
+            if (!is_wp_error($response)) {
+                $result = json_decode($response['body'], true);
+                                
+                if ($result['status'] == 200) {
+
+                    $data['is_calculating_rfm'] = True;
+
+                    update_option('formaloo_data', $data);
+                }
+            }
         }
 
     }

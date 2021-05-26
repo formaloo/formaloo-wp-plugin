@@ -171,7 +171,8 @@
                                     <td></td>
                                 </tr>
                             </tbody>
-                            <tbody id="formaloo-show-sync-errors-log"></tbody>
+                            <tbody id="formaloo-show-customers-sync-errors-log"></tbody>
+                            <tbody id="formaloo-show-orders-sync-errors-log"></tbody>
                             <?php endif; ?>
 
                         </table>
@@ -272,13 +273,13 @@
                         <?php if (isset($data['last_customers_batch_import_slug'])): ?>
                             checkBatchImportStatus(true, "<?php echo isset($data['last_customers_batch_import_slug']) ? $data['last_customers_batch_import_slug'] : ''; ?>");
                         <?php else: ?>
-                            batchImportStatusHandler(true, 'failed');
+                            batchImportStatusHandler(true, 'queued');
                         <?php endif; ?>
 
                         <?php if (isset($data['last_orders_batch_import_slug'])): ?>
                             checkBatchImportStatus(false, "<?php echo isset($data['last_orders_batch_import_slug']) ? $data['last_orders_batch_import_slug'] : ''; ?>");
                         <?php else: ?>
-                            batchImportStatusHandler(false, 'failed');
+                            batchImportStatusHandler(false, 'queued');
                         <?php endif; ?>
 
                     <?php else: ?>
@@ -302,16 +303,16 @@
                             },
                             contentType: 'application/json; charset=utf-8',
                             success: function (result) {
-                                batchImportStatusHandler(checkingCustomersImport, result['data'][resultParseItem]['status']);
-
                                 if (!$.isEmptyObject(result['data'][resultParseItem]['error_log'])) {
-                                    showSyncErrorsLog(checkingCustomersImport, result['data'][resultParseItem]['error_log']);
+                                    showSyncErrorsLog(checkingCustomersImport, result['data'][resultParseItem]['error_log_file']);
+                                    batchImportStatusHandler(checkingCustomersImport, result['data'][resultParseItem]['status']);
+                                } else {
+                                    batchImportStatusHandler(checkingCustomersImport, result['data'][resultParseItem]['status']);
                                 }
                             },
                             error: function (error) {
                                 var errorText = error['responseJSON']['errors']['general_errors'][0];
-                                showGeneralErrors(errorText);
-                                batchImportStatusHandler(checkingCustomersImport, 'failed');
+                                batchImportStatusHandler(checkingCustomersImport, 'queued');
                             }
                         });
                     }
@@ -338,33 +339,17 @@
                                 dashicon = '<span class="dashicons dashicons-clock"></span>';
                         }
 
-                        <?php
-                            if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
-                                $orders = wc_get_orders( array('numberposts' => -1) );
-                                $orders_total_count = count($orders);
-
-                                $users_query = new WP_User_Query(
-                                    array(
-                                        'fields'  => array( 'user_registered' ),
-                                        'role'    => 'customer',
-                                    )
-                                );
-                                $customers = $users_query->get_results();
-                                $customers_total_count = count( $customers );
-                            }
-                        ?>
-
                         var count = '';
 
                         if (status == 'imported') {
                             if (checkingCustomersImport) {
-                                count = "<?php echo isset($customers_total_count) ? $customers_total_count : 0; ?> customers "; 
+                                count = "<?php echo isset($data['last_customers_batch_count']) ? $data['last_customers_batch_count'] : ''; ?> customers"; 
                             } else {
-                                count = "<?php echo isset($orders_total_count) ? $orders_total_count : 0; ?> orders "; 
+                                count = "<?php echo isset($data['last_orders_batch_count']) ? $data['last_orders_batch_count'] : ''; ?> orders"; 
                             }
                         }
 
-                        document.getElementById(divId).innerHTML = dashicon + ' ' + titleCase(status) + ' ' + count + getTimeAgo(syncDate);
+                        document.getElementById(divId).innerHTML = dashicon + ' ' + titleCase(status) + ' ' + count + ' ' + getTimeAgo(syncDate);
                     }
 
                     function getTimeAgo(date) {
@@ -404,44 +389,16 @@
                         return  `${count} ${unit}${(count > 1)?'s':''} ago`
                     }
 
-                    function showSyncErrorsLog(checkingCustomersImport, errors) {
+                    function showSyncErrorsLog(checkingCustomersImport, errorLogFile) {
 
-                        var tableIdColTitle = checkingCustomersImport ? "<?php _e('Customer #', 'formaloo-form-builder'); ?>" : "<?php _e('Order #', 'formaloo-form-builder'); ?>";
+                        var logFile = errorLogFile.replace('api', 'actions');
+                        var a = '<a href="' + logFile +'" target="_blank"><?php _e('Download Error Log', 'formaloo-form-builder'); ?></a>';
+                        var msg = checkingCustomersImport ? '<?php _e('Sync of Customers failed.', 'formaloo-form-builder'); ?>' : '<?php _e('Sync of Orders failed.', 'formaloo-form-builder'); ?>';
 
-                        var col = [tableIdColTitle];
-                        for (var customer in errors) {
-                            for (var field in errors[customer]) {
-                                if (col.indexOf(field) === -1) {
-                                    col.push(field);
-                                }
-                            }
-                        }
+                        var divId = checkingCustomersImport ? 'formaloo-show-customers-sync-errors-log' : 'formaloo-show-orders-sync-errors-log';
 
-                        var table = document.createElement("table");
-
-
-                        var tr = table.insertRow(-1);
-
-                        for (var i = 0; i < col.length; i++) {
-                            var th = document.createElement("th");
-                            th.innerHTML = col[i];
-                            tr.appendChild(th);
-                        }
-
-                        for (var customer in errors) {
-                            tr = table.insertRow(-1);
-                            var tabCell = tr.insertCell(-1);
-                            tabCell.innerHTML = customer;
-                            for (var field in errors[customer]) {
-                                var tabCell = tr.insertCell(-1);
-                                tabCell.innerHTML = errors[customer][field][0];
-                            }
-                        }
-
-                        var divContainer = document.getElementById("formaloo-show-sync-errors-log");
-                        divContainer.innerHTML = "";
-                        divContainer.appendChild(table);
-
+                        var divContainer = document.getElementById(divId);
+                        divContainer.innerHTML = msg + ' ' + a;
                     }
 
                     function titleCase(s) { 

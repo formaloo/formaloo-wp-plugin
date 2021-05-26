@@ -52,8 +52,6 @@ class Formaloo_WC_Customers extends Formaloo_Cashback_Page {
 	 * @return array
 	 */
 	public function get_customer( $id, $fields = null, $is_initial_sync = null, $last_sync_date = null ) {
-		global $wpdb;
-
 		$customer = new WP_User( $id );
 
 		$operator = isset($is_initial_sync) ? '<' : '>';
@@ -76,63 +74,48 @@ class Formaloo_WC_Customers extends Formaloo_Cashback_Page {
 		}
 
 		if ($condition) {
-			// Get info about user's last order
-			$last_order = $wpdb->get_row( "SELECT id, post_date_gmt
-				FROM $wpdb->posts AS posts
-				LEFT JOIN {$wpdb->postmeta} AS meta on posts.ID = meta.post_id
-				WHERE meta.meta_key = '_customer_user'
-				AND   meta.meta_value = {$customer->ID}
-				AND   posts.post_type = 'shop_order'
-				AND   posts.post_status IN ( '" . implode( "','", array_keys( wc_get_order_statuses() ) ) . "' )
-				ORDER BY posts.ID DESC
-			" );
 
-			$customer_data = array(
-				'email'            => $customer->user_email,
-				'full_name'        => $customer->first_name . ' ' . $customer->last_name,
-				'phone_number'	   => $customer->billing_phone,
-				'tags' => array(
-					array(
-						'title' => $customer->roles[0]
-					)
-				),
-				'customer_data' => array(
-					'username'         => $customer->user_login,
-					// 'last_order_id'    => is_object( $last_order ) ? $last_order->id : null,
-					// 'last_order_date'  => is_object( $last_order ) ? $last_order->post_date_gmt : null,
-					'orders_count'     => wc_get_customer_order_count( $customer->ID ),
-					'total_spent'      => wc_format_decimal( wc_get_customer_total_spent( $customer->ID ), 2 ),
-					'avatar_url'       => $this->get_avatar_url( $customer->customer_email ),
-					'user_registered'  => $customer->user_registered,
-					'billing_address'  => array(
-						'first_name' => $customer->billing_first_name,
-						'last_name'  => $customer->billing_last_name,
-						'company'    => $customer->billing_company,
-						'address_1'  => $customer->billing_address_1,
-						'address_2'  => $customer->billing_address_2,
-						'city'       => $customer->billing_city,
-						'state'      => $customer->billing_state,
-						'postcode'   => $customer->billing_postcode,
-						'country'    => $customer->billing_country,
-						'email'      => $customer->billing_email,
-						'phone'      => $customer->billing_phone,
+			if (!empty($customer->user_email) or !empty($customer->billing_phone)) {
+				
+				$customer_data = array(
+					'full_name'        => $customer->first_name . ' ' . $customer->last_name,
+					'tags' => array(
+						array(
+							'title' => $customer->roles[0]
+						)
 					),
-					'shipping_address' => array(
-						'first_name' => $customer->shipping_first_name,
-						'last_name'  => $customer->shipping_last_name,
-						'company'    => $customer->shipping_company,
-						'address_1'  => $customer->shipping_address_1,
-						'address_2'  => $customer->shipping_address_2,
-						'city'       => $customer->shipping_city,
-						'state'      => $customer->shipping_state,
-						'postcode'   => $customer->shipping_postcode,
-						'country'    => $customer->shipping_country,
+					'customer_data' => array(
+						'Username'         => $customer->user_login,
+						'Orders Count'     => wc_get_customer_order_count( $customer->ID ),
+						'Total Spent'      => wc_format_decimal( wc_get_customer_total_spent( $customer->ID ), 2 ),
+						'Avatar URL'       => $this->get_avatar_url( $customer->customer_email ),
+						'User Registered'  => $customer->user_registered,
+						'Shipping Address' => array(
+							'First Name' => $customer->shipping_first_name,
+							'Last Name'  => $customer->shipping_last_name,
+							'Company'    => $customer->shipping_company,
+							'Address 1'  => $customer->shipping_address_1,
+							'Address 2'  => $customer->shipping_address_2,
+							'City'       => $customer->shipping_city,
+							'State'      => $customer->shipping_state,
+							'Postcode'   => $customer->shipping_postcode,
+							'Country'    => $customer->shipping_country,
+						),
 					),
-				),
 
-			);
+				);
 
-			return array( 'customer' => apply_filters( 'woocommerce_api_customer_response', $customer_data, $customer, $fields) );
+				if (!empty($customer->user_email)) {
+					$customer_data['email'] = $customer->user_email;
+				}
+
+				if (!empty($customer->billing_phone)) {
+					$customer_data['phone_number'] = $customer->billing_phone;
+				}
+
+				return array( 'customer' => apply_filters( 'woocommerce_api_customer_response', $customer_data, $customer, $fields) );
+				
+			}
 		}
 
 	}
@@ -150,78 +133,13 @@ class Formaloo_WC_Customers extends Formaloo_Cashback_Page {
 	 */
 	private function query_customers( $args = array() ) {
 
-		// default users per page
-		$users_per_page = get_option( 'posts_per_page' );
-
-		// Set base query arguments
-		$query_args = array(
-			'fields'  => 'ID',
-			'role'    => 'customer',
-			'orderby' => 'registered',
-			'number'  => $users_per_page,
+		$query = new WP_User_Query(
+			array(
+				'fields'  => 'ID',
+				'role'    => 'customer',
+				'orderby' => 'registered',
+			)
 		);
-
-		// Custom Role
-		if ( ! empty( $args['role'] ) ) {
-			$query_args['role'] = $args['role'];
-		}
-
-		// Search
-		if ( ! empty( $args['q'] ) ) {
-			$query_args['search'] = $args['q'];
-		}
-
-		// Limit number of users returned
-		if ( ! empty( $args['limit'] ) ) {
-			if ( $args['limit'] == -1 ) {
-				unset( $query_args['number'] );
-			} else {
-				$query_args['number'] = absint( $args['limit'] );
-				$users_per_page       = absint( $args['limit'] );
-			}
-		} else {
-			$args['limit'] = $query_args['number'];
-		}
-
-		// Page
-		$page = ( isset( $args['page'] ) ) ? absint( $args['page'] ) : 1;
-
-		// Offset
-		if ( ! empty( $args['offset'] ) ) {
-			$query_args['offset'] = absint( $args['offset'] );
-		} else {
-			$query_args['offset'] = $users_per_page * ( $page - 1 );
-		}
-
-		// Created date
-		if ( ! empty( $args['created_at_min'] ) ) {
-			$this->created_at_min = $args['created_at_min'];
-		}
-
-		if ( ! empty( $args['created_at_max'] ) ) {
-			$this->created_at_max = $args['created_at_max'];
-		}
-
-		// Order (ASC or DESC, ASC by default)
-		if ( ! empty( $args['order'] ) ) {
-			$query_args['order'] = $args['order'];
-		}
-
-		// Orderby
-		if ( ! empty( $args['orderby'] ) ) {
-			$query_args['orderby'] = $args['orderby'];
-
-			// Allow sorting by meta value
-			if ( ! empty( $args['orderby_meta_key'] ) ) {
-				$query_args['meta_key'] = $args['orderby_meta_key'];
-			}
-		}
-
-		$query = new WP_User_Query( $query_args );
-
-		// Helper members for pagination headers
-		$query->total_pages = ( $args['limit'] == -1 ) ? 1 : ceil( $query->get_total() / $users_per_page );
-		$query->page = $page;
 
 		return $query;
 	}

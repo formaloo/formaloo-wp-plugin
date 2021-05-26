@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Formaloo Form Maker & Customer Analytics for WordPress & WooCommerce
  * Description:       Easily embed Formaloo forms into your blog or WP pages.
- * Version:           2.1.2.2
+ * Version:           2.1.2.5
  * Author:            Formaloo team
  * Author URI:        https://en.formaloo.com/
  * Text Domain:       formaloo-form-builder
@@ -18,7 +18,7 @@
  * Plugin constants
  */
 if(!defined('FORMALOO_PLUGIN_VERSION'))
-	define('FORMALOO_PLUGIN_VERSION', '2.1.2.2');
+	define('FORMALOO_PLUGIN_VERSION', '2.1.2.5');
 if(!defined('FORMALOO_URL'))
 	define('FORMALOO_URL', plugin_dir_url( __FILE__ ));
 if(!defined('FORMALOO_PATH'))
@@ -52,7 +52,7 @@ require_once('inc/pages/settingsPage.php');
 require_once('inc/woocommerce/customers.php');
 require_once('inc/woocommerce/orders.php');
 require_once('inc/woocommerce/sync.php');
-require_once('inc/woocommerce/rfmCalculator.php');
+// require_once('inc/woocommerce/rfmCalculator.php');
 
 // WP_List_Table is not loaded automatically so we need to load it in our application
 if( ! class_exists( 'WP_List_Table' ) ) {
@@ -272,6 +272,16 @@ class Formaloo_Main_Class {
         }
         if(isset($data['last_customers_batch_import_slug'])) {
             unset($data['last_customers_batch_import_slug']);
+        }
+        if(isset($data['last_customers_batch_count'])) {
+            unset($data['last_customers_batch_count']);
+        }
+        if(isset($data['last_orders_batch_count'])) {
+            unset($data['last_orders_batch_count']);
+        }
+
+        if(isset($data['is_calculating_rfm'])) {
+            unset($data['is_calculating_rfm']);
         }
 
         update_option($this->option_name, $data);
