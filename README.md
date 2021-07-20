@@ -16,7 +16,7 @@
 | ------------- |:-------------:|
 | Requires at least | 4.6 |
 | Tested up to | 5.7.2 |
-| Stable tag | 2.1.2.5 |
+| Stable tag | 2.1.2.6 |
 | Requires PHP | 5.6 |
 
 **Contributors:** Formaloo, idearun
@@ -221,7 +221,7 @@ See our <a href="https://en.formaloo.com/developers/">API documentation</a> for 
 
 ## Changelog
 
-## 2.1.2.5
+## 2.1.2.6
 - RFM-based Tag Calculation added for customers! Tags can be seen via the Customers tab on your CDP dashboard
 - Feedback Widget v2 is here: You can now create brand new widget types with different fields for your website!
 - Improved WooCommerce Integration

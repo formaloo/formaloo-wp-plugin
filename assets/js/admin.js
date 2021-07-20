@@ -57,7 +57,13 @@ jQuery(document).ready(function() {
                     jQuery('.formaloo-excel-export-notice').remove();
                     jQuery('#my-forms-header').append("<div class='notice notice-info is-dismissible formaloo-excel-export-notice'> <p>" + formaloo_exchanger.async_excel_export_message + "</p> </div>");
                 } else {
-                    window.open(result['data']['form']['excel_file'], "_self");
+                    var url = ''
+                    if (formaloo_exchanger.endpoint_url == 'formaloo.net') {
+                        url = formaloo_exchanger.protocol + '://api.' + formaloo_exchanger.endpoint_url + '/' + result['data']['form']['excel_file'];
+                    } else {
+                        url = result['data']['form']['excel_file'];
+                    }
+                    window.open(url, '_blank').focus();
                 }
                 jQuery('.spinner').remove();
             },
