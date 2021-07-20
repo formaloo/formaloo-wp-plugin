@@ -1,7 +1,7 @@
 
 <img src="https://user-images.githubusercontent.com/22890731/80283193-15f5df80-872b-11ea-8bcb-6fe7b2c0577c.png" alt="Formaloo Logo" title="Formaloo Logo" width="200" />
 
-[![Build Status](https://travis-ci.org/formaloo/formaloo-wp-plugin.svg)](https://travis-ci.org/formaloo/formaloo-wp-plugin)
+[![Build Status](https://travis-ci.com/formaloo/formaloo-wp-plugin.svg)](https://travis-ci.com/formaloo/formaloo-wp-plugin)
 [![Plugin Version](https://img.shields.io/wordpress/plugin/v/formaloo-form-builder.svg)](https://wordpress.org/plugins/formaloo-form-builder/)
 [![Plugin Active Installs](https://img.shields.io/wordpress/plugin/installs/formaloo-form-builder.svg)](https://wordpress.org/plugins/formaloo-form-builder/)
 [![Plugin Downloads](https://img.shields.io/wordpress/plugin/dt/formaloo-form-builder.svg)](https://wordpress.org/plugins/formaloo-form-builder/)
@@ -16,7 +16,7 @@
 | ------------- |:-------------:|
 | Requires at least | 4.6 |
 | Tested up to | 5.7.2 |
-| Stable tag | 2.1.2.7 |
+| Stable tag | 2.1.2.8 |
 | Requires PHP | 5.6 |
 
 **Contributors:** Formaloo, idearun
@@ -221,7 +221,7 @@ See our <a href="https://en.formaloo.com/developers/">API documentation</a> for 
 
 ## Changelog
 
-## 2.1.2.7
+## 2.1.2.8
 - RFM-based Tag Calculation added for customers! Tags can be seen via the Customers tab on your CDP dashboard
 - Feedback Widget v2 is here: You can now create brand new widget types with different fields for your website!
 - Improved WooCommerce Integration
