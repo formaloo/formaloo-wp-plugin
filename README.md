@@ -1,7 +1,7 @@
 
 <img src="https://user-images.githubusercontent.com/22890731/80283193-15f5df80-872b-11ea-8bcb-6fe7b2c0577c.png" alt="Formaloo Logo" title="Formaloo Logo" width="200" />
 
-[![Build Status](https://travis-ci.com/formaloo/formaloo-wp-plugin.svg)](https://travis-ci.com/formaloo/formaloo-wp-plugin)
+[![Build Status](https://travis-ci.org/formaloo/formaloo-wp-plugin.svg)](https://travis-ci.com/formaloo/formaloo-wp-plugin)
 [![Plugin Version](https://img.shields.io/wordpress/plugin/v/formaloo-form-builder.svg)](https://wordpress.org/plugins/formaloo-form-builder/)
 [![Plugin Active Installs](https://img.shields.io/wordpress/plugin/installs/formaloo-form-builder.svg)](https://wordpress.org/plugins/formaloo-form-builder/)
 [![Plugin Downloads](https://img.shields.io/wordpress/plugin/dt/formaloo-form-builder.svg)](https://wordpress.org/plugins/formaloo-form-builder/)
@@ -28,9 +28,9 @@ Create, edit, and send quizzes, forms, and surveys, review your results, build w
 
 Best of all you can analyze your whole audience with Formaloo Analytics right in the app! Engage & analyze your customers, students, and attendees and grow your business.
 
-**HELP YOU MEET GDPR & HIPAA COMPLIANCE REQUIREMENTS**
+**Help You Meet GDPR & HIPAA Compliance Requirements**
 
-Formaloo will help you to have technical requirements necessary for becoming GDPR ready & HIPAA compliance (There are a lot more steps to become 100% GDPR ready in your organization, but Formaloo will help you meet technical requirements that is needed for both GDPR & HIPPA guidelines) <br> [Read More](https://en.formaloo.com/gdpr/).
+Formaloo will help you to have technical requirements necessary for becoming GDPR ready & HIPAA compliance (There are a lot more steps to become 100% GDPR ready in your organization, but Formaloo will help you meet technical requirements that is needed for both GDPR & HIPPA guidelines) [Read More](https://en.formaloo.com/gdpr/).
 
 **About Formaloo**
 
