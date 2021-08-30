@@ -76,13 +76,13 @@ Today, over 17,000 companies & organizations in more than 30 countries use Forma
 
 ## Changelog
 
-## 2.1.3.0
+### 2.1.3.0
 - RFM-based Tag Calculation added for customers! Tags can be seen via the Customers tab on your CDP dashboard
 - Feedback Widget v2 is here: You can now create brand new widget types with different fields for your website!
 - Improved WooCommerce Integration
 - Minor bug fixes and improvements
 
-## 2.0.0.1
+### 2.0.0.1
 - **NEW:** Full WooCommerce Integration added!
 - Key bug fixes and major improvements
 
