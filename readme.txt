@@ -3,7 +3,7 @@ Contributors: Formaloo, idearun
 Tags: customer, analytics, contact form, contact form plugin, forms, form builder, custom form, contact button, contact me, custom contact form, form manager, form, forms builder, forms creator, captcha, recaptcha, email form, web form, feedback form, payment form, survey form, donation form, email submit form, message form, mailchimp, mailchimp form, paypal, paypal form, stripe, stripe form, email subscription, contact form widget, user registration form, WordPress registration, WordPress login form, feedback, customers, profit, discount, marketing
 Requires at least: 4.6
 Tested up to: 5.7.2
-Stable tag: 2.1.2.8
+Stable tag: 2.1.3.0
 Requires PHP: 5.6
 License: GNU General Public License v2.0 or later
 
@@ -11,75 +11,90 @@ Expect much more from your forms: The best WordPress SmartForm builder plugin. D
 
 == Description ==
 
-Powerful, self-serve form builder & customer analytics to help you convert, engage, and retain more users. Use your own data to analyze your customers, your business and even predict the future.
+Create unlimited quizzes, surveys, and forms, collect unlimited responses completely free! Super easy, Enterprise-grade Analytics, and access your data anywhere, on any device—no programming skills required.
 
-NEW: Full WooCommerce Integration added!
+Create, edit, and send quizzes, forms, and surveys, review your results, build with 100+ expert templates, and more — seamlessly across your desktop, tablet, and phone.
 
-Use the Formaloo plugin to:
+Best of all you can analyze your whole audience with Formaloo Analytics right in the app! Engage & analyze your customers, students, and attendees and grow your business.
 
-- 📈 **Increase your customer retention** - Take data-driven actions based on the predictions and actions that Formaloo provides to you using its Artificial Intelligence and Machine Learning engine.
+= Exclusive Features of Formaloo =
 
-Formaloo CDP automatically shows you who are your best customers, who are leaving you for your competitors, and most important of all, how to profit more from each and every customer. Fully automatic without the need of writing any code or any help from data scientists.**Want more?** With our Customer insight and analytics, you can empower and visualize your customers, your data, and your community. In a nutshell, you will see what your business needs and what your customers need, even if they don’t tell you.
+🚀 **Build Any Quiz, Survey & Form in Seconds**
 
-- 🗂 **Integrate your data wherever it is** - Easily connect your Campaign Management, Email, Advertising Services, Website, CRM, Service Desk to Formaloo. Formaloo will integrate all customers' data to provide you with insightful actions.
+* Unlimited forms, responses, and fields, all FREE!
+* No coding skills required
+* Drag-and-drop Form Builder
+* 100+ customizable form templates
+* Sign-up with your Google or Apple accounts in seconds!
 
-Integrate your WordPress/WooCommerce website with all the tools you love with just a few clicks.
+📲 **Digitize your quizzes, forms, and surveys**
 
-Forms & Databases:
+* Save time and money with paperless forms.
+* Generate, view, and edit any form type.
+* Download data as PDF or CSV.
 
-- 📥 **Collect any data from your customers** - The Formaloo Free Form Builder and Databases enables you to collect unlimited data from your customers.
+🔢 **Formaloo Calculator**
 
-= UNLIMITED FORMS, UNLIMITED SUBMITS & RESPONSES, UNLIMITED POTENTIAL CUSTOMERS =
+* Grade Calculators: Create smart quizzes with custom grades, points, and formulas
+* Pricing Calculators: Calculate & collect custom payments.
+* Key Metrics Calculators: Guide your team's performance.
 
-First, you don’t need to code. Second, you have the free cloud storage you need! And third, it’s completely FREE!. It’s fully responsive and can be used on any website, web service, and mobile apps as well.
+📴 **Collect data anytime & anywhere, even offline!**
 
-Our fully automatic, all‑in‑one Data Collection & Analysis Platform has the tools you need to grow—no coding or design skills required. Drive loyalty and growth at every stage of your customer lifecycle with Formaloo. Formaloo is the Forms & CRM for the next generations: No hassle, no fuss. Free, super Smart & ridiculously simple.
+* Fill out your forms and review submissions without having to wait until you have access to a computer.
+* Once you are back online, Formaloo syncs your data automatically.
+* No internet connection, Wi-Fi, or LTE needed!
 
-Don’t worry about anything! You won’t exceed anything in Formaloo. Just set it up & enjoy it.
+💰 **Accept online payments**
 
-= PRE-BUILT FORM TEMPLATES = 
+Start accepting online payments with Formaloo and get instant reports:
 
-Building any forms in WordPress can be hard, but with Formaloo, you can create any form from 100+ templates with just one click!
+* You can use Formaloo to create a payment form, donation form, registration form, online booking form, and more.
+* Integrate with 10+ secure payment gateways, including Stripe & PayPal
+* No additional transaction fees!
 
-= MOBILE READY, SEO FRIENDLY AND OPTIMIZED FOR SPEED =
+📟 **Toolkits: Create mini-apps with your own forms & surveys**
 
-Formaloo forms are 100% responsive and mobile-friendly no matter what. We also optimized every form on the front-end and the back-end to ensure maximum speed & performance.
+* Act as survey kiosks: Collect rapid, multiple submissions from a public or personal device.
+* Turn your device into an online or offline survey station.
+* Go from a completed survey to the start page automatically and securely.
+* Collect feedbacks
+* Perfect for retailers, trade events, shows, conferences, and fundraisers
 
-= FREE UNLIMITED CLOUD STORAGE =
+👭 **Access Management: Collaboration with your team**
 
-Need to add an uploaded file to your forms? Need to collect photos, documents, etc. from your community? Formaloo is made for you. You’ll have your own secure personal cloud storage in Formaloo.
+* Share forms with your colleagues and manage their level of access
+* Assign forms to members of your team to send and view responses
+* Take an action according to your team's responses.
 
-And of course, you can download and export your files anytime you wish.
+🎛 **Workflow Automation & Logic**
 
-= ANALYZE YOUR DATA: YOUR OWN BI DASHBOARD =
+* Add conditional logic, calculations, and widgets
+* Create logic jumps, use piping and turn your form into a full flowchart app
+* Generate analytics reports for your data
 
-With our Data aggregation and analytics tools, you can empower and visualize your data and community.
+🚀 **Publish your form anywhere**
 
-= ACCEPT ONLINE PAYMENTS (FULL INTEGRATION WITH PAYPAL, STRIPE, ETC.) =
+* Embed on any web page, such as WordPress, Facebook, Blogger, Weebly, Squarespace, and Wix
+* Select your custom view: Multi-page, Single-page, Widgets
 
-Start accepting online payments with Formaloo and get instant reports.
+🎯 **3,000+ Integrations: Connect with Your Favorite Apps**
 
-You can use Formaloo to create a payment form, donation form, registration form, online booking form, and more.
+* Integrate with your CRM software, email marketing lists, cloud storage, spreadsheets, and payment processors
+* Popular integrations: Stripe, PayPal, Google Sheets, Airtable, Dropbox, Mailchimp, Zoho, Salesforce, Hubspot, Slack
+* Connect with thousands of more apps using Formaloo’s Zapier integration
+
+📊 **Formaloo CDP: Analyze your data**
+
+* With our data aggregation and analytics tools, you can empower and visualize your data and community.
 
 = HELP YOU MEET GDPR & HIPAA COMPLIANCE REQUIREMENTS =
 
 Formaloo will help you to have technical requirements necessary for becoming GDPR ready & HIPAA compliance (There are a lot more steps to become 100% GDPR ready in your organization, but Formaloo will help you meet technical requirements that is needed for both GDPR & HIPPA guidelines) [Read More](https://en.formaloo.com/gdpr/).
 
-= 3X FASTER AND MORE SECURE =
-
-Formaloo optimized code and integrations will replace messy and bloated old forms. With Formaloo your website will load faster and your forms will be 100% SEO friendly.
-
-Worry about losing or leaking of your data? We’ve got your back! Formaloo uses distributed, normalized cloud structure with state of the art security to protect you data at the enterprise level.
-
-* 📱 **Stay connected on the go** - Access business contacts, notes, and any collected data even when you’re offline with Formaloo mobile applications (iOS. Android).
-* ✨ **Segment your customers efficiently** - Segment your customers as you wish. Formaloo also helps you automate your customers' segmentation using its Artificial Intelligence and Machine Learning engine.
-* 🔍 **Automate marketing** - Actually take actions based on the insightful actions Formaloo provides. Actions like sending follow-up emails to the automatic segments built for you, giving a specified amount of discount to specified customer segments, and a lot more.
-* 🙌 **Stay organized** - Quickly add notes and follow-up actions while details are fresh. Manage your customers using tags, notes, and properties.
-* 📞 **Build better customer relationships** - Rely on Formaloo's data collections, data flow, and data analytics to keep conversations going and to build trust with your leads and customers.
-
 = About Formaloo =
 
-Formaloo is a cloud-based customer data platform with data collection, data flow, data analytics, and marketing automation software. Today, over 12,000 total customers in more than 14 countries use Formaloo's powerful and easy-to-use tools to transform the way they attract, engage, and delight customers.
+Today, over 17,000 companies & organizations in more than 30 countries use Formaloo's powerful and easy-to-use tools to transform the way they attract, engage, and delight their customers, students, and audience.
 
 = Further Reading =
 
@@ -179,7 +194,7 @@ See our <a href="https://en.formaloo.com/developers/">API documentation</a> for 
 
 == Changelog ==
 
-= 2.1.2.8 =
+= 2.1.3.0 =
 - RFM-based Tag Calculation added for customers! Tags can be seen via the Customers tab on your CDP dashboard
 - Feedback Widget v2 is here: You can now create brand new widget types with different fields for your website!
 - Improved WooCommerce Integration
