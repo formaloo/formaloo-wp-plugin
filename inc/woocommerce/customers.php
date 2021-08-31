@@ -10,6 +10,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class Formaloo_WC_Customers extends Formaloo_Cashback_Page {
 
+	private static $instance;
+
+	private function __construct() {
+	}
+
+	public static function getInstance() {
+		if (!isset(static::$instance)) {
+			static::$instance = new static();
+		}
+
+		return static::$instance;
+	}
+
 	/**
 	 * Get all customers
 	 *

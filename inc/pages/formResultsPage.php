@@ -1,5 +1,19 @@
 <?php
     class Formaloo_Form_Results_Page extends Formaloo_Main_Class {
+
+        private static $instance;
+
+        private function __construct() {
+        }
+    
+        public static function getInstance() {
+            if (!isset(static::$instance)) {
+                static::$instance = new static();
+            }
+    
+            return static::$instance;
+        }    
+
         /**
          * Outputs the submits of the selected form
          *
@@ -8,6 +22,8 @@
         public function formResultsPage() {
                 $data = $this->getData();
                 $not_ready = (empty($data['api_token']) || empty($data['api_key']));
+
+                print_r("TEST");
 
                 ?>
 

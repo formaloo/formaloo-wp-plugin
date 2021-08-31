@@ -132,7 +132,7 @@ class Formaloo_Main_Class {
 			__( 'Formaloo', 'formaloo-form-builder' ),
 			'manage_options',
 			'formaloo',
-			array(new Formaloo_Forms_List_Page(), 'formsListPage'),
+			array(Formaloo_Forms_List_Page::getInstance(), 'formsListPage'),
             'data:image/svg+xml;base64,' . $formalooIconBase64
         );
 
@@ -142,7 +142,7 @@ class Formaloo_Main_Class {
             __( 'Templates', 'formaloo-form-builder' ),
             'manage_options',
             'formaloo-templates-page',
-            array(new Formaloo_Templates_Page(), 'templatesPage')
+            array(Formaloo_Templates_Page::getInstance(), 'templatesPage')
         );
 
         add_submenu_page(
@@ -151,7 +151,7 @@ class Formaloo_Main_Class {
             __( 'Feedback Widget', 'formaloo-form-builder' ),
             'manage_options',
             'formaloo-feedback-widget-page',
-            array(new Formaloo_Feedback_Widget_Page(), 'feedbackWidgetPage')
+            array(Formaloo_Feedback_Widget_Page::getInstance(), 'feedbackWidgetPage')
         );
 
         /**
@@ -164,7 +164,7 @@ class Formaloo_Main_Class {
                 __( 'Cashback for WooCommerce (New)', 'formaloo-form-builder' ),
                 'manage_options',
                 'formaloo-cashback-page',
-                array(new Formaloo_Cashback_Page(), 'cashbackPage')
+                array(Formaloo_Cashback_Page::getInstance(), 'cashbackPage')
             );
         }
         
@@ -174,7 +174,7 @@ class Formaloo_Main_Class {
             __( 'Settings', 'formaloo-form-builder' ),
             'manage_options',
             'formaloo-settings-page',
-            array(new Formaloo_Settings_Page(), 'settingsPage')
+            array(Formaloo_Settings_Page::getInstance(), 'settingsPage')
         );
 
         add_submenu_page(
@@ -183,7 +183,7 @@ class Formaloo_Main_Class {
             '',
             'manage_options',
             'formaloo-results-page',
-            array(new Formaloo_Form_Results_Page(), 'formResultsPage')
+            array(Formaloo_Form_Results_Page::getInstance(), 'formResultsPage')
         );
 
         $submenu['formaloo'][0][0] = __( 'My Forms', 'formaloo-form-builder' );

@@ -1,6 +1,19 @@
 <?php
     class Formaloo_Forms_List_Page extends Formaloo_Main_Class {
 
+        private static $instance;
+
+        private function __construct() {
+        }
+    
+        public static function getInstance() {
+            if (!isset(static::$instance)) {
+                static::$instance = new static();
+            }
+    
+            return static::$instance;
+        }
+
         public function getUserProfileName() {
             $result = array();
             $data = $this->getData();

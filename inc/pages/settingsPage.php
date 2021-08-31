@@ -1,5 +1,19 @@
 <?php
     class Formaloo_Settings_Page extends Formaloo_Main_Class {
+
+        private static $instance;
+
+        private function __construct() {
+        }
+    
+        public static function getInstance() {
+            if (!isset(static::$instance)) {
+                static::$instance = new static();
+            }
+    
+            return static::$instance;
+        }    
+
         /**
          * Outputs the Admin Dashboard layout containing the form with all its options
          *
