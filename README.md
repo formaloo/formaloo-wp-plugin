@@ -15,7 +15,7 @@
 | ------------- |:-------------:|
 | Requires at least | 4.6 |
 | Tested up to | 5.7.2 |
-| Stable tag | 2.1.3.0 |
+| Stable tag | 2.1.3.1 |
 | Requires PHP | 5.6 |
 
 **License:** GNU General Public License v2.0 or later
@@ -76,7 +76,7 @@ Today, over 17,000 companies & organizations in more than 30 countries use Forma
 
 ## Changelog
 
-### 2.1.3.0
+### 2.1.3.1
 - RFM-based Tag Calculation added for customers! Tags can be seen via the Customers tab on your CDP dashboard
 - Feedback Widget v2 is here: You can now create brand new widget types with different fields for your website!
 - Improved WooCommerce Integration
