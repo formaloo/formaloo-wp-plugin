@@ -3,7 +3,7 @@ Contributors: Formaloo, idearun
 Tags: customer, analytics, contact form, contact form plugin, forms, form builder, custom form, contact button, contact me, custom contact form, form manager, form, forms builder, forms creator, captcha, recaptcha, email form, web form, feedback form, payment form, survey form, donation form, email submit form, message form, mailchimp, mailchimp form, paypal, paypal form, stripe, stripe form, email subscription, contact form widget, user registration form, WordPress registration, WordPress login form, feedback, customers, profit, discount, marketing
 Requires at least: 4.6
 Tested up to: 5.7.2
-Stable tag: 2.1.3.1
+Stable tag: 2.1.3.2
 Requires PHP: 5.6
 License: GNU General Public License v2.0 or later
 
